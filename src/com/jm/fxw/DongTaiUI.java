@@ -35,7 +35,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	private MultiColumnPullToRefreshListView ListView;
 	private DongTaiAdapter adapter;
 	private List<DongTai> mlist = new ArrayList<DongTai>();
-	private List<Hair> hlist;
+	private List<Hair> hlist= new ArrayList<Hair>();
 	private int page = 1;
 	private int pageCount = 0;
 	private String condition = "add_time";
