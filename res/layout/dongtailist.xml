@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:staggered="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44sp"
+        android:background="#212529"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/btn_leftTop"
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/btn_selector"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_mainhead"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="我型我秀"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_rightTop"
+            android:layout_width="78sp"
+            android:layout_height="30sp"
+            android:layout_marginRight="5sp"
+            android:background="@drawable/btn_long_selector"
+            android:text="上传图片"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="@color/bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="39sp"
+            android:layout_marginBottom="5sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_zuixin"
+                android:layout_width="fill_parent"
+                android:layout_height="39sp"
+                android:layout_weight="1"
+                android:background="@drawable/left_bg"
+                android:gravity="center"
+                android:text="最新"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_tongcheng"
+                android:layout_width="fill_parent"
+                android:layout_height="39sp"
+                android:layout_weight="1"
+                android:background="@drawable/center_bg"
+                android:gravity="center"
+                android:text="评论榜"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_tuijian"
+                android:layout_width="fill_parent"
+                android:layout_height="39sp"
+                android:layout_weight="1"
+                android:background="@drawable/right_bg"
+                android:gravity="center"
+                android:text="排行榜"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <com.huewu.pla.lib.MultiColumnPullToRefreshListView
+            android:id="@+id/staggeredGridView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </LinearLayout>
+
+</LinearLayout>

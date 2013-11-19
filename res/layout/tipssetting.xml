@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="@color/bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="44sp"
+            android:background="#212529"
+            android:gravity="center_vertical" >
+
+            <Button
+                android:id="@+id/btn_leftTop"
+                android:layout_width="58sp"
+                android:layout_height="30sp"
+                android:layout_marginLeft="5sp"
+                android:background="@drawable/btn_selector"
+                android:text="返回"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_mainhead"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="推送设置"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_rightTop"
+                android:layout_width="58sp"
+                android:layout_height="30sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/btn_selector"
+                android:text="保存"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="评论开关设置"
+                android:textColor="@color/black2"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/tbtn_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="消息开关设置"
+                android:textColor="@color/black2"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/tbtn_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="新粉丝开关设置"
+                android:textColor="@color/black2"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/tbtn_fans"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="预约通知开关设置"
+                android:textColor="@color/black2"
+                android:textSize="15sp" />
+
+            <ToggleButton
+                android:id="@+id/tbtn_reserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ToggleButton" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

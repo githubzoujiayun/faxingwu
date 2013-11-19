@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44sp"
+        android:background="#212529"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/btn_leftTop"
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/btn_selector"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_mainhead"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="发布话题"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginRight="5sp"
+            android:background="@drawable/btn_selector"
+            android:text="发布"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="@color/bg" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_weight="1"
+            android:background="@color/bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView
+                    android:id="@+id/iv_hairpic1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/addphoto" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="30sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5sp"
+                    android:text="请添加问题配图"
+                    android:textColor="@color/black2"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iv_lockwise1"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:layout_marginLeft="5sp"
+                    android:background="@drawable/counterclockwise" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_hairinfo"
+                android:layout_width="fill_parent"
+                android:layout_height="80sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/bigedit_bg"
+                android:gravity="left|top"
+                android:hint="请为您的话题添加描述"
+                android:padding="2sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="42sp"
+                android:layout_marginLeft="5sp"
+                android:layout_marginRight="5sp"
+                android:layout_marginTop="10sp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/btn_PublicTop"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@drawable/shape_blue"
+                    android:text="发 布 话 题"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

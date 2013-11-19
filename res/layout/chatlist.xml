@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jm.sort.ChatItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_myexam_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/bg"
+    android:divider="#00000000"
+    android:dividerHeight="0dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/LinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="55dip"
+                android:paddingRight="55dip" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <RelativeLayout
+                            android:id="@+id/team_singlechat_id_listiteam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:clickable="false" >
+
+                            <ImageView
+                                android:id="@+id/team_singlechat_id_listiteam_headicon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dip" />
+
+                            <LinearLayout
+                                android:id="@+id/team_singlechat_id_listiteam_message"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingLeft="5dip" >
+
+                                <TextView
+                                    android:id="@+id/tv_message"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:includeFontPadding="false"
+                                    android:textColor="@color/black2"
+                                    android:textSize="15sp"
+                                    android:textStyle="normal" />
+
+                                <ImageView
+                                    android:id="@+id/chatpicture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3sp"
+                                    android:scaleType="fitXY"
+                                    android:visibility="gone" />
+                            </LinearLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_voice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:id="@+id/play"
+                        android:layout_width="70sp"
+                        android:layout_height="50sp"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/stop"
+                        android:layout_width="70sp"
+                        android:layout_height="50sp"
+                        android:layout_marginLeft="10sp"
+                        android:layout_marginRight="10sp"
+                        android:scaleType="fitXY"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/hislin"
+                android:layout_width="56sp"
+                android:layout_height="56sp"
+                android:layout_gravity="center"
+                android:layout_margin="5sp"
+                android:background="@drawable/imageback"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/hisimage"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mylin"
+                android:layout_width="56sp"
+                android:layout_height="56sp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:layout_margin="5sp"
+                android:background="@drawable/imageback"
+                android:gravity="center" >
+
+                <ImageView
+                    android:id="@+id/myimage"
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/LinearLayout"
+            android:layout_centerHorizontal="true"
+            android:text="2012-12-28 16:50:55"
+            android:textColor="@color/black2"
+            android:textSize="10dip" />
+    </RelativeLayout>
+
+</com.jm.sort.ChatItem>

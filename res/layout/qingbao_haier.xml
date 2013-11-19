@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e6e6e6"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44sp"
+        android:background="#212529"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_leftTop"
+                android:layout_width="58sp"
+                android:layout_height="30sp"
+                android:layout_marginLeft="5sp"
+                android:background="@drawable/btn_selector"
+                android:text="返回"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="行业情报"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_rightTop"
+                android:layout_width="74sp"
+                android:layout_height="30sp"
+                android:layout_marginRight="5sp"
+                android:background="@drawable/btn_long_selector"
+                android:text="我要发布"
+                android:textColor="#ffffff"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="@color/bg"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5sp"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_mingrentang"
+                android:layout_width="fill_parent"
+                android:layout_height="39sp"
+                android:layout_weight="1"
+                android:background="@drawable/left_bg"
+                android:gravity="center"
+                android:text="名人堂"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_hangyexinwen"
+                android:layout_width="fill_parent"
+                android:layout_height="39sp"
+                android:layout_weight="1"
+                android:background="@drawable/center_bg"
+                android:gravity="center"
+                android:text="行业新闻"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_mingdianzhanshi"
+                android:layout_width="fill_parent"
+                android:layout_height="39sp"
+                android:layout_weight="1"
+                android:background="@drawable/right_bg"
+                android:gravity="center"
+                android:text="名店展示"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_shalongzhuanrang"
+                android:layout_width="fill_parent"
+                android:layout_height="39sp"
+                android:layout_weight="1"
+                android:background="@drawable/right_bg"
+                android:gravity="center"
+                android:text="沙龙转让"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_faxingshi_listview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@drawable/xian"
+            android:dividerHeight="2px"
+            android:fadingEdge="none"
+            android:footerDividersEnabled="false"
+            android:numColumns="3" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

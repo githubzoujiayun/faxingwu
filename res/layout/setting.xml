@@ -1,0 +1,306 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44sp"
+        android:background="#212529"
+        android:gravity="center_vertical" 
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_leftTop"
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/btn_selector"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="50sp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="设置"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_rightTop"
+            android:layout_width="78sp"
+            android:layout_height="30sp"
+            android:layout_marginRight="5sp"
+            android:background="@drawable/btn_long_selector"
+            android:text="修改资料"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="#FFFFFF" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_weight="1"
+            android:background="#FFFFFF"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/lin_setting"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/server_liebiao_style"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:text="设置预约"
+                    android:textColor="@color/black2" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:padding="12sp"
+                    android:src="@drawable/jiantou_red" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_qq"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/server_liebiao_style"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:text="腾讯空间绑定"
+                    android:textColor="#d64e50" />
+
+                <TextView
+                    android:id="@+id/tv_qq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:text="读取中..."
+                    android:textColor="#d64e50" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_sina"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/server_liebiao_style"
+                android:gravity="center" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:text="新浪微博绑定"
+                    android:textColor="#37a8a4" />
+
+                <TextView
+                    android:id="@+id/tv_sina"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:text="读取中..."
+                    android:textColor="#37a8a4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_about"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5sp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/server_liebiao_style"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="发型必备"
+                        android:textColor="@color/black2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_tips"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/server_liebiao_style"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="消息提醒设置"
+                        android:textColor="@color/black2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5sp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/lin_weibo"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/server_liebiao_style"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="官方微博"
+                        android:textColor="@color/black2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_help"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/server_liebiao_style"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="使用帮助"
+                        android:textColor="@color/black2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="5sp"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:id="@+id/lin_opinion"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/server_liebiao_style"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="意见反馈"
+                        android:textColor="@color/black2" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_cleatcache"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/server_liebiao_style"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:id="@+id/tv_cache"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:gravity="center"
+                        android:text="清除缓存"
+                        android:textColor="@color/black2" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_support"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="5sp"
+                android:layout_marginTop="5sp"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="给个好评，支持一下！"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_margin="5sp"
+                android:background="@drawable/shape_blue"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="检查更新"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="fill_parent"
+                android:layout_height="42dp"
+                android:layout_margin="5sp"
+                android:background="@drawable/shape_red"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

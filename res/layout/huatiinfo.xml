@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44sp"
+        android:background="#212529"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/btn_leftTop"
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/btn_selector"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_mainhead"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="话题详情"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/btn_selector"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="14sp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/comment_list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@drawable/xian"
+        android:dividerHeight="2px"
+        android:fadingEdge="none"
+        android:footerDividersEnabled="false" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="39sp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/pubcomment_bg"
+        android:gravity="bottom"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="3sp"
+            android:layout_weight="1" >
+
+            <EditText
+                android:id="@+id/et_comment"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/edit_bg"
+                android:gravity="center_vertical"
+                android:hint="请输入评论"
+                android:padding="5sp" />
+
+            <ImageView
+                android:id="@+id/iv_voice"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/voice"
+                android:scaleType="fitXY" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="50sp"
+            android:layout_height="fill_parent"
+            android:layout_margin="3sp"
+            android:background="@drawable/shape_blue"
+            android:text="确定"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

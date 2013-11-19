@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jm.sort.LikeImageItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gallery_show"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="1sp"
+    android:layout_marginRight="1sp"
+    android:background="@color/bg"
+    android:orientation="horizontal"
+    android:padding="1sp" >
+
+    <FrameLayout
+        android:layout_width="38sp"
+        android:layout_height="38sp" >
+
+        <ImageView
+            android:id="@+id/iv_UserLikePicShow"
+            android:layout_width="38sp"
+            android:layout_height="38sp" />
+
+        <ImageView
+            android:id="@+id/iv_HairShow"
+            android:layout_width="14.5sp"
+            android:layout_height="14.5sp"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/heart" />
+    </FrameLayout>
+
+</com.jm.sort.LikeImageItem>

@@ -1,0 +1,421 @@
+package com.jm.fxw;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
+import net.tsz.afinal.FinalActivity;
+import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.annotation.view.ViewInject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.jm.connection.Connection;
+import com.jm.connection.Response;
+import com.jm.finals.Constant;
+import com.jm.session.SessionManager;
+import com.jm.util.LogUtil;
+import com.jm.util.StartActivityContController;
+import com.jm.util.TispToastFactory;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
+import com.weibo.sdk.android.Oauth2AccessToken;
+import com.weibo.sdk.android.Weibo;
+import com.weibo.sdk.android.WeiboAuthListener;
+import com.weibo.sdk.android.WeiboDialogError;
+import com.weibo.sdk.android.WeiboException;
+import com.weibo.sdk.android.sso.SsoHandler;
+
+public class SettingUI extends FinalActivity {
+
+	private Handler mHandler;
+	private static final String SCOPE = "get_simple_userinfo,add_share";
+	private Tencent mTencent;
+	// 新浪微博相关
+	private Weibo mWeibo;
+	public static Oauth2AccessToken accessToken;
+	public static final String TAG = "SINA";
+	/*
+	 * SsoHandler 仅当sdk支持sso时有效，
+	 */
+	SsoHandler mSsoHandler;
+	private String qq_keyid = "", sina_keyid = "", access_token, expires_in,
+			username, meg;
+	// //////////////////////////////////
+	private SharedPreferences share;
+	private SharedPreferences.Editor editor;
+	private SessionManager sm;
+	private CheckUpdate checkUpdate;
+	@ViewInject(id = R.id.lin_setting, click = "Click")
+	LinearLayout lin_setting;
+	@ViewInject(id = R.id.lin_qq, click = "Click")
+	LinearLayout lin_qq;
+	@ViewInject(id = R.id.lin_sina, click = "Click")
+	LinearLayout lin_sina;
+	@ViewInject(id = R.id.btn_support, click = "Click")
+	Button btn_support;
+	@ViewInject(id = R.id.btn_update, click = "Click")
+	Button btn_update;
+	@ViewInject(id = R.id.btn_logout, click = "Click")
+	Button btn_logout;
+	@ViewInject(id = R.id.btn_leftTop, click = "Click")
+	Button btn_leftTop;
+	@ViewInject(id = R.id.btn_rightTop, click = "Click")
+	Button btn_rightTop;
+	@ViewInject(id = R.id.lin_tips, click = "Click")
+	LinearLayout lin_tips;
+	@ViewInject(id = R.id.lin_cleatcache, click = "Click")
+	LinearLayout lin_cleatcache;
+	@ViewInject(id = R.id.lin_weibo, click = "Click")
+	LinearLayout lin_weibo;
+	@ViewInject(id = R.id.lin_help, click = "Click")
+	LinearLayout lin_help;
+	@ViewInject(id = R.id.lin_opinion, click = "Click")
+	LinearLayout lin_opinion;
+
+	// /////////////////////////////////////////
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.setting);
+		init();
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		MobileProbe.onPause(this, "设置页面");
+	}
+
+	private void init() {
+		mWeibo = Weibo
+				.getInstance(Constant.CONSUMER_KEY, Constant.REDIRECT_URL);
+		mTencent = Tencent.createInstance(Constant.APP_ID,
+				this.getApplicationContext());
+		mHandler = new Handler();
+		sm = SessionManager.getInstance();
+		share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
+		editor = share.edit();
+		if (sm.getUsertype().equals("1")) {
+			findViewById(R.id.lin_setting).setVisibility(View.GONE);
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		MobileProbe.onResume(this, "设置页面");
+		getUserSettingInfo();
+	}
+
+	private void getUserSettingInfo() {
+		new getUserInfo().execute();
+	}
+
+	public void Click(View v) {
+		switch (v.getId()) {
+		case R.id.lin_setting:
+			StartActivityContController.goPage(this, YuYueSheZhi.class, true);
+			break;
+		case R.id.lin_qq:
+			if (((TextView) findViewById(R.id.tv_qq)).getText().equals("未绑定")) {
+
+				onClickLogin();
+			}
+			break;
+		case R.id.lin_sina:
+			if (((TextView) findViewById(R.id.tv_sina)).getText().equals("未绑定")) {
+
+				mWeibo.authorize(SettingUI.this, new AuthDialogListener());
+			}
+			break;
+		case R.id.btn_support:
+			TispToastFactory.getToast(this, "打开支持页面").show();
+			break;
+		case R.id.btn_update:
+			checkUpdate = new CheckUpdate(SettingUI.this);
+			checkUpdate.setNoNewversion(true);
+			checkUpdate.check();
+			break;
+		case R.id.lin_help:
+
+			StartActivityContController.goPage(this, HelpUI.class, true);
+			break;
+		case R.id.lin_opinion:
+
+			StartActivityContController.goPage(this, OpinionUI.class, true);
+			break;
+
+		case R.id.lin_weibo:
+			Uri uri = Uri.parse("http://e.weibo.com/515345585");
+			Intent it = new Intent(Intent.ACTION_VIEW, uri);
+			startActivity(it);
+			break;
+		case R.id.btn_logout:
+			logout();
+			android.os.Process.killProcess(android.os.Process.myPid());
+
+			break;
+		case R.id.btn_leftTop:
+			this.finish();
+			break;
+		case R.id.lin_tips:
+			StartActivityContController.goPage(this, TipsSettingUI.class, true);
+			break;
+		case R.id.btn_rightTop:
+
+			StartActivityContController.goPage(this, ChangeInfo.class, true);
+			break;
+		case R.id.lin_cleatcache:
+			sm.cleanUploadImages();
+			FinalBitmap.create(this).clearCache();
+			TispToastFactory.getToast(this, "清除缓存成功").show();
+			break;
+		}
+
+	}
+
+	/**
+	 * 递归删除文件和文件夹
+	 * 
+	 * @param file
+	 *            要删除的根目录
+	 */
+	public static void RecursionDeleteFile(File file) {
+		if (file.isFile()) {
+			file.delete();
+			return;
+		}
+		if (file.isDirectory()) {
+			File[] childFile = file.listFiles();
+			if (childFile == null || childFile.length == 0) {
+				file.delete();
+				return;
+			}
+			for (File f : childFile) {
+				RecursionDeleteFile(f);
+			}
+		}
+	}
+
+	/**
+	 * 退出登录
+	 */
+	private void logout() {
+		sm.setUserId("");
+		sm.setUsertype("");
+		editor.putString("uid", "");
+		editor.putString("usertype", "");
+		editor.putString("access_token", "");
+		editor.putString("expires_in", "");
+		editor.putString("sina_keyid", "");
+		editor.putString("qq_keyid", "");
+		editor.commit();
+	}
+
+	class AuthDialogListener implements WeiboAuthListener {
+
+		@Override
+		public void onComplete(Bundle values) {
+			// keyid, access_token, expires_in, username, meg, type;
+
+			LoginUI.accessToken = new Oauth2AccessToken(
+					values.getString("access_token"),
+					values.getString("expires_in"));
+			if (LoginUI.accessToken.isSessionValid()) {
+				sina_keyid = values.getString("uid");
+				uploadUserInfo();
+			}
+		}
+
+		@Override
+		public void onError(WeiboDialogError e) {
+			Toast.makeText(getApplicationContext(),
+					"Auth error : " + e.getMessage(), Toast.LENGTH_LONG).show();
+		}
+
+		@Override
+		public void onCancel() {
+			Toast.makeText(getApplicationContext(), "Auth cancel",
+					Toast.LENGTH_LONG).show();
+		}
+
+		@Override
+		public void onWeiboException(WeiboException e) {
+			Toast.makeText(getApplicationContext(),
+					"Auth exception : " + e.getMessage(), Toast.LENGTH_LONG)
+					.show();
+		}
+
+	}
+
+	private void onClickLogin() {
+		if (!mTencent.isSessionValid()) {
+			IUiListener listener = new BaseUiListener() {
+				@Override
+				protected void doComplete(JSONObject values) {
+					LogUtil.e("=======================================IUiListener.doComplete:"
+							+ values.toString());
+					try {
+						qq_keyid = values.getString("openid");
+						uploadUserInfo();
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						LogUtil.e("doComplete" + e.toString());
+					}
+				}
+			};
+			mTencent.login(this, SCOPE, listener);
+		}
+
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		mTencent.onActivityResult(requestCode, resultCode, data);
+	}
+
+	private class BaseUiListener implements IUiListener {
+
+		@Override
+		public void onComplete(JSONObject response) {
+			LogUtil.e("=======================================BaseUiListener.onComplete:"
+					+ response.toString());
+			doComplete(response);
+		}
+
+		protected void doComplete(JSONObject values) {
+			LogUtil.e("=======================================BaseUiListener.doComplete:"
+					+ values.toString());
+
+		}
+
+		@Override
+		public void onError(UiError e) {
+			LogUtil.e("=======================================onError:"
+					+ "code:" + e.errorCode + ", msg:" + e.errorMessage
+					+ ", detail:" + e.errorDetail);
+		}
+
+		@Override
+		public void onCancel() {
+			LogUtil.e("=======================================onCancel");
+		}
+	}
+
+	private void uploadUserInfo() {
+		mHandler.post(new Runnable() {
+
+			@Override
+			public void run() {
+				LogUtil.i("开始绑定 qq_keyid= " + qq_keyid + "sina_keyid = "
+						+ sina_keyid + "的信息");
+				new UpLoadUserInfoTask().execute();
+			}
+		});
+	}
+
+	/*
+	 * 上传用户信息
+	 */
+	class UpLoadUserInfoTask extends AsyncTask<String, Integer, Response> {
+
+		private Map<String, Object> getListInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+			if (!"".equals(qq_keyid)) {
+
+				map.put("qq_keyid", qq_keyid);
+			}
+			if (!"".equals(sina_keyid)) {
+
+				map.put("sina_keyid", sina_keyid);
+			}
+			map.put("uid", sm.getUserId());
+			return map;
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn.executeAndParse(Constant.URN_SETID, getListInqVal());
+
+		}
+
+		protected void onPostExecute(Response result) {
+
+			if (result == null) {
+				LogUtil.e("can't get UpLoadUserInfoTask");
+				return;
+			} else {
+				getUserSettingInfo();
+			}
+		}
+
+	}
+
+	/*
+	 * 读取个人信息
+	 */
+	class getUserInfo extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn.executeAndParse(Constant.URN_SETTING + "&uid="
+					+ sm.getUserId());
+
+		}
+
+		protected void onPostExecute(Response result) {
+			if (result == null) {
+				LogUtil.e("can't get userinfo");
+				return;
+			}
+			if (result.isSuccessful()) {
+
+				JSONObject jb = result.getJsonString("user_info");
+				try {
+					((TextView) findViewById(R.id.tv_qq)).setText((jb
+							.getString("qq_keyid").equals("")) ? "未绑定" : "已绑定");
+					((TextView) findViewById(R.id.tv_sina)).setText((jb
+							.getString("sina_keyid").equals("")) ? "未绑定"
+							: "已绑定");
+				} catch (JSONException e) {
+					LogUtil.e(e.toString());
+				}
+			} else {
+				TispToastFactory.getToast(SettingUI.this, result.getMsg())
+						.show();
+			}
+		}
+	}
+
+}

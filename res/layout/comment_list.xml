@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.jm.sort.CommentItem xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="5sp"
+        android:layout_marginTop="5sp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iv_commentupic"
+            android:layout_width="45sp"
+            android:layout_height="45sp"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="10sp"
+            android:orientation="vertical"
+            android:paddingBottom="5sp"
+            android:paddingRight="5sp"
+            android:paddingTop="5sp" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_uname"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textColor="#ed145b" >
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tv_utime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5sp"
+                    android:gravity="right"
+                    android:singleLine="true"
+                    android:textColor="#808080" >
+                </TextView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_utext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5sp"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.jm.sort.CommentItem>

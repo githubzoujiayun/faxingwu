@@ -1,0 +1,275 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44sp"
+        android:background="#212529" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="广  场"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="@color/bg" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0sp"
+            android:layout_weight="1"
+            android:background="@color/bg"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/bg"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="110sp"
+                    android:layout_marginTop="10sp"
+                    android:background="@color/bg"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/lin_dongtai"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="#157fef"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text=" 我 型 "
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+
+                        <ImageView
+                            android:layout_width="55dp"
+                            android:layout_height="65dp"
+                            android:layout_margin="6sp"
+                            android:focusable="false"
+                            android:src="@drawable/woxingwoxiu" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text=" 我 秀 "
+                            android:textColor="@color/white"
+                            android:textSize="24sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80sp"
+                    android:layout_marginTop="5sp"
+                    android:background="@color/bg"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/lin_redianhuati"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="#be1e4a"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:src="@drawable/redianhuati" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text="热点话题"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lin_qingbaozhan"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="#5f3bb9"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:src="@drawable/qingbaozhan" />
+
+                        <TextView
+                            android:layout_width="40sp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text="行业情报"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80sp"
+                    android:layout_marginTop="5sp"
+                    android:background="@color/bg"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/lin_chakanjiange"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="#01a300"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:src="@drawable/money" />
+
+                        <TextView
+                            android:layout_width="40sp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text="特惠预约"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lin_question"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="#a600ac"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:src="@drawable/question" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text="问答中心"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="80sp"
+                    android:layout_marginTop="5sp"
+                    android:background="@color/bg"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:id="@+id/lin_tongcheng"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="#00ac79"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:src="@drawable/tongcheng" />
+
+                        <TextView
+                            android:layout_width="40sp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text="同城"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lin_zhaopinxinxi"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="5sp"
+                        android:layout_weight="1"
+                        android:background="#009bad"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:src="@drawable/zhaopin" />
+
+                        <TextView
+                            android:layout_width="40sp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5sp"
+                            android:focusable="false"
+                            android:text="招聘信息"
+                            android:textColor="@color/white"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/bottom" />
+
+</LinearLayout>

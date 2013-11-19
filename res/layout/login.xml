@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="44sp"
+        android:background="#212529"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/btn_leftTop"
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginLeft="5sp"
+            android:background="@drawable/btn_selector"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_mainhead"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="用户登录"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <Button
+            android:layout_width="58sp"
+            android:layout_height="30sp"
+            android:layout_marginRight="5sp"
+            android:background="@drawable/msg"
+            android:textSize="13sp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_logintips"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginTop="20sp"
+        android:lineSpacingExtra="6sp"
+        android:text="登录之后,您可以\n1.上传自己的发型或者作品\n2.预约同城发型师或设置自己的预约\n3.可以在问答中心发布或者回答问题\n4.收藏/评论/分享您喜欢的发型"
+        android:textColor="@color/black2"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/lin_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40sp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/iv_qqlogin"
+                android:layout_width="154sp"
+                android:layout_height="42sp"
+                android:background="@drawable/qqlogin"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/auth"
+                android:layout_width="154sp"
+                android:layout_height="42sp"
+                android:layout_marginTop="30sp"
+                android:background="@drawable/sinalogin"
+                android:onClick="onOauth"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
