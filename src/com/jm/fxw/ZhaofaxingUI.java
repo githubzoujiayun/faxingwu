@@ -82,10 +82,10 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
-		Calendar_Width = screenWidth - 30;
-		Cell_Width = Calendar_Width / 3 + 1;
+		Calendar_Width = screenWidth;
+		Cell_Width = Calendar_Width / 2 + 1;
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-				Cell_Width, Cell_Width + 10);
+				Cell_Width, Cell_Width);
 
 		findViewById(R.id.fl_duanfa).setOnClickListener(this);
 		findViewById(R.id.fl_zhongfa).setOnClickListener(this);
@@ -95,15 +95,13 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		findViewById(R.id.fl_quanbu).setOnClickListener(this);
 		findViewById(R.id.fl_shoucang).setOnClickListener(this);
 		//
-		// findViewById(R.id.fl_duanfa).setLayoutParams(lp);
-		// findViewById(R.id.fl_zhongfa).setLayoutParams(lp);
-		// findViewById(R.id.fl_changfa).setLayoutParams(lp);
-		// findViewById(R.id.fl_panfa).setLayoutParams(lp);
-		// findViewById(R.id.fl_nanfa).setLayoutParams(lp);
-		// findViewById(R.id.fl_quanbu).setLayoutParams(lp);
-		// findViewById(R.id.fl_shoucang).setLayoutParams(lp);
-		// findViewById(R.id.fl_shoucang1).setLayoutParams(lp);
-		// findViewById(R.id.fl_shoucang2).setLayoutParams(lp);
+		findViewById(R.id.fl_duanfa).setLayoutParams(lp);
+		findViewById(R.id.fl_zhongfa).setLayoutParams(lp);
+		findViewById(R.id.fl_changfa).setLayoutParams(lp);
+		findViewById(R.id.fl_panfa).setLayoutParams(lp);
+		findViewById(R.id.fl_nanfa).setLayoutParams(lp);
+		findViewById(R.id.fl_quanbu).setLayoutParams(lp);
+		findViewById(R.id.fl_shoucang).setLayoutParams(lp);
 
 	}
 
