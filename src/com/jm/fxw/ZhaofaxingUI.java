@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.finals.Constant;
@@ -35,6 +36,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 	@ViewInject(id = R.id.lin_wode, click = "Click")
 	LinearLayout lin_wode;
 
+	private long firstTime = 0;
 	private int Calendar_Width = 0;
 	private int Cell_Width = 0;
 
@@ -82,7 +84,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
-		Calendar_Width = screenWidth-30;
+		Calendar_Width = screenWidth - 30;
 		Cell_Width = Calendar_Width / 2 + 1;
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
 				Cell_Width, Cell_Width);
@@ -167,36 +169,18 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-			dialog();
-			return true;
+
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			long secondTime = System.currentTimeMillis();
+			if (secondTime - firstTime > 800) {// 如果两次按键时间间隔大于800毫秒，则不退出
+				Toast.makeText(ZhaofaxingUI.this, "再按一次退出", Toast.LENGTH_SHORT)
+						.show();
+				firstTime = secondTime;// 更新firstTime
+				return true;
+			} else {
+				System.exit(0);// 否则退出程序
+			}
 		}
-		return super.onKeyDown(keyCode, event);
-	}
-
-	protected void dialog() {
-		AlertDialog.Builder builder = new Builder(ZhaofaxingUI.this);
-		builder.setMessage("确认离开发型屋吗？");
-
-		builder.setTitle("提示");
-
-		builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-				android.os.Process.killProcess(android.os.Process.myPid());
-			}
-		});
-
-		builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-			}
-		});
-
-		builder.create().show();
+		return super.onKeyUp(keyCode, event);
 	}
 }
