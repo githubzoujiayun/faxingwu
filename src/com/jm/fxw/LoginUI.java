@@ -47,7 +47,6 @@ public class LoginUI extends Activity implements OnClickListener {
 	private static Tencent mTencent;
 	// 新浪微博相关
 	private Weibo mWeibo;
-	private ImageView authBtn;
 	public static Oauth2AccessToken accessToken;
 	private String qq_keyid = "", sina_keyid = "", access_token, expires_in,
 			username, meg;
@@ -99,8 +98,7 @@ public class LoginUI extends Activity implements OnClickListener {
 		mWeibo = Weibo
 				.getInstance(Constant.CONSUMER_KEY, Constant.REDIRECT_URL);
 
-		authBtn = (ImageView) findViewById(R.id.auth);
-		authBtn.setOnClickListener(new OnClickListener() {
+		findViewById(R.id.auth).setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -194,14 +192,11 @@ public class LoginUI extends Activity implements OnClickListener {
 			LoginUI.accessToken = new Oauth2AccessToken(
 					values.getString("access_token"),
 					values.getString("expires_in"));
-			if (LoginUI.accessToken.isSessionValid()) {
-				authBtn.setBackgroundResource(R.drawable.sinalogined);
-				authBtn.setOnClickListener(null);
-				access_token = values.getString("access_token");
-				expires_in = values.getString("expires_in");
-				sina_keyid = values.getString("uid");
-				uploadUserInfo();
-			}
+			access_token = values.getString("access_token");
+			expires_in = values.getString("expires_in");
+			sina_keyid = values.getString("uid");
+			uploadUserInfo();
+
 		}
 
 		@Override
@@ -230,7 +225,7 @@ public class LoginUI extends Activity implements OnClickListener {
 
 			@Override
 			public void run() {
-				Toast.makeText(getApplicationContext(), "登录成功",
+				Toast.makeText(getApplicationContext(), "正在拉取您的个人信息",
 						Toast.LENGTH_SHORT).show();
 				new UpLoadUserInfoTask().execute();
 			}
