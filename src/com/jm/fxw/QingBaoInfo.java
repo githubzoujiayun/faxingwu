@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
 public class QingBaoInfo extends FinalActivity implements OnClickListener {
-	private List<NewsList> mlist;
+	private List<NewsList> mlist = new ArrayList<NewsList>();
 	private NewsListAdapter adapter;
 	private ListView ListView;
 	private String nid = "";

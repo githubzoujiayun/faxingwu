@@ -58,7 +58,7 @@ public class ChatUI extends Activity implements OnClickListener,
 	private ListView ListView;
 	private QuesionChatAdapter adapter;
 	private EditText text;
-	private List<QuestionChat> mlist;
+	private List<QuestionChat> mlist = new ArrayList<QuestionChat>();
 	private Timer timer;
 	private SessionManager sm;
 	private String tid;

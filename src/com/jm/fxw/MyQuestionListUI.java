@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class MyQuestionListUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private SessionManager sm;
 	private QuesionAdapter adapter;
-	private List<Question> mlist;
+	private List<Question> mlist = new ArrayList<Question>();
 	private MyListView myListView;
 
 	@Override

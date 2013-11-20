@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class MyAnswerListUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private SessionManager sm;
 	private AnswerAdapter adapter;
-	private List<Answer> mlist;
+	private List<Answer> mlist = new ArrayList<Answer>();
 	private MyListView myListView;
 	private String pid = "";// Œ Ã‚Id
 

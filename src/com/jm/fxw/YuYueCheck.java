@@ -21,25 +21,10 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
-import com.jm.sort.YuYueAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
-/**
- * Android实现日历控件
- * 
- * @Description: Android实现日历控件
- * 
- * @File: MainActivity.java
- * 
- * @Package com.calendar.demo
- * 
- * @Author Hanyonglu
- * 
- * @Date 2012-6-21 上午11:42:32
- * 
- * @Version V1.0
- */
+
 public class YuYueCheck extends FinalActivity implements OnClickListener {
 
 	@ViewInject(id = R.id.btn_leftTop, click = "Click")
@@ -48,7 +33,6 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 	private String tid;
 	private String discount;
 	private String price;
-	private YuYueAdapter adapter;
 	private String date;
 	private String week;
 	private String type;

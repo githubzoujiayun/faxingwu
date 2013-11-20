@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +49,7 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 	private SharedPreferences.Editor editor;
 	private ListView ListView;
 	private FaXingShiAdapter adapter;
-	private List<FaXingShi> mlist;
+	private List<FaXingShi> mlist = new ArrayList<FaXingShi>();
 	private int page = 1;
 	private int pageCount = 0;
 	private String condition = Constant.URN_ALL_FAXINGSHI;

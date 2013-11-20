@@ -189,9 +189,9 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="37sp"
                 android:gravity="center"
-                android:text="姓名:"
+                android:text="真实姓名:"
                 android:textColor="@color/black2"
                 android:textSize="16sp" />
 
@@ -215,9 +215,9 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="37sp"
                 android:gravity="center"
-                android:text="手机:"
+                android:text="手机号码:"
                 android:textColor="@color/black2"
                 android:textSize="16sp" />
 
@@ -235,9 +235,11 @@
         <Button
             android:id="@+id/btn_yuyuecheck"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="37sp"
             android:layout_margin="10sp"
-            android:text="确定预约" >
+            android:background="@drawable/shape_blue"
+            android:text="确定预约"
+            android:textColor="@color/white" >
         </Button>
     </LinearLayout>
 

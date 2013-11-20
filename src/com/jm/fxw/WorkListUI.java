@@ -1,6 +1,7 @@
 package com.jm.fxw;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
 	private GridView ListView;
 	private HairAdapter adapter;
-	private List<Hair> mlist;
+	private List<Hair> mlist = new ArrayList<Hair>();
 	private int page = 1;
 	private int pageCount = 0;
 	private SessionManager sm;

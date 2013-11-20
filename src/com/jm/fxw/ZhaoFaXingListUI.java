@@ -2,6 +2,7 @@ package com.jm.fxw;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private TextView tv_mainhead;
 	private GridView ListView;
 	private HairAdapter adapter;
-	private List<Hair> mlist;
+	private List<Hair> mlist = new ArrayList<Hair>();
 	private int page = 1;
 	private int pageCount = 0;
 	private String type;

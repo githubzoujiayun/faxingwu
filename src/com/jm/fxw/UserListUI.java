@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +33,7 @@ public class UserListUI extends Activity implements OnClickListener,
 		OnItemClickListener {
 	private ListView ListView;
 	private UserAdapter adapter;
-	private List<User> mlist;
+	private List<User> mlist = new ArrayList<User>();
 	private SessionManager sm;
 	private boolean isloading = false;
 	private boolean showlast = false;

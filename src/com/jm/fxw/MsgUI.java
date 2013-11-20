@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,7 @@ public class MsgUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private SessionManager sm;
 	private MsgAdapter adapter;
-	private List<Msg> mlist;
+	private List<Msg> mlist = new ArrayList<Msg>();
 	private MyListView myListView;
 
 	@Override

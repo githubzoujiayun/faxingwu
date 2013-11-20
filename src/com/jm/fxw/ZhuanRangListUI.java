@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
 	private ListView ListView;
 	private ZhuanRangAdapter adapter;
-	private List<ZhuanRang> mlist;
+	private List<ZhuanRang> mlist = new ArrayList<ZhuanRang>();
 	private int page = 1;
 	private int pageCount = 0;
 	private boolean isloading = false;

@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,10 +39,10 @@ import com.jm.view.HorizontalListView;
 public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 		OnClickListener {
 	private SmallImageAdapter likeadapter;
-	private List<Hair> portfoliolist;
+	private List<Hair> portfoliolist = new ArrayList<Hair>();
 	private HorizontalListView likeGallery;
 	private SessionManager sm;
-	private List<Hair> mlist;
+	private List<Hair> mlist = new ArrayList<Hair>();
 	LinearLayout lin_message;
 	private FinalBitmap fb;
 	private String uid;

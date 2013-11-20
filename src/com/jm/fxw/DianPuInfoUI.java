@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class DianPuInfoUI extends FragmentActivity implements
 	private double lng, lat;
 
 	private AMap aMap;
-	private List<User> mlist;
+	private List<User> mlist =new ArrayList<User>();
 	private UserGalleryAdapter adapter;
 	private GridView ListView;
 	private Marker marker;
@@ -70,16 +71,11 @@ public class DianPuInfoUI extends FragmentActivity implements
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		 MobileProbe.onPause(this, "店铺详情页面");
+		MobileProbe.onPause(this, "店铺详情页面");
 	}
 
 	private void setUpMap() {
-		aMap.setOnMapClickListener(this);// 鐎电map濞ｈ濮為崡鏇炲毊閸︽澘娴樻禍瀣╂閻╂垵鎯夐敓锟� //
-											// aMap.setOnMapLongClickListener(this);//
-											// 鐎电map濞ｈ濮為梹鎸庡瘻閸︽澘娴樻禍瀣╂閻╂垵鎯夐敓锟�
-											// //
-											// aMap.setOnCameraChangeListener(this);//
-											// 鐎电map濞ｈ濮炵粔璇插З閸︽澘娴樻禍瀣╂閻╂垵鎯夐敓锟�}
+		aMap.setOnMapClickListener(this);
 	}
 
 	private void init() {
@@ -127,14 +123,11 @@ public class DianPuInfoUI extends FragmentActivity implements
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		 MobileProbe.onResume(this, "店铺详情页面");
+		MobileProbe.onResume(this, "店铺详情页面");
 		new getShaLongInfo().execute();
 		new getHairListInfo().execute();
 	}
 
-	/*
-	 * 读取店铺信息
-	 */
 	class getShaLongInfo extends AsyncTask<String, Integer, Response> {
 
 		@Override
@@ -191,9 +184,6 @@ public class DianPuInfoUI extends FragmentActivity implements
 		aMap.moveCamera(update);
 	}
 
-	/*
-	 * 读取发型师列表信息
-	 */
 	class getHairListInfo extends AsyncTask<String, Integer, Response> {
 
 		@Override
@@ -230,10 +220,8 @@ public class DianPuInfoUI extends FragmentActivity implements
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
-			// 打开分类
 			this.finish();
 			break;
 		case R.id.btn_jibenxinxi:
@@ -250,7 +238,8 @@ public class DianPuInfoUI extends FragmentActivity implements
 			break;
 		case R.id.btn_weizhi:
 			if (lng == 0 || lat == 0) {
-				TispToastFactory.getToast(DianPuInfoUI.this, "暂无店铺地址信息").show();
+				TispToastFactory.getToast(DianPuInfoUI.this,
+						"閺嗗倹妫ゆ惔妤呮懙閸︽澘娼冩穱鈩冧紖").show();
 				return;
 			}
 			ResetButtonBgAndViews();
@@ -282,19 +271,16 @@ public class DianPuInfoUI extends FragmentActivity implements
 
 	@Override
 	public void onCameraChange(CameraPosition arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void onCameraChangeFinish(CameraPosition arg0) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void onMapClick(LatLng arg0) {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -58,7 +58,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 	protected TextView tv_mainhead, tv_tophead, tv_uphead;
 	private ListView ListView;
 	private QuesionChatAdapter adapter;
-	private List<QuestionChat> mlist;
+	private List<QuestionChat> mlist = new ArrayList<QuestionChat>();
 	private Timer timer;
 	private SessionManager sm;
 	private String tid;

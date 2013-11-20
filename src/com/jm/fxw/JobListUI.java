@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +42,7 @@ public class JobListUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
 	private ListView ListView;
 	private JobAdapter adapter;
-	private List<Job> mlist;
+	private List<Job> mlist = new ArrayList<Job>();
 	private int page = 1;
 	private int pageCount = 0;
 	private boolean isloading = false;

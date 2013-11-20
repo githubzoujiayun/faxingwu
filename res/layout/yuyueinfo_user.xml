@@ -125,9 +125,10 @@
                         <Button
                             android:id="@+id/btn_btn"
                             android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
+                            android:layout_height="37sp"
+                            android:background="@drawable/shape_blue"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 

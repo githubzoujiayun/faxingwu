@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class RatingListUI extends Activity implements OnClickListener,
 		ScrollCallback {
 	private MyListView ListView;
 	private UserRatingAdapter adapter;
-	private List<Rating> mlist;
+	private List<Rating> mlist =  new ArrayList<Rating>();
 	private int page = 1;
 	private int pageCount = 0;
 	private SessionManager sm;

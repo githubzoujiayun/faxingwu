@@ -52,7 +52,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	private CommentAdapter adapter;
 	private ListView listView;
-	private List<Comment> mlist;
+	private List<Comment> mlist = new ArrayList<Comment>();
 	private String to_uid = "";
 	private SessionManager sm;
 	private FinalBitmap fbPic;

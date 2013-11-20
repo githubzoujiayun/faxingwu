@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +36,7 @@ import com.jm.util.TispToastFactory;
 
 public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
-	private List<Reserve> mlist;
+	private List<Reserve> mlist = new ArrayList<Reserve>();
 	private Reserve reserve;
 	private ReserveAdapter adapter;
 	private ListView ListView;

@@ -42,10 +42,6 @@ public class ClientApp extends Application {
 		LogUtil.e("current login user City =" + city);
 		sm.setUserId(userID);
 		sm.setUsertype(userType);
-		// sm.setUserId("5");
-		// sm.setUsertype("1");
-		// sm.setUserId("7");
-		// sm.setUsertype("2");
 		sm.setCity(city);
 		sm.setLat(Double.valueOf(lat));
 		sm.setLng(Double.valueOf(lng));

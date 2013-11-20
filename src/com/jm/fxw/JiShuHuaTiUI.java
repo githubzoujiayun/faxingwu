@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
 	private ListView ListView;
 	private NewsAdapter adapter;
-	private List<News> mlist;
+	private List<News> mlist = new ArrayList<News>();
 	private int page = 1;
 	private int pageCount = 0;
 	private SessionManager sm;

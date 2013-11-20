@@ -409,15 +409,6 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 			StartActivityContController.goPage(this, ChangeInfo.class, true);
 			break;
 		case R.id.lin_cleatcache:
-			try {
-				getHelper().getDongTaiDao()
-						.delete(getHelper().getDongTaiList());
-				getHelper().getHairDao().delete(getHelper().getHairsList());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-
-			}
 			FinalBitmap.create(this).clearCache();
 			TispToastFactory.getToast(this, "Çå³ý»º´æ³É¹¦").show();
 			break;

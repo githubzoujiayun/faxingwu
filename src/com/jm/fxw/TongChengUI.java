@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 		OnScrollListener {
 	private ListView ListView;
 	private ZhouBianAdapter adapter;
-	private List<ZhouBian> mlist;
+	private List<ZhouBian> mlist = new ArrayList<ZhouBian>();
 	private int page = 1;
 	private int pageCount = 0;
 	private SessionManager sm;

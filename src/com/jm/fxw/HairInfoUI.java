@@ -33,9 +33,7 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,14 +41,9 @@ import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.iflytek.ui.RecognizerDialog;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
-import com.jm.entity.Comment;
 import com.jm.entity.Hair;
-import com.jm.entity.Like;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
-import com.jm.sort.CommentAdapter;
-import com.jm.sort.LikeImageAdapter;
-import com.jm.sort.MerchantGalleryAdapter;
 import com.jm.util.ImageUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -75,13 +68,8 @@ public class HairInfoUI extends Activity implements OnClickListener {
 
 	private PictureTaskCallback callback;
 	private String url;
-	private MerchantGalleryAdapter mgadapter;
-	private CommentAdapter adapter;
-	private List<Comment> mlist;
 	private String to_uid = "";
-	private ArrayList<Hair> alist;
-	private List<Like> likelist;
-	private LikeImageAdapter likeadapter;
+	private ArrayList<Hair> alist = new ArrayList<Hair>();
 	private String type = "0";
 	private SessionManager sm;
 	private FinalBitmap fbPic;
@@ -91,7 +79,6 @@ public class HairInfoUI extends Activity implements OnClickListener {
 	private Tencent mTencent;
 	private Weibo mWeibo;
 	public static Oauth2AccessToken accessToken;
-	private FrameLayout fl;
 	private String qq_keyid = "", sina_keyid = "", access_token, expires_in;
 	private EditText ed_comment;
 	private Handler mHandler;
@@ -106,7 +93,6 @@ public class HairInfoUI extends Activity implements OnClickListener {
 
 	private boolean isPushIn;
 	// 初始化参数
-	private String mInitParams;
 	private GalleryViewPager mViewPager;
 
 	private String[] urls;
@@ -161,9 +147,7 @@ public class HairInfoUI extends Activity implements OnClickListener {
 	}
 
 	private void initView() {
-		adapter = new CommentAdapter(this);
 		ed_comment = (EditText) findViewById(R.id.et_comment);
-
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.lin_xihuan).setOnClickListener(this);
 		findViewById(R.id.lin_fenxiang).setOnClickListener(this);
