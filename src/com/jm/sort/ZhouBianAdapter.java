@@ -109,14 +109,20 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 			fb.display((ImageView) view.findViewById(R.id.iv_pic),
 					type.getHead_photo());
 			((Button) view.findViewById(R.id.btn_isconcerns))
-					.setText(type.isconcerns.equals("1") ? "取消关注" : " + 关注");
+					.setText(type.isconcerns.equals("1") ? "已关注" : " + 关注");
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type
 					.getUsername());
 			((TextView) view.findViewById(R.id.tv_3_1)).setText(type.signature);
 
 			((TextView) view.findViewById(R.id.tv_2_1)).setText("共 "
 					+ type.works_num + "作品");
-
+			if (!type.store_address.equals("")) {
+				((TextView) view.findViewById(R.id.tv_4_1))
+						.setText(type.store_address);
+			} else {
+				((TextView) view.findViewById(R.id.tv_4_1))
+						.setVisibility(View.GONE);
+			}
 			if (isDianPu) {
 				view.isDianPu = isDianPu;
 				((Button) view.findViewById(R.id.btn_isconcerns))

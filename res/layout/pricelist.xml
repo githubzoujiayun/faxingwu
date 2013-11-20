@@ -31,12 +31,14 @@
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
-        <Button
-            android:layout_width="58sp"
+        <TextView
+            android:id="@+id/tv_rightTop"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginRight="5sp"
-            android:textSize="13sp"
-            android:visibility="invisible" />
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout

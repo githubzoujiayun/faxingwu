@@ -36,11 +36,11 @@
 
             <Button
                 android:id="@+id/btn_rightTop"
-                android:layout_width="74sp"
+                android:layout_width="58sp"
                 android:layout_height="30sp"
                 android:layout_marginRight="5sp"
-                android:background="@drawable/btn_long_selector"
-                android:text="我要发布"
+                android:background="@drawable/btn_selector"
+                android:text="发布"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
         </LinearLayout>

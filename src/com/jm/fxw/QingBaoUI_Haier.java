@@ -190,7 +190,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
 		v.setBackgroundResource(R.drawable.left_bg1);
-		((Button) v).setTextColor(Color.rgb(240,28,971));
+		((Button) v).setTextColor(Color.rgb(240,28,71));
 		adapter.clear();
 		this.news_type = condition;
 		page = 1;

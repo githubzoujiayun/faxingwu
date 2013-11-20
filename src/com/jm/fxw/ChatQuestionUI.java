@@ -93,6 +93,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 		// ///////////////////////////////
 		cag = new CameraAndGallery(this);
 		setContentView(R.layout.chat);
+		((TextView)findViewById(R.id.tv_mainhead)).setText(getString(R.string.question_info));
 		Intent i = getIntent();
 		isPushIn = i.getBooleanExtra("isPushIn", false);
 		tid = i.getStringExtra("tid");

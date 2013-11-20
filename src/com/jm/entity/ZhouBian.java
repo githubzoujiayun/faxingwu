@@ -18,6 +18,7 @@ public class ZhouBian implements ListItem {
 	public String head_photo = "";
 	public String address = "";
 
+	public String store_address ="";
 	public String signature = "";
 
 	public String works_num = "";
@@ -104,6 +105,12 @@ public class ZhouBian implements ListItem {
 		}
 		if (json.has("isconcerns")) {
 			this.isconcerns = json.getString("isconcerns");
+		}
+		if (json.has("isconcerns")) {
+			this.isconcerns = json.getString("isconcerns");
+		}
+		if (json.has("store_address")) {
+			this.store_address = json.getString("store_address");
 		}
 	}
 }

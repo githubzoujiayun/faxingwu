@@ -25,6 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Job;
@@ -48,14 +49,14 @@ public class JobListUI extends Activity implements OnClickListener,
 	private boolean isloading = false;
 	private boolean showlast = false;
 
-	private static final String[] jobs = { "职位筛选", "美发学徒", "美发助理", "发型师", "烫染技师",
+	private static final String[] jobs = { "职位", "美发学徒", "美发助理", "发型师", "烫染技师",
 			"技术总监", "美发店长" };
 	private ArrayAdapter<String> jobs_spadapter;
 	private Spinner sp_job;
 	private String str_job = "";
 
 	private String str_money = "";
-	private static final String[] money = { "薪资筛选", "0-1500", "1500-3000",
+	private static final String[] money = { "薪资", "0-1500", "1500-3000",
 			"3000-4000", "4000-6000", "6000-8000", "8000-10000" };
 	private ArrayAdapter<String> money_spadapter;
 	private Spinner sp_money;
@@ -86,9 +87,6 @@ public class JobListUI extends Activity implements OnClickListener,
 
 		sp_money.setAdapter(money_spadapter);
 
-		// 设置默认值
-
-		new GetJobsListTask().execute();
 	}
 
 	private void getJobs() {
@@ -128,14 +126,17 @@ public class JobListUI extends Activity implements OnClickListener,
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		 MobileProbe.onResume(this, "招聘列表页面");
+		((Button) findViewById(R.id.btn_city)).setText(SessionManager
+				.getInstance().getCity());
+		getJobs();
+		MobileProbe.onResume(this, "招聘列表页面");
 	}
 
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		 MobileProbe.onPause(this, "招聘列表页面");
+		MobileProbe.onPause(this, "招聘列表页面");
 	}
 
 	private void init() {
@@ -147,6 +148,7 @@ public class JobListUI extends Activity implements OnClickListener,
 
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
+		findViewById(R.id.btn_city).setOnClickListener(this);
 
 	}
 
@@ -166,12 +168,13 @@ public class JobListUI extends Activity implements OnClickListener,
 
 		protected Map<String, Object> getInfoInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
-			if (!"职位筛选".equals(str_job)) {
+			if (!"职位".equals(str_job)) {
 				map.put("job", str_job);
 			}
-			if (!"薪资筛选".equals(str_money)) {
+			if (!"薪资".equals(str_money)) {
 				map.put("money", str_money);
 			}
+			map.put("city", SessionManager.getInstance().getCity());
 			return map;
 		}
 
@@ -226,6 +229,10 @@ public class JobListUI extends Activity implements OnClickListener,
 		case R.id.btn_rightTop:
 			StartActivityContController.goPage(JobListUI.this,
 					PublicJobUI.class, true);
+			break;
+		case R.id.btn_city:
+
+			startActivity(new Intent(JobListUI.this, CityList.class));
 			break;
 		}
 	}

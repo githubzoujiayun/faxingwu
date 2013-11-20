@@ -17,14 +17,17 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.ZhuanRang;
 import com.jm.finals.Constant;
+import com.jm.session.SessionManager;
 import com.jm.sort.ZhuanRangAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -40,14 +43,14 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 	private boolean isloading = false;
 	private boolean showlast = false;
 
-	private static final String[] jobs = { "店面大小", "0-30m²", "30-50m²",
+	private static final String[] jobs = { "面积", "0-30m²", "30-50m²",
 			"50-100m²", "100-200m²", "200-300m²", "300-400m²" };
 	private ArrayAdapter<String> jobs_spadapter;
 	private Spinner sp_job;
 	private String str_job = "";
 
 	private String str_money = "";
-	private static final String[] money = { "装修风格", "欧美风格", "日韩风格", "简洁风格",
+	private static final String[] money = { "风格", "欧美风格", "日韩风格", "简洁风格",
 			"复古风格", "精品风格", "个性风格" };
 	private ArrayAdapter<String> money_spadapter;
 	private Spinner sp_money;
@@ -78,12 +81,9 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 		sp_money.setAdapter(money_spadapter);
 
-		// 设置默认值
-
-		new GetJobsListTask().execute();
 	}
 
-	private void getJobs() {
+	private void getZhuanRang() {
 		page = 1;
 		pageCount = 0;
 		isloading = false;
@@ -97,7 +97,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			str_job = jobs[arg2].substring(0, jobs[arg2].length() - 2);
-			getJobs();
+			getZhuanRang();
 		}
 
 		public void onNothingSelected(AdapterView<?> arg0) {
@@ -109,7 +109,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 				long arg3) {
 			str_money = money[arg2];
-			getJobs();
+			getZhuanRang();
 		}
 
 		public void onNothingSelected(AdapterView<?> arg0) {
@@ -119,6 +119,9 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 	@Override
 	protected void onResume() {
 		super.onResume();
+		((Button) findViewById(R.id.btn_city)).setText(SessionManager
+				.getInstance().getCity());
+		getZhuanRang();
 		MobileProbe.onResume(this, "转让列表");
 	}
 
@@ -137,6 +140,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
+		findViewById(R.id.btn_city).setOnClickListener(this);
 
 	}
 
@@ -156,12 +160,13 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 		protected Map<String, Object> getInfoInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
-			if (!"店面大小".equals(str_job)) {
+			if (!"面积".equals(str_job)) {
 				map.put("acreage", str_job);
 			}
-			if (!"装修风格".equals(str_money)) {
+			if (!"风格".equals(str_money)) {
 				map.put("style", str_money);
 			}
+			map.put("city", SessionManager.getInstance().getCity());
 			return map;
 		}
 
@@ -217,6 +222,10 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 			StartActivityContController.goPage(ZhuanRangListUI.this,
 					PublicZhuanRangUI.class, true);
 			break;
+		case R.id.btn_city:
+
+			startActivity(new Intent(ZhuanRangListUI.this, CityList.class));
+			break;
 		}
 	}
 
@@ -235,7 +244,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 				if (!isloading) {
 					LogUtil.d("即将加载" + ++page + "页");
 					isloading = true;
-					getJobs();
+					new GetJobsListTask().execute();
 				}
 			}
 		}

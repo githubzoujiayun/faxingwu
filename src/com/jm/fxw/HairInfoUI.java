@@ -668,6 +668,9 @@ public class HairInfoUI extends Activity implements OnClickListener {
 				findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
 				if (jb.getString("clear_reserve").equals("0")) {
 					((Button) findViewById(R.id.btn_yuyue)).setText("查看发型师");
+				}else{
+
+					((Button) findViewById(R.id.btn_yuyue)).setText("预约TA");
 				}
 			} else {
 				findViewById(R.id.btn_yuyue).setVisibility(View.GONE);

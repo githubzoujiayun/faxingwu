@@ -33,7 +33,7 @@
 
         <TextView
             android:id="@+id/tv_rightTop"
-            android:layout_width="58sp"
+            android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginRight="5sp"
             android:gravity="center"

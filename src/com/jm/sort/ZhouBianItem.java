@@ -63,7 +63,7 @@ public class ZhouBianItem extends LinearLayout implements OnClickListener {
 		Intent intent;
 		switch (v.getId()) {
 		case R.id.btn_isconcerns:
-			if (((Button) v).getText().equals("取消关注")) {
+			if (((Button) v).getText().equals("已关注")) {
 				isconcerns = "0";
 			}
 			if (((Button) v).getText().equals(" + 关注")) {
@@ -121,7 +121,7 @@ public class ZhouBianItem extends LinearLayout implements OnClickListener {
 			if (result.isSuccessful()) {
 				zhoubian.isconcerns = isconcerns.equals("0") ? "1" : "0";
 				((Button) findViewById(R.id.btn_isconcerns)).setText(isconcerns
-						.equals("0") ? " + 关注" : "取消关注");
+						.equals("0") ? " + 关注" : "已关注");
 			}
 		}
 	}

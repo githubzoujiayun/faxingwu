@@ -78,7 +78,8 @@ public class TongChengUI extends Activity implements OnClickListener,
 		ResetButtonBg();
 		((Button) findViewById(R.id.btn_faxingshi))
 				.setBackgroundResource(R.drawable.left_bg1);
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(240,28,97));
+		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(240,
+				28, 97));
 		((TextView) findViewById(R.id.tv_rightTop)).setText(sm.getCity());
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
@@ -171,7 +172,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 		case R.id.btn_faxingshi:
 			ResetButtonBg();
 			v.setBackgroundResource(R.drawable.left_bg1);
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			adapter.clear();
 
 			adapter.isDianPu = false;
@@ -183,7 +184,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 		case R.id.btn_geren:
 			ResetButtonBg();
 			v.setBackgroundResource(R.drawable.center_bg1);
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			adapter.clear();
 			adapter.isDianPu = false;
 			condition = "person";
@@ -197,7 +198,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 			condition = "store";
 			ResetButtonBg();
 			v.setBackgroundResource(R.drawable.right_bg1);
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			page = 1;
 			pageCount = 0;
 			new GetTongchengListTask().execute();

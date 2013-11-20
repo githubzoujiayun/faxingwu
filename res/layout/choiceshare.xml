@@ -13,7 +13,7 @@
         android:layout_height="45dp"
         android:layout_margin="5dp"
         android:background="@drawable/shape_blue"
-        android:text="分享到腾讯空间"
+        android:text="       分享到腾讯空间       "
         android:textColor="#ffffff"
         android:textSize="18sp" />
 
@@ -23,7 +23,7 @@
         android:layout_height="45dp"
         android:layout_margin="5dp"
         android:background="@drawable/shape_sina"
-        android:text="分享到新浪微博"
+        android:text="       分享到新浪微博       "
         android:textColor="#ffffff"
         android:textSize="18sp" />
 
