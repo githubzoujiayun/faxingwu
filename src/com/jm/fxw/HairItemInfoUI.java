@@ -141,7 +141,6 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 		listView.addHeaderView(view);
 		adapter = new CommentAdapter(this);
 		listView.setAdapter(adapter);
-
 		listView.setOnItemClickListener(this);
 		ed_comment = (EditText) findViewById(R.id.et_comment);
 		findViewById(R.id.btn_ok).setOnClickListener(this);
@@ -152,7 +151,6 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 		findViewById(R.id.btn_yuyue).setOnClickListener(this);
 		findViewById(R.id.iv_voice).setOnClickListener(this);
 		findViewById(R.id.iv_photo).setOnClickListener(this);
-
 		findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
 
 		// mgadapter = new MerchantGalleryAdapter(this, bitmap);
