@@ -35,7 +35,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	private MultiColumnPullToRefreshListView ListView;
 	private DongTaiAdapter adapter;
 	private List<DongTai> mlist = new ArrayList<DongTai>();
-	private List<Hair> hlist= new ArrayList<Hair>();
+	private List<Hair> hlist = new ArrayList<Hair>();
 	private int page = 1;
 	private int pageCount = 0;
 	private String condition = "add_time";
@@ -51,7 +51,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		setContentView(R.layout.dongtailist);
 		ListView = (MultiColumnPullToRefreshListView) findViewById(R.id.staggeredGridView);
 		adapter = new DongTaiAdapter(this);
-		
+
 		ListView.setAdapter(adapter);
 		ListView.setOnRefreshListener(new OnRefreshListener() {
 			@Override
@@ -143,6 +143,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		protected void onPostExecute(Response result) {
 			isloading = false;
 			adapter.setProgress(false);
+			ListView.onRefreshComplete();
 			if (result.isSuccessful()) {
 				if (baseDate) {
 					page = 1;
