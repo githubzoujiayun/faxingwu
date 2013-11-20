@@ -82,7 +82,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
-		Calendar_Width = screenWidth;
+		Calendar_Width = screenWidth-30;
 		Cell_Width = Calendar_Width / 2 + 1;
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
 				Cell_Width, Cell_Width);
@@ -102,6 +102,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		findViewById(R.id.fl_nanfa).setLayoutParams(lp);
 		findViewById(R.id.fl_quanbu).setLayoutParams(lp);
 		findViewById(R.id.fl_shoucang).setLayoutParams(lp);
+		findViewById(R.id.fl_shoucang2).setLayoutParams(lp);
 
 	}
 

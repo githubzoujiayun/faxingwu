@@ -1,14 +1,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:background="@color/bg"
+        android:background="@color/white"
         android:orientation="vertical" >
 
         <LinearLayout
@@ -40,181 +40,175 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg"
+                   
                     android:gravity="center"
                     android:orientation="horizontal" >
 
                     <FrameLayout
                         android:id="@+id/fl_duanfa"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/p1"
-                        android:orientation="vertical" >
+                        android:background="@drawable/p1" >
 
                         <TextView
                             android:layout_width="fill_parent"
-                            android:layout_height="40sp"
-                            android:gravity="center"
+                            android:layout_height="30sp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
                             android:layout_gravity="bottom"
-                            android:text="短发"
-                            android:textColor="@color/black2"
                             android:background="@drawable/trans_bg"
-                            android:textSize="14sp" />
+                            android:gravity="center"
+                            android:text="短    发"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
                     </FrameLayout>
 
                     <FrameLayout
                         android:id="@+id/fl_zhongfa"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/p2"
-                        android:orientation="vertical" >
+                        android:background="@drawable/p2" >
 
                         <TextView
                             android:layout_width="fill_parent"
-                            android:gravity="center"
-                            android:text="中发"
-                            android:layout_height="40sp"
+                            android:layout_height="30sp"
                             android:layout_gravity="bottom"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
                             android:background="@drawable/trans_bg"
-                            android:textColor="@color/black2"
-                            android:textSize="14sp" />
+                            android:gravity="center"
+                            android:text="中    发"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
                     </FrameLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg"
+                   
                     android:gravity="center"
                     android:orientation="horizontal" >
 
                     <FrameLayout
                         android:id="@+id/fl_changfa"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/p3"
-                        android:orientation="vertical" >
+                        android:background="@drawable/p3" >
 
                         <TextView
                             android:layout_width="fill_parent"
-                            android:gravity="center"
-                            android:layout_height="40sp"
+                            android:layout_height="30sp"
                             android:layout_gravity="bottom"
                             android:background="@drawable/trans_bg"
-                            android:text="长发"
-                            android:textColor="@color/black2"
-                            android:textSize="14sp" />
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:gravity="center"
+                            android:text="长    发"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
                     </FrameLayout>
 
                     <FrameLayout
                         android:id="@+id/fl_panfa"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/p4"
-                        android:orientation="vertical" >
+                        android:background="@drawable/p4" >
 
                         <TextView
                             android:layout_width="fill_parent"
-                            android:gravity="center"
-                            android:background="@drawable/trans_bg"
-                            android:layout_height="40sp"
+                            android:layout_height="30sp"
                             android:layout_gravity="bottom"
-                            android:text="盘发"
-                            android:textColor="@color/black2"
-                            android:textSize="14sp" />
+                            android:background="@drawable/trans_bg"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:gravity="center"
+                            android:text="盘    发"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
                     </FrameLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg"
+                   
                     android:gravity="center"
                     android:orientation="horizontal" >
 
                     <FrameLayout
                         android:id="@+id/fl_nanfa"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/p5"
-                        android:orientation="vertical" >
+                        android:background="@drawable/p5" >
 
                         <TextView
                             android:layout_width="fill_parent"
-                            android:gravity="center"
-                            android:layout_height="40sp"
+                            android:layout_height="30sp"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
                             android:layout_gravity="bottom"
-                            android:text="男发"
                             android:background="@drawable/trans_bg"
-                            android:textColor="@color/black2"
-                            android:textSize="14sp" />
+                            android:gravity="center"
+                            android:text="男    发"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
                     </FrameLayout>
 
                     <FrameLayout
                         android:id="@+id/fl_quanbu"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/p6"
-                        android:orientation="vertical" >
+                        android:background="@drawable/p6" >
 
                         <TextView
                             android:layout_width="fill_parent"
-                            android:gravity="center"
-                            android:text="全部"
-                            android:layout_height="40sp"
+                            android:layout_height="30sp"
                             android:layout_gravity="bottom"
                             android:background="@drawable/trans_bg"
-                            android:textColor="@color/black2"
-                            android:textSize="14sp" />
+                            android:gravity="center"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:text="全    部"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
                     </FrameLayout>
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/bg"
+                   
                     android:gravity="center"
                     android:orientation="horizontal" >
 
                     <FrameLayout
                         android:id="@+id/fl_shoucang"
-                        android:layout_width="fill_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/p7"
-                        android:orientation="vertical" >
+                        android:background="@drawable/p7" >
 
                         <TextView
                             android:layout_width="fill_parent"
-                            android:layout_height="40sp"
+                            android:layout_height="30sp"
                             android:layout_gravity="bottom"
-                            android:gravity="center"
                             android:background="@drawable/trans_bg"
-                            android:text="收藏"
-                            android:textColor="@color/black2"
-                            android:textSize="14sp" />
-                    </FrameLayout>
-                    <FrameLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="invisible"
-                        android:layout_weight="1"
-                        android:background="@drawable/p7"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
                             android:gravity="center"
-                            android:text="收藏"
-                            android:textColor="@color/black2"
-                            android:textSize="14sp" />
+                            android:text="收  藏  榜"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/fl_shoucang2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                        android:background="@drawable/p7"
+                        android:visibility="invisible" >
                     </FrameLayout>
                 </LinearLayout>
             </LinearLayout>
