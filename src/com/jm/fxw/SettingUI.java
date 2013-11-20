@@ -1,32 +1,39 @@
 package com.jm.fxw;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.FinalBitmap;
-import net.tsz.afinal.annotation.view.ViewInject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
+import com.jm.data.DatabaseHelper;
 import com.jm.finals.Constant;
+import com.jm.fxw.CheckUpdate.GetAppTask;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -41,7 +48,8 @@ import com.weibo.sdk.android.WeiboDialogError;
 import com.weibo.sdk.android.WeiboException;
 import com.weibo.sdk.android.sso.SsoHandler;
 
-public class SettingUI extends FinalActivity {
+public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
+		OnClickListener {
 
 	private Handler mHandler;
 	private static final String SCOPE = "get_simple_userinfo,add_share";
@@ -50,6 +58,10 @@ public class SettingUI extends FinalActivity {
 	private Weibo mWeibo;
 	public static Oauth2AccessToken accessToken;
 	public static final String TAG = "SINA";
+	private Button ok;
+	private Button cancel;
+	private Dialog dialog;
+	private TextView progressView;
 	/*
 	 * SsoHandler 仅当sdk支持sso时有效，
 	 */
@@ -61,32 +73,6 @@ public class SettingUI extends FinalActivity {
 	private SharedPreferences.Editor editor;
 	private SessionManager sm;
 	private CheckUpdate checkUpdate;
-	@ViewInject(id = R.id.lin_setting, click = "Click")
-	LinearLayout lin_setting;
-	@ViewInject(id = R.id.lin_qq, click = "Click")
-	LinearLayout lin_qq;
-	@ViewInject(id = R.id.lin_sina, click = "Click")
-	LinearLayout lin_sina;
-	@ViewInject(id = R.id.btn_support, click = "Click")
-	Button btn_support;
-	@ViewInject(id = R.id.btn_update, click = "Click")
-	Button btn_update;
-	@ViewInject(id = R.id.btn_logout, click = "Click")
-	Button btn_logout;
-	@ViewInject(id = R.id.btn_leftTop, click = "Click")
-	Button btn_leftTop;
-	@ViewInject(id = R.id.btn_rightTop, click = "Click")
-	Button btn_rightTop;
-	@ViewInject(id = R.id.lin_tips, click = "Click")
-	LinearLayout lin_tips;
-	@ViewInject(id = R.id.lin_cleatcache, click = "Click")
-	LinearLayout lin_cleatcache;
-	@ViewInject(id = R.id.lin_weibo, click = "Click")
-	LinearLayout lin_weibo;
-	@ViewInject(id = R.id.lin_help, click = "Click")
-	LinearLayout lin_help;
-	@ViewInject(id = R.id.lin_opinion, click = "Click")
-	LinearLayout lin_opinion;
 
 	// /////////////////////////////////////////
 	@Override
@@ -116,6 +102,19 @@ public class SettingUI extends FinalActivity {
 		if (sm.getUsertype().equals("1")) {
 			findViewById(R.id.lin_setting).setVisibility(View.GONE);
 		}
+		findViewById(R.id.lin_setting).setOnClickListener(this);
+		findViewById(R.id.lin_qq).setOnClickListener(this);
+		findViewById(R.id.lin_sina).setOnClickListener(this);
+		findViewById(R.id.btn_support).setOnClickListener(this);
+		findViewById(R.id.btn_update).setOnClickListener(this);
+		findViewById(R.id.btn_logout).setOnClickListener(this);
+		findViewById(R.id.btn_leftTop).setOnClickListener(this);
+		findViewById(R.id.btn_rightTop).setOnClickListener(this);
+		findViewById(R.id.lin_tips).setOnClickListener(this);
+		findViewById(R.id.lin_cleatcache).setOnClickListener(this);
+		findViewById(R.id.lin_weibo).setOnClickListener(this);
+		findViewById(R.id.lin_help).setOnClickListener(this);
+		findViewById(R.id.lin_opinion).setOnClickListener(this);
 	}
 
 	@Override
@@ -128,69 +127,6 @@ public class SettingUI extends FinalActivity {
 
 	private void getUserSettingInfo() {
 		new getUserInfo().execute();
-	}
-
-	public void Click(View v) {
-		switch (v.getId()) {
-		case R.id.lin_setting:
-			StartActivityContController.goPage(this, YuYueSheZhi.class, true);
-			break;
-		case R.id.lin_qq:
-			if (((TextView) findViewById(R.id.tv_qq)).getText().equals("未绑定")) {
-
-				onClickLogin();
-			}
-			break;
-		case R.id.lin_sina:
-			if (((TextView) findViewById(R.id.tv_sina)).getText().equals("未绑定")) {
-
-				mWeibo.authorize(SettingUI.this, new AuthDialogListener());
-			}
-			break;
-		case R.id.btn_support:
-			TispToastFactory.getToast(this, "打开支持页面").show();
-			break;
-		case R.id.btn_update:
-			checkUpdate = new CheckUpdate(SettingUI.this);
-			checkUpdate.setNoNewversion(true);
-			checkUpdate.check();
-			break;
-		case R.id.lin_help:
-
-			StartActivityContController.goPage(this, HelpUI.class, true);
-			break;
-		case R.id.lin_opinion:
-
-			StartActivityContController.goPage(this, OpinionUI.class, true);
-			break;
-
-		case R.id.lin_weibo:
-			Uri uri = Uri.parse("http://e.weibo.com/515345585");
-			Intent it = new Intent(Intent.ACTION_VIEW, uri);
-			startActivity(it);
-			break;
-		case R.id.btn_logout:
-			logout();
-			android.os.Process.killProcess(android.os.Process.myPid());
-
-			break;
-		case R.id.btn_leftTop:
-			this.finish();
-			break;
-		case R.id.lin_tips:
-			StartActivityContController.goPage(this, TipsSettingUI.class, true);
-			break;
-		case R.id.btn_rightTop:
-
-			StartActivityContController.goPage(this, ChangeInfo.class, true);
-			break;
-		case R.id.lin_cleatcache:
-			sm.cleanUploadImages();
-			FinalBitmap.create(this).clearCache();
-			TispToastFactory.getToast(this, "清除缓存成功").show();
-			break;
-		}
-
 	}
 
 	/**
@@ -418,4 +354,101 @@ public class SettingUI extends FinalActivity {
 		}
 	}
 
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.lin_setting:
+			StartActivityContController.goPage(this, YuYueSheZhi.class, true);
+			break;
+		case R.id.lin_qq:
+			if (((TextView) findViewById(R.id.tv_qq)).getText().equals("未绑定")) {
+
+				onClickLogin();
+			}
+			break;
+		case R.id.lin_sina:
+			if (((TextView) findViewById(R.id.tv_sina)).getText().equals("未绑定")) {
+
+				mWeibo.authorize(SettingUI.this, new AuthDialogListener());
+			}
+			break;
+		case R.id.btn_support:
+			TispToastFactory.getToast(this, "打开支持页面").show();
+			break;
+		case R.id.btn_update:
+			checkUpdate = new CheckUpdate(SettingUI.this);
+			checkUpdate.setNoNewversion(true);
+			checkUpdate.check();
+			break;
+		case R.id.lin_help:
+
+			StartActivityContController.goPage(this, HelpUI.class, true);
+			break;
+		case R.id.lin_opinion:
+
+			StartActivityContController.goPage(this, OpinionUI.class, true);
+			break;
+
+		case R.id.lin_weibo:
+			Uri uri = Uri.parse("http://e.weibo.com/515345585");
+			Intent it = new Intent(Intent.ACTION_VIEW, uri);
+			startActivity(it);
+			break;
+		case R.id.btn_logout:
+			ShowDialog(getString(R.string.comfirm_logout));
+
+			break;
+		case R.id.btn_leftTop:
+			this.finish();
+			break;
+		case R.id.lin_tips:
+			StartActivityContController.goPage(this, TipsSettingUI.class, true);
+			break;
+		case R.id.btn_rightTop:
+
+			StartActivityContController.goPage(this, ChangeInfo.class, true);
+			break;
+		case R.id.lin_cleatcache:
+			try {
+				getHelper().getDongTaiDao()
+						.delete(getHelper().getDongTaiList());
+				getHelper().getHairDao().delete(getHelper().getHairsList());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+
+			}
+			FinalBitmap.create(this).clearCache();
+			TispToastFactory.getToast(this, "清除缓存成功").show();
+			break;
+		}
+
+	}
+
+	private void ShowDialog(String info) {
+		View dialogView = LayoutInflater.from(this).inflate(R.layout.confirm,
+				null);
+		ok = (Button) dialogView.findViewById(R.id.loginoutdialog_button_ok);
+		cancel = (Button) dialogView
+				.findViewById(R.id.loginoutdialog_button_cancel);
+		dialog = new Dialog(this, R.style.MyDialog);
+		progressView = (TextView) dialogView.findViewById(R.id.tv_dialog);
+		dialog.setContentView(dialogView);
+		progressView.setText(info);
+		dialog.show();
+		ok.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				logout();
+				android.os.Process.killProcess(android.os.Process.myPid());
+			}
+		});
+		cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+	}
 }

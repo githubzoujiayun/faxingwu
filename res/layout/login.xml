@@ -61,27 +61,35 @@
 
         <LinearLayout
             android:id="@+id/lin_login"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             android:layout_marginTop="40sp"
             android:gravity="center"
             android:orientation="vertical" >
 
-            <ImageView
+            <Button
                 android:id="@+id/iv_qqlogin"
-                android:layout_width="154sp"
+                android:layout_width="fill_parent"
                 android:layout_height="42sp"
-                android:background="@drawable/qqlogin"
-                android:scaleType="fitXY" />
+                android:background="@drawable/shape_blue"
+                android:scaleType="fitXY"
+                android:text="腾讯QQ登录"
+                android:textSize="18sp"
+                android:textColor="@color/white" />
 
-            <ImageView
+            <Button
                 android:id="@+id/auth"
-                android:layout_width="154sp"
+                android:layout_width="fill_parent"
                 android:layout_height="42sp"
-                android:layout_marginTop="30sp"
-                android:background="@drawable/sinalogin"
+                android:layout_marginTop="20sp"
+                android:textSize="18sp"
+                android:background="@drawable/shape_sina"
                 android:onClick="onOauth"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                android:text="新浪微博登录"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 

@@ -173,7 +173,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			long secondTime = System.currentTimeMillis();
 			if (secondTime - firstTime > 800) {// 如果两次按键时间间隔大于800毫秒，则不退出
-				Toast.makeText(ZhaofaxingUI.this, "再按一次退出", Toast.LENGTH_SHORT)
+				Toast.makeText(ZhaofaxingUI.this, "连按两次退出发型屋", Toast.LENGTH_SHORT)
 						.show();
 				firstTime = secondTime;// 更新firstTime
 				return true;
