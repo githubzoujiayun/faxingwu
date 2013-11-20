@@ -120,12 +120,12 @@ public class DongTaiAdapter extends BaseAdapter {
 			((TextView) view.findViewById(R.id.tv_utime)).setText(dongtai
 					.getAdd_time());
 			StringBuffer sb = new StringBuffer();
-			sb.append(" 鉂� " + dongtai.getCollect_num() + " ");
+			sb.append("  ❤  " + dongtai.getCollect_num() + " ");
 			((Button) view.findViewById(R.id.btn_dongtai_info)).setText(sb
 					.toString());
 
 			StringBuffer sb2 = new StringBuffer();
-			sb2.append("璇勮 (" + dongtai.getComment_num() + ")  ");
+			sb2.append("评论数 (" + dongtai.getComment_num() + ")  ");
 			((TextView) view.findViewById(R.id.tv_dongtai_info)).setText(sb2
 					.toString());
 			return view;
@@ -141,7 +141,7 @@ public class DongTaiAdapter extends BaseAdapter {
 			hair_list.clear();
 			notifyDataSetChanged();
 		}
-		
+
 	}
 
 }
