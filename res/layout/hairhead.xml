@@ -118,7 +118,7 @@
                 <Button
                     android:id="@+id/btn_yuyue"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="37dp"
                     android:layout_margin="3sp"
                     android:background="@drawable/shape_guanzhured"
                     android:gravity="center"
@@ -144,8 +144,8 @@
                     android:orientation="vertical" >
 
                     <ImageView
-                        android:layout_width="35px"
-                        android:layout_height="35px"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/comment" />
                 </LinearLayout>
 
@@ -158,8 +158,8 @@
 
                     <ImageView
                         android:id="@+id/iv_islike"
-                        android:layout_width="35px"
-                        android:layout_height="35px"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/like" />
                 </LinearLayout>
 
@@ -171,8 +171,8 @@
                     android:orientation="vertical" >
 
                     <ImageView
-                        android:layout_width="35px"
-                        android:layout_height="35px"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/fenxiang" />
                 </LinearLayout>
 
@@ -184,8 +184,8 @@
                     android:orientation="vertical" >
 
                     <ImageView
-                        android:layout_width="35px"
-                        android:layout_height="35px"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:background="@drawable/sixin" />
                 </LinearLayout>
             </LinearLayout>
