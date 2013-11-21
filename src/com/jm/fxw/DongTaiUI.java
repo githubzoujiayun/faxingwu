@@ -11,12 +11,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.Button;
+import android.widget.GridView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
-import com.huewu.pla.lib.MultiColumnPullToRefreshListView;
-import com.huewu.pla.lib.MultiColumnPullToRefreshListView.OnRefreshListener;
-import com.huewu.pla.lib.internal.PLA_AbsListView;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -30,9 +30,8 @@ import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
 
 public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
-		OnClickListener,
-		com.huewu.pla.lib.internal.PLA_AbsListView.OnScrollListener {
-	private MultiColumnPullToRefreshListView ListView;
+		OnClickListener, OnScrollListener {
+	private GridView ListView;
 	private DongTaiAdapter adapter;
 	private List<DongTai> mlist = new ArrayList<DongTai>();
 	private List<Hair> hlist = new ArrayList<Hair>();
@@ -41,7 +40,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	private String condition = "add_time";
 	private boolean isloading = false;
 	private boolean showlast = false;
-
 	private boolean baseDate = true;
 
 	@Override
@@ -49,22 +47,11 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dongtailist);
-		ListView = (MultiColumnPullToRefreshListView) findViewById(R.id.staggeredGridView);
-		adapter = new DongTaiAdapter(this);
-
+		ListView = (GridView) findViewById(R.id.staggeredGridView);
+		adapter = new DongTaiAdapter(this,getWindow().getWindowManager().getDefaultDisplay().getWidth());
 		ListView.setAdapter(adapter);
-		ListView.setOnRefreshListener(new OnRefreshListener() {
-			@Override
-			public void onRefresh() {
-				page = 1;
-				pageCount = 0;
-				adapter.clear();
-				new GetDongTaiListTask().execute();
-			}
-		});
-		init();
 		ListView.setOnScrollListener(this);
-
+		init();
 		getDataFromDataBase();
 		new GetDongTaiListTask().execute();
 	}
@@ -143,7 +130,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		protected void onPostExecute(Response result) {
 			isloading = false;
 			adapter.setProgress(false);
-			ListView.onRefreshComplete();
 			if (result.isSuccessful()) {
 				if (baseDate) {
 					page = 1;
@@ -252,13 +238,13 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	}
 
 	@Override
-	public void onScrollStateChanged(PLA_AbsListView view, int scrollState) {
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void onScroll(PLA_AbsListView view, int firstVisibleItem,
+	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
 		if (showlast) {
 			return;
@@ -274,5 +260,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 				}
 			}
 		}
+
 	}
 }

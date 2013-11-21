@@ -69,7 +69,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 			finish();
 		}
 		ListView = (GridView) findViewById(R.id.my_hairgridview);
-		adapter = new HairAdapter(this);
+		adapter = new HairAdapter(this,getWindow().getWindowManager().getDefaultDisplay().getWidth());
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);

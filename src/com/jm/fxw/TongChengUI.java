@@ -64,7 +64,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 	}
 
 	private void init() {
-
+	
 		findViewById(R.id.btn_faxingshi).setOnClickListener(this);
 		findViewById(R.id.btn_geren).setOnClickListener(this);
 		findViewById(R.id.btn_dianpu).setOnClickListener(this);

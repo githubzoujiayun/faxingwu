@@ -26,11 +26,13 @@ public class DongTaiAdapter extends BaseAdapter {
 	private Context context;
 	private DongTai dongtai;;
 	private boolean isProgress = false;
+	private int screenwidth = 0;
 
-	public DongTaiAdapter(Context context) {
+	public DongTaiAdapter(Context context, int screenwidth) {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<DongTai>();
 		hair_list = new ArrayList<Hair>();
+		this.screenwidth = screenwidth;
 		this.context = context;
 	}
 
@@ -108,8 +110,7 @@ public class DongTaiAdapter extends BaseAdapter {
 			view.setDongTai(dongtai);
 			view.initView();
 
-			FinalBitmap.create(context).display(
-					(ImageView) view.findViewById(R.id.iv_pic),
+			FinalBitmap.create(context).display(view.findViewById(R.id.iv_pic),
 					dongtai.getWork_image());
 
 			((TextView) view.findViewById(R.id.tv_utext)).setText(dongtai

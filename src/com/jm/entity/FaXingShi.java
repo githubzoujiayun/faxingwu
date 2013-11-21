@@ -28,7 +28,7 @@ public class FaXingShi implements ListItem {
 		this.store_address = sotre_address;
 	}
 
-	public String states = "";
+	public String status = "";
 	public String distance = "";
 	public String signature = "";
 
@@ -101,7 +101,7 @@ public class FaXingShi implements ListItem {
 			this.distance = json.getString("distance");
 		}
 		if (json.has("status")) {
-			this.states = json.getString("status");
+			this.status = json.getString("status");
 		}
 		if (json.has("store_address")) {
 			this.store_address = json.getString("store_address");

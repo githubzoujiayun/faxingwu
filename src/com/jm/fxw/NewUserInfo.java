@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import net.tsz.afinal.FinalBitmap;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -51,6 +52,7 @@ import com.jm.util.TispToastFactory;
 public class NewUserInfo extends Activity implements OnClickListener {
 	private Bitmap mCurrentBitMap1;
 	private String UploadUrl1 = "";
+	private ProgressDialog dialog;
 	private String strCity;
 	public static final int CHECK_MOBILE_OK = 113;
 	protected Button btn_leftTop;
@@ -368,7 +370,8 @@ public class NewUserInfo extends Activity implements OnClickListener {
 	class ChangUserInfo extends AsyncTask<String, Integer, Response> {
 
 		protected void onPreExecute() {
-
+			dialog = ProgressDialog.show(NewUserInfo.this, "",
+					getString(R.string.pubnewinfo), true);
 		}
 
 		@Override
@@ -396,6 +399,9 @@ public class NewUserInfo extends Activity implements OnClickListener {
 
 		@Override
 		protected void onPostExecute(Response result) {
+			if (dialog.isShowing()) {
+				dialog.dismiss();
+			}
 			if (result.isSuccessful()) {
 
 				saveUserInfo(uid, type);

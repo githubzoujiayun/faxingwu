@@ -123,7 +123,7 @@ public class FaXingShiAdapter extends BaseAdapter implements OnClickListener {
 				((TextView) view.findViewById(R.id.tv_4_1))
 						.setVisibility(View.GONE);
 			}
-			if (!type.states.equals("1")) {
+			if (!type.status.equals("1")) {
 				view.findViewById(R.id.iv_renzheng).setVisibility(View.GONE);
 			}
 

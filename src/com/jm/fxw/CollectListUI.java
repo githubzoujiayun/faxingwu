@@ -57,7 +57,7 @@ public class CollectListUI extends Activity implements OnClickListener,
 
 	private void init() {
 		ListView = (GridView) findViewById(R.id.my_hairgridview);
-		adapter = new HairAdapter(this);
+		adapter = new HairAdapter(this,getWindow().getWindowManager().getDefaultDisplay().getWidth());
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);

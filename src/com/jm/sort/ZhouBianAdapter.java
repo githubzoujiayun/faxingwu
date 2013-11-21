@@ -123,6 +123,10 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 				((TextView) view.findViewById(R.id.tv_4_1))
 						.setVisibility(View.GONE);
 			}
+			
+			if (!type.status.equals("1")) {
+				view.findViewById(R.id.iv_renzheng).setVisibility(View.GONE);
+			}
 			if (isDianPu) {
 				view.isDianPu = isDianPu;
 				((Button) view.findViewById(R.id.btn_isconcerns))

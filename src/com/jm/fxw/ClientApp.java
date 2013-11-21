@@ -46,7 +46,7 @@ public class ClientApp extends Application {
 		sm.setLat(Double.valueOf(lat));
 		sm.setLng(Double.valueOf(lng));
 		initCacheDir();
-		FinalBitmap.create(this).configBitmapLoadThreadSize(1);
+		FinalBitmap.create(this).configBitmapLoadThreadSize(10);
 	}
 
 	private void initSystemInfo() {

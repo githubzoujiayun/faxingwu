@@ -17,7 +17,7 @@ public class ZhouBian implements ListItem {
 	public String type = "";
 	public String head_photo = "";
 	public String address = "";
-
+public String status="";
 	public String store_address ="";
 	public String signature = "";
 
@@ -112,5 +112,9 @@ public class ZhouBian implements ListItem {
 		if (json.has("store_address")) {
 			this.store_address = json.getString("store_address");
 		}
+		if (json.has("status")) {
+			this.status = json.getString("status");
+		}
+		
 	}
 }

@@ -42,6 +42,7 @@
     <string name="publiccomment">正在发布评论</string>
     <string name="pubHair">正在发布</string>
     <string name="pubinfo">正在同步您的个人信息</string>
+    <string name="pubnewinfo">正在写入您的个人信息</string>
     <string name="has_new_version">发型屋有更好用的新版本，是否下载更新？</string>
     <string name="download_progress">下载进度：</string>
     <string name="download_faild">下载失败</string>

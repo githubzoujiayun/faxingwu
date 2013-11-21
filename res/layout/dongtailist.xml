@@ -95,10 +95,16 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <com.huewu.pla.lib.MultiColumnPullToRefreshListView
+        <GridView
             android:id="@+id/staggeredGridView"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@color/bg"
+            android:fadingEdge="none"
+            android:footerDividersEnabled="false"
+            android:numColumns="2" >
+        </GridView>
     </LinearLayout>
 
 </LinearLayout>

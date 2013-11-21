@@ -11,10 +11,6 @@ public class SessionManager {
 
 	private static final int BITMAP_SMALL = 120;
 	private static final int BITMAP_LARGE = 480;
-	// //////////////////////////////////
-	private SharedPreferences share;
-	private SharedPreferences.Editor editor;
-	// /////////////////////////////////////////
 	private static final int BITMAP_MID = 240;
 	// Keep 3 days at most
 	private static final long CACHED_TIME = 3 * 24 * 60 * 60 * 1000;
@@ -224,49 +220,6 @@ public class SessionManager {
 
 	public String getRecorderCacheDir() {
 		return cacheDir + "recorder" + File.separator;
-	}
-
-	/**
-	 * This method cleans the cached images
-	 */
-	public void cleanCachedImages() {
-		long now = new Date().getTime();
-		File cacheD = new File(getCacheDir());
-		if (cacheD.exists() && cacheD.isDirectory()) {
-			File[] fileArray = cacheD.listFiles();
-			for (int i = 0; i < fileArray.length; i++) {
-				File file = fileArray[i];
-				if (file.isFile()) {
-					// Delete the temp file
-					if (file.getName().endsWith(SUFFIX_TEMP)) {
-						file.delete();
-					} else {
-						long ts = file.lastModified();
-						// If the cached file is expired, delete it
-						if (now < ts || now - ts > CACHED_TIME) {
-							file.delete();
-						}
-					}
-				}
-			}
-		}
-	}
-
-	/**
-	 * This method cleans all the upload images
-	 */
-	public void cleanUploadImages() {
-		File uploadDir = new File(SessionManager.getInstance()
-				.getUploadCacheDir());
-		if (uploadDir.exists() && uploadDir.isDirectory()) {
-			File[] fileArray = uploadDir.listFiles();
-			for (int i = 0; i < fileArray.length; i++) {
-				File file = fileArray[i];
-				if (file.isFile()) {
-					file.delete();
-				}
-			}
-		}
 	}
 
 }

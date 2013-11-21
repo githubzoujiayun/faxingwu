@@ -187,7 +187,7 @@ public class HairInfoUI extends Activity implements OnClickListener {
 		pagerAdapter.setOnItemChangeListener(new OnItemChangeListener() {
 			@Override
 			public void onItemChange(int currentPosition) {
-				((TextView) findViewById(R.id.tv_mainhead)).setText("发型展示("
+				((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
 						+ (currentPosition + 1) + "/" + (alist.size()) + ")");
 
 				if (alist.get(galleryindex).getId() != alist.get(
@@ -205,7 +205,7 @@ public class HairInfoUI extends Activity implements OnClickListener {
 		for (int index = 0; index < alist.size(); index++) {
 			if (alist.get(index).getId() == inthid) {
 				mViewPager.setCurrentItem(index);
-				((TextView) findViewById(R.id.tv_mainhead)).setText("发型详情("
+				((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
 						+ (index + 1) + "/" + (alist.size()) + ")");
 				break;
 			}
@@ -668,7 +668,7 @@ public class HairInfoUI extends Activity implements OnClickListener {
 				findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
 				if (jb.getString("clear_reserve").equals("0")) {
 					((Button) findViewById(R.id.btn_yuyue)).setText("查看发型师");
-				}else{
+				} else {
 
 					((Button) findViewById(R.id.btn_yuyue)).setText("预约TA");
 				}
