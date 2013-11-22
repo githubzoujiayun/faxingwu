@@ -49,10 +49,8 @@
             android:id="@+id/lin_fenlei"
             android:layout_width="fill_parent"
             android:layout_height="39sp"
-            android:layout_marginBottom="5sp"
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
-            android:layout_marginTop="5sp"
             android:gravity="center"
             android:orientation="horizontal" >
 

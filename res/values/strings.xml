@@ -73,7 +73,7 @@
 \n2、如何发布高质量作品，一款作品按要求上传正面、侧面、背面效果、作品背
 \n景干净清晰、适当描述，按性别和“中长短”分类好，即有机会在“找发型”
 \n显示和得到推荐。\n\n</string>
- <!-- 含个省、自治区、直辖市、特别行政区 -->
+    <!-- 含个省、自治区、直辖市、特别行政区 -->
     <string-array name="province_item">
         <item>北京</item>
         <item>天津</item>
@@ -110,7 +110,7 @@
         <item>澳门</item>
         <item>台湾</item>
     </string-array>
- <!-- 个地级市 -->
+    <!-- 个地级市 -->
     <string-array name="beijin_province_item">
         <item>北京市</item>
     </string-array>

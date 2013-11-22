@@ -21,7 +21,6 @@ import java.lang.ref.WeakReference;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -37,7 +36,6 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.ImageView;
 
-@SuppressLint("NewApi")
 public class TouchImageView extends ImageView {
 
 	// private static final String TAG = "Touch";

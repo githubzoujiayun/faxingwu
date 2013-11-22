@@ -15,7 +15,7 @@
         <FrameLayout
             android:id="@+id/iv_pic"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="240dp"
             android:layout_gravity="center" >
 
             <LinearLayout

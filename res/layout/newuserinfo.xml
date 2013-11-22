@@ -28,7 +28,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="完善资料"
+            android:text="完善信息"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
@@ -359,9 +359,9 @@
                     android:layout_marginRight="5sp"
                     android:layout_marginTop="10sp"
                     android:background="@drawable/shape_blue"
-                    android:text="保  存"
+                    android:text="完 善 信 息"
                     android:textColor="#ffffff"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

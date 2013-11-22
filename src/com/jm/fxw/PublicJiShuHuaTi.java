@@ -94,7 +94,6 @@ public class PublicJiShuHuaTi extends FinalActivity implements OnClickListener {
 	}
 
 	private void initView() {
-
 		// 获得屏幕宽和高，并計算出屏幕寬度分七等份的大小
 		WindowManager windowManager = getWindowManager();
 		Display display = windowManager.getDefaultDisplay();
@@ -109,7 +108,6 @@ public class PublicJiShuHuaTi extends FinalActivity implements OnClickListener {
 		LayoutParams lp = new LinearLayout.LayoutParams(Cell_Width, Cell_Width);
 		((ImageView) findViewById(R.id.iv_hairpic1)).setLayoutParams(lp);
 	}
-
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

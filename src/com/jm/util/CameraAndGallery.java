@@ -1,5 +1,7 @@
 package com.jm.util;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,6 +17,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Environment;
@@ -118,6 +121,18 @@ public class CameraAndGallery {
 			return false;
 		}
 
+//		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+//		int options = 100;
+//		while (baos.toByteArray().length / 1024 > 100 && options < 20) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+//			baos.reset();// 重置baos即清空baos
+//			bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
+//			options -= 10;// 每次都减少10
+//			LogUtil.e("options = " + options);
+//			LogUtil.e("baos.toByteArray().length / 1024 = "
+//					+ baos.toByteArray().length / 1024);
+//		}
+//		LogUtil.e("图片压缩完成 = " + bitmap.getRowBytes());
 		bitmap.compress(CompressFormat.JPEG, 80, m_fileOutPutStream);
 		try {
 			m_fileOutPutStream.flush();

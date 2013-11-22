@@ -32,7 +32,7 @@ public class DongTaiAdapter extends BaseAdapter {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<DongTai>();
 		hair_list = new ArrayList<Hair>();
-		this.screenwidth = screenwidth;
+		screenwidth = screenwidth;
 		this.context = context;
 	}
 
@@ -126,7 +126,7 @@ public class DongTaiAdapter extends BaseAdapter {
 					.toString());
 
 			StringBuffer sb2 = new StringBuffer();
-			sb2.append("评论数 (" + dongtai.getComment_num() + ")  ");
+			sb2.append("评论(" + dongtai.getComment_num() + ")  ");
 			((TextView) view.findViewById(R.id.tv_dongtai_info)).setText(sb2
 					.toString());
 			return view;

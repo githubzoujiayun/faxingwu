@@ -18,7 +18,7 @@ import com.jm.util.LogUtil;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final String DATABASE_NAME = "fwx.db";
-	private static final int DATABASE_VERSION = 23;
+	private static final int DATABASE_VERSION = 24;
 	private Dao<Hair, String> hairDao = null;
 
 	private Dao<DongTai, String> dongTaiDao = null;
@@ -93,13 +93,12 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 		}
 	}
 
-
 	public List<DongTai> getDongTaiList() throws SQLException {
 		QueryBuilder<DongTai, String> query = getDongTaiDao().queryBuilder();
 		query.orderBy("work_id", false);
 		return query.query();
 	}
-	
+
 	public List<Hair> getHairsList(String type) throws SQLException {
 		QueryBuilder<Hair, String> query = getHairDao().queryBuilder();
 		Where<Hair, String> where = query.where();

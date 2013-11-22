@@ -200,7 +200,7 @@ public class HairInfoUI extends Activity implements OnClickListener {
 		});
 
 		mViewPager = (GalleryViewPager) findViewById(R.id.gallery_photos);
-		mViewPager.setOffscreenPageLimit(1);
+		mViewPager.setOffscreenPageLimit(0);
 		mViewPager.setAdapter(pagerAdapter);
 		for (int index = 0; index < alist.size(); index++) {
 			if (alist.get(index).getId() == inthid) {
