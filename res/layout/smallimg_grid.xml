@@ -2,15 +2,12 @@
 <com.jm.sort.SmallImageItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/gallery_show"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@color/imagelist_bg"
-    android:orientation="horizontal" >
+    android:layout_height="wrap_content" >
 
     <ImageView
         android:id="@+id/iv_HairShow"
         android:layout_width="70sp"
-        android:layout_height="100sp"
-        android:layout_margin="1sp"
-        android:padding="1sp" />
+        android:layout_height="90sp"
+        android:layout_margin="1sp" />
 
 </com.jm.sort.SmallImageItem>

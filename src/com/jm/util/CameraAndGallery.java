@@ -1,7 +1,5 @@
 package com.jm.util;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,24 +9,26 @@ import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
-import com.jm.entity.News;
 import com.jm.fxw.R;
 import com.jm.session.SessionManager;
 
@@ -37,6 +37,9 @@ public class CameraAndGallery {
 	/* 用来标识请求照相功能的activity */
 	public static final int CAMERA_WITH_DATA = 3021;
 
+	private Button ok;
+	private Button cancel;
+	private Dialog dialog;
 	/* 用来标识请求gallery的activity */
 	public static final int PHOTO_PICKED_WITH_DATA = 3023;
 
@@ -121,18 +124,21 @@ public class CameraAndGallery {
 			return false;
 		}
 
-//		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//		bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-//		int options = 100;
-//		while (baos.toByteArray().length / 1024 > 100 && options < 20) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
-//			baos.reset();// 重置baos即清空baos
-//			bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
-//			options -= 10;// 每次都减少10
-//			LogUtil.e("options = " + options);
-//			LogUtil.e("baos.toByteArray().length / 1024 = "
-//					+ baos.toByteArray().length / 1024);
-//		}
-//		LogUtil.e("图片压缩完成 = " + bitmap.getRowBytes());
+		// ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		// bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);//
+		// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
+		// int options = 100;
+		// while (baos.toByteArray().length / 1024 > 100 && options < 20) { //
+		// 循环判断如果压缩后图片是否大于100kb,大于继续压缩
+		// baos.reset();// 重置baos即清空baos
+		// bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);//
+		// 这里压缩options%，把压缩后的数据存放到baos中
+		// options -= 10;// 每次都减少10
+		// LogUtil.e("options = " + options);
+		// LogUtil.e("baos.toByteArray().length / 1024 = "
+		// + baos.toByteArray().length / 1024);
+		// }
+		// LogUtil.e("图片压缩完成 = " + bitmap.getRowBytes());
 		bitmap.compress(CompressFormat.JPEG, 80, m_fileOutPutStream);
 		try {
 			m_fileOutPutStream.flush();
@@ -170,49 +176,75 @@ public class CameraAndGallery {
 	 * 可弹出对话框让用户选择是拍摄照片还是选择照片
 	 */
 	public void doPickPhotoAction() {
+
+		View dialogView = LayoutInflater.from(activity).inflate(
+				R.layout.confirmchoice, null);
+		ok = (Button) dialogView.findViewById(R.id.loginoutdialog_button_ok);
+		cancel = (Button) dialogView
+				.findViewById(R.id.loginoutdialog_button_cancel);
+		dialog = new Dialog(activity, R.style.MyDialog);
+		dialog.setContentView(dialogView);
+		dialog.show();
+		ok.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+
+				doTakePhoto();
+				dialog.dismiss();
+			}
+		});
+		cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				doPickPhotoFromGallery();
+				dialog.dismiss();
+			}
+		});
+
 		// Wrap our context to inflate list items using correct theme
-		final Context dialogContext = new ContextThemeWrapper(activity,
-				android.R.style.Theme_Light);
-		String[] choices;
-		choices = new String[2];
-		choices[0] = activity.getString(R.string.take_photo); // 拍照
-		choices[1] = activity.getString(R.string.pick_photo); // 从相册中选择
-		final ListAdapter adapter = new ArrayAdapter<String>(dialogContext,
-				android.R.layout.simple_list_item_1, choices);
-
-		final AlertDialog.Builder builder = new AlertDialog.Builder(
-				dialogContext);
-		builder.setTitle(R.string.photo_dlg_title);
-		builder.setSingleChoiceItems(adapter, -1,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						switch (which) {
-						case 0:// 启动相机拍照
-								// doTakeAndCropPhoto();
-
-							doTakePhoto();
-
-							break;
-						case 1:// 从相册中去获取
-								// doPickPhotoFromGalleryDoCrop();
-
-							doPickPhotoFromGallery();
-
-							break;
-						}
-					}
-				});
-		builder.setNegativeButton(R.string.go_back,
-				new DialogInterface.OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-
-				});
-		builder.create().show();
+		// final Context dialogContext = new ContextThemeWrapper(activity,
+		// android.R.style.Theme_Light);
+		// String[] choices;
+		// choices = new String[2];
+		// choices[0] = activity.getString(R.string.take_photo); // 拍照
+		// choices[1] = activity.getString(R.string.pick_photo); // 从相册中选择
+		// final ListAdapter adapter = new ArrayAdapter<String>(dialogContext,
+		// android.R.layout.simple_list_item_1, choices);
+		//
+		// final AlertDialog.Builder builder = new AlertDialog.Builder(
+		// dialogContext);
+		// builder.setTitle(R.string.photo_dlg_title);
+		// builder.setSingleChoiceItems(adapter, -1,
+		// new DialogInterface.OnClickListener() {
+		// public void onClick(DialogInterface dialog, int which) {
+		// dialog.dismiss();
+		// switch (which) {
+		// case 0:// 启动相机拍照
+		// // doTakeAndCropPhoto();
+		//
+		// doTakePhoto();
+		//
+		// break;
+		// case 1:// 从相册中去获取
+		// // doPickPhotoFromGalleryDoCrop();
+		//
+		// doPickPhotoFromGallery();
+		//
+		// break;
+		// }
+		// }
+		// });
+		// builder.setNegativeButton(R.string.go_back,
+		// new DialogInterface.OnClickListener() {
+		//
+		// @Override
+		// public void onClick(DialogInterface dialog, int which) {
+		// dialog.dismiss();
+		// }
+		//
+		// });
+		// builder.create().show();
 	}
 
 	// 拍照

@@ -57,9 +57,8 @@ public class SmallImageAdapter extends BaseAdapter {
 	public View getView(int position, View contentView, ViewGroup arg2) {
 		SmallImageItem view = (SmallImageItem) inflater.inflate(
 				R.layout.smallimg_grid, null);
-
-		fb = FinalBitmap.create(context);
-		fb.display((ImageView) view.findViewById(R.id.iv_HairShow),
+		FinalBitmap.create(context).display(
+				(ImageView) view.findViewById(R.id.iv_HairShow),
 				mlist.get(position).getPic());
 		return view;
 	}

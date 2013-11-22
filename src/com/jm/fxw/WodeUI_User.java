@@ -53,8 +53,6 @@ public class WodeUI_User extends FinalActivity implements OnItemClickListener {
 	@ViewInject(id = R.id.btn_rightTop, click = "Click")
 	Button btn_rightTop;
 
-	
-
 	@ViewInject(id = R.id.iv_minfouserpic, click = "Click")
 	ImageView iv_minfouserpic;
 	@ViewInject(id = R.id.lin_phone, click = "Click")
@@ -154,14 +152,14 @@ public class WodeUI_User extends FinalActivity implements OnItemClickListener {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		 MobileProbe.onPause(this, "用户个人中心页面");
+		MobileProbe.onPause(this, "用户个人中心页面");
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		 MobileProbe.onResume(this, "用户个人中心页面");
+		MobileProbe.onResume(this, "用户个人中心页面");
 		if (sm.getUserId() == null || sm.getUserId().equals("")) {
 			finish();
 		}
@@ -266,7 +264,7 @@ public class WodeUI_User extends FinalActivity implements OnItemClickListener {
 		StartActivityContController.goPage(WodeUI_User.this, WorkListUI.class,
 				false, map);
 	}
-	
+
 	/*
 	 * 上传位置信息
 	 */
