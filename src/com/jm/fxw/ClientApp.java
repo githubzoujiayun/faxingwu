@@ -13,7 +13,7 @@ import com.jm.connection.Connection;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.jm.util.UnCatchException;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -25,8 +25,9 @@ public class ClientApp extends Application {
 	public void onCreate() {
 		super.onCreate();
 
+		UnCatchException uce = UnCatchException.getInstance();
+		uce.init(this);
 		sm = SessionManager.getInstance();
-		initSystemInfo();
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
 				getApplicationContext()).build();
 		ImageLoader.getInstance().init(config);
@@ -37,9 +38,6 @@ public class ClientApp extends Application {
 		String city = share.getString("city", "");
 		String lat = share.getString("lat", "0");
 		String lng = share.getString("lng", "0");
-		LogUtil.e("current login user Id =" + userID);
-		LogUtil.e("current login user Type =" + userType);
-		LogUtil.e("current login user City =" + city);
 		sm.setUserId(userID);
 		sm.setUsertype(userType);
 		sm.setCity(city);
@@ -49,18 +47,18 @@ public class ClientApp extends Application {
 		FinalBitmap.create(this).configBitmapLoadThreadSize(10);
 	}
 
-	private void initSystemInfo() {
-		String versionName = "";
-		try {
-			PackageInfo info = getPackageManager().getPackageInfo(
-					getPackageName(), 0);
-			versionName = info.versionCode + ";" + info.versionName;
-		} catch (Exception e) {
-			LogUtil.e(e.getMessage(), e);
-		}
-
-		sm.setAppVersion(versionName);
-	}
+	// private void initSystemInfo() {
+	// String versionName = "";
+	// try {
+	// PackageInfo info = getPackageManager().getPackageInfo(
+	// getPackageName(), 0);
+	// versionName = info.versionCode + ";" + info.versionName;
+	// } catch (Exception e) {
+	// LogUtil.e(e.getMessage(), e);
+	// }
+	//
+	// sm.setAppVersion(versionName);
+	// }
 
 	private void initCacheDir() {
 		SessionManager session = SessionManager.getInstance();

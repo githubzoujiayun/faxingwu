@@ -2,8 +2,6 @@ package com.jm.connection;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -46,8 +44,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -775,21 +771,6 @@ public class Connection {
 		return encodedUrl;
 	}
 
-	private Bitmap compressImage(Bitmap image) {
-
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		image.compress(Bitmap.CompressFormat.JPEG, 100, baos);// 质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-		int options = 100;
-		while (baos.toByteArray().length / 1024 > 100) { // 循环判断如果压缩后图片是否大于100kb,大于继续压缩
-			baos.reset();// 重置baos即清空baos
-			image.compress(Bitmap.CompressFormat.JPEG, options, baos);// 这里压缩options%，把压缩后的数据存放到baos中
-			options -= 10;// 每次都减少10
-		}
-		ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());// 把压缩后的数据baos存放到ByteArrayInputStream中
-		Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);// 把ByteArrayInputStream数据生成图片
-		return bitmap;
-	}
-
 	public synchronized String uploadFile(File file) {
 		final File fileTemp = file;
 		LogUtil.d("fileTemp.getAbsolutePath()" + fileTemp.getAbsolutePath());
@@ -818,6 +799,38 @@ public class Connection {
 		}
 		return null;
 	}
+
+	public synchronized JSONObject uploadCatchlog(File file) {
+		final File fileTemp = file;
+		LogUtil.e("fileTemp.getAbsolutePath() = " + fileTemp.getAbsolutePath());
+		try {
+			URL url = new URL(Constant.URN_ADD_LOG);
+			HttpURLConnection httpUrlConnection = (HttpURLConnection) url
+					.openConnection();
+			httpUrlConnection.setDoOutput(true);
+			httpUrlConnection.setDoInput(true);
+			httpUrlConnection.setRequestMethod("POST");
+			OutputStream os = httpUrlConnection.getOutputStream();
+			BufferedInputStream fis = new BufferedInputStream(
+					new FileInputStream(fileTemp));
+			int bufSize = 0;
+			byte[] buffer = new byte[1024];
+			LogUtil.e("开始上传日志");
+			while ((bufSize = fis.read(buffer)) != -1) {
+				os.write(buffer, 0, bufSize);
+			}
+			fis.close();
+			LogUtil.e("日志写入完成");
+
+			return new JSONObject(new BufferedReader(new InputStreamReader(
+					httpUrlConnection.getInputStream())).readLine());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	// public synchronized String uploadFile(String file) {
 	// try {
 	// URL url = new URL(Constant.DEFAULT_IMAGE_SERVER

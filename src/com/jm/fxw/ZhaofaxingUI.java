@@ -1,13 +1,18 @@
 package com.jm.fxw;
 
+import java.io.File;
+import java.io.FileReader;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.KeyEvent;
@@ -19,8 +24,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.jm.connection.Connection;
+import com.jm.connection.Response;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
+import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 
 public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
@@ -49,6 +57,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		checkUpdate.setNoNewversion(false);
 		checkUpdate.check();
 		init();
+		new UpLoadCrashLog().execute();
 	}
 
 	@Override
@@ -164,6 +173,56 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 			startActivity(intent);
 			break;
 
+		}
+	}
+
+	// 上传crash log
+	class UpLoadCrashLog extends AsyncTask<String, String, JSONObject> {
+
+		File file = new File(SessionManager.getInstance().getCacheDir(),
+				Constant.CRASH_FILE_NAME);
+
+		@Override
+		protected JSONObject doInBackground(String... arg0) {
+			JSONObject response = null;
+			LogUtil.e("file.exists()--" + file.exists());
+			if (file.exists()) {
+				try {
+					if (new FileReader(file).read() != -1) {
+						LogUtil.e("创建连接");
+						Connection conn = ((ClientApp) getApplication())
+								.getConnection();
+						File file = new File(SessionManager.getInstance()
+								.getCacheDir() + Constant.CRASH_FILE_NAME);
+						LogUtil.e("开始上传 + " + file.toString());
+						response = conn.uploadCatchlog(file);
+					} else {
+						LogUtil.e("读取文件失败");
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return response;
+		}
+
+		@Override
+		protected void onPostExecute(JSONObject result) {
+			if (result == null) {
+				return;
+			}
+			LogUtil.e("result = " + result.toString());
+			try {
+				if ("101".equals(result.getString("code"))) {
+					file.delete();
+				} else {
+					LogUtil.e("错误日志上传失败");
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
