@@ -2,10 +2,8 @@ package com.jm.fxw;
 
 import java.io.File;
 
-import net.tsz.afinal.FinalBitmap;
 import android.app.Application;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
 import android.content.res.Configuration;
 import android.os.Environment;
 
@@ -14,6 +12,7 @@ import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.UnCatchException;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -28,9 +27,6 @@ public class ClientApp extends Application {
 		UnCatchException uce = UnCatchException.getInstance();
 		uce.init(this);
 		sm = SessionManager.getInstance();
-		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
-				getApplicationContext()).build();
-		ImageLoader.getInstance().init(config);
 		SharedPreferences share = getSharedPreferences(Constant.PREFS_NAME,
 				MODE_PRIVATE);
 		String userID = share.getString("uid", "");
@@ -44,7 +40,12 @@ public class ClientApp extends Application {
 		sm.setLat(Double.valueOf(lat));
 		sm.setLng(Double.valueOf(lng));
 		initCacheDir();
-		FinalBitmap.create(this).configBitmapLoadThreadSize(10);
+		DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+				.cacheInMemory(true).cacheOnDisc(true).build();
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+				getApplicationContext()).defaultDisplayImageOptions(
+				defaultOptions).build();
+		ImageLoader.getInstance().init(config);
 	}
 
 	// private void initSystemInfo() {

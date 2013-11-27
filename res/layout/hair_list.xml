@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/img_hair"
         android:layout_width="fill_parent"
-        android:layout_height="190sp"
+        android:layout_height="180sp"
         android:layout_marginBottom="2sp"
         android:layout_marginLeft="2sp"
         android:layout_marginRight="2sp"

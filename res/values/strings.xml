@@ -49,6 +49,9 @@
     <string name="no_newversion">当前已是最新版</string>
     <string name="sina_ok">新浪微博分享成功</string>
     <string name="qq_ok">QQ空间分享成功</string>
+    
+    <string name="image_to_max">图片过大</string>
+    
     <string name="comment_ok">发布评论成功</string>
     <string name="map_not_ready">地图初始化失败</string>
     <string name="help_content">\n如何认证发型师

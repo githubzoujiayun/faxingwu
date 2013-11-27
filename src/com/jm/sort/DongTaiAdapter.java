@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,7 @@ import com.jm.entity.DongTai;
 import com.jm.entity.Hair;
 import com.jm.fxw.R;
 import com.jm.util.LogUtil;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class DongTaiAdapter extends BaseAdapter {
 
@@ -109,10 +109,8 @@ public class DongTaiAdapter extends BaseAdapter {
 			view.setHairList(hair_list, Integer.parseInt(dongtai.getWork_id()));
 			view.setDongTai(dongtai);
 			view.initView();
-
-			FinalBitmap.create(context).display(view.findViewById(R.id.iv_pic),
-					dongtai.getWork_image());
-
+			ImageLoader.getInstance().displayImage(dongtai.getWork_image(),
+					(ImageView) view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_utext)).setText(dongtai
 					.getContent());
 			if (dongtai.getContent().toString().trim().equals("")) {

@@ -2259,7 +2259,7 @@ containing a value of this type.
         public static final int aibum=0x7f0a000f;
         public static final int app_name=0x7f0a0001;
         public static final int comfirm_logout=0x7f0a0003;
-        public static final int comment_ok=0x7f0a0030;
+        public static final int comment_ok=0x7f0a0031;
         public static final int createpic=0x7f0a0010;
         public static final int creatpic=0x7f0a0018;
         public static final int del_photo=0x7f0a0014;
@@ -2274,10 +2274,11 @@ containing a value of this type.
         public static final int giveup=0x7f0a0021;
         public static final int go_back=0x7f0a0016;
         public static final int has_new_version=0x7f0a002a;
-        public static final int help_content=0x7f0a0032;
+        public static final int help_content=0x7f0a0033;
+        public static final int image_to_max=0x7f0a0030;
         public static final int like=0x7f0a001f;
         public static final int loadover=0x7f0a0025;
-        public static final int map_not_ready=0x7f0a0031;
+        public static final int map_not_ready=0x7f0a0032;
         public static final int my=0x7f0a0020;
         public static final int net_unwork=0x7f0a0009;
         public static final int netunused=0x7f0a0024;
@@ -2292,29 +2293,29 @@ containing a value of this type.
         public static final int photo_picker_not_found=0x7f0a001b;
         public static final int pic=0x7f0a0017;
         public static final int pick_photo=0x7f0a0012;
-        public static final int ptr_last_updated=0x7f0a0036;
-        public static final int ptr_pull_to_refresh=0x7f0a0033;
-        public static final int ptr_refreshing=0x7f0a0035;
-        public static final int ptr_release_to_refresh=0x7f0a0034;
+        public static final int ptr_last_updated=0x7f0a0037;
+        public static final int ptr_pull_to_refresh=0x7f0a0034;
+        public static final int ptr_refreshing=0x7f0a0036;
+        public static final int ptr_release_to_refresh=0x7f0a0035;
         public static final int pubHair=0x7f0a0027;
         public static final int pubinfo=0x7f0a0028;
         public static final int publiccomment=0x7f0a0026;
         public static final int pubnewinfo=0x7f0a0029;
         public static final int qq_ok=0x7f0a002f;
-        public static final int question_info=0x7f0a003b;
+        public static final int question_info=0x7f0a003c;
         public static final int ri=0x7f0a000e;
         public static final int roll_photo=0x7f0a0013;
         public static final int selectpic=0x7f0a0019;
         public static final int server_error=0x7f0a0007;
-        public static final int shangcishuaxin=0x7f0a003a;
+        public static final int shangcishuaxin=0x7f0a003b;
         public static final int sina_ok=0x7f0a002e;
-        public static final int songkaijinxingshuaxin=0x7f0a0037;
+        public static final int songkaijinxingshuaxin=0x7f0a0038;
         public static final int take_photo=0x7f0a0011;
         public static final int tryagain=0x7f0a0022;
         public static final int userpictitle=0x7f0a001a;
-        public static final int xiangxiatuodongjinxingshuaxin=0x7f0a0038;
+        public static final int xiangxiatuodongjinxingshuaxin=0x7f0a0039;
         public static final int yue=0x7f0a000d;
-        public static final int zhengzaishuaxin=0x7f0a0039;
+        public static final int zhengzaishuaxin=0x7f0a003a;
     }
     public static final class style {
         /** 

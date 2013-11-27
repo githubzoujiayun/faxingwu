@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.tsz.afinal.FinalBitmap;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -40,6 +38,7 @@ import com.jm.session.SessionManager;
 import com.jm.util.CameraAndGallery;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * 手机号码验证页面
@@ -48,7 +47,6 @@ import com.jm.util.TispToastFactory;
  * 
  */
 public class ChangeInfo extends Activity implements OnClickListener {
-	private FinalBitmap fb;
 	private Bitmap mCurrentBitMap1;
 	private String UploadUrl1 = "";
 	private Handler handler;
@@ -76,7 +74,6 @@ public class ChangeInfo extends Activity implements OnClickListener {
 
 	private void init() {
 		cag = new CameraAndGallery(this);
-		fb = FinalBitmap.create(this);
 		sm = SessionManager.getInstance();
 		etxt_mobile = (EditText) findViewById(R.id.etxt_mobile);
 		etxt_vcode = (EditText) findViewById(R.id.etxt_vcode);
@@ -135,8 +132,10 @@ public class ChangeInfo extends Activity implements OnClickListener {
 				try {
 					((TextView) findViewById(R.id.et_username)).setText(jb
 							.getString("username"));
-					fb.display((ImageView) findViewById(R.id.iv_minfouserpic),
-							jb.getString("head_photo"));
+
+					ImageLoader.getInstance().displayImage(
+							jb.getString("head_photo"),
+							(ImageView) findViewById(R.id.iv_minfouserpic));
 
 					if ("0".equals(jb.getString("sex"))) {
 						((RadioButton) findViewById(R.id.rb_female))
@@ -194,7 +193,6 @@ public class ChangeInfo extends Activity implements OnClickListener {
 			break;
 		case R.id.btn_rightTop:
 			setUserSex();
-			FinalBitmap.create(this).clearCache();
 			new ChangUserInfo().execute();
 			break;
 

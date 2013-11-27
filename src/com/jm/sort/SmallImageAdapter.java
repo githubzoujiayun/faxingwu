@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.jm.entity.Hair;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class SmallImageAdapter extends BaseAdapter {
 	private LayoutInflater inflater;
@@ -20,7 +21,6 @@ public class SmallImageAdapter extends BaseAdapter {
 
 	private Context context;
 
-	private FinalBitmap fb;
 
 	public SmallImageAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
@@ -57,9 +57,9 @@ public class SmallImageAdapter extends BaseAdapter {
 	public View getView(int position, View contentView, ViewGroup arg2) {
 		SmallImageItem view = (SmallImageItem) inflater.inflate(
 				R.layout.smallimg_grid, null);
-		FinalBitmap.create(context).display(
-				(ImageView) view.findViewById(R.id.iv_HairShow),
-				mlist.get(position).getPic());
+		
+		ImageLoader.getInstance().displayImage(mlist.get(position).getPic(),
+				(ImageView) view.findViewById(R.id.iv_HairShow));
 		return view;
 	}
 

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.jm.entity.Hair;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HairAdapter extends BaseAdapter {
 
@@ -26,7 +27,6 @@ public class HairAdapter extends BaseAdapter {
 	private boolean isProgress = false;
 
 	private int screenwidth = 0;
-	private FinalBitmap fb;
 
 	public HairAdapter(Context context, int screenwidth) {
 		inflater = LayoutInflater.from(context);
@@ -125,10 +125,8 @@ public class HairAdapter extends BaseAdapter {
 			} else {
 				view = inflater.inflate(R.layout.hair_list, null);
 			}
-			fb = FinalBitmap.create(context);
-
-			fb.display((ImageView) view.findViewById(R.id.img_hair),
-					hair.getPic());
+			ImageLoader.getInstance().displayImage(hair.getPic(),
+					(ImageView) view.findViewById(R.id.img_hair));
 
 		}
 		return view;

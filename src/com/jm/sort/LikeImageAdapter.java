@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import com.jm.entity.Like;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class LikeImageAdapter extends BaseAdapter {
 	private LayoutInflater inflater;
@@ -20,7 +21,6 @@ public class LikeImageAdapter extends BaseAdapter {
 	private ImageView iv_image;
 	private Like like;
 	private Context context;
-	private FinalBitmap fb;
 
 	public LikeImageAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
@@ -62,9 +62,8 @@ public class LikeImageAdapter extends BaseAdapter {
 		LikeImageItem view = (LikeImageItem) inflater.inflate(
 				R.layout.likesmallimg_grid, null);
 		like = mlist.get(position);
-		fb = FinalBitmap.create(context);
-		fb.display((ImageView) view.findViewById(R.id.iv_UserLikePicShow),
-				like.getPic());
+		ImageLoader.getInstance().displayImage(like.getPic(),
+				(ImageView) view.findViewById(R.id.iv_UserLikePicShow));
 		return view;
 	}
 

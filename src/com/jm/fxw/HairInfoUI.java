@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.tsz.afinal.FinalBitmap;
-
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +46,7 @@ import com.jm.util.ImageUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tencent.open.HttpStatusException;
 import com.tencent.open.NetworkUnavailableException;
 import com.tencent.tauth.Constants;
@@ -72,7 +71,6 @@ public class HairInfoUI extends Activity implements OnClickListener {
 	private ArrayList<Hair> alist = new ArrayList<Hair>();
 	private String type = "0";
 	private SessionManager sm;
-	private FinalBitmap fbPic;
 	// //////////////////////////////////
 	private SharedPreferences share;
 	private SharedPreferences.Editor editor;
@@ -107,7 +105,6 @@ public class HairInfoUI extends Activity implements OnClickListener {
 				MODE_PRIVATE);
 
 		// ///////////////////////////////
-		fbPic = FinalBitmap.create(this);
 		initweibo();
 		mTencent = Tencent.createInstance(Constant.APP_ID,
 				this.getApplicationContext());
@@ -177,9 +174,10 @@ public class HairInfoUI extends Activity implements OnClickListener {
 			urls[i++] = h.getPic();
 		}
 		i = 0;
-		for (String s : urls) {
-			LogUtil.e("i = " + i++ + s);
-		}
+		// ¥Ú”°À˘”–Õº∆¨url
+		// for (String s : urls) {
+		// LogUtil.e("i = " + i++ + s);
+		// }
 		List<String> items = new ArrayList<String>();
 		Collections.addAll(items, urls);
 
@@ -656,8 +654,9 @@ public class HairInfoUI extends Activity implements OnClickListener {
 			usertype = jb.getString("type");
 			to_uid = jb.getString("uid");
 			findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
-			fbPic.display((ImageView) findViewById(R.id.iv_hairinfo_headphoto),
-					jb.getString("head_photo"));
+
+			ImageLoader.getInstance().displayImage(jb.getString("head_photo"),
+					(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 			if (to_uid.equals(sm.getUserId())) {
 				findViewById(R.id.lin_sixin).setVisibility(View.GONE);
 			} else {

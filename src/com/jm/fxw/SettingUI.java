@@ -16,6 +16,8 @@ import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -115,6 +117,21 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		findViewById(R.id.lin_weibo).setOnClickListener(this);
 		findViewById(R.id.lin_help).setOnClickListener(this);
 		findViewById(R.id.lin_opinion).setOnClickListener(this);
+		((Button) findViewById(R.id.btn_update)).setText("检查更新(当前版本"
+				+ getVersionName() + ")");
+	}
+
+	private String getVersionName() {
+		// getPackageName()是你当前类的包名，0代表是获取版本信息
+		PackageInfo packInfo = null;
+		try {
+			packInfo = this.getPackageManager().getPackageInfo(
+					this.getPackageName(), 0);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return packInfo.versionName;
 	}
 
 	@Override

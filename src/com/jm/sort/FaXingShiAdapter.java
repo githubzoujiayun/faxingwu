@@ -16,13 +16,13 @@ import android.widget.TextView;
 
 import com.jm.entity.FaXingShi;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class FaXingShiAdapter extends BaseAdapter implements OnClickListener {
 
 	private LayoutInflater inflater;
 	private List<FaXingShi> mlist;
 	private Context context;
-	private FinalBitmap fb;
 
 	public boolean isDianPu = false;
 	private boolean isProgress = false;
@@ -104,10 +104,8 @@ public class FaXingShiAdapter extends BaseAdapter implements OnClickListener {
 					R.layout.faxingshiuser_list, null);
 			view.setFaXingShi(mlist.get(position));
 			view.initView();
-
-			fb = FinalBitmap.create(context);
-			fb.display((ImageView) view.findViewById(R.id.iv_pic),
-					type.getHead_photo());
+			ImageLoader.getInstance().displayImage(type.getHead_photo(),
+					(ImageView) view.findViewById(R.id.iv_pic));
 			((Button) view.findViewById(R.id.btn_isconcerns))
 					.setText(type.isconcerns.equals("1") ? "ÒÑ¹Ø×¢" : " + ¹Ø×¢");
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type

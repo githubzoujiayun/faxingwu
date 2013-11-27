@@ -6,7 +6,7 @@
 
     <ImageView
         android:id="@+id/iv_HairShow"
-        android:layout_width="70sp"
+        android:layout_width="60sp"
         android:layout_height="90sp"
         android:layout_margin="1sp" />
 

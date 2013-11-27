@@ -13,10 +13,16 @@
         android:orientation="vertical" >
 
         <FrameLayout
-            android:id="@+id/iv_pic"
             android:layout_width="fill_parent"
-            android:layout_height="240dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center" >
+
+            <ImageView
+                android:id="@+id/iv_pic"
+                android:layout_width="fill_parent"
+                android:layout_height="230dp"
+                android:layout_gravity="top"
+                android:scaleType="fitXY" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
