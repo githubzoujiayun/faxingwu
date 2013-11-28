@@ -148,8 +148,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		findViewById(R.id.lin_comment).setOnClickListener(this);
 
 		findViewById(R.id.btn_yuyue).setOnClickListener(this);
-		
-		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册");
 		Intent intent = getIntent();
 		inthid = intent.getIntExtra("id", 0);
 		alist = (ArrayList<Hair>) intent.getSerializableExtra("hlist");
@@ -179,6 +177,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		// }
 		// }
 		// });
+		
 		ViewPager mViewPager = (HackyViewPager) findViewById(R.id.photoview);
 		mViewPager.setAdapter(spa);
 		mViewPager.setOnPageChangeListener(this);
@@ -1024,12 +1023,12 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onPageSelected(int currentPosition) {
-//		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
-//				+ (currentPosition + 1) + "/" + (alist.size()) + ")");
+		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
+				+ (currentPosition + 1) + "/" + (alist.size()) + ")");
 
 		if (alist.get(galleryindex).getId() != alist.get(currentPosition)
 				.getId()) {
-			LogUtil.e("galleryindex ============== " + galleryindex);
+			LogUtil.e("galleryindex = " + galleryindex);
 			galleryindex = currentPosition;
 			new getHairInfoTask().execute();
 		}

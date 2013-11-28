@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 
-import com.jm.fxw.R;
 import com.jm.util.ImageUtil;
 import com.jm.util.LogUtil;
 
@@ -24,11 +23,9 @@ public class SamplePagerAdapter extends PagerAdapter {
 		if (!urls.get(position).equals("")) {
 			String b = ImageUtil.pictureStringExists(urls.get(position));
 			if (!"".equals(b)) {
-				LogUtil.e("Í¼Æ¬´æÔÚ b = " + b);
 				LogUtil.e("Í¼Æ¬´æÔÚ position = " + position);
 				photoView.setImageBitmap(BitmapFactory.decodeFile(b));
 			} else {
-				photoView.setImageResource(R.drawable.empty_photo);
 			}
 		}
 		container.addView(photoView, LayoutParams.MATCH_PARENT,
