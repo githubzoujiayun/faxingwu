@@ -33,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -64,6 +65,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		OnPageChangeListener {
 
 	private PictureTaskCallback callback;
+	private HairTaskCallback haircallback;
 	private String url;
 	private String to_uid = "";
 	private ArrayList<Hair> alist = new ArrayList<Hair>();
@@ -93,6 +95,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
+		haircallback = new HairTaskCallback();
 		spa = new SamplePagerAdapter();
 		// 初始化缓存对象.S
 		mSharedPreferences = getSharedPreferences(getPackageName(),
@@ -114,13 +117,14 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	@Override
 	protected void onResume() {
 		super.onResume();
-		// MobileProbe.onResume(this, "发型图册页面");
+		MobileProbe.onResume(this, "发型图册页面");
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		// MobileProbe.onPause(this, "发型图册页面");
+		MobileProbe.onPause(this, "发型图册页面");
+		haircallback.interrupt();
 	}
 
 	@Override
@@ -144,6 +148,8 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		findViewById(R.id.lin_comment).setOnClickListener(this);
 
 		findViewById(R.id.btn_yuyue).setOnClickListener(this);
+		
+		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册");
 		Intent intent = getIntent();
 		inthid = intent.getIntExtra("id", 0);
 		alist = (ArrayList<Hair>) intent.getSerializableExtra("hlist");
@@ -409,6 +415,20 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		};
 
 		mTencent.login(HairInfoUI.this, SCOPE, listener);
+	}
+
+	class HairTaskCallback extends com.jm.connection.AbstractPictureCallback {
+
+		@Override
+		public void loaded(com.jm.connection.PictureObject pObj) {
+
+			if (isInterrupted()) {
+				return;
+			}
+
+			LogUtil.e("spa.notifyDataSetChanged();");
+			spa.notifyDataSetChanged();
+		}
 	}
 
 	class PictureTaskCallback extends com.jm.connection.AbstractPictureCallback {
@@ -1004,14 +1024,16 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onPageSelected(int currentPosition) {
-		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
-				+ (currentPosition + 1) + "/" + (alist.size()) + ")");
+//		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
+//				+ (currentPosition + 1) + "/" + (alist.size()) + ")");
 
 		if (alist.get(galleryindex).getId() != alist.get(currentPosition)
 				.getId()) {
-			LogUtil.e("galleryindex = " + galleryindex);
+			LogUtil.e("galleryindex ============== " + galleryindex);
 			galleryindex = currentPosition;
 			new getHairInfoTask().execute();
 		}
+		haircallback.addLarge(alist.get(currentPosition).getPic());
+		haircallback.checkPictureTask(HairInfoUI.this);
 	}
 }

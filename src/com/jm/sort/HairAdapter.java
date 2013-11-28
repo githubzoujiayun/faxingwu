@@ -137,7 +137,7 @@ public class HairAdapter extends BaseAdapter {
 			mlist.clear();
 		}
 		if (hlist != null) {
-			mlist.clear();
+			hlist.clear();
 		}
 		notifyDataSetChanged();
 	}
