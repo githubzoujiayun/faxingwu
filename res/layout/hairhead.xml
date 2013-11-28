@@ -11,8 +11,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
-        <ru.truba.touchgallery.GalleryWidget.GalleryViewPager
-            android:id="@+id/gallery_photos"
+        <uk.co.senab.photoview.sample.HackyViewPager
+            android:id="@+id/photoview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"

@@ -17,6 +17,11 @@
  */
 package ru.truba.touchgallery.TouchView;
 
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
+import ru.truba.touchgallery.TouchView.InputStreamWrapper.InputStreamProgressListener;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,13 +31,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-
 import com.jm.fxw.R;
-
-import ru.truba.touchgallery.TouchView.InputStreamWrapper.InputStreamProgressListener;
 
 public class UrlTouchImageView extends RelativeLayout {
 	protected ProgressBar mProgressBar;
@@ -67,7 +66,7 @@ public class UrlTouchImageView extends RelativeLayout {
 		mImageView.setVisibility(GONE);
 
 		mProgressBar = new ProgressBar(mContext, null,
-				android.R.attr.progressBarStyleHorizontal);
+				android.R.attr.progressBarStyleSmall);
 		params = new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.WRAP_CONTENT);
 		params.addRule(RelativeLayout.CENTER_VERTICAL);

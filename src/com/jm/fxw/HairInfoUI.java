@@ -4,18 +4,14 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ru.truba.touchgallery.GalleryWidget.BasePagerAdapter.OnItemChangeListener;
-import ru.truba.touchgallery.GalleryWidget.GalleryViewPager;
-import ru.truba.touchgallery.GalleryWidget.UrlPagerAdapter;
+import uk.co.senab.photoview.sample.HackyViewPager;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -24,6 +20,8 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,13 +33,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
-import com.iflytek.ui.RecognizerDialog;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
+import com.jm.sort.SamplePagerAdapter;
 import com.jm.util.ImageUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -63,7 +60,8 @@ import com.weibo.sdk.android.api.StatusesAPI;
 import com.weibo.sdk.android.api.UsersAPI;
 import com.weibo.sdk.android.net.RequestListener;
 
-public class HairInfoUI extends Activity implements OnClickListener {
+public class HairInfoUI extends Activity implements OnClickListener,
+		OnPageChangeListener {
 
 	private PictureTaskCallback callback;
 	private String url;
@@ -86,20 +84,16 @@ public class HairInfoUI extends Activity implements OnClickListener {
 	private static final String SCOPE = "get_simple_userinfo,add_share";
 	// /////////////////////////////////////////s
 	private SharedPreferences mSharedPreferences;
-	// 识别Dialog
-	private RecognizerDialog iatDialog;
-
 	private boolean isPushIn;
 	// 初始化参数
-	private GalleryViewPager mViewPager;
-
-	private String[] urls;
+	private SamplePagerAdapter spa;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
+		spa = new SamplePagerAdapter();
 		// 初始化缓存对象.S
 		mSharedPreferences = getSharedPreferences(getPackageName(),
 				MODE_PRIVATE);
@@ -119,16 +113,14 @@ public class HairInfoUI extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
-		MobileProbe.onResume(this, "发型图册页面");
+		// MobileProbe.onResume(this, "发型图册页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
-		MobileProbe.onPause(this, "发型图册页面");
+		// MobileProbe.onPause(this, "发型图册页面");
 	}
 
 	@Override
@@ -152,59 +144,41 @@ public class HairInfoUI extends Activity implements OnClickListener {
 		findViewById(R.id.lin_comment).setOnClickListener(this);
 
 		findViewById(R.id.btn_yuyue).setOnClickListener(this);
-		// mgadapter = new MerchantGalleryAdapter(this, bitmap);
-		// FallingGallery gallery = (FallingGallery)
-		// findViewById(R.id.gallery_photos);
-		// gallery.setAdapter(mgadapter);
-		// gallery.setOnItemSelectedListener(this);
 		Intent intent = getIntent();
 		inthid = intent.getIntExtra("id", 0);
-
 		alist = (ArrayList<Hair>) intent.getSerializableExtra("hlist");
 		LogUtil.e("alist.size() = " + alist.size());
-
-		// mgadapter.setList(alist);
-		// mgadapter.notifyDataSetChanged();
-		LogUtil.e("初始化加载数据");
-
-		// ////////////////////////////
-		int i = 0;
-		urls = new String[alist.size()];
+		spa.urls.clear();
 		for (Hair h : alist) {
-			urls[i++] = h.getPic();
+			spa.urls.add(h.getPic());
 		}
-		i = 0;
 		// 打印所有图片url
-		// for (String s : urls) {
-		// LogUtil.e("i = " + i++ + s);
+		// for (String s : spa.urls) {
+		// LogUtil.e(" spa.urls 包括 = " + s);
 		// }
-		List<String> items = new ArrayList<String>();
-		Collections.addAll(items, urls);
-
-		UrlPagerAdapter pagerAdapter = new UrlPagerAdapter(this, items);
-		pagerAdapter.setOnItemChangeListener(new OnItemChangeListener() {
-			@Override
-			public void onItemChange(int currentPosition) {
-				((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
-						+ (currentPosition + 1) + "/" + (alist.size()) + ")");
-
-				if (alist.get(galleryindex).getId() != alist.get(
-						currentPosition).getId()) {
-					LogUtil.e("galleryindex = " + galleryindex);
-					galleryindex = currentPosition;
-					new getHairInfoTask().execute();
-				}
-			}
-		});
-
-		mViewPager = (GalleryViewPager) findViewById(R.id.gallery_photos);
-		mViewPager.setOffscreenPageLimit(0);
-		mViewPager.setAdapter(pagerAdapter);
+		// List<String> items = new ArrayList<String>();
+		//
+		// UrlPagerAdapter pagerAdapter = new UrlPagerAdapter(this, items);
+		// pagerAdapter.setOnItemChangeListener(new OnItemChangeListener() {
+		// @Override
+		// public void onItemChange(int currentPosition) {
+		// ((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
+		// + (currentPosition + 1) + "/" + (alist.size()) + ")");
+		//
+		// if (alist.get(galleryindex).getId() != alist.get(
+		// currentPosition).getId()) {
+		// LogUtil.e("galleryindex = " + galleryindex);
+		// galleryindex = currentPosition;
+		// new getHairInfoTask().execute();
+		// }
+		// }
+		// });
+		ViewPager mViewPager = (HackyViewPager) findViewById(R.id.photoview);
+		mViewPager.setAdapter(spa);
+		mViewPager.setOnPageChangeListener(this);
 		for (int index = 0; index < alist.size(); index++) {
 			if (alist.get(index).getId() == inthid) {
 				mViewPager.setCurrentItem(index);
-				((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
-						+ (index + 1) + "/" + (alist.size()) + ")");
 				break;
 			}
 		}
@@ -1014,5 +988,30 @@ public class HairInfoUI extends Activity implements OnClickListener {
 					.show();
 		}
 
+	}
+
+	@Override
+	public void onPageScrollStateChanged(int arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onPageSelected(int currentPosition) {
+		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
+				+ (currentPosition + 1) + "/" + (alist.size()) + ")");
+
+		if (alist.get(galleryindex).getId() != alist.get(currentPosition)
+				.getId()) {
+			LogUtil.e("galleryindex = " + galleryindex);
+			galleryindex = currentPosition;
+			new getHairInfoTask().execute();
+		}
 	}
 }

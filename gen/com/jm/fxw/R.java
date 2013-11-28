@@ -1859,7 +1859,6 @@ containing a value of this type.
         public static final int fl_shoucang=0x7f0901a3;
         public static final int fl_shoucang2=0x7f0901a4;
         public static final int fl_zhongfa=0x7f09019e;
-        public static final int gallery_photos=0x7f0900a0;
         public static final int gallery_show=0x7f0900ce;
         public static final int gone=0x7f090002;
         public static final int gravity=0x7f09001b;
@@ -2029,6 +2028,7 @@ containing a value of this type.
         public static final int number=0x7f0900d9;
         public static final int outsideInset=0x7f090009;
         public static final int outsideOverlay=0x7f090008;
+        public static final int photoview=0x7f0900a0;
         public static final int play=0x7f09006a;
         public static final int pricelist=0x7f0900fc;
         public static final int province_spinner=0x7f090111;
