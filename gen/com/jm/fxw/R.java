@@ -2151,6 +2151,7 @@ containing a value of this type.
         public static final int yuyue_list=0x7f0900e3;
         public static final int yuyueinfo_list=0x7f090162;
         public static final int zhaofaxing_hairgridview=0x7f0901a6;
+        public static final int zoom_image_view=0x7f0901ab;
     }
     public static final class layout {
         public static final int act_pull_to_refresh_sample=0x7f030000;
@@ -2250,6 +2251,7 @@ containing a value of this type.
         public static final int zhoubianuser_list=0x7f03005e;
         public static final int zhuanrang_list=0x7f03005f;
         public static final int zhuanranginfo=0x7f030060;
+        public static final int zoom_image_layout=0x7f030061;
     }
     public static final class raw {
         public static final int china_city_name=0x7f050000;
