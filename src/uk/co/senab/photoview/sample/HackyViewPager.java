@@ -15,27 +15,27 @@ import android.view.MotionEvent;
  * <p/>
  * There's not much I can do in my code for now, but we can mask the result by
  * just catching the problem and ignoring it.
- * 
+ *
  * @author Chris Banes
  */
 public class HackyViewPager extends ViewPager {
 
-	public HackyViewPager(Context context) {
-		super(context);
-	}
+    public HackyViewPager(Context context) {
+        super(context);
+    }
 
-	public HackyViewPager(Context context, AttributeSet attrs) {
-		super(context, attrs);
-	}
+    public HackyViewPager(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
 
-	@Override
-	public boolean onInterceptTouchEvent(MotionEvent ev) {
-		try {
-			return super.onInterceptTouchEvent(ev);
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        try {
+            return super.onInterceptTouchEvent(ev);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }

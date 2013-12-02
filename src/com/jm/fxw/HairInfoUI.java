@@ -5,27 +5,31 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import uk.co.senab.photoview.sample.HackyViewPager;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,12 +38,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.example.photowallfallsdemo.ZoomImageView;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
-import com.jm.sort.SamplePagerAdapter;
 import com.jm.util.ImageUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -86,9 +90,21 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	private static final String SCOPE = "get_simple_userinfo,add_share";
 	// /////////////////////////////////////////s
 	private SharedPreferences mSharedPreferences;
+	private ViewPagerAdapter adapter;
 	private boolean isPushIn;
 	// 初始化参数
-	private SamplePagerAdapter spa;
+	// private SamplePagerAdapter spa;
+	/**
+	 * 用于管理图片的滑动
+	 */
+	private ViewPager viewPager;
+
+	/**
+	 * 显示当前图片的页数
+	 */
+	private TextView pageText;
+
+	public List<String> imageUrls = new ArrayList<String>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +112,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
 		haircallback = new HairTaskCallback();
-		spa = new SamplePagerAdapter();
+		adapter = new ViewPagerAdapter();
 		// 初始化缓存对象.S
 		mSharedPreferences = getSharedPreferences(getPackageName(),
 				MODE_PRIVATE);
@@ -152,14 +168,14 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		inthid = intent.getIntExtra("id", 0);
 		alist = (ArrayList<Hair>) intent.getSerializableExtra("hlist");
 		LogUtil.e("alist.size() = " + alist.size());
-		spa.urls.clear();
-		for (Hair h : alist) {
-			spa.urls.add(h.getPic());
+		if (alist.size() == 0) {
+			finish();
 		}
-		// 打印所有图片url
-		// for (String s : spa.urls) {
-		// LogUtil.e(" spa.urls 包括 = " + s);
-		// }
+		imageUrls.clear();
+		for (Hair h : alist) {
+			imageUrls.add(h.getPic());
+		}
+
 		// List<String> items = new ArrayList<String>();
 		//
 		// UrlPagerAdapter pagerAdapter = new UrlPagerAdapter(this, items);
@@ -177,13 +193,24 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		// }
 		// }
 		// });
-		
-		ViewPager mViewPager = (HackyViewPager) findViewById(R.id.photoview);
-		mViewPager.setAdapter(spa);
-		mViewPager.setOnPageChangeListener(this);
+
+		// ViewPager mViewPager = (HackyViewPager) findViewById(R.id.photoview);
+		// mViewPager.setAdapter(spa);
+		// mViewPager.setOnPageChangeListener(this);
+
+		// }
+		new getHairInfoTask().execute();
+
+		pageText = (TextView) findViewById(R.id.tv_mainhead);
+		viewPager = (ViewPager) findViewById(R.id.photoview);
+
+		viewPager.setAdapter(adapter);
+		viewPager.setOnPageChangeListener(this);
+		viewPager.setEnabled(false);
 		for (int index = 0; index < alist.size(); index++) {
 			if (alist.get(index).getId() == inthid) {
-				mViewPager.setCurrentItem(index);
+				viewPager.setCurrentItem(index);
+				pageText.setText((index + 1) + "/" + imageUrls.size());
 				break;
 			}
 		}
@@ -222,7 +249,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			break;
 		case R.id.lin_comment:
 			map.put("hid", alist.get(galleryindex).getId() + "");
-			LogUtil.e("hid = " + alist.get(galleryindex).getId() + "");
 			StartActivityContController.goPage(HairInfoUI.this,
 					HairItemInfoUI.class, true, map);
 			break;
@@ -424,9 +450,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			if (isInterrupted()) {
 				return;
 			}
-
-			LogUtil.e("spa.notifyDataSetChanged();");
-			spa.notifyDataSetChanged();
+			adapter.notifyDataSetChanged();
 		}
 	}
 
@@ -1010,9 +1034,25 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	}
 
 	@Override
-	public void onPageScrollStateChanged(int arg0) {
-		// TODO Auto-generated method stub
-
+	public void onPageScrollStateChanged(int scrollState) {
+		// // TODO Auto-generated method stub
+		// if (scrollState == 2) {
+		// LogUtil.e("加载数据 oldPosition = " + oldPosition);
+		// ((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
+		// + (oldPosition + 1) + "/" + (alist.size()) + ")");
+		//
+		// if (alist.get(galleryindex).getId() != alist.get(oldPosition)
+		// .getId()) {
+		// LogUtil.e("galleryindex = " + galleryindex);
+		// galleryindex = oldPosition;
+		// new getHairInfoTask().execute();
+		// }
+		// haircallback.addLarge(alist.get(oldPosition).getPic());
+		// haircallback.checkPictureTask(HairInfoUI.this);
+		// } else {
+		//
+		// LogUtil.e("不加载数据 oldPosition = " + oldPosition);
+		// }
 	}
 
 	@Override
@@ -1022,17 +1062,70 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	}
 
 	@Override
-	public void onPageSelected(int currentPosition) {
-		((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
-				+ (currentPosition + 1) + "/" + (alist.size()) + ")");
-
-		if (alist.get(galleryindex).getId() != alist.get(currentPosition)
-				.getId()) {
-			LogUtil.e("galleryindex = " + galleryindex);
-			galleryindex = currentPosition;
+	public void onPageSelected(int currentPage) {
+		// LogUtil.e("onPageSelected currentPosition = " + currentPosition);
+		// oldPosition = currentPosition;
+		haircallback.addLarge(alist.get(currentPage).getPic());
+		haircallback.checkPictureTask(HairInfoUI.this);
+		// 每当页数发生改变时重新设定一遍当前的页数和总页数
+		pageText.setText((currentPage + 1) + "/" + imageUrls.size());
+		if (alist.get(galleryindex).getId() != alist.get(currentPage).getId()) {
+			galleryindex = currentPage;
 			new getHairInfoTask().execute();
 		}
-		haircallback.addLarge(alist.get(currentPosition).getPic());
-		haircallback.checkPictureTask(HairInfoUI.this);
 	}
+
+	/**
+	 * ViewPager的适配器
+	 * 
+	 * @author guolin
+	 */
+	class ViewPagerAdapter extends PagerAdapter {
+
+		@Override
+		public Object instantiateItem(ViewGroup container, int position) {
+
+			String imagePath = ImageUtil.pictureStringExists(imageUrls
+					.get(position));
+			Bitmap bitmap = null;
+			if (!"".equals(imagePath)) {
+				bitmap = BitmapFactory.decodeFile(imagePath);
+
+			}
+			if (bitmap == null) {
+				bitmap = BitmapFactory.decodeResource(getResources(),
+						R.drawable.empty_photo);
+			}
+			View view = LayoutInflater.from(HairInfoUI.this).inflate(
+					R.layout.zoom_image_layout, null);
+			ZoomImageView zoomImageView = (ZoomImageView) view
+					.findViewById(R.id.zoom_image_view);
+			zoomImageView.setImageBitmap(bitmap);
+			container.addView(view);
+			return view;
+		}
+
+		@Override
+		public int getItemPosition(Object object) {
+			return POSITION_NONE;
+		}
+
+		@Override
+		public int getCount() {
+			return imageUrls.size();
+		}
+
+		@Override
+		public boolean isViewFromObject(View arg0, Object arg1) {
+			return arg0 == arg1;
+		}
+
+		@Override
+		public void destroyItem(ViewGroup container, int position, Object object) {
+			View view = (View) object;
+			container.removeView(view);
+		}
+
+	}
+
 }
