@@ -58,6 +58,7 @@ import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
 import com.jm.view.HorizontalListView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tencent.open.HttpStatusException;
 import com.tencent.open.NetworkUnavailableException;
 import com.tencent.tauth.IRequestListener;
@@ -79,7 +80,6 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 	private LikeImageAdapter likeadapter;
 	private String type = "0";
 	private SessionManager sm;
-	private FinalBitmap fbPic;
 	// //////////////////////////////////
 	private SharedPreferences share;
 	private SharedPreferences.Editor editor;
@@ -108,7 +108,6 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 		// 初始化缓存对象.S
 
 		// ///////////////////////////////
-		fbPic = FinalBitmap.create(this);
 		mTencent = Tencent.createInstance(Constant.APP_ID,
 				this.getApplicationContext());
 		mHandler = new Handler();
@@ -348,8 +347,8 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 			usertype = jb.getString("type");
 			to_uid = jb.getString("uid");
 			findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
-			fbPic.display((ImageView) findViewById(R.id.iv_hairinfo_headphoto),
-					jb.getString("head_photo"));
+			ImageLoader.getInstance().displayImage(jb.getString("head_photo"),
+					(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 			if (to_uid.equals(sm.getUserId())) {
 				findViewById(R.id.lin_sixin).setVisibility(View.GONE);
 			} else {
@@ -368,6 +367,9 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 
 			LogUtil.e(ja.get(0).toString());
 			// 设置发型图片大小
+			
+			
+			
 			FinalBitmap.create(this).display(findViewById(R.id.iv_photo),
 					ja.get(0).toString(),
 					getWindowManager().getDefaultDisplay().getWidth() / 2,

@@ -35,6 +35,7 @@ import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
 import com.jm.view.HorizontalListView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 		OnClickListener {
@@ -44,12 +45,8 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 	private SessionManager sm;
 	private List<Hair> mlist = new ArrayList<Hair>();
 	LinearLayout lin_message;
-	private FinalBitmap fb;
 	private String uid;
 	private String type;
-	private FinalBitmap fb1;
-	private FinalBitmap fb2;
-	private FinalBitmap fb3;
 	private String isconcerns;
 
 	@Override
@@ -76,15 +73,9 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 		findViewById(R.id.img_hair1).setOnClickListener(this);
 		findViewById(R.id.img_hair2).setOnClickListener(this);
 		findViewById(R.id.img_hair3).setOnClickListener(this);
-		fb1 = FinalBitmap.create(this);
-
-		fb2 = FinalBitmap.create(this);
-
-		fb3 = FinalBitmap.create(this);
 		Intent i = getIntent();
 		uid = i.getStringExtra("uid");
 		type = i.getStringExtra("type");
-		fb = FinalBitmap.create(this);
 		sm = SessionManager.getInstance();
 		likeadapter = new SmallImageAdapter(this);
 		initGallery();
@@ -158,8 +149,9 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 					} else {
 						findViewById(R.id.lin_hair1)
 								.setVisibility(View.VISIBLE);
-						fb1.display((ImageView) findViewById(R.id.img_hair1),
-								mlist.get(0).getPic());
+						ImageLoader.getInstance().displayImage(
+								mlist.get(0).getPic(),
+								(ImageView) findViewById(R.id.img_hair1));
 					}
 					if (mlist.get(1).getPic() == null
 							|| "".equals(mlist.get(1).getPic())) {
@@ -167,8 +159,10 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 					} else {
 						findViewById(R.id.lin_hair2)
 								.setVisibility(View.VISIBLE);
-						fb2.display((ImageView) findViewById(R.id.img_hair2),
-								mlist.get(1).getPic());
+
+						ImageLoader.getInstance().displayImage(
+								mlist.get(1).getPic(),
+								(ImageView) findViewById(R.id.img_hair2));
 					}
 					if (mlist.get(2).getPic() == null
 							|| "".equals(mlist.get(2).getPic())) {
@@ -177,8 +171,10 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 					} else {
 						findViewById(R.id.lin_hair3)
 								.setVisibility(View.VISIBLE);
-						fb3.display((ImageView) findViewById(R.id.img_hair3),
-								mlist.get(2).getPic());
+
+						ImageLoader.getInstance().displayImage(
+								mlist.get(2).getPic(),
+								(ImageView) findViewById(R.id.img_hair3));
 					}
 
 				} catch (Exception e) {
@@ -318,8 +314,10 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 				try {
 					((TextView) findViewById(R.id.tv_username)).setText(jb
 							.getString("username"));
-					fb.display((ImageView) findViewById(R.id.iv_minfouserpic),
-							jb.getString("head_photo"));
+
+					ImageLoader.getInstance().displayImage(
+							jb.getString("head_photo"),
+							(ImageView) findViewById(R.id.iv_minfouserpic));
 					((TextView) findViewById(R.id.tv_signature)).setText(jb
 							.getString("signature"));
 					((TextView) findViewById(R.id.tv_score)).setText("µÿ÷∑:"
