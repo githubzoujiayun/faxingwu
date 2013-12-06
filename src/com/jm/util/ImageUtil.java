@@ -144,10 +144,8 @@ public class ImageUtil {
 		BitmapFactory.Options newOpts = new BitmapFactory.Options();
 		newOpts.inJustDecodeBounds = true;// 只读边,不读内容
 		Bitmap bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
-		if (bitmap == null) {
-			LogUtil.e("inJustDecodeBounds = true;bitmap = null");
-		}
-		newOpts.inJustDecodeBounds = false;
+		LogUtil.e("newOpts.outWidth = " + newOpts.outWidth);
+		LogUtil.e("newOpts.outHeight = " + newOpts.outHeight);
 		int w = newOpts.outWidth;
 		int h = newOpts.outHeight;
 		float hh = 800f;//
@@ -158,20 +156,15 @@ public class ImageUtil {
 		} else if (w < h && h > hh) {
 			be = (int) (newOpts.outHeight / hh);
 		}
-		if (be <= 0)
+		if (be <= 0) {
 			be = 1;
-		newOpts.inSampleSize = be;// 设置采样率
+		}
+		newOpts.inSampleSize = be ;// 设置采样率
 		newOpts.inPreferredConfig = Config.ARGB_8888;// 该模式是默认的,可不设
 		newOpts.inPurgeable = true;// 同时设置才会有效
 		newOpts.inInputShareable = true;// 。当系统内存不够时候图片自动被回收
 		newOpts.inJustDecodeBounds = false;
 		bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
-		File file = new File(srcPath);
-
-		bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-		if (bitmap == null) {
-			LogUtil.e("inJustDecodeBounds = false;bitmap = null");
-		}
 		// return compressBmpFromBmp(bitmap);//原来的方法调用了这个方法企图进行二次压缩
 		// 其实是无效的,大家尽管尝试
 		return bitmap;

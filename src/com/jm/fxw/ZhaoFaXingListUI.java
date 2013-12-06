@@ -258,6 +258,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		v.setBackgroundResource(R.drawable.left_bg1);
 		((Button) v).setTextColor(Color.rgb(240, 28, 97));
 		adapter.clear();
+		this.mlist.clear();
 		this.condition = condition;
 		page = 1;
 		pageCount = 0;

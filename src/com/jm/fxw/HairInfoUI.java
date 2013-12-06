@@ -19,12 +19,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,6 +87,10 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	private EditText ed_comment;
 	private Handler mHandler;
 	private String usertype;
+
+	private Button ok;
+	private Button cancel;
+	private Dialog dialog;
 	private int inthid;
 	private int galleryindex;
 	private static final String SCOPE = "get_simple_userinfo,add_share";
@@ -262,7 +268,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			}
 			if (sm.isLogin()) {
 				/*
-				 * 取消输入法
+				 * 输入法
 				 */
 				InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 				inputMethodManager.hideSoftInputFromWindow(HairInfoUI.this
@@ -342,10 +348,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			}
 		}
 	}
-
-	private Button ok;
-	private Button cancel;
-	private Dialog dialog;
 
 	private void ShowDialog() {
 		View dialogView = LayoutInflater.from(HairInfoUI.this).inflate(
@@ -1066,6 +1068,19 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		// LogUtil.e("onPageSelected currentPosition = " + currentPosition);
 		// oldPosition = currentPosition;
 		haircallback.addLarge(alist.get(currentPage).getPic());
+		try {
+
+			haircallback.addLarge(alist.get(currentPage - 1).getPic());
+			haircallback.addLarge(alist.get(currentPage + 1).getPic());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		try {
+			haircallback.addLarge(alist.get(currentPage - 2).getPic());
+			haircallback.addLarge(alist.get(currentPage + 2).getPic());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		haircallback.checkPictureTask(HairInfoUI.this);
 		// 每当页数发生改变时重新设定一遍当前的页数和总页数
 		pageText.setText((currentPage + 1) + "/" + imageUrls.size());
@@ -1074,6 +1089,8 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			new getHairInfoTask().execute();
 		}
 	}
+
+	Bitmap bitmap = null;
 
 	/**
 	 * ViewPager的适配器
@@ -1087,11 +1104,17 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 			String imagePath = ImageUtil.pictureStringExists(imageUrls
 					.get(position));
-			Bitmap bitmap = null;
-			if (!"".equals(imagePath)) {
-				bitmap = BitmapFactory.decodeFile(imagePath);
+			// Options ops = new Options();
+			// ops.inDensity = DisplayMetrics.DENSITY_DEFAULT;
+			// ops.inSampleSize = 2;
+			// ops.inScaled = true;
+			// ops.inPreferredConfig = Bitmap.Config.RGB_565;
+			// ops.inPurgeable = true;
+			// ops.inInputShareable = true;
+			LogUtil.e("imagePath = " + imagePath);
+			bitmap = ImageUtil.compressImageFromFile(imagePath);
+			// bitmap = BitmapFactory.decodeFile(imagePath, ops);
 
-			}
 			if (bitmap == null) {
 				bitmap = BitmapFactory.decodeResource(getResources(),
 						R.drawable.empty_photo);
@@ -1103,11 +1126,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			zoomImageView.setImageBitmap(bitmap);
 			container.addView(view);
 			return view;
-		}
-
-		@Override
-		public int getItemPosition(Object object) {
-			return POSITION_NONE;
 		}
 
 		@Override
