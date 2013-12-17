@@ -23,7 +23,6 @@ public class FaXingShiAdapter extends BaseAdapter implements OnClickListener {
 	private LayoutInflater inflater;
 	private List<FaXingShi> mlist;
 	private Context context;
-
 	public boolean isDianPu = false;
 	private boolean isProgress = false;
 

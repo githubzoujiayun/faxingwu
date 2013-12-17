@@ -181,6 +181,7 @@
                         android:layout_gravity="bottom|right"
                         android:layout_marginBottom="5sp"
                         android:layout_marginRight="10sp"
+                        android:visibility="gone"
                         android:background="@drawable/ditu" />
                 </FrameLayout>
             </LinearLayout>
@@ -197,7 +198,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/shape_blue"
                     android:scaleType="fitXY"
-                    android:text="认  证"
+                    android:text="认  证  沙  龙"
                     android:textColor="@color/white" />
             </LinearLayout>
         </LinearLayout>

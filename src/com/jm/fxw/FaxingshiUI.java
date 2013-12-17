@@ -116,7 +116,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 			StartActivityContController.goPage(this,
 					StartActivityContController.wode);
 			break;
-
 		}
 	}
 

@@ -34,7 +34,7 @@ public class RenZheng extends FinalActivity {
 	Button btn_renzheng;
 	private SessionManager sm;
 
-	private double lng = 0, lat = 0;
+//	private double lng = 0, lat = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +96,8 @@ public class RenZheng extends FinalActivity {
 							.getString("telephone"));
 					((EditText) findViewById(R.id.tv_daddress)).setText(jb
 							.getString("store_address"));
-					lng = jb.getDouble("lng");
-					lat = jb.getDouble("lat");
+//					lng = jb.getDouble("lng");
+//					lat = jb.getDouble("lat");
 				} catch (JSONException e) {
 
 				}
@@ -106,22 +106,21 @@ public class RenZheng extends FinalActivity {
 		}
 	}
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode,
-			Intent intent) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, intent);
-
-		LogUtil.i("requestCode = " + requestCode);
-		LogUtil.i("intent = " + intent);
-		LogUtil.i("resultCode = " + resultCode);
-		if (resultCode == RESULT_OK && intent != null) {
-			lng = intent.getDoubleExtra("lng", 0);
-			lat = intent.getDoubleExtra("lat", 0);
-			LogUtil.i("lng = " + lng);
-			LogUtil.i("lat = " + lat);
-		}
-	}
+//	protected void onActivityResult(int requestCode, int resultCode,
+//			Intent intent) {
+//		// TODO Auto-generated method stub
+//		super.onActivityResult(requestCode, resultCode, intent);
+//
+//		LogUtil.i("requestCode = " + requestCode);
+//		LogUtil.i("intent = " + intent);
+//		LogUtil.i("resultCode = " + resultCode);
+//		if (resultCode == RESULT_OK && intent != null) {
+//			lng = intent.getDoubleExtra("lng", 0);
+//			lat = intent.getDoubleExtra("lat", 0);
+//			LogUtil.i("lng = " + lng);
+//			LogUtil.i("lat = " + lat);
+//		}
+//	}
 
 	/*
 	 * 设置店铺信息
@@ -142,8 +141,8 @@ public class RenZheng extends FinalActivity {
 					.getText().toString().trim());
 			map.put("telephone", ((EditText) findViewById(R.id.tv_dphone))
 					.getText().toString().trim());
-			map.put("lng", lng);
-			map.put("lat", lat);
+//			map.put("lng", lng);
+//			map.put("lat", lat);
 			return map;
 		}
 
@@ -174,11 +173,11 @@ public class RenZheng extends FinalActivity {
 
 	public void Click(View v) {
 		switch (v.getId()) {
-		case R.id.btn_getLocation:
-
-			Intent i = new Intent(RenZheng.this, MapActivity.class);
-			startActivityForResult(i, 101);
-			break;
+//		case R.id.btn_getLocation:
+//
+//			Intent i = new Intent(RenZheng.this, MapActivity.class);
+//			startActivityForResult(i, 101);
+//			break;
 		case R.id.btn_leftTop:
 			finish();
 			break;
@@ -209,10 +208,10 @@ public class RenZheng extends FinalActivity {
 			TispToastFactory.getToast(RenZheng.this, "请输入店铺详细地址").show();
 			return false;
 		}
-		if (lng == 0 || lat == 0) {
-			TispToastFactory.getToast(RenZheng.this, "请标记店铺具体位置").show();
-			return false;
-		}
+//		if (lng == 0 || lat == 0) {
+//			TispToastFactory.getToast(RenZheng.this, "请标记店铺具体位置").show();
+//			return false;
+//		}
 		return true;
 	}
 }

@@ -144,8 +144,6 @@ public class ImageUtil {
 		BitmapFactory.Options newOpts = new BitmapFactory.Options();
 		newOpts.inJustDecodeBounds = true;// 只读边,不读内容
 		Bitmap bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
-		LogUtil.e("newOpts.outWidth = " + newOpts.outWidth);
-		LogUtil.e("newOpts.outHeight = " + newOpts.outHeight);
 		int w = newOpts.outWidth;
 		int h = newOpts.outHeight;
 		float hh = 800f;//
@@ -159,7 +157,7 @@ public class ImageUtil {
 		if (be <= 0) {
 			be = 1;
 		}
-		newOpts.inSampleSize = be ;// 设置采样率
+		newOpts.inSampleSize = be;// 设置采样率
 		newOpts.inPreferredConfig = Config.ARGB_8888;// 该模式是默认的,可不设
 		newOpts.inPurgeable = true;// 同时设置才会有效
 		newOpts.inInputShareable = true;// 。当系统内存不够时候图片自动被回收

@@ -1111,9 +1111,9 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			// ops.inPreferredConfig = Bitmap.Config.RGB_565;
 			// ops.inPurgeable = true;
 			// ops.inInputShareable = true;
-			LogUtil.e("imagePath = " + imagePath);
-			bitmap = ImageUtil.compressImageFromFile(imagePath);
-			// bitmap = BitmapFactory.decodeFile(imagePath, ops);
+			// LogUtil.e("imagePath = " + imagePath);
+			// bitmap = ImageUtil.compressImageFromFile(imagePath);
+			bitmap = BitmapFactory.decodeFile(imagePath);
 
 			if (bitmap == null) {
 				bitmap = BitmapFactory.decodeResource(getResources(),
