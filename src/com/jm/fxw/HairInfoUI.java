@@ -96,7 +96,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	private static final String SCOPE = "get_simple_userinfo,add_share";
 	// /////////////////////////////////////////s
 	private SharedPreferences mSharedPreferences;
-	private ViewPagerAdapter adapter;
+	private ViewPagerAdapter viewPagerAdapter;
 	private boolean isPushIn;
 	// 初始化参数
 	// private SamplePagerAdapter spa;
@@ -118,7 +118,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
 		haircallback = new HairTaskCallback();
-		adapter = new ViewPagerAdapter();
+		viewPagerAdapter = new ViewPagerAdapter();
 		// 初始化缓存对象.S
 		mSharedPreferences = getSharedPreferences(getPackageName(),
 				MODE_PRIVATE);
@@ -173,7 +173,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		Intent intent = getIntent();
 		inthid = intent.getIntExtra("id", 0);
 		alist = (ArrayList<Hair>) intent.getSerializableExtra("hlist");
-		LogUtil.e("alist.size() = " + alist.size());
 		if (alist.size() == 0) {
 			finish();
 		}
@@ -210,7 +209,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		pageText = (TextView) findViewById(R.id.tv_mainhead);
 		viewPager = (ViewPager) findViewById(R.id.photoview);
 
-		viewPager.setAdapter(adapter);
+		viewPager.setAdapter(viewPagerAdapter);
 		viewPager.setOnPageChangeListener(this);
 		viewPager.setEnabled(false);
 		for (int index = 0; index < alist.size(); index++) {
@@ -452,7 +451,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			if (isInterrupted()) {
 				return;
 			}
-			adapter.notifyDataSetChanged();
+			viewPagerAdapter.notifyDataSetChanged();
 		}
 	}
 
@@ -1068,19 +1067,19 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		// LogUtil.e("onPageSelected currentPosition = " + currentPosition);
 		// oldPosition = currentPosition;
 		haircallback.addLarge(alist.get(currentPage).getPic());
-		try {
-
-			haircallback.addLarge(alist.get(currentPage - 1).getPic());
-			haircallback.addLarge(alist.get(currentPage + 1).getPic());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		try {
-			haircallback.addLarge(alist.get(currentPage - 2).getPic());
-			haircallback.addLarge(alist.get(currentPage + 2).getPic());
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		// try {
+		//
+		// haircallback.addLarge(alist.get(currentPage - 1).getPic());
+		// haircallback.addLarge(alist.get(currentPage + 1).getPic());
+		// } catch (Exception e) {
+		// // TODO: handle exception
+		// }
+		// try {
+		// haircallback.addLarge(alist.get(currentPage - 2).getPic());
+		// haircallback.addLarge(alist.get(currentPage + 2).getPic());
+		// } catch (Exception e) {
+		// // TODO: handle exception
+		// }
 		haircallback.checkPictureTask(HairInfoUI.this);
 		// 每当页数发生改变时重新设定一遍当前的页数和总页数
 		pageText.setText((currentPage + 1) + "/" + imageUrls.size());
@@ -1098,6 +1097,22 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	 * @author guolin
 	 */
 	class ViewPagerAdapter extends PagerAdapter {
+		private int mChildCount = 0;
+
+		@Override
+		public void notifyDataSetChanged() {
+			mChildCount = getCount();
+			super.notifyDataSetChanged();
+		}
+
+		@Override
+		public int getItemPosition(Object object) {
+			if (mChildCount > 0) {
+				mChildCount--;
+				return POSITION_NONE;
+			}
+			return super.getItemPosition(object);
+		}
 
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
@@ -1111,9 +1126,8 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			// ops.inPreferredConfig = Bitmap.Config.RGB_565;
 			// ops.inPurgeable = true;
 			// ops.inInputShareable = true;
-			// LogUtil.e("imagePath = " + imagePath);
-			// bitmap = ImageUtil.compressImageFromFile(imagePath);
-			bitmap = BitmapFactory.decodeFile(imagePath);
+			bitmap = ImageUtil.compressImageFromFile(imagePath);
+			// bitmap = BitmapFactory.decodeFile(imagePath);
 
 			if (bitmap == null) {
 				bitmap = BitmapFactory.decodeResource(getResources(),
