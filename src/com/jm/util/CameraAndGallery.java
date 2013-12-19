@@ -139,7 +139,7 @@ public class CameraAndGallery {
 		// + baos.toByteArray().length / 1024);
 		// }
 		// LogUtil.e("Í¼Æ¬Ñ¹ËõÍê³É = " + bitmap.getRowBytes());
-		bitmap.compress(CompressFormat.JPEG, 80, m_fileOutPutStream);
+		bitmap.compress(CompressFormat.JPEG, 100, m_fileOutPutStream);
 		try {
 			m_fileOutPutStream.flush();
 			m_fileOutPutStream.close();
