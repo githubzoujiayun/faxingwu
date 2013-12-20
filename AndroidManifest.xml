@@ -207,7 +207,7 @@
         <service android:name="com.jm.service.PushService"/>
 
         <meta-data android:name="CNZZ_APP_KEY" android:value="cnzz.a_pmpyc9i74iwdu8jvmy4yioz3"/>
-        <meta-data android:name="CNZZ_CHANNEL_ID" android:value="安智"/>
+        <meta-data android:name="CNZZ_CHANNEL_ID" android:value="华为"/>
     </application>
 
 </manifest>

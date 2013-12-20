@@ -18,7 +18,7 @@ import com.jm.util.LogUtil;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 	private static final String DATABASE_NAME = "fwx.db";
-	private static final int DATABASE_VERSION = 24;
+	private static final int DATABASE_VERSION = 27;
 	private Dao<Hair, String> hairDao = null;
 
 	private Dao<DongTai, String> dongTaiDao = null;
