@@ -146,8 +146,8 @@ public class ImageUtil {
 		Bitmap bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
 		int w = newOpts.outWidth;
 		int h = newOpts.outHeight;
-		float hh = 800f;//
-		float ww = 480f;//
+		float hh = 960f;//
+		float ww = 640f;//
 		int be = 1;
 		if (w > h && w > ww) {
 			be = (int) (newOpts.outWidth / ww);

@@ -43,17 +43,33 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
-                    <Button
-                        android:id="@+id/btn_dongtai_info"
-                        android:layout_width="60sp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2sp"
-                        android:layout_marginRight="3sp"
                         android:background="@drawable/shape"
-                        android:textColor="#ffffff"
-                        android:textSize="12sp" />
+                        android:orientation="horizontal" >
+
+                        <ImageView
+                            android:layout_width="15sp"
+                            android:layout_height="15sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5sp"
+                            android:layout_marginRight="5sp"
+                            android:src="@drawable/dongtailike" />
+
+                        <Button
+                            android:id="@+id/btn_dongtai_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="5sp"
+                            android:background="@drawable/shape"
+                            android:textColor="#ffffff"
+                            android:textSize="12sp" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_dongtai_info"

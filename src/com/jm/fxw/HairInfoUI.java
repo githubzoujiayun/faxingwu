@@ -8,9 +8,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.tsz.afinal.FinalBitmap;
+
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import uk.co.senab.photoview.PhotoView;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -71,7 +75,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		OnPageChangeListener {
 
 	private PictureTaskCallback callback;
-	private HairTaskCallback haircallback;
 	private String url;
 	private String to_uid = "";
 	private ArrayList<Hair> alist = new ArrayList<Hair>();
@@ -117,8 +120,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
-		haircallback = new HairTaskCallback();
-		viewPagerAdapter = new ViewPagerAdapter();
+		viewPagerAdapter = new ViewPagerAdapter(this);
 		// 初始化缓存对象.S
 		mSharedPreferences = getSharedPreferences(getPackageName(),
 				MODE_PRIVATE);
@@ -146,7 +148,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	protected void onPause() {
 		super.onPause();
 		MobileProbe.onPause(this, "发型图册页面");
-		haircallback.interrupt();
+
 	}
 
 	@Override
@@ -258,27 +260,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 					HairItemInfoUI.class, true, map);
 			break;
 
-		case R.id.btn_ok:
-			/*
-			 * 发布评论
-			 */
-			if ("".equals(ed_comment.getText().toString().trim())) {
-				TispToastFactory.getToast(HairInfoUI.this, "请输入评论内容").show();
-			}
-			if (sm.isLogin()) {
-				/*
-				 * 输入法
-				 */
-				InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				inputMethodManager.hideSoftInputFromWindow(HairInfoUI.this
-						.getCurrentFocus().getWindowToken(),
-						InputMethodManager.HIDE_NOT_ALWAYS);
-
-				new PublicCommentTask().execute();
-			} else {
-				goLoginPage(intent);
-			}
-			break;
 		case R.id.lin_xihuan:
 			/*
 			 * 点击喜欢
@@ -303,7 +284,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			StartActivityContController.goPage(HairInfoUI.this,
 					HisInfoUI.class, false, map);
 		}
-
 	}
 
 	/*
@@ -441,18 +421,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		};
 
 		mTencent.login(HairInfoUI.this, SCOPE, listener);
-	}
-
-	class HairTaskCallback extends com.jm.connection.AbstractPictureCallback {
-
-		@Override
-		public void loaded(com.jm.connection.PictureObject pObj) {
-
-			if (isInterrupted()) {
-				return;
-			}
-			viewPagerAdapter.notifyDataSetChanged();
-		}
 	}
 
 	class PictureTaskCallback extends com.jm.connection.AbstractPictureCallback {
@@ -1066,7 +1034,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	public void onPageSelected(int currentPage) {
 		// LogUtil.e("onPageSelected currentPosition = " + currentPosition);
 		// oldPosition = currentPosition;
-		haircallback.addLarge(alist.get(currentPage).getPic());
+		// haircallback.addLarge(alist.get(currentPage).getPic());
 		// try {
 		//
 		// haircallback.addLarge(alist.get(currentPage - 1).getPic());
@@ -1080,7 +1048,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		// } catch (Exception e) {
 		// // TODO: handle exception
 		// }
-		haircallback.checkPictureTask(HairInfoUI.this);
+		// haircallback.checkPictureTask(HairInfoUI.this);
 		// 每当页数发生改变时重新设定一遍当前的页数和总页数
 		pageText.setText((currentPage + 1) + "/" + imageUrls.size());
 		if (alist.get(galleryindex).getId() != alist.get(currentPage).getId()) {
@@ -1098,47 +1066,51 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	 */
 	class ViewPagerAdapter extends PagerAdapter {
 		private int mChildCount = 0;
+		private Context context;
 
-		@Override
-		public void notifyDataSetChanged() {
-			mChildCount = getCount();
-			super.notifyDataSetChanged();
+		public ViewPagerAdapter(Context context) {
+			this.context = context;
 		}
 
-		@Override
-		public int getItemPosition(Object object) {
-			if (mChildCount > 0) {
-				mChildCount--;
-				return POSITION_NONE;
-			}
-			return super.getItemPosition(object);
-		}
+		// @Override
+		// public void notifyDataSetChanged() {
+		// mChildCount = getCount();
+		// super.notifyDataSetChanged();
+		// }
+		//
+		//
+		//
+		// @Override
+		// public int getItemPosition(Object object) {
+		// if (mChildCount > 0) {
+		// mChildCount--;
+		// return POSITION_NONE;
+		// }
+		// return super.getItemPosition(object);
+		// }
 
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
 
-			String imagePath = ImageUtil.pictureStringExists(imageUrls
-					.get(position));
+			// String imagePath = ImageUtil.pictureStringExists(imageUrls
+			// .get(position));
 			// Options ops = new Options();
-			// ops.inDensity = DisplayMetrics.DENSITY_DEFAULT;
-			// ops.inSampleSize = 2;
-			// ops.inScaled = true;
-			// ops.inPreferredConfig = Bitmap.Config.RGB_565;
-			// ops.inPurgeable = true;
-			// ops.inInputShareable = true;
-			bitmap = ImageUtil.compressImageFromFile(imagePath);
-			// bitmap = BitmapFactory.decodeFile(imagePath);
-
-			if (bitmap == null) {
-				bitmap = BitmapFactory.decodeResource(getResources(),
-						R.drawable.empty_photo);
-			}
+			// ops.inScaled = false;
+			// ops.inSampleSize = 1;
+			//
+			// bitmap = BitmapFactory.decodeFile(imagePath, ops);
+			//
+			// if (bitmap == null) {
+			// bitmap = BitmapFactory.decodeResource(getResources(),
+			// R.drawable.empty_photo);
+			// }
 			View view = LayoutInflater.from(HairInfoUI.this).inflate(
 					R.layout.zoom_image_layout, null);
-			ZoomImageView zoomImageView = (ZoomImageView) view
-					.findViewById(R.id.zoom_image_view);
-			zoomImageView.setImageBitmap(bitmap);
+			FinalBitmap.create(context).display(
+					view.findViewById(R.id.zoom_image_view),
+					imageUrls.get(position));
 			container.addView(view);
+
 			return view;
 		}
 
