@@ -49,39 +49,31 @@
             android:id="@+id/lin_fenlei"
             android:layout_width="fill_parent"
             android:layout_height="39sp"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
+            android:layout_margin="5sp"
+            android:background="@drawable/shape_white"
             android:gravity="center"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp" >
 
             <Button
                 android:id="@+id/btn_zuixin"
                 android:layout_width="fill_parent"
                 android:layout_height="39sp"
                 android:layout_weight="1"
-                android:background="@drawable/left_bg"
+                android:background="@color/white"
                 android:gravity="center"
                 android:text="最新"
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btn_tongcheng"
-                android:layout_width="fill_parent"
-                android:layout_height="39sp"
-                android:layout_weight="1"
-                android:background="@drawable/center_bg"
-                android:gravity="center"
-                android:text="同城"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
 
             <Button
                 android:id="@+id/btn_tuijian"
                 android:layout_width="fill_parent"
                 android:layout_height="39sp"
                 android:layout_weight="1"
-                android:background="@drawable/right_bg"
+                android:background="@color/white"
                 android:gravity="center"
                 android:text="推荐"
                 android:textColor="#ffffff"

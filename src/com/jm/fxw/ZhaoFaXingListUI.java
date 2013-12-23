@@ -103,7 +103,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private void init() {
 
 		findViewById(R.id.btn_zuixin).setOnClickListener(this);
-		findViewById(R.id.btn_tongcheng).setOnClickListener(this);
 		findViewById(R.id.btn_tuijian).setOnClickListener(this);
 		ResetButtonBg();
 		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color.rgb(240,
@@ -159,7 +158,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 			map.put("uid", sm.getUserId());
 			map.put("cid", type);
 			map.put("condition", condition);
-			map.put("city_name", sm.getCity());
 			return map;
 		}
 
@@ -242,9 +240,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		case R.id.btn_zuixin:
 			changeCondition("new", v);
 			break;
-		case R.id.btn_tongcheng:
-			changeCondition("city", v);
-			break;
 		case R.id.btn_tuijian:
 			changeCondition("recommend", v);
 			break;
@@ -265,8 +260,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private void ResetButtonBg() {
 		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color
 				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_tongcheng)).setTextColor(Color.rgb(0,
-				0, 0));
 		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Color.rgb(0, 0,
 				0));
 	}
