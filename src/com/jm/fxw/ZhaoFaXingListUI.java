@@ -57,8 +57,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		init();
 		sm = SessionManager.getInstance();
 		ListView = (GridView) findViewById(R.id.zhaofaxing_hairgridview);
-		adapter = new HairAdapter(this, getWindow().getWindowManager()
-				.getDefaultDisplay().getWidth());
+		adapter = new HairAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);

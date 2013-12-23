@@ -1,5 +1,7 @@
 package com.jm.finals;
 
+import android.graphics.Color;
+
 /**
  * 用来定义常量
  * 
@@ -150,5 +152,7 @@ public class Constant {
 	public static final String APP_END = ".apk";
 
 	public static final String ENCODING = "UTF-8";
+	public static final int color_RoseRed = Color.rgb(240, 28, 97);
+	public static final int color_Gary = Color.rgb(111, 111, 111);
 
 }

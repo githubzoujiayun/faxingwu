@@ -9,16 +9,15 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,13 +26,14 @@ import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
+import com.jm.sort.HairTypeAdapter;
+import com.jm.util.HairTypeUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 
-public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
-	private SharedPreferences share;
-	private SharedPreferences.Editor editor;
-	private SessionManager sm;
+public class ZhaofaxingUI extends FinalActivity implements OnClickListener,
+		OnItemClickListener {
+
 	@ViewInject(id = R.id.lin_guangchang, click = "Click")
 	LinearLayout lin_guangchang;
 	@ViewInject(id = R.id.lin_zhaofaxing, click = "Click")
@@ -44,12 +44,13 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 	LinearLayout lin_wode;
 
 	private long firstTime = 0;
-	private int Calendar_Width = 0;
-	private int Cell_Width = 0;
+	private GridView gv_hairtype;
+	private HairTypeUtil hairTypeUtil;
+	private HairTypeAdapter hairTypeAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zhaofaxing);
 		CheckUpdate checkUpdate = new CheckUpdate(ZhaofaxingUI.this);
@@ -57,24 +58,25 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		checkUpdate.check();
 		init();
 		new UpLoadCrashLog().execute();
+		setFirstType(1);
 	}
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "发型分类页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "发型分类页面");
 	}
 
 	private void setInco() {
-		
+
 		findViewById(R.id.iv_zhaofaxing).setBackgroundResource(
 				R.drawable.zhaofaxing1);
 		((TextView) findViewById(R.id.tv_zhaofaxing)).setTextColor(Color
@@ -82,37 +84,133 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 
 	}
 
+	private void setFirstType(int FirstTypeIndex) {
+		ResetFirstType();
+		switch (FirstTypeIndex) {
+		case 1:
+
+			findViewById(R.id.iv_recommend).setBackgroundResource(
+					R.drawable.icon_recommend);
+			((TextView) findViewById(R.id.tv_recommend))
+					.setTextColor(Constant.color_RoseRed);
+			findViewById(R.id.iv_recommend_type_triangle).setVisibility(
+					View.VISIBLE);
+			hairTypeAdapter.setHairList(hairTypeUtil.getrecommendList());
+
+			break;
+		case 2:
+
+			findViewById(R.id.iv_women).setBackgroundResource(
+					R.drawable.icon_women);
+			((TextView) findViewById(R.id.tv_women))
+					.setTextColor(Constant.color_RoseRed);
+			findViewById(R.id.iv_women_type_triangle).setVisibility(
+					View.VISIBLE);
+			hairTypeAdapter.setHairList(hairTypeUtil.getwomenList());
+			break;
+		case 3:
+
+			findViewById(R.id.iv_man)
+					.setBackgroundResource(R.drawable.icon_man);
+			((TextView) findViewById(R.id.tv_man))
+					.setTextColor(Constant.color_RoseRed);
+			findViewById(R.id.iv_man_type_triangle).setVisibility(View.VISIBLE);
+			hairTypeAdapter.setHairList(hairTypeUtil.getmanList());
+			break;
+		case 4:
+
+			findViewById(R.id.iv_facetype).setBackgroundResource(
+					R.drawable.icon_facetype);
+			((TextView) findViewById(R.id.tv_facetype))
+					.setTextColor(Constant.color_RoseRed);
+			findViewById(R.id.iv_facetype_type_triangle).setVisibility(
+					View.VISIBLE);
+			hairTypeAdapter.setHairList(hairTypeUtil.getfacetypeList());
+			break;
+		case 5:
+
+			findViewById(R.id.iv_perm).setBackgroundResource(
+					R.drawable.icon_perm);
+			((TextView) findViewById(R.id.tv_perm))
+					.setTextColor(Constant.color_RoseRed);
+			findViewById(R.id.iv_perm_type_triangle)
+					.setVisibility(View.VISIBLE);
+			hairTypeAdapter.setHairList(hairTypeUtil.getpermList());
+			break;
+		case 6:
+
+			findViewById(R.id.iv_color).setBackgroundResource(
+					R.drawable.icon_color);
+			((TextView) findViewById(R.id.tv_color))
+					.setTextColor(Constant.color_RoseRed);
+			findViewById(R.id.iv_color_type_triangle).setVisibility(
+					View.VISIBLE);
+			hairTypeAdapter.setHairList(hairTypeUtil.getcolorList());
+			break;
+		}
+		hairTypeAdapter.notifyDataSetChanged();
+	}
+
+	private void ResetFirstType() {
+		((TextView) findViewById(R.id.tv_recommend))
+				.setTextColor(Constant.color_Gary);
+		((TextView) findViewById(R.id.tv_women))
+				.setTextColor(Constant.color_Gary);
+		((TextView) findViewById(R.id.tv_man))
+				.setTextColor(Constant.color_Gary);
+		((TextView) findViewById(R.id.tv_facetype))
+				.setTextColor(Constant.color_Gary);
+		((TextView) findViewById(R.id.tv_perm))
+				.setTextColor(Constant.color_Gary);
+		((TextView) findViewById(R.id.tv_color))
+				.setTextColor(Constant.color_Gary);
+		findViewById(R.id.iv_recommend).setBackgroundResource(
+				R.drawable.icon_recommend1);
+		findViewById(R.id.iv_women).setBackgroundResource(
+				R.drawable.icon_women1);
+		findViewById(R.id.iv_man).setBackgroundResource(R.drawable.icon_man1);
+		findViewById(R.id.iv_facetype).setBackgroundResource(
+				R.drawable.icon_facetype1);
+		findViewById(R.id.iv_perm).setBackgroundResource(R.drawable.icon_perm1);
+		findViewById(R.id.iv_color).setBackgroundResource(
+				R.drawable.icon_color1);
+		findViewById(R.id.iv_recommend_type_triangle).setVisibility(
+				View.INVISIBLE);
+		findViewById(R.id.iv_women_type_triangle).setVisibility(View.INVISIBLE);
+		findViewById(R.id.iv_man_type_triangle).setVisibility(View.INVISIBLE);
+		findViewById(R.id.iv_facetype_type_triangle).setVisibility(
+				View.INVISIBLE);
+		findViewById(R.id.iv_perm_type_triangle).setVisibility(View.INVISIBLE);
+		findViewById(R.id.iv_color_type_triangle).setVisibility(View.INVISIBLE);
+
+	}
+
 	private void init() {
 		setInco();
-		sm = SessionManager.getInstance();
-		share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
-		editor = share.edit();
+		findViewById(R.id.lin_recommend).setOnClickListener(this);
+		findViewById(R.id.lin_women).setOnClickListener(this);
+		findViewById(R.id.lin_man).setOnClickListener(this);
+		findViewById(R.id.lin_facetype).setOnClickListener(this);
+		findViewById(R.id.lin_perm).setOnClickListener(this);
+		findViewById(R.id.lin_color).setOnClickListener(this);
 
-		// 获得屏幕宽和高，并計算出屏幕寬度分七等份的大小
-		WindowManager windowManager = getWindowManager();
-		Display display = windowManager.getDefaultDisplay();
-		int screenWidth = display.getWidth();
-		Calendar_Width = screenWidth - 40;
-		Cell_Width = Calendar_Width / 2 + 1;
-		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-				Cell_Width, Cell_Width);
-
-		findViewById(R.id.fl_duanfa).setOnClickListener(this);
-		findViewById(R.id.fl_zhongfa).setOnClickListener(this);
-		findViewById(R.id.fl_changfa).setOnClickListener(this);
-		findViewById(R.id.fl_panfa).setOnClickListener(this);
-		findViewById(R.id.fl_nanfa).setOnClickListener(this);
-		findViewById(R.id.fl_quanbu).setOnClickListener(this);
-		findViewById(R.id.fl_shoucang).setOnClickListener(this);
+		gv_hairtype = (GridView) findViewById(R.id.gv_hairtype);
+		gv_hairtype.setOnItemClickListener(this);
+		hairTypeAdapter = new HairTypeAdapter(this);
+		gv_hairtype.setAdapter(hairTypeAdapter);
+		hairTypeUtil = new HairTypeUtil();
+		// sm = SessionManager.getInstance();
+		// share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
+		// editor = share.edit();
 		//
-		findViewById(R.id.fl_duanfa).setLayoutParams(lp);
-		findViewById(R.id.fl_zhongfa).setLayoutParams(lp);
-		findViewById(R.id.fl_changfa).setLayoutParams(lp);
-		findViewById(R.id.fl_panfa).setLayoutParams(lp);
-		findViewById(R.id.fl_nanfa).setLayoutParams(lp);
-		findViewById(R.id.fl_quanbu).setLayoutParams(lp);
-		findViewById(R.id.fl_shoucang).setLayoutParams(lp);
-		findViewById(R.id.fl_shoucang2).setLayoutParams(lp);
+		// // 获得屏幕宽和高，并計算出屏幕寬度分七等份的大小
+		// WindowManager windowManager = getWindowManager();
+		// Display display = windowManager.getDefaultDisplay();
+		// int screenWidth = display.getWidth();
+		// Calendar_Width = screenWidth - 40;
+		// Cell_Width = Calendar_Width / 2 + 1;
+		// LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+		// Cell_Width, Cell_Width);
 
 	}
 
@@ -133,43 +231,6 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 		case R.id.lin_wode:
 			StartActivityContController.goPage(ZhaofaxingUI.this,
 					StartActivityContController.wode);
-			break;
-
-		}
-	}
-
-	@Override
-	public void onClick(View v) {
-		Intent intent = new Intent();
-		intent.setClass(this, ZhaoFaXingListUI.class);
-		switch (v.getId()) {
-		case R.id.fl_duanfa:
-			intent.putExtra("type", "1");
-			startActivity(intent);
-			break;
-		case R.id.fl_zhongfa:
-			intent.putExtra("type", "2");
-			startActivity(intent);
-			break;
-		case R.id.fl_changfa:
-			intent.putExtra("type", "3");
-			startActivity(intent);
-			break;
-		case R.id.fl_panfa:
-			intent.putExtra("type", "4");
-			startActivity(intent);
-			break;
-		case R.id.fl_nanfa:
-			intent.putExtra("type", "5");
-			startActivity(intent);
-			break;
-		case R.id.fl_quanbu:
-			intent.putExtra("type", "6");
-			startActivity(intent);
-			break;
-		case R.id.fl_shoucang:
-			intent.putExtra("type", "7");
-			startActivity(intent);
 			break;
 
 		}
@@ -240,5 +301,39 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 			}
 		}
 		return super.onKeyUp(keyCode, event);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.lin_recommend:
+			setFirstType(1);
+			break;
+		case R.id.lin_women:
+			setFirstType(2);
+			break;
+		case R.id.lin_man:
+			setFirstType(3);
+			break;
+		case R.id.lin_facetype:
+			setFirstType(4);
+			break;
+		case R.id.lin_perm:
+			setFirstType(5);
+			break;
+		case R.id.lin_color:
+			setFirstType(6);
+			break;
+		default:
+			break;
+		}
+
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		// TODO Auto-generated method stub
+
 	}
 }

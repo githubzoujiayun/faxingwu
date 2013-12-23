@@ -105,7 +105,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_marginTop="10sp"
-                android:background="@drawable/bigedit_bg"
+                android:background="@drawable/shape_white"
                 android:gravity="left|top"
                 android:hint="请为您的问题添加描述"
                 android:padding="2sp" />

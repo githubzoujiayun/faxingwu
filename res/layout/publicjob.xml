@@ -166,7 +166,7 @@
                     android:id="@+id/et_jobnumber"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="center_vertical"
                     android:hint="请输入招聘人数"
                     android:padding="2sp" />
@@ -195,7 +195,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="center_vertical"
                     android:hint="请输入职位月薪"
                     android:padding="2sp" />
@@ -230,7 +230,7 @@
                     android:id="@+id/et_jobaddress"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="center_vertical"
                     android:hint="请输入店铺地址"
                     android:padding="2sp" />
@@ -258,7 +258,7 @@
                     android:id="@+id/et_jobstore_name"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="center_vertical"
                     android:hint="请输入沙龙名称"
                     android:padding="2sp" />
@@ -286,7 +286,7 @@
                     android:id="@+id/et_jobphone"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="center_vertical"
                     android:hint="请为联系电话"
                     android:inputType="number"

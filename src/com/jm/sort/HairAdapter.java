@@ -25,13 +25,11 @@ public class HairAdapter extends BaseAdapter {
 	private ImageView hairPic;
 	private boolean isProgress = false;
 
-	private int screenwidth = 0;
 
-	public HairAdapter(Context context, int screenwidth) {
+	public HairAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<Hair>();
 		hlist = new ArrayList<Hair>();
-		this.screenwidth = screenwidth;
 		this.context = context;
 	}
 

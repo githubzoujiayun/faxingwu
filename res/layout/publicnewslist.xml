@@ -79,7 +79,7 @@
                     android:layout_height="37sp"
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="center_vertical"
                     android:hint="请输入标题"
                     android:padding="2sp" />
@@ -118,7 +118,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="left|top"
                     android:hint="请输入内容"
                     android:padding="2sp" />
@@ -171,7 +171,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="left|top"
                     android:hint="请输入内容"
                     android:padding="2sp" />
@@ -225,7 +225,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="left|top"
                     android:hint="请输入内容"
                     android:padding="2sp" />
@@ -279,7 +279,7 @@
                     android:layout_height="fill_parent"
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
-                    android:background="@drawable/bigedit_bg"
+                    android:background="@drawable/shape_white"
                     android:gravity="left|top"
                     android:hint="请输入内容"
                     android:padding="2sp" />

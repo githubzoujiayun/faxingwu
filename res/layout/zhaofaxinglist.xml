@@ -67,7 +67,6 @@
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
 
-
             <Button
                 android:id="@+id/btn_tuijian"
                 android:layout_width="fill_parent"

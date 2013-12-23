@@ -11,45 +11,26 @@ public class Type implements ListItem {
 	 * 
 	 */
 	private static final long serialVersionUID = 3L;
-	private String name = "";
-	private String id = "";
+	public int firstType;
+	public int secondType;
+	public int picResource;
+	public String hairName;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+	public Type(int firstType, int secondType, int picResource, String hairName) {
+		this.firstType = firstType;
+		this.secondType = secondType;
+		this.picResource = picResource;
+		this.hairName = hairName;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public Type newObject() {
-		return new Type();
+		return null;
 	}
 
 	@Override
 	public void parseFromJson(JSONObject json) throws JSONException {
-		if (json.has("id")) {
-			setId(json.getString("id"));
-		}
-		if (json.has("name")) {
-//			try {
-//				setName(new String(json.getString("name").getBytes("UTF-8"),
-//						"GBK"));
-//			} catch (UnsupportedEncodingException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			setName(json.getString("name"));
-		}
+
 	}
 }

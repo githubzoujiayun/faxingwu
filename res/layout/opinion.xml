@@ -60,7 +60,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="15sp"
-                android:background="@drawable/bigedit_bg"
+                android:background="@drawable/shape_white"
                 android:gravity="top"
                 android:hint="请输入您的建议或者意见"
                 android:maxLength="300"
