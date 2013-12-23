@@ -40,7 +40,7 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyueinfo_user);
 		init();

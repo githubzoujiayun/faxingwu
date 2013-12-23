@@ -51,7 +51,7 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qingbao_user);
 		init();
@@ -70,14 +70,14 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+
 		super.onResume();
 		MobileProbe.onResume(this, "用户情报页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+
 		super.onPause();
 		MobileProbe.onPause(this, "用户情报页面");
 	}
@@ -91,7 +91,8 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 		ResetButtonBg();
 		((Button) findViewById(R.id.btn_quanbu))
 				.setBackgroundResource(R.drawable.left_bg1);
-		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Color.rgb(240,28,97));
+		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Color.rgb(240,
+				28, 97));
 	}
 
 	/*
@@ -101,7 +102,7 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+
 			super.onPreExecute();
 			if (adapter.getUserList() == null
 					|| adapter.getUserList().size() == 0) {
@@ -154,7 +155,7 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+
 		switch (v.getId()) {
 		case R.id.btn_quanbu:
 			changeCondition("4", v);
@@ -177,7 +178,7 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
 		v.setBackgroundResource(R.drawable.left_bg1);
-		((Button) v).setTextColor(Color.rgb(240,28,97));
+		((Button) v).setTextColor(Color.rgb(240, 28, 97));
 		adapter.clear();
 		this.news_type = condition;
 		page = 1;
@@ -222,7 +223,7 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		// TODO Auto-generated method stub{
+
 		if (showlast) {
 			return;
 		}
@@ -243,7 +244,6 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
 
 	}
 

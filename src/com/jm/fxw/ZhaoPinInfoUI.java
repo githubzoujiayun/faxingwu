@@ -1,7 +1,6 @@
 package com.jm.fxw;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
@@ -15,25 +14,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
-import com.jm.entity.Hair;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
-import com.jm.sort.SmallImageAdapter;
-import com.jm.util.JSONUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
-import com.jm.view.HorizontalListView;
 
 public class ZhaoPinInfoUI extends FinalActivity implements OnClickListener {
 	private String sid;
@@ -42,7 +32,7 @@ public class ZhaoPinInfoUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zhaopininfo);
 		initView();

@@ -38,7 +38,7 @@ public class RatingListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ratinglist);
 		init();
@@ -61,14 +61,14 @@ public class RatingListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "评价列表页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "评价列表页面");
 	}
@@ -86,7 +86,7 @@ public class RatingListUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+			
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -164,7 +164,7 @@ public class RatingListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
+		
 
 	}
 }

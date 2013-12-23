@@ -9,7 +9,6 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -38,7 +37,7 @@ public class RenZheng extends FinalActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.renzheng);
 		sm = SessionManager.getInstance();
@@ -47,14 +46,14 @@ public class RenZheng extends FinalActivity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "店铺认证页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "店铺认证页面");
 	}
@@ -105,22 +104,6 @@ public class RenZheng extends FinalActivity {
 			}
 		}
 	}
-
-//	protected void onActivityResult(int requestCode, int resultCode,
-//			Intent intent) {
-//		// TODO Auto-generated method stub
-//		super.onActivityResult(requestCode, resultCode, intent);
-//
-//		LogUtil.i("requestCode = " + requestCode);
-//		LogUtil.i("intent = " + intent);
-//		LogUtil.i("resultCode = " + resultCode);
-//		if (resultCode == RESULT_OK && intent != null) {
-//			lng = intent.getDoubleExtra("lng", 0);
-//			lat = intent.getDoubleExtra("lat", 0);
-//			LogUtil.i("lng = " + lng);
-//			LogUtil.i("lat = " + lat);
-//		}
-//	}
 
 	/*
 	 * 设置店铺信息

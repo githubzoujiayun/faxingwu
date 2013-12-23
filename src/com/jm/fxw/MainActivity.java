@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onAnimationRepeat(Animation animation) {
-				// TODO Auto-generated method stub
+				
 
 			}
 
@@ -98,14 +98,14 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "程序载入页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "程序载入页面");
 	}

@@ -19,11 +19,9 @@ import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Answer;
-import com.jm.entity.News;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.AnswerAdapter;
-import com.jm.sort.NewsAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 import com.jm.view.MyListView;
@@ -38,7 +36,7 @@ public class MyAnswerListUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionlist);
 		sm = SessionManager.getInstance();
@@ -58,14 +56,14 @@ public class MyAnswerListUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "回答列表页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "回答列表页面");
 	}

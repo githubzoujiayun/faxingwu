@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.util.Date;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
 
 import com.jm.session.SessionManager;
 

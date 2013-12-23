@@ -3,16 +3,16 @@ package com.jm.fxw;
 import java.io.File;
 import java.io.FileReader;
 
+import net.tsz.afinal.FinalActivity;
+import net.tsz.afinal.annotation.view.ViewInject;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import net.tsz.afinal.FinalActivity;
-import net.tsz.afinal.annotation.view.ViewInject;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.KeyEvent;
@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
-import com.jm.connection.Response;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
@@ -50,7 +49,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zhaofaxing);
 		CheckUpdate checkUpdate = new CheckUpdate(ZhaofaxingUI.this);
@@ -62,20 +61,20 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "发型分类页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "发型分类页面");
 	}
 
 	private void setInco() {
-		// TODO Auto-generated method stub
+		
 		findViewById(R.id.iv_zhaofaxing).setBackgroundResource(
 				R.drawable.zhaofaxing1);
 		((TextView) findViewById(R.id.tv_zhaofaxing)).setTextColor(Color

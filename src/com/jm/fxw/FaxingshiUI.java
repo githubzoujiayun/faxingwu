@@ -23,10 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;

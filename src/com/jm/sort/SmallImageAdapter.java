@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

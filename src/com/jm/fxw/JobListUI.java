@@ -7,7 +7,6 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -19,22 +18,17 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Job;
-import com.jm.entity.News;
-import com.jm.entity.ZhouBian;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.JobAdapter;
-import com.jm.sort.ZhouBianAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
@@ -63,7 +57,7 @@ public class JobListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.joblist);
 		init();
@@ -124,7 +118,7 @@ public class JobListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		((Button) findViewById(R.id.btn_city)).setText(SessionManager
 				.getInstance().getCity());
@@ -134,7 +128,7 @@ public class JobListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "招聘列表页面");
 	}
@@ -159,7 +153,7 @@ public class JobListUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+			
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -220,7 +214,7 @@ public class JobListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -240,7 +234,7 @@ public class JobListUI extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		// TODO Auto-generated method stub
+		
 		if (showlast) {
 			return;
 		}
@@ -260,7 +254,7 @@ public class JobListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
+		
 
 	}
 

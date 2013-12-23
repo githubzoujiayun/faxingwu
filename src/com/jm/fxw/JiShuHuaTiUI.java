@@ -18,7 +18,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
@@ -45,7 +44,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.jishuhuati);
 		init();
@@ -54,14 +53,14 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "热点话题页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "热点话题页面");
 	}
@@ -110,7 +109,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+			
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -163,7 +162,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -210,7 +209,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		// TODO Auto-generated method stub
+		
 		if (showlast) {
 			return;
 		}
@@ -230,7 +229,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
+		
 
 	}
 

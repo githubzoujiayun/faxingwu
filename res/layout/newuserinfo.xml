@@ -255,14 +255,7 @@
                                 android:scaleType="fitXY"
                                 android:textSize="14sp" />
 
-                            <Button
-                                android:id="@+id/btn_getLocation"
-                                android:layout_width="70sp"
-                                android:layout_height="50sp"
-                                android:layout_gravity="bottom|right"
-                                android:layout_marginBottom="5sp"
-                                android:layout_marginRight="10sp"
-                                android:background="@drawable/ditu" />
+                            
                         </FrameLayout>
                     </LinearLayout>
 

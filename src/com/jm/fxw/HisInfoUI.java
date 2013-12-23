@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
-import net.tsz.afinal.FinalBitmap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,7 +50,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.hisinfo);
 		initView();
@@ -59,7 +58,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "查看他人详情页面");
 	}
@@ -186,7 +185,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "查看他们详情页面");
 		getUserInfo();

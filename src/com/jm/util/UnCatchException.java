@@ -6,7 +6,6 @@ import java.lang.Thread.UncaughtExceptionHandler;
 
 import android.content.Context;
 import android.os.Looper;
-import android.widget.Toast;
 
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;

@@ -27,7 +27,6 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
-import com.jm.fxw.WodeUI_User.sendLocationTask;
 import com.jm.session.SessionManager;
 import com.jm.sort.SmallImageAdapter;
 import com.jm.util.JSONUtil;
@@ -78,7 +77,7 @@ public class WodeUI_Hairer extends FinalActivity implements OnItemClickListener 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.wode_hairer);
 		initView();
@@ -86,7 +85,7 @@ public class WodeUI_Hairer extends FinalActivity implements OnItemClickListener 
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "发型师个人中心");
 	}
@@ -182,7 +181,7 @@ public class WodeUI_Hairer extends FinalActivity implements OnItemClickListener 
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "发型师个人中心");
 		if (sm.getUserId() == null || sm.getUserId().equals("")) {
@@ -192,7 +191,7 @@ public class WodeUI_Hairer extends FinalActivity implements OnItemClickListener 
 	}
 
 	private void setInco() {
-		// TODO Auto-generated method stub
+		
 		findViewById(R.id.iv_wode).setBackgroundResource(R.drawable.wode1);
 		((TextView) findViewById(R.id.tv_wode)).setTextColor(Color
 				.parseColor("#f01c61"));

@@ -15,7 +15,6 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -23,7 +22,6 @@ import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
-import com.jm.fxw.JobListUI.JobSelectedListener;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
@@ -70,7 +68,7 @@ public class PublicZhuanRangUI extends FinalActivity implements OnClickListener 
 	// /////////////////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.publiczhuanrang);
 		sm = SessionManager.getInstance();
@@ -81,14 +79,14 @@ public class PublicZhuanRangUI extends FinalActivity implements OnClickListener 
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "发布转让页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "发布转让页面");
 	}
@@ -184,7 +182,7 @@ public class PublicZhuanRangUI extends FinalActivity implements OnClickListener 
 										@Override
 										public void onNothingSelected(
 												AdapterView<?> arg0) {
-											// TODO Auto-generated method stub
+											
 
 										}
 
@@ -216,7 +214,7 @@ public class PublicZhuanRangUI extends FinalActivity implements OnClickListener 
 		@Override
 		public void onItemSelected(AdapterView<?> AdapterView, View view,
 				int position, long arg3) {
-			// TODO Auto-generated method stub
+			
 			String selected = AdapterView.getItemAtPosition(position)
 					.toString();
 			str_job = selected;
@@ -224,7 +222,7 @@ public class PublicZhuanRangUI extends FinalActivity implements OnClickListener 
 
 		@Override
 		public void onNothingSelected(AdapterView<?> arg0) {
-			// TODO Auto-generated method stub
+			
 			System.out.println("NothingSelected");
 		}
 	}

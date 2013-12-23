@@ -51,7 +51,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zhaofaxinglist);
 		init();
@@ -69,14 +69,14 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "找发型页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "找发型页面");
 	}
@@ -148,7 +148,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+			
 			super.onPreExecute();
 			if (adapter.getHairList() == null
 					|| adapter.getHairList().size() == 0) {
@@ -235,7 +235,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类

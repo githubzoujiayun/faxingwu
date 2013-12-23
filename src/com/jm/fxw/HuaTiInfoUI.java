@@ -6,14 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalBitmap;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.database.CursorJoiner.Result;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -72,7 +67,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		mInitParams = "appid=" + "522405c5";
 		iatDialog = new RecognizerDialog(this, mInitParams);
@@ -90,14 +85,14 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "话题详情页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "话题详情页面");
 	}
@@ -368,7 +363,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onEnd(SpeechError arg0) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -408,7 +403,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
+		
 		super.onDestroy();
 	}
 

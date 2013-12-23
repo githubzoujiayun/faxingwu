@@ -3,18 +3,6 @@ package com.jm.fxw;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.w3c.dom.Text;
-
-import com.cnzz.mobile.android.sdk.MobileProbe;
-import com.jm.connection.Connection;
-import com.jm.connection.Response;
-import com.jm.entity.News;
-import com.jm.finals.Constant;
-import com.jm.session.SessionManager;
-import com.jm.util.LogUtil;
-import com.jm.util.StartActivityContController;
-import com.jm.util.TispToastFactory;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -23,6 +11,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.jm.connection.Connection;
+import com.jm.connection.Response;
+import com.jm.finals.Constant;
+import com.jm.session.SessionManager;
+import com.jm.util.LogUtil;
+import com.jm.util.StartActivityContController;
+import com.jm.util.TispToastFactory;
 
 public class QuestionUI extends Activity implements OnClickListener {
 
@@ -59,14 +56,14 @@ public class QuestionUI extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "问答中心");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "问答中心");
 	}

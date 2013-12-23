@@ -10,8 +10,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -24,7 +22,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
@@ -53,7 +50,7 @@ public class PublicQuestionUI extends FinalActivity implements OnClickListener {
 	// /////////////////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.publicquestion);
 		sm = SessionManager.getInstance();
@@ -64,14 +61,14 @@ public class PublicQuestionUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "发布问题页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "发布问题页面");
 	}

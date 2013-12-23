@@ -44,7 +44,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dongtailist);
 		ListView = (GridView) findViewById(R.id.staggeredGridView);
@@ -105,7 +105,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+			
 			super.onPreExecute();
 			if (adapter.getHairList() == null
 					|| adapter.getHairList().size() == 0) {
@@ -183,7 +183,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -239,7 +239,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
+		
 
 	}
 

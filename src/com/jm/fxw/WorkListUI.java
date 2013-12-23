@@ -47,7 +47,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.hairlist);
 		init();
@@ -79,14 +79,14 @@ public class WorkListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "作品列表页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "作品列表页面");
 	}
@@ -98,7 +98,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+			
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -147,7 +147,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -174,7 +174,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		// TODO Auto-generated method stub
+		
 		if (showlast) {
 			return;
 		}
@@ -195,7 +195,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
+		
 
 	}
 }

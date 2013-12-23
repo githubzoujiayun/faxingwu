@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,7 +34,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -100,7 +97,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		mInitParams = "appid=" + "522405c5";
 		iatDialog = new RecognizerDialog(this, mInitParams);
@@ -121,14 +118,14 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "发型详情页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "发型详情页面");
 	}
@@ -661,7 +658,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onEnd(SpeechError arg0) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -701,7 +698,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
+		
 		super.onDestroy();
 	}
 

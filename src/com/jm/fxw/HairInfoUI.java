@@ -14,29 +14,23 @@ import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import uk.co.senab.photoview.PhotoView;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,7 +38,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
-import com.example.photowallfallsdemo.ZoomImageView;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -117,7 +110,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
 		viewPagerAdapter = new ViewPagerAdapter(this);
@@ -355,7 +348,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	}
 
 	private void shareqq() {
-		// TODO Auto-generated method stub
 		qq_keyid = share.getString("qq_keyid", "");
 		if (!qq_keyid.equals("")) {
 			LogUtil.i("开始QQ分享");
@@ -406,14 +398,14 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 			@Override
 			public void onCancel() {
-				// TODO Auto-generated method stub
+				
 				super.onCancel();
 				LogUtil.e("=======================================onCancel");
 			}
 
 			@Override
 			public void onError(UiError e) {
-				// TODO Auto-generated method stub
+				
 				super.onError(e);
 				LogUtil.e("=======================================onError"
 						+ e.toString());
@@ -448,7 +440,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 						new RequestListener() {
 							@Override
 							public void onIOException(IOException arg0) {
-								// TODO Auto-generated method stub
+								
 								showTipInHandler("onIOException新浪微博分享失败"
 										+ arg0.toString());
 								LogUtil.e(arg0.toString());
@@ -456,7 +448,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 							@Override
 							public void onError(WeiboException arg0) {
-								// TODO Auto-generated method stub
+								
 								showTipInHandler("onError新浪微博分享失败"
 										+ arg0.toString());
 								LogUtil.e(arg0.toString());
@@ -893,7 +885,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 		@Override
 		public void onHttpStatusException(HttpStatusException arg0, Object arg1) {
-			// TODO Auto-generated method stub
+			
 
 			showTipInHandler("分享失败_" + "onHttpStatusException");
 
@@ -901,14 +893,14 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 		@Override
 		public void onIOException(IOException arg0, Object arg1) {
-			// TODO Auto-generated method stub
+			
 
 			showTipInHandler("分享失败_" + "onIOException");
 		}
 
 		@Override
 		public void onJSONException(JSONException arg0, Object arg1) {
-			// TODO Auto-generated method stub
+			
 
 			showTipInHandler("分享失败_" + "onJSONException");
 
@@ -1004,52 +996,17 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onPageScrollStateChanged(int scrollState) {
-		// // TODO Auto-generated method stub
-		// if (scrollState == 2) {
-		// LogUtil.e("加载数据 oldPosition = " + oldPosition);
-		// ((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
-		// + (oldPosition + 1) + "/" + (alist.size()) + ")");
-		//
-		// if (alist.get(galleryindex).getId() != alist.get(oldPosition)
-		// .getId()) {
-		// LogUtil.e("galleryindex = " + galleryindex);
-		// galleryindex = oldPosition;
-		// new getHairInfoTask().execute();
-		// }
-		// haircallback.addLarge(alist.get(oldPosition).getPic());
-		// haircallback.checkPictureTask(HairInfoUI.this);
-		// } else {
-		//
-		// LogUtil.e("不加载数据 oldPosition = " + oldPosition);
-		// }
 	}
 
 	@Override
 	public void onPageScrolled(int arg0, float arg1, int arg2) {
-		// TODO Auto-generated method stub
+		
 
 	}
 
 	@Override
 	public void onPageSelected(int currentPage) {
-		// LogUtil.e("onPageSelected currentPosition = " + currentPosition);
-		// oldPosition = currentPosition;
-		// haircallback.addLarge(alist.get(currentPage).getPic());
-		// try {
-		//
-		// haircallback.addLarge(alist.get(currentPage - 1).getPic());
-		// haircallback.addLarge(alist.get(currentPage + 1).getPic());
-		// } catch (Exception e) {
-		// // TODO: handle exception
-		// }
-		// try {
-		// haircallback.addLarge(alist.get(currentPage - 2).getPic());
-		// haircallback.addLarge(alist.get(currentPage + 2).getPic());
-		// } catch (Exception e) {
-		// // TODO: handle exception
-		// }
-		// haircallback.checkPictureTask(HairInfoUI.this);
-		// 每当页数发生改变时重新设定一遍当前的页数和总页数
+
 		pageText.setText((currentPage + 1) + "/" + imageUrls.size());
 		if (alist.get(galleryindex).getId() != alist.get(currentPage).getId()) {
 			galleryindex = currentPage;

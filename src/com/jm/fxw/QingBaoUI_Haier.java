@@ -41,7 +41,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 	private SharedPreferences.Editor editor;
 	private ListView ListView;
 	private NewsAdapter adapter;
-	private List<News> mlist =new ArrayList<News>();
+	private List<News> mlist = new ArrayList<News>();
 	private int page = 1;
 	private int pageCount = 0;
 	private String news_type = "4";
@@ -51,7 +51,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qingbao_haier);
 		init();
@@ -102,7 +102,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			// TODO Auto-generated method stub
+
 			super.onPreExecute();
 			if (adapter.getUserList() == null
 					|| adapter.getUserList().size() == 0) {
@@ -190,7 +190,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
 		v.setBackgroundResource(R.drawable.left_bg1);
-		((Button) v).setTextColor(Color.rgb(240,28,71));
+		((Button) v).setTextColor(Color.rgb(240, 28, 71));
 		adapter.clear();
 		this.news_type = condition;
 		page = 1;
@@ -237,7 +237,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		// TODO Auto-generated method stub{
+
 		if (showlast) {
 			return;
 		}
@@ -258,7 +258,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		// TODO Auto-generated method stub
 
 	}
 

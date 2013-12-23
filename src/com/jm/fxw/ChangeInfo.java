@@ -16,18 +16,13 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
@@ -95,14 +90,12 @@ public class ChangeInfo extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		MobileProbe.onResume(this, "修改资料页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		MobileProbe.onPause(this, "修改资料页面");
 	}
@@ -223,7 +216,6 @@ public class ChangeInfo extends Activity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, intent);
 		LogUtil.i("requestCode = " + requestCode);
 		LogUtil.i("intent = " + intent);
@@ -241,7 +233,6 @@ public class ChangeInfo extends Activity implements OnClickListener {
 	}
 
 	private void setUserSex() {
-		// TODO Auto-generated method stub
 		if (((RadioButton) findViewById(R.id.rb_female)).isChecked()) {
 			sex = "0";
 		} else {

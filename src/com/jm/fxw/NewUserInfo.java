@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import net.tsz.afinal.FinalBitmap;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,16 +15,12 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
@@ -62,7 +57,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 	private CameraAndGallery cag;
 	private String type = "1";
 	private Matrix matrix = new Matrix();
-	private double lng = 0, lat = 0;
 
 	private String uid = "";
 	private SharedPreferences share;
@@ -87,7 +81,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(this);
-		findViewById(R.id.btn_getLocation).setOnClickListener(this);
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(this);
 
 		findViewById(R.id.tv_city).setOnClickListener(this);
@@ -97,7 +90,7 @@ public class NewUserInfo extends Activity implements OnClickListener {
 
 			@Override
 			public void onCheckedChanged(RadioGroup arg0, int arg1) {
-				// TODO Auto-generated method stub
+
 				// 获取变更后的选中项的ID
 				int radioButtonId = arg0.getCheckedRadioButtonId();
 				// 根据ID获取RadioButton的实例
@@ -119,7 +112,7 @@ public class NewUserInfo extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+
 		super.onResume();
 		((EditText) findViewById(R.id.tv_city)).setText(SessionManager
 				.getInstance().getCity());
@@ -129,7 +122,7 @@ public class NewUserInfo extends Activity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
-		// TODO Auto-generated method stub
+
 		super.onActivityResult(requestCode, resultCode, intent);
 		LogUtil.i("requestCode = " + requestCode);
 		LogUtil.i("intent = " + intent);
@@ -141,14 +134,7 @@ public class NewUserInfo extends Activity implements OnClickListener {
 			showPicture(intent.getData());
 			break;
 		case CameraAndGallery.CAMERA_WITH_DATA:
-
 			showPicture(cag.getCameraPictureUri());
-			break;
-		default:
-			lng = intent.getDoubleExtra("lng", 0);
-			lat = intent.getDoubleExtra("lat", 0);
-			LogUtil.i("lng = " + lng);
-			LogUtil.i("lat = " + lat);
 			break;
 		}
 	}
@@ -173,7 +159,7 @@ public class NewUserInfo extends Activity implements OnClickListener {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+
 		super.onPause();
 		MobileProbe.onPause(this, "完善资料页面");
 	}
@@ -190,10 +176,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 			if (CheckInfoValue()) {
 				new ChangUserInfo().execute();
 			}
-			break;
-		case R.id.btn_getLocation:
-			Intent i = new Intent(NewUserInfo.this, MapActivity.class);
-			startActivityForResult(i, 101);
 			break;
 
 		case R.id.iv_minfouserpic:
@@ -226,7 +208,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 	// }
 
 	private void setUserType() {
-		// TODO Auto-generated method stub
 
 		if (((RadioButton) findViewById(R.id.rb_user)).isChecked()) {
 			type = "1";
@@ -252,8 +233,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 					.getText().toString().trim());
 			map.put("telephone", ((EditText) findViewById(R.id.tv_dphone))
 					.getText().toString().trim());
-			map.put("lng", lng);
-			map.put("lat", lat);
 			return map;
 		}
 
@@ -302,10 +281,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 					.show();
 			return false;
 
-		} else if (lng == 0 || lat == 0) {
-			Toast.makeText(NewUserInfo.this, "请标记店铺具体位置", Toast.LENGTH_SHORT)
-					.show();
-			return false;
 		} else if (etxt_mobile.getText() == null
 				|| etxt_mobile.getText().toString().trim().equals("")) {
 			Toast.makeText(NewUserInfo.this, "请填写手机号码", Toast.LENGTH_SHORT)

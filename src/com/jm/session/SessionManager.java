@@ -1,9 +1,6 @@
 package com.jm.session;
 
 import java.io.File;
-import java.util.Date;
-
-import android.content.SharedPreferences;
 
 import com.jm.util.LogUtil;
 

@@ -38,7 +38,7 @@ public class OpinionUI extends Activity implements OnClickListener {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "·´À¡Ò³Ãæ");
 	}

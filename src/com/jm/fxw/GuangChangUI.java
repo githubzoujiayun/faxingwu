@@ -41,7 +41,7 @@ public class GuangChangUI extends FinalActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guangchang);
 		init();
@@ -50,21 +50,21 @@ public class GuangChangUI extends FinalActivity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "广场页面");
 	}
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "广场页面");
 		init();
 	}
 
 	private void setInco() {
-		// TODO Auto-generated method stub
+		
 		findViewById(R.id.iv_guangchang).setBackgroundResource(
 				R.drawable.guangchang1);
 		((TextView) findViewById(R.id.tv_guangchang)).setTextColor(Color

@@ -24,7 +24,7 @@ public class TipsSettingUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tipssetting);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -36,14 +36,14 @@ public class TipsSettingUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "推送消息设置页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "推送消息设置页面");
 	}

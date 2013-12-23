@@ -121,21 +121,21 @@ public class ChatUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "私信页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "私信页面");
 	}
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
+		
 		super.onDestroy();
 		timer.cancel();
 	}
@@ -349,7 +349,7 @@ public class ChatUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		EditText et = (EditText) findViewById(R.id.text);
 		switch (v.getId()) {
 		case R.id.iv_hairpic1:
@@ -390,7 +390,7 @@ public class ChatUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onEnd(SpeechError arg0) {
-		// TODO Auto-generated method stub
+		
 
 	}
 

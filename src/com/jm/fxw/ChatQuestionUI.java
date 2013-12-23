@@ -14,7 +14,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
@@ -128,21 +127,19 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "问题私信页面");
 	}
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		MobileProbe.onPause(this, "问题私信页面");
 	}
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		timer.cancel();
 	}
@@ -417,7 +414,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
 		EditText et = (EditText) findViewById(R.id.text);
 		switch (v.getId()) {
 		case R.id.iv_hairpic1:
@@ -458,7 +455,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onEnd(SpeechError arg0) {
-		// TODO Auto-generated method stub
+		
 
 	}
 

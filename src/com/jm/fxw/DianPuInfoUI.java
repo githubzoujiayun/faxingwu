@@ -55,7 +55,7 @@ public class DianPuInfoUI extends FragmentActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dianpuinfo);
 		sm = SessionManager.getInstance();
@@ -69,7 +69,7 @@ public class DianPuInfoUI extends FragmentActivity implements
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+		
 		super.onPause();
 		MobileProbe.onPause(this, "店铺详情页面");
 	}
@@ -121,7 +121,7 @@ public class DianPuInfoUI extends FragmentActivity implements
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		
 		super.onResume();
 		MobileProbe.onResume(this, "店铺详情页面");
 		new getShaLongInfo().execute();
