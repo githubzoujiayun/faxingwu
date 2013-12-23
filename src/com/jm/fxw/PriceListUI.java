@@ -72,8 +72,6 @@ public class PriceListUI extends Activity implements OnClickListener,
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
 		resetTypeButtonBg();
-		findViewById(R.id.lin_price_xi).setBackgroundResource(
-				R.drawable.left_bg1);
 		((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240, 28,
 				97));
 		((TextView) findViewById(R.id.tv_rightTop)).setText(SessionManager
@@ -96,14 +94,7 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 		((TextView) findViewById(R.id.btn_t4)).setTextColor(Color.rgb(0, 0, 0));
 
-		findViewById(R.id.lin_price_xi).setBackgroundResource(
-				R.drawable.left_bg);
-		findViewById(R.id.lin_price_tang).setBackgroundResource(
-				R.drawable.center_bg);
-		findViewById(R.id.lin_price_ran).setBackgroundResource(
-				R.drawable.center_bg);
-		findViewById(R.id.lin_price_hu).setBackgroundResource(
-				R.drawable.right_bg);
+	
 	}
 
 	/*
@@ -172,28 +163,24 @@ public class PriceListUI extends Activity implements OnClickListener,
 			break;
 		case R.id.lin_price_xi:
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.left_bg1);
 			((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240,
 					28, 97));
 			setPrice(1);
 			break;
 		case R.id.lin_price_tang:
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.center_bg1);
 			((TextView) findViewById(R.id.btn_t2)).setTextColor(Color.rgb(240,
 					28, 97));
 			setPrice(2);
 			break;
 		case R.id.lin_price_ran:
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.center_bg1);
 			((TextView) findViewById(R.id.btn_t3)).setTextColor(Color.rgb(240,
 					28, 97));
 			setPrice(3);
 			break;
 		case R.id.lin_price_hu:
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.right_bg1);
 			((TextView) findViewById(R.id.btn_t4)).setTextColor(Color.rgb(240,
 					28, 97));
 			setPrice(4);

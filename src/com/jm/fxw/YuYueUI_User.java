@@ -64,8 +64,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		findViewById(R.id.btn_lishiyuyue).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		ResetButtonBgAndViews();
-		((Button) findViewById(R.id.btn_jibenxinxi))
-				.setBackgroundResource(R.drawable.left_bg1);
 		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Color.rgb(
 				240,28,97));
 		findViewById(R.id.btn_btn).setOnClickListener(this);
@@ -90,12 +88,8 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		findViewById(R.id.lin_basic_info).setVisibility(View.GONE);
 		findViewById(R.id.lin_nobasic_info).setVisibility(View.GONE);
 		findViewById(R.id.lin_yuyue_list).setVisibility(View.GONE);
-		((Button) findViewById(R.id.btn_jibenxinxi))
-				.setBackgroundResource(R.drawable.left_bg);
 		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Color.rgb(0,
 				0, 0));
-		((Button) findViewById(R.id.btn_lishiyuyue))
-				.setBackgroundResource(R.drawable.right_bg);
 		((Button) findViewById(R.id.btn_lishiyuyue)).setTextColor(Color.rgb(0,
 				0, 0));
 	}
@@ -347,7 +341,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_jibenxinxi:
 			ResetButtonBgAndViews();
-			v.setBackgroundResource(R.drawable.left_bg1);
 			((Button) v).setTextColor(Color.rgb(240,28,97));
 			if (reserve != null) {
 				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
@@ -359,7 +352,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_lishiyuyue:
 			ResetButtonBgAndViews();
-			v.setBackgroundResource(R.drawable.right_bg1);
 			((Button) v).setTextColor(Color.rgb(240,28,97));
 			findViewById(R.id.lin_yuyue_list).setVisibility(View.VISIBLE);
 			new getCurrentYuYueListInfo().execute();

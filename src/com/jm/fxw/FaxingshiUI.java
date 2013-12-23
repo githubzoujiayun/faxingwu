@@ -133,8 +133,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 		findViewById(R.id.btn_location).setOnClickListener(this);
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_quanbu))
-				.setBackgroundResource(R.drawable.left_bg1);
 
 		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Color.rgb(240,
 				28, 97));
@@ -246,7 +244,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
-		v.setBackgroundResource(R.drawable.left_bg1);
 		((Button) v).setTextColor(Color.rgb(240, 28, 97));
 		adapter.clear();
 		this.condition = condition;
@@ -265,14 +262,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 				0));
 		((Button) findViewById(R.id.btn_guanzhu)).setTextColor(Color.rgb(0, 0,
 				0));
-
-		findViewById(R.id.btn_quanbu).setBackgroundResource(R.drawable.left_bg);
-		findViewById(R.id.btn_tongcheng).setBackgroundResource(
-				R.drawable.center_bg);
-		findViewById(R.id.btn_tuijian).setBackgroundResource(
-				R.drawable.center_bg);
-		findViewById(R.id.btn_guanzhu).setBackgroundResource(
-				R.drawable.right_bg);
 	}
 
 	@Override

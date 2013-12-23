@@ -44,11 +44,12 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dongtailist);
 		ListView = (GridView) findViewById(R.id.staggeredGridView);
-		adapter = new DongTaiAdapter(this,getWindow().getWindowManager().getDefaultDisplay().getWidth());
+		adapter = new DongTaiAdapter(this, getWindow().getWindowManager()
+				.getDefaultDisplay().getWidth());
 		ListView.setAdapter(adapter);
 		ListView.setOnScrollListener(this);
 		init();
@@ -88,8 +89,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		findViewById(R.id.btn_tongcheng).setOnClickListener(this);
 		findViewById(R.id.btn_tuijian).setOnClickListener(this);
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_zuixin))
-				.setBackgroundResource(R.drawable.left_bg1);
 
 		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color.rgb(240,
 				28, 97));
@@ -105,7 +104,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 		@Override
 		protected void onPreExecute() {
-			
+
 			super.onPreExecute();
 			if (adapter.getHairList() == null
 					|| adapter.getHairList().size() == 0) {
@@ -183,7 +182,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -208,7 +207,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	private void changeBtn(String urnAllDongtai, View v) {
 		ResetButtonBg();
-		((Button) v).setBackgroundResource(R.drawable.left_bg1);
 		((Button) v).setTextColor(Color.rgb(240, 28, 97));
 		adapter.clear();
 		mlist.clear();
@@ -222,24 +220,16 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	private void ResetButtonBg() {
 
-		((Button) findViewById(R.id.btn_zuixin))
-				.setBackgroundResource(R.drawable.left_bg);
-
 		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color
 				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_tongcheng))
-				.setBackgroundResource(R.drawable.center_bg);
 		((Button) findViewById(R.id.btn_tongcheng)).setTextColor(Color.rgb(0,
 				0, 0));
-		((Button) findViewById(R.id.btn_tuijian))
-				.setBackgroundResource(R.drawable.right_bg);
 		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Color.rgb(0, 0,
 				0));
 	}
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		
 
 	}
 

@@ -65,7 +65,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyue);
 		init();
@@ -129,8 +129,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 
 		resetTypeButtonBg();
 		resetTimeButtonBg();
-		findViewById(R.id.lin_xi).setBackgroundResource(R.drawable.left_bg1);
-		((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240,28,97));
+		((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240, 28,
+				97));
 		findViewById(R.id.lin_d1).setBackgroundResource(R.color.red);
 
 		Date dt = new Date();
@@ -303,8 +303,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			type = "洗剪吹";
 			setPriceType(1);
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.left_bg1);
-			((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240,28,97));
+			((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240,
+					28, 97));
 			break;
 
 		case R.id.lin_tang:
@@ -312,8 +312,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			type = "烫发";
 			setPriceType(2);
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.center_bg1);
-			((TextView) findViewById(R.id.btn_t2)).setTextColor(Color.rgb(240,28,97));
+			((TextView) findViewById(R.id.btn_t2)).setTextColor(Color.rgb(240,
+					28, 97));
 			break;
 
 		case R.id.lin_ran:
@@ -321,8 +321,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			type = "染发";
 			setPriceType(3);
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.center_bg1);
-			((TextView) findViewById(R.id.btn_t3)).setTextColor(Color.rgb(240,28,97));
+			((TextView) findViewById(R.id.btn_t3)).setTextColor(Color.rgb(240,
+					28, 97));
 			break;
 
 		case R.id.lin_hu:
@@ -330,8 +330,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			type = "护理";
 			setPriceType(4);
 			resetTypeButtonBg();
-			v.setBackgroundResource(R.drawable.right_bg1);
-			((TextView) findViewById(R.id.btn_t4)).setTextColor(Color.rgb(240,28,97));
+			((TextView) findViewById(R.id.btn_t4)).setTextColor(Color.rgb(240,
+					28, 97));
 			break;
 
 		case R.id.lin_d1:
@@ -448,10 +448,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		((TextView) findViewById(R.id.btn_t2)).setTextColor(Color.rgb(0, 0, 0));
 		((TextView) findViewById(R.id.btn_t3)).setTextColor(Color.rgb(0, 0, 0));
 		((TextView) findViewById(R.id.btn_t4)).setTextColor(Color.rgb(0, 0, 0));
-		findViewById(R.id.lin_xi).setBackgroundResource(R.drawable.left_bg);
-		findViewById(R.id.lin_tang).setBackgroundResource(R.drawable.center_bg);
-		findViewById(R.id.lin_ran).setBackgroundResource(R.drawable.center_bg);
-		findViewById(R.id.lin_hu).setBackgroundResource(R.drawable.right_bg);
 	}
 
 	private void resetTimeButtonBg() {

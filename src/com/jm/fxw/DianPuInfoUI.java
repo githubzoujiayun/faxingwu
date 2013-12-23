@@ -47,7 +47,7 @@ public class DianPuInfoUI extends FragmentActivity implements
 	private double lng, lat;
 
 	private AMap aMap;
-	private List<User> mlist =new ArrayList<User>();
+	private List<User> mlist = new ArrayList<User>();
 	private UserGalleryAdapter adapter;
 	private GridView ListView;
 	private Marker marker;
@@ -55,7 +55,7 @@ public class DianPuInfoUI extends FragmentActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dianpuinfo);
 		sm = SessionManager.getInstance();
@@ -69,7 +69,7 @@ public class DianPuInfoUI extends FragmentActivity implements
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "店铺详情页面");
 	}
@@ -85,8 +85,6 @@ public class DianPuInfoUI extends FragmentActivity implements
 		findViewById(R.id.btn_weizhi).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		ResetButtonBgAndViews();
-		((Button) findViewById(R.id.btn_jibenxinxi))
-				.setBackgroundResource(R.drawable.left_bg1);
 		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Color.rgb(
 				230, 61, 61));
 		findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
@@ -105,23 +103,17 @@ public class DianPuInfoUI extends FragmentActivity implements
 		findViewById(R.id.lin_basic_info).setVisibility(View.GONE);
 		findViewById(R.id.lin_hairer_list).setVisibility(View.GONE);
 		findViewById(R.id.lin_location).setVisibility(View.GONE);
-		((Button) findViewById(R.id.btn_jibenxinxi))
-				.setBackgroundResource(R.drawable.left_bg);
 		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Color.rgb(0,
 				0, 0));
-		((Button) findViewById(R.id.btn_faxingshi))
-				.setBackgroundResource(R.drawable.center_bg);
 		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(0,
 				0, 0));
-		((Button) findViewById(R.id.btn_weizhi))
-				.setBackgroundResource(R.drawable.right_bg);
 		((Button) findViewById(R.id.btn_weizhi)).setTextColor(Color
 				.rgb(0, 0, 0));
 	}
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "店铺详情页面");
 		new getShaLongInfo().execute();
@@ -226,13 +218,11 @@ public class DianPuInfoUI extends FragmentActivity implements
 			break;
 		case R.id.btn_jibenxinxi:
 			ResetButtonBgAndViews();
-			v.setBackgroundResource(R.drawable.left_bg1);
 			((Button) v).setTextColor(Color.rgb(230, 61, 61));
 			findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
 			break;
 		case R.id.btn_faxingshi:
 			ResetButtonBgAndViews();
-			v.setBackgroundResource(R.drawable.center_bg1);
 			((Button) v).setTextColor(Color.rgb(230, 61, 61));
 			findViewById(R.id.lin_hairer_list).setVisibility(View.VISIBLE);
 			break;
@@ -243,7 +233,6 @@ public class DianPuInfoUI extends FragmentActivity implements
 				return;
 			}
 			ResetButtonBgAndViews();
-			v.setBackgroundResource(R.drawable.right_bg1);
 			((Button) v).setTextColor(Color.rgb(230, 61, 61));
 			findViewById(R.id.lin_location).setVisibility(View.VISIBLE);
 			break;

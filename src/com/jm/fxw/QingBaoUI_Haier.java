@@ -89,8 +89,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		findViewById(R.id.btn_mingdianzhanshi).setOnClickListener(this);
 		findViewById(R.id.btn_shalongzhuanrang).setOnClickListener(this);
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_mingrentang))
-				.setBackgroundResource(R.drawable.left_bg1);
 		((Button) findViewById(R.id.btn_mingrentang)).setTextColor(Color.rgb(
 				230, 61, 61));
 	}
@@ -189,7 +187,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
-		v.setBackgroundResource(R.drawable.left_bg1);
 		((Button) v).setTextColor(Color.rgb(240, 28, 71));
 		adapter.clear();
 		this.news_type = condition;
@@ -208,15 +205,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 				.rgb(0, 0, 0));
 		((Button) findViewById(R.id.btn_shalongzhuanrang)).setTextColor(Color
 				.rgb(0, 0, 0));
-
-		findViewById(R.id.btn_mingrentang).setBackgroundResource(
-				R.drawable.left_bg);
-		findViewById(R.id.btn_hangyexinwen).setBackgroundResource(
-				R.drawable.center_bg);
-		findViewById(R.id.btn_mingdianzhanshi).setBackgroundResource(
-				R.drawable.center_bg);
-		findViewById(R.id.btn_shalongzhuanrang).setBackgroundResource(
-				R.drawable.right_bg);
 
 	}
 

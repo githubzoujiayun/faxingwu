@@ -44,7 +44,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.jishuhuati);
 		init();
@@ -53,14 +53,14 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "热点话题页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "热点话题页面");
 	}
@@ -78,9 +78,8 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 		ListView.setOnScrollListener(this);
 
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi))
-				.setBackgroundResource(R.drawable.left_bg1);
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(240,28,97));
+		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(240,
+				28, 97));
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 
@@ -88,16 +87,10 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	private void ResetButtonBg() {
 
-		((Button) findViewById(R.id.btn_faxingshi))
-				.setBackgroundResource(R.drawable.left_bg);
 		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(0,
 				0, 0));
 		((Button) findViewById(R.id.btn_geren))
-				.setBackgroundResource(R.drawable.center_bg);
-		((Button) findViewById(R.id.btn_geren))
 				.setTextColor(Color.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_dianpu))
-				.setBackgroundResource(R.drawable.right_bg);
 		((Button) findViewById(R.id.btn_dianpu)).setTextColor(Color
 				.rgb(0, 0, 0));
 	}
@@ -109,7 +102,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			
+
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -162,7 +155,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -170,8 +163,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_faxingshi:
 			ResetButtonBg();
-			v.setBackgroundResource(R.drawable.left_bg1);
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			adapter.clear();
 
 			condition = "";
@@ -181,8 +173,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_geren:
 			ResetButtonBg();
-			v.setBackgroundResource(R.drawable.center_bg1);
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			adapter.clear();
 			condition = "hot";
 			page = 1;
@@ -193,8 +184,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 			adapter.clear();
 			condition = "my";
 			ResetButtonBg();
-			v.setBackgroundResource(R.drawable.right_bg1);
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			page = 1;
 			pageCount = 0;
 			new GetTongchengListTask().execute();
@@ -209,7 +199,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		
+
 		if (showlast) {
 			return;
 		}
@@ -229,7 +219,6 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		
 
 	}
 

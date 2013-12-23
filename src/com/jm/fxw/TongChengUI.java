@@ -42,7 +42,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tongchenglist);
 		init();
@@ -51,20 +51,20 @@ public class TongChengUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "周边页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "周边页面");
 	}
 
 	private void init() {
-	
+
 		findViewById(R.id.btn_faxingshi).setOnClickListener(this);
 		findViewById(R.id.btn_geren).setOnClickListener(this);
 		findViewById(R.id.btn_dianpu).setOnClickListener(this);
@@ -76,8 +76,6 @@ public class TongChengUI extends Activity implements OnClickListener,
 		ListView.setOnScrollListener(this);
 
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi))
-				.setBackgroundResource(R.drawable.left_bg1);
 		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(240,
 				28, 97));
 		((TextView) findViewById(R.id.tv_rightTop)).setText(sm.getCity());
@@ -86,17 +84,10 @@ public class TongChengUI extends Activity implements OnClickListener,
 	}
 
 	private void ResetButtonBg() {
-
-		((Button) findViewById(R.id.btn_faxingshi))
-				.setBackgroundResource(R.drawable.left_bg);
 		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(0,
 				0, 0));
 		((Button) findViewById(R.id.btn_geren))
-				.setBackgroundResource(R.drawable.center_bg);
-		((Button) findViewById(R.id.btn_geren))
 				.setTextColor(Color.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_dianpu))
-				.setBackgroundResource(R.drawable.right_bg);
 		((Button) findViewById(R.id.btn_dianpu)).setTextColor(Color
 				.rgb(0, 0, 0));
 	}
@@ -108,7 +99,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			
+
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -163,7 +154,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -171,7 +162,6 @@ public class TongChengUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_faxingshi:
 			ResetButtonBg();
-			v.setBackgroundResource(R.drawable.left_bg1);
 			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			adapter.clear();
 
@@ -183,7 +173,6 @@ public class TongChengUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_geren:
 			ResetButtonBg();
-			v.setBackgroundResource(R.drawable.center_bg1);
 			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			adapter.clear();
 			adapter.isDianPu = false;
@@ -197,7 +186,6 @@ public class TongChengUI extends Activity implements OnClickListener,
 			adapter.isDianPu = true;
 			condition = "store";
 			ResetButtonBg();
-			v.setBackgroundResource(R.drawable.right_bg1);
 			((Button) v).setTextColor(Color.rgb(240, 28, 97));
 			page = 1;
 			pageCount = 0;
@@ -216,7 +204,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		
+
 		if (showlast) {
 			return;
 		}
@@ -236,7 +224,6 @@ public class TongChengUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		
 
 	}
 }

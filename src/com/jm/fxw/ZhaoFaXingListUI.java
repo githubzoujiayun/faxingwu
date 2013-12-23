@@ -51,7 +51,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zhaofaxinglist);
 		init();
@@ -69,14 +69,14 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "找发型页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "找发型页面");
 	}
@@ -106,8 +106,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		findViewById(R.id.btn_tongcheng).setOnClickListener(this);
 		findViewById(R.id.btn_tuijian).setOnClickListener(this);
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_zuixin))
-				.setBackgroundResource(R.drawable.left_bg1);
 		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color.rgb(240,
 				28, 97));
 		tv_mainhead = (TextView) findViewById(R.id.tv_mainhead);
@@ -148,7 +146,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 		@Override
 		protected void onPreExecute() {
-			
+
 			super.onPreExecute();
 			if (adapter.getHairList() == null
 					|| adapter.getHairList().size() == 0) {
@@ -235,7 +233,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -255,7 +253,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
-		v.setBackgroundResource(R.drawable.left_bg1);
 		((Button) v).setTextColor(Color.rgb(240, 28, 97));
 		adapter.clear();
 		this.mlist.clear();
@@ -272,12 +269,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 				0, 0));
 		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Color.rgb(0, 0,
 				0));
-		((Button) findViewById(R.id.btn_zuixin))
-				.setBackgroundResource(R.drawable.left_bg);
-		((Button) findViewById(R.id.btn_tongcheng))
-				.setBackgroundResource(R.drawable.center_bg);
-		((Button) findViewById(R.id.btn_tuijian))
-				.setBackgroundResource(R.drawable.right_bg);
 	}
 
 	@Override
