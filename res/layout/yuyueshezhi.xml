@@ -101,8 +101,11 @@
                             android:id="@+id/tv_tip1"
                             android:layout_width="fill_parent"
                             android:layout_height="37sp"
+                            android:layout_marginLeft="5sp"
                             android:layout_weight="1"
+                            android:background="@drawable/shape_white"
                             android:hint="请输入第一条提示信息"
+                            android:paddingLeft="5sp"
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -128,8 +131,11 @@
                             android:id="@+id/tv_tip2"
                             android:layout_width="fill_parent"
                             android:layout_height="37sp"
+                            android:layout_marginLeft="5sp"
                             android:layout_weight="1"
+                            android:background="@drawable/shape_white"
                             android:hint="请输入第二条提示信息"
+                            android:paddingLeft="5sp"
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -155,8 +161,11 @@
                             android:id="@+id/tv_tip3"
                             android:layout_width="fill_parent"
                             android:layout_height="37sp"
+                            android:layout_marginLeft="5sp"
                             android:layout_weight="1"
+                            android:background="@drawable/shape_white"
                             android:hint="请输入第三条提示信息"
+                            android:paddingLeft="5sp"
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -182,8 +191,11 @@
                             android:id="@+id/tv_tip4"
                             android:layout_width="fill_parent"
                             android:layout_height="37sp"
+                            android:layout_marginLeft="5sp"
                             android:layout_weight="1"
+                            android:background="@drawable/shape_white"
                             android:hint="请输入第四条提示信息"
+                            android:paddingLeft="5sp"
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -209,8 +221,10 @@
                             android:id="@+id/tv_tip5"
                             android:layout_width="fill_parent"
                             android:layout_height="37sp"
+                            android:layout_marginLeft="5sp"
                             android:layout_weight="1"
                             android:hint="请输入第五条提示信息"
+                            android:paddingLeft="5sp"
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -245,7 +259,9 @@
                         android:id="@+id/et_price1"
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
+                        android:paddingLeft="5sp"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_white"
                         android:inputType="number"
                         android:text="0"
                         android:textColor="#000000"
@@ -275,6 +291,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
                         android:layout_weight="1"
+                        android:paddingLeft="5sp"
+                        android:background="@drawable/shape_white"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -308,7 +326,9 @@
                         android:id="@+id/et_price2"
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
+                        android:paddingLeft="5sp"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_white"
                         android:inputType="number"
                         android:text="0"
                         android:textColor="#000000"
@@ -337,7 +357,9 @@
                         android:id="@+id/sp_discount2"
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
+                        android:paddingLeft="5sp"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_white"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -372,6 +394,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
                         android:layout_weight="1"
+                        android:paddingLeft="5sp"
+                        android:background="@drawable/shape_white"
                         android:inputType="number"
                         android:text="0"
                         android:textColor="#000000"
@@ -400,7 +424,9 @@
                         android:id="@+id/sp_discount3"
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
+                        android:paddingLeft="5sp"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_white"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -435,7 +461,9 @@
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_white"
                         android:inputType="number"
+                        android:paddingLeft="5sp"
                         android:text="0"
                         android:textColor="#000000"
                         android:textSize="14sp" />
@@ -464,6 +492,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="37sp"
                         android:layout_weight="1"
+                        android:paddingLeft="5sp"
+                        android:background="@drawable/shape_white"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
