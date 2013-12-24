@@ -52,6 +52,7 @@
             android:layout_width="fill_parent"
             android:layout_height="40sp"
             android:layout_margin="5sp"
+            android:background="@drawable/shape_white"
             android:gravity="center"
             android:orientation="horizontal" >
 
