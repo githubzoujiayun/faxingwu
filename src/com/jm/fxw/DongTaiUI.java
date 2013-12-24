@@ -190,8 +190,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 			break;
 		case R.id.btn_rightTop:
 
-			StartActivityContController.goPage(this, PublicPortfolio.class,
-					true);
+			StartActivityContController.goPage(this, 105);
 			break;
 		case R.id.btn_zuixin:
 			changeBtn("add_time", v);
