@@ -22,7 +22,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
@@ -60,7 +59,7 @@ public class PublicPortfolio extends FinalActivity implements OnClickListener {
 	// /////////////////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.publichair);
 		sm = SessionManager.getInstance();
@@ -71,14 +70,14 @@ public class PublicPortfolio extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "上传发型页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "上传发型页面");
 	}
@@ -225,10 +224,6 @@ public class PublicPortfolio extends FinalActivity implements OnClickListener {
 			return false;
 
 		}
-		if ("".equals(getCheckString())) {
-			TispToastFactory.getToast(PublicPortfolio.this, "请选择发型种类").show();
-			return false;
-		}
 		return true;
 	}
 
@@ -248,20 +243,6 @@ public class PublicPortfolio extends FinalActivity implements OnClickListener {
 		}
 		if (!"".equals(sb.toString())) {
 			return sb.toString().substring(1);
-		} else {
-			return "";
-		}
-	}
-
-	private String getCheckString() {
-		if (((RadioButton) findViewById(R.id.cb_duanfa)).isChecked()) {
-			return "1";
-		} else if (((RadioButton) findViewById(R.id.cb_zhongfa)).isChecked()) {
-			return "2";
-		} else if (((RadioButton) findViewById(R.id.cb_changfa)).isChecked()) {
-			return "3";
-		} else if (((RadioButton) findViewById(R.id.cb_panfa)).isChecked()) {
-			return "4";
 		} else {
 			return "";
 		}
@@ -297,11 +278,7 @@ public class PublicPortfolio extends FinalActivity implements OnClickListener {
 			map.put("uid", sm.getUserId());
 			map.put("type", sm.getUsertype());
 			map.put("content", et_hairinfo.getText().toString().trim());
-			map.put("hair_type", getCheckString());
-			map.put("sex", ((RadioButton) findViewById(R.id.rb_female))
-					.isChecked() ? "0" : "1");
 			map.put("work_image", getImageStringList());
-			// map.put("text", access_token);
 			return map;
 		}
 
