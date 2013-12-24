@@ -7,7 +7,6 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -78,8 +77,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 		ListView.setOnScrollListener(this);
 
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(240,
-				28, 97));
+		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 
@@ -87,12 +85,10 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	private void ResetButtonBg() {
 
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(0,
-				0, 0));
+		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_geren))
-				.setTextColor(Color.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_dianpu)).setTextColor(Color
-				.rgb(0, 0, 0));
+				.setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_dianpu)).setTextColor(Constant.color_Black);
 	}
 
 	/*
@@ -163,7 +159,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_faxingshi:
 			ResetButtonBg();
-			((Button) v).setTextColor(Color.rgb(240, 28, 97));
+			((Button) v).setTextColor(Constant.color_RoseRed);
 			adapter.clear();
 
 			condition = "";
@@ -173,7 +169,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_geren:
 			ResetButtonBg();
-			((Button) v).setTextColor(Color.rgb(240, 28, 97));
+			((Button) v).setTextColor(Constant.color_RoseRed);
 			adapter.clear();
 			condition = "hot";
 			page = 1;
@@ -184,7 +180,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 			adapter.clear();
 			condition = "my";
 			ResetButtonBg();
-			((Button) v).setTextColor(Color.rgb(240, 28, 97));
+			((Button) v).setTextColor(Constant.color_RoseRed);
 			page = 1;
 			pageCount = 0;
 			new GetTongchengListTask().execute();

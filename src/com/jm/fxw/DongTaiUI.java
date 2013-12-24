@@ -90,8 +90,8 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		findViewById(R.id.btn_tuijian).setOnClickListener(this);
 		ResetButtonBg();
 
-		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color.rgb(240,
-				28, 97));
+		((Button) findViewById(R.id.btn_zuixin))
+				.setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 
@@ -206,7 +206,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	private void changeBtn(String urnAllDongtai, View v) {
 		ResetButtonBg();
-		((Button) v).setTextColor(Color.rgb(240, 28, 97));
+		((Button) v).setTextColor(Constant.color_RoseRed);
 		adapter.clear();
 		mlist.clear();
 		hlist.clear();
@@ -221,10 +221,10 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color
 				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_tongcheng)).setTextColor(Color.rgb(0,
-				0, 0));
-		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Color.rgb(0, 0,
-				0));
+		((Button) findViewById(R.id.btn_tongcheng))
+				.setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_tuijian))
+				.setTextColor(Constant.color_Black);
 	}
 
 	@Override

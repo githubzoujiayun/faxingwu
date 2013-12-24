@@ -12,7 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -64,8 +63,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		findViewById(R.id.btn_lishiyuyue).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		ResetButtonBgAndViews();
-		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Color.rgb(
-				240,28,97));
+		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_btn).setOnClickListener(this);
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(
 				new OnClickListener() {
@@ -88,10 +86,8 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		findViewById(R.id.lin_basic_info).setVisibility(View.GONE);
 		findViewById(R.id.lin_nobasic_info).setVisibility(View.GONE);
 		findViewById(R.id.lin_yuyue_list).setVisibility(View.GONE);
-		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Color.rgb(0,
-				0, 0));
-		((Button) findViewById(R.id.btn_lishiyuyue)).setTextColor(Color.rgb(0,
-				0, 0));
+		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_lishiyuyue)).setTextColor(Constant.color_Black);
 	}
 
 	@Override
@@ -341,7 +337,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_jibenxinxi:
 			ResetButtonBgAndViews();
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Constant.color_RoseRed);
 			if (reserve != null) {
 				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
 			} else {
@@ -352,7 +348,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_lishiyuyue:
 			ResetButtonBgAndViews();
-			((Button) v).setTextColor(Color.rgb(240,28,97));
+			((Button) v).setTextColor(Constant.color_RoseRed);
 			findViewById(R.id.lin_yuyue_list).setVisibility(View.VISIBLE);
 			new getCurrentYuYueListInfo().execute();
 			break;

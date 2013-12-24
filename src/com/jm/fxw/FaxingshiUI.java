@@ -134,8 +134,7 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 		findViewById(R.id.btn_location).setOnClickListener(this);
 		ResetButtonBg();
 
-		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Color.rgb(240,
-				28, 97));
+		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Constant.color_RoseRed);
 	}
 
 	/*
@@ -244,7 +243,7 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
-		((Button) v).setTextColor(Color.rgb(240, 28, 97));
+		((Button) v).setTextColor(Constant.color_RoseRed);
 		adapter.clear();
 		this.condition = condition;
 		page = 1;
@@ -256,12 +255,9 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Color
 				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_tongcheng)).setTextColor(Color.rgb(0,
-				0, 0));
-		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Color.rgb(0, 0,
-				0));
-		((Button) findViewById(R.id.btn_guanzhu)).setTextColor(Color.rgb(0, 0,
-				0));
+		((Button) findViewById(R.id.btn_tongcheng)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_guanzhu)).setTextColor(Constant.color_Black);
 	}
 
 	@Override

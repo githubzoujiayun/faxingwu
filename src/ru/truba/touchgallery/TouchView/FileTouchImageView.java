@@ -17,14 +17,14 @@
  */
 package ru.truba.touchgallery.TouchView;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.AttributeSet;
 import java.io.File;
 import java.io.FileInputStream;
 
 import ru.truba.touchgallery.TouchView.InputStreamWrapper.InputStreamProgressListener;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.AttributeSet;
 
 public class FileTouchImageView extends UrlTouchImageView 
 {

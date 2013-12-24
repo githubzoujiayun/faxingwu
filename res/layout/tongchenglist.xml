@@ -80,16 +80,6 @@
                 android:textColor="#ffffff"
                 android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btn_dianpu"
-                android:layout_width="fill_parent"
-                android:layout_height="39sp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="店铺"
-                android:textColor="#ffffff"
-                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout

@@ -2,8 +2,6 @@ package com.jm.fxw;
 
 import java.io.File;
 import java.io.FileReader;
-import java.util.HashMap;
-import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;

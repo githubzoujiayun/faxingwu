@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -67,7 +66,6 @@ public class TongChengUI extends Activity implements OnClickListener,
 
 		findViewById(R.id.btn_faxingshi).setOnClickListener(this);
 		findViewById(R.id.btn_geren).setOnClickListener(this);
-		findViewById(R.id.btn_dianpu).setOnClickListener(this);
 		findViewById(R.id.btn_search).setOnClickListener(this);
 		sm = SessionManager.getInstance();
 		ListView = (ListView) findViewById(R.id.my_zhoubianlistview);
@@ -76,20 +74,16 @@ public class TongChengUI extends Activity implements OnClickListener,
 		ListView.setOnScrollListener(this);
 
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(240,
-				28, 97));
+		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_RoseRed);
 		((TextView) findViewById(R.id.tv_rightTop)).setText(sm.getCity());
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
 	}
 
 	private void ResetButtonBg() {
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Color.rgb(0,
-				0, 0));
+		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_geren))
-				.setTextColor(Color.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_dianpu)).setTextColor(Color
-				.rgb(0, 0, 0));
+				.setTextColor(Constant.color_Black);
 	}
 
 	/*
@@ -162,7 +156,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_faxingshi:
 			ResetButtonBg();
-			((Button) v).setTextColor(Color.rgb(240, 28, 97));
+			((Button) v).setTextColor(Constant.color_RoseRed);
 			adapter.clear();
 
 			adapter.isDianPu = false;
@@ -173,7 +167,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_geren:
 			ResetButtonBg();
-			((Button) v).setTextColor(Color.rgb(240, 28, 97));
+			((Button) v).setTextColor(Constant.color_RoseRed);
 			adapter.clear();
 			adapter.isDianPu = false;
 			condition = "person";
@@ -181,16 +175,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 			pageCount = 0;
 			new GetTongchengListTask().execute();
 			break;
-		case R.id.btn_dianpu:
-			adapter.clear();
-			adapter.isDianPu = true;
-			condition = "store";
-			ResetButtonBg();
-			((Button) v).setTextColor(Color.rgb(240, 28, 97));
-			page = 1;
-			pageCount = 0;
-			new GetTongchengListTask().execute();
-			break;
+
 		case R.id.btn_search:
 			adapter.clear();
 			page = 1;

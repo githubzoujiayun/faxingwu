@@ -17,13 +17,13 @@
  */
 package ru.truba.touchgallery.GalleryWidget;
 
+import java.util.List;
+
 import android.content.Context;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.List;
 
 /**
  Class wraps URLs to adapter, then it instantiates <b>UrlTouchImageView</b> objects to paging up through them.

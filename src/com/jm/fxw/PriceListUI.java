@@ -6,7 +6,6 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -72,8 +71,7 @@ public class PriceListUI extends Activity implements OnClickListener,
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
 		resetTypeButtonBg();
-		((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240, 28,
-				97));
+		((TextView) findViewById(R.id.btn_t1)).setTextColor(Constant.color_RoseRed);
 		((TextView) findViewById(R.id.tv_rightTop)).setText(SessionManager
 				.getInstance().getCity());
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -86,13 +84,13 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 	private void resetTypeButtonBg() {
 
-		((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(0, 0, 0));
+		((TextView) findViewById(R.id.btn_t1)).setTextColor(Constant.color_Black);
 
-		((TextView) findViewById(R.id.btn_t2)).setTextColor(Color.rgb(0, 0, 0));
+		((TextView) findViewById(R.id.btn_t2)).setTextColor(Constant.color_Black);
 
-		((TextView) findViewById(R.id.btn_t3)).setTextColor(Color.rgb(0, 0, 0));
+		((TextView) findViewById(R.id.btn_t3)).setTextColor(Constant.color_Black);
 
-		((TextView) findViewById(R.id.btn_t4)).setTextColor(Color.rgb(0, 0, 0));
+		((TextView) findViewById(R.id.btn_t4)).setTextColor(Constant.color_Black);
 
 	
 	}
@@ -163,26 +161,22 @@ public class PriceListUI extends Activity implements OnClickListener,
 			break;
 		case R.id.lin_price_xi:
 			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t1)).setTextColor(Color.rgb(240,
-					28, 97));
+			((TextView) findViewById(R.id.btn_t1)).setTextColor(Constant.color_RoseRed);
 			setPrice(1);
 			break;
 		case R.id.lin_price_tang:
 			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t2)).setTextColor(Color.rgb(240,
-					28, 97));
+			((TextView) findViewById(R.id.btn_t2)).setTextColor(Constant.color_RoseRed);
 			setPrice(2);
 			break;
 		case R.id.lin_price_ran:
 			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t3)).setTextColor(Color.rgb(240,
-					28, 97));
+			((TextView) findViewById(R.id.btn_t3)).setTextColor(Constant.color_RoseRed);
 			setPrice(3);
 			break;
 		case R.id.lin_price_hu:
 			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t4)).setTextColor(Color.rgb(240,
-					28, 97));
+			((TextView) findViewById(R.id.btn_t4)).setTextColor(Constant.color_RoseRed);
 			setPrice(4);
 			break;
 

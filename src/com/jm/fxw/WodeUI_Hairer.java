@@ -57,8 +57,6 @@ public class WodeUI_Hairer extends FinalActivity implements OnItemClickListener 
 	Button btn_rightTop;
 	@ViewInject(id = R.id.lin_renzheng, click = "Click")
 	LinearLayout lin_renzheng;
-	@ViewInject(id = R.id.lin_shalong, click = "Click")
-	LinearLayout lin_shalong;
 
 	@ViewInject(id = R.id.iv_minfouserpic, click = "Click")
 	ImageView iv_minfouserpic;
@@ -137,14 +135,7 @@ public class WodeUI_Hairer extends FinalActivity implements OnItemClickListener 
 			StartActivityContController.goPage(this, CollectListUI.class, true,
 					map);
 			break;
-		case R.id.lin_shalong:
-			if (!"".equals(store_id)) {
-				map = new HashMap<String, String>();
-				map.put("uid", store_id);
-				StartActivityContController.goPage(this, DianPuInfoUI.class,
-						true, map);
-			}
-			break;
+
 		case R.id.lin_attention_num:
 
 			if ("0".equals(((TextView) findViewById(R.id.tv_attention_num))

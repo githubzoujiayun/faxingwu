@@ -17,7 +17,6 @@ import com.jm.connection.Response;
 import com.jm.entity.ZhouBian;
 import com.jm.finals.Constant;
 import com.jm.fxw.ClientApp;
-import com.jm.fxw.DianPuInfoUI;
 import com.jm.fxw.HisInfoUI;
 import com.jm.fxw.LoginUI;
 import com.jm.fxw.R;
@@ -73,16 +72,11 @@ public class ZhouBianItem extends LinearLayout implements OnClickListener {
 			break;
 		case R.id.iv_pic:
 		case R.id.lin_all:
-			if (isDianPu) {
-				intent = new Intent(context, DianPuInfoUI.class);
-				intent.putExtra("uid", zhoubian.getId());
-				context.startActivity(intent);
-			} else {
-				intent = new Intent(context, HisInfoUI.class);
-				intent.putExtra("uid", zhoubian.getId());
-				intent.putExtra("type", zhoubian.getType());
-				context.startActivity(intent);
-			}
+			intent = new Intent(context, HisInfoUI.class);
+			intent.putExtra("uid", zhoubian.getId());
+			intent.putExtra("type", zhoubian.getType());
+			context.startActivity(intent);
+
 			break;
 		}
 	}

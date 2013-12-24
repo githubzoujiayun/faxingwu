@@ -1,14 +1,12 @@
 package com.jm.fxw;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -28,7 +26,6 @@ import com.jm.connection.Response;
 import com.jm.data.DatabaseHelper;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
-import com.jm.session.SessionManager;
 import com.jm.sort.HairAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
@@ -106,8 +103,10 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		findViewById(R.id.btn_leftType).setOnClickListener(this);
 		findViewById(R.id.btn_rightType).setOnClickListener(this);
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_leftType)).setTextColor(Color.rgb(240,
-				28, 97));
+		((Button) findViewById(R.id.btn_leftType))
+				.setTextColor(Constant.color_RoseRed);
+		((Button) findViewById(R.id.btn_leftType)).getPaint().setFakeBoldText(
+				true);
 		Intent i = getIntent();
 		((TextView) findViewById(R.id.tv_mainhead)).setText(i
 				.getStringExtra("hairName"));
@@ -261,7 +260,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
 		((Button) v).getPaint().setFakeBoldText(true);
-		((Button) v).setTextColor(Color.rgb(240, 28, 97));
+		((Button) v).setTextColor(Constant.color_RoseRed);
 		adapter.clear();
 		this.mlist.clear();
 		this.condition = condition;
@@ -271,12 +270,12 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	}
 
 	private void ResetButtonBg() {
-		((Button) findViewById(R.id.btn_leftType)).setTextColor(Color.rgb(0, 0,
-				0));
+		((Button) findViewById(R.id.btn_leftType))
+				.setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_leftType)).getPaint().setFakeBoldText(
 				false);
-		((Button) findViewById(R.id.btn_rightType)).setTextColor(Color.rgb(0,
-				0, 0));
+		((Button) findViewById(R.id.btn_rightType))
+				.setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_rightType)).getPaint().setFakeBoldText(
 				false);
 	}

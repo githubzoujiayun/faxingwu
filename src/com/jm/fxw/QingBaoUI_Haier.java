@@ -8,7 +8,6 @@ import java.util.Map;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -89,8 +88,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		findViewById(R.id.btn_mingdianzhanshi).setOnClickListener(this);
 		findViewById(R.id.btn_shalongzhuanrang).setOnClickListener(this);
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_mingrentang)).setTextColor(Color.rgb(
-				230, 61, 61));
+		((Button) findViewById(R.id.btn_mingrentang)).setTextColor(Constant.color_RoseRed);
 	}
 
 	/*
@@ -187,7 +185,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
-		((Button) v).setTextColor(Color.rgb(240, 28, 71));
+		((Button) v).setTextColor(Constant.color_RoseRed);
 		adapter.clear();
 		this.news_type = condition;
 		page = 1;
@@ -197,14 +195,10 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 
 	private void ResetButtonBg() {
 
-		((Button) findViewById(R.id.btn_mingrentang)).setTextColor(Color.rgb(0,
-				0, 0));
-		((Button) findViewById(R.id.btn_hangyexinwen)).setTextColor(Color.rgb(
-				0, 0, 0));
-		((Button) findViewById(R.id.btn_mingdianzhanshi)).setTextColor(Color
-				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_shalongzhuanrang)).setTextColor(Color
-				.rgb(0, 0, 0));
+		((Button) findViewById(R.id.btn_mingrentang)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_hangyexinwen)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_mingdianzhanshi)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_shalongzhuanrang)).setTextColor(Constant.color_Black);
 
 	}
 

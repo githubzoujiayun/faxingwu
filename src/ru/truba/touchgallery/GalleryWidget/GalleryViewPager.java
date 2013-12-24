@@ -17,12 +17,12 @@
  */
 package ru.truba.touchgallery.GalleryWidget;
 
+import ru.truba.touchgallery.TouchView.TouchImageView;
 import android.content.Context;
 import android.graphics.PointF;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import ru.truba.touchgallery.TouchView.TouchImageView;
 
 /**
  * This class implements method to help <b>TouchImageView</b> fling, draggin and

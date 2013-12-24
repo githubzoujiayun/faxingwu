@@ -19,9 +19,9 @@ package ru.truba.touchgallery.GalleryWidget;
 
 import java.util.List;
 
+import ru.truba.touchgallery.TouchView.UrlTouchImageView;
 import android.content.Context;
 import android.view.ViewGroup;
-import ru.truba.touchgallery.TouchView.UrlTouchImageView;
 
 /**
  * Class wraps URLs to adapter, then it instantiates {@link UrlTouchImageView}
