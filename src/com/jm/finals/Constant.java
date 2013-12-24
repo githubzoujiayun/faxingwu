@@ -24,7 +24,7 @@ public class Constant {
 	public final static String URN_MYCOLLECTLIST_LIST = "http://wap.faxingw.cn/index.php?m=User&a=collectlist";
 	public final static String URN_MYWORKLIST_LIST = "http://wap.faxingw.cn/index.php?m=User&a=workslist";
 	public final static String URN_ALLDONGTAI_LIST = "http://wap.faxingw.cn/index.php?m=Dynamic&a=allnews";
-	public final static String URN_ZHAOFAXING_LIST = "http://wap.faxingw.cn/index.php?m=Forhair&a=cate";
+	public final static String URN_ZHAOFAXING_LIST = "http://wap.faxingw.cn/index.php?m=Forhair&a=newCate";
 
 	public final static String URN_SETTING = "http://wap.faxingw.cn/index.php?m=User&a=site";
 	public final static String URN_TIPSSETTINGCHANGE = "http://wap.faxingw.cn/index.php?m=User&a=setting";
@@ -107,6 +107,9 @@ public class Constant {
 	public final static String URN_CHANGEINFO = "http://wap.faxingw.cn/index.php?m=User&a=data_modify";
 
 	public final static String URN_PUBLICPORTFOLIO = "http://wap.faxingw.cn/index.php?m=Works&a=add_works";
+	public final static String URN_PUBLICPORTFOLIOOFHAIR = "http://wap.faxingw.cn/index.php?m=Works&a=newAddWorks";
+	
+	
 	public final static String URN_ADD_NEWS = "http://wap.faxingw.cn/index.php?m=Infostation&a=newsadd";
 
 	public final static String URN_PUBLICQUESTION = "http://wap.faxingw.cn/index.php?m=Problem&a=quizadd";
