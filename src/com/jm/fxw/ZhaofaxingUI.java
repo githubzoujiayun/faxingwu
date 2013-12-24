@@ -2,6 +2,8 @@ package com.jm.fxw;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
@@ -9,6 +11,7 @@ import net.tsz.afinal.annotation.view.ViewInject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +27,7 @@ import android.widget.Toast;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
+import com.jm.entity.Type;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.HairTypeAdapter;
@@ -333,7 +337,13 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		// TODO Auto-generated method stub
+		Type type = hairTypeAdapter.getItem(position);
 
+		Intent i = new Intent(this, ZhaoFaXingListUI.class);
+		i.putExtra("firstType", type.firstType + "");
+		i.putExtra("secondType", type.secondType + "");
+		i.putExtra("hairName", type.hairName + "");
+		i.putExtra("typeBySex", type.typeBySex);
+		startActivity(i);
 	}
 }
