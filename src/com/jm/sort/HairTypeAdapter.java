@@ -20,49 +20,11 @@ public class HairTypeAdapter extends BaseAdapter {
 
 	private LayoutInflater inflater;
 	private List<Type> mlist;
-	private Context context;
-
-	private ImageView hairPic;
 	private boolean isProgress = false;
 
 	public HairTypeAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<Type>();
-		this.context = context;
-	}
-
-	/**
-	 * 添加数据列表
-	 * 
-	 * @param goods
-	 */
-	public void addMoreData(Type type) {
-
-		mlist.add(type);
-	}
-
-	public List<Type> getHairList() {
-		return mlist;
-	}
-
-	public boolean isProgress() {
-		return isProgress;
-	}
-
-	public void setProgress(boolean isProgress) {
-		this.isProgress = isProgress;
-	}
-
-	public void appendHairList(List<Type> list) {
-		if (list == null) {
-			return;
-		}
-		if (mlist == null) {
-			mlist = new ArrayList<Type>();
-		}
-
-		mlist.addAll(list);
-
 	}
 
 	public void setHairList(List<Type> list) {
@@ -83,7 +45,7 @@ public class HairTypeAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Type getItem(int position) {
 		return mlist.get(position);
 	}
 

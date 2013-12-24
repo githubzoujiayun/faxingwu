@@ -26,8 +26,15 @@ public class HairTypeUtil {
 
 	private void initrecommendList() {
 
-		recommendList.add(new Type(1, 10, R.drawable.hairtype_1_10, "女明星"));
+		recommendList.add(new Type(1, 8, R.drawable.hairtype_1_8, "波波头"));
+		recommendList.add(new Type(1, 7, R.drawable.hairtype_1_7, "梨花头"));
+		recommendList.add(new Type(4, 4, R.drawable.hairtype_4_4, "水波纹", true));
+		recommendList.add(new Type(4, 1, R.drawable.hairtype_4_1, "纹理烫", true));
+		recommendList.add(new Type(1, 4, R.drawable.hairtype_1_4, "编发"));
+		recommendList.add(new Type(1, 5, R.drawable.hairtype_1_5, "盘发"));
 		recommendList.add(new Type(2, 10, R.drawable.hairtype_2_10, "男明星"));
+		recommendList.add(new Type(1, 10, R.drawable.hairtype_1_10, "女明星"));
+		recommendList.add(new Type(5, 2, R.drawable.hairtype_5_2, "渐变色", true));
 	}
 
 	private void initwomenList() {
@@ -38,8 +45,9 @@ public class HairTypeUtil {
 		womenList.add(new Type(1, 5, R.drawable.hairtype_1_5, "盘发"));
 		womenList.add(new Type(1, 6, R.drawable.hairtype_1_6, "公主头"));
 		womenList.add(new Type(1, 7, R.drawable.hairtype_1_7, "梨花头"));
-		womenList.add(new Type(1, 8, R.drawable.hairtype_1_8, "波波头"));
-		womenList.add(new Type(1, 9, R.drawable.hairtype_1_9, "其他"));
+		womenList.add(new Type(1, 8, R.drawable.hairtype_1_8, "蛋卷头"));
+		womenList.add(new Type(1, 9, R.drawable.hairtype_1_9, "波波头"));
+		// womenList.add(new Type(1, 10, R.drawable.hairtype_1_10, "女明星"));
 	}
 
 	private void initmanList() {
@@ -52,34 +60,35 @@ public class HairTypeUtil {
 		manList.add(new Type(2, 7, R.drawable.hairtype_2_7, "长发"));
 		manList.add(new Type(2, 8, R.drawable.hairtype_2_8, "蘑菇头"));
 		manList.add(new Type(2, 9, R.drawable.hairtype_2_9, "其他"));
+		// manList.add(new Type(2, 10, R.drawable.hairtype_2_10, "男明星"));
 
 	}
 
 	private void initfacetypeList() {
-		facetypeList.add(new Type(3, 1, R.drawable.hairtype_3_1, "圆脸"));
-		facetypeList.add(new Type(3, 2, R.drawable.hairtype_3_2, "方脸"));
-		facetypeList.add(new Type(3, 3, R.drawable.hairtype_3_3, "长脸"));
-		facetypeList.add(new Type(3, 4, R.drawable.hairtype_3_4, "瓜子脸"));
+		facetypeList.add(new Type(3, 1, R.drawable.hairtype_3_1, "圆脸", true));
+		facetypeList.add(new Type(3, 2, R.drawable.hairtype_3_2, "方脸", true));
+		facetypeList.add(new Type(3, 3, R.drawable.hairtype_3_3, "长脸", true));
+		facetypeList.add(new Type(3, 4, R.drawable.hairtype_3_4, "瓜子脸", true));
 	}
 
 	private void initpermList() {
-		permList.add(new Type(4, 1, R.drawable.hairtype_4_1, "纹理烫"));
-		permList.add(new Type(4, 2, R.drawable.hairtype_4_2, "定位烫"));
-		permList.add(new Type(4, 3, R.drawable.hairtype_4_3, "皮卡路"));
-		permList.add(new Type(4, 4, R.drawable.hairtype_4_4, "水波纹"));
-		permList.add(new Type(4, 5, R.drawable.hairtype_4_5, "玉米烫"));
-		permList.add(new Type(4, 6, R.drawable.hairtype_4_6, "螺旋烫"));
-		permList.add(new Type(4, 7, R.drawable.hairtype_4_7, "离子烫"));
-		permList.add(new Type(4, 8, R.drawable.hairtype_4_8, "梨花烫"));
-		permList.add(new Type(4, 9, R.drawable.hairtype_4_9, "其他"));
+		permList.add(new Type(4, 1, R.drawable.hairtype_4_1, "纹理烫", true));
+		permList.add(new Type(4, 2, R.drawable.hairtype_4_2, "定位烫", true));
+		permList.add(new Type(4, 3, R.drawable.hairtype_4_3, "皮卡路", true));
+		permList.add(new Type(4, 4, R.drawable.hairtype_4_4, "水波纹", true));
+		permList.add(new Type(4, 5, R.drawable.hairtype_4_5, "玉米烫", true));
+		permList.add(new Type(4, 6, R.drawable.hairtype_4_6, "螺旋烫", true));
+		permList.add(new Type(4, 7, R.drawable.hairtype_4_7, "离子烫", true));
+		permList.add(new Type(4, 8, R.drawable.hairtype_4_8, "梨花烫", true));
+		permList.add(new Type(4, 9, R.drawable.hairtype_4_9, "其他", true));
 
 	}
 
 	private void initcolorList() {
-		colorList.add(new Type(5, 1, R.drawable.hairtype_5_1, "整体色"));
-		colorList.add(new Type(5, 2, R.drawable.hairtype_5_2, "渐变染色"));
-		colorList.add(new Type(5, 3, R.drawable.hairtype_5_3, "挑染"));
-		colorList.add(new Type(5, 4, R.drawable.hairtype_5_4, "多色染色"));
+		colorList.add(new Type(5, 1, R.drawable.hairtype_5_1, "整体色", true));
+		colorList.add(new Type(5, 2, R.drawable.hairtype_5_2, "渐变色", true));
+		colorList.add(new Type(5, 3, R.drawable.hairtype_5_3, "挑染", true));
+		colorList.add(new Type(5, 4, R.drawable.hairtype_5_4, "多色染色", true));
 
 	}
 

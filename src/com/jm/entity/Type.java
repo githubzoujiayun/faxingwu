@@ -15,6 +15,16 @@ public class Type implements ListItem {
 	public int secondType;
 	public int picResource;
 	public String hairName;
+	public boolean typeBySex = false;
+
+	public Type(int firstType, int secondType, int picResource,
+			String hairName, boolean typeBySex) {
+		this.firstType = firstType;
+		this.secondType = secondType;
+		this.picResource = picResource;
+		this.hairName = hairName;
+		this.typeBySex = typeBySex;
+	}
 
 	public Type(int firstType, int secondType, int picResource, String hairName) {
 		this.firstType = firstType;
