@@ -3,18 +3,17 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jm.entity.Comment;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class CommentAdapter extends BaseAdapter {
 
@@ -23,8 +22,6 @@ public class CommentAdapter extends BaseAdapter {
 
 	private Context context;
 	private Comment comment;
-	private Button btn;
-	private FinalBitmap fb;
 
 	public CommentAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
@@ -84,9 +81,8 @@ public class CommentAdapter extends BaseAdapter {
 				.getCtext());
 		((TextView) view.findViewById(R.id.tv_uname)).setText(comment
 				.getCname());
-		fb = FinalBitmap.create(context);
-		fb.display((ImageView) view.findViewById(R.id.iv_commentupic),
-				comment.getCpic());
+		ImageLoader.getInstance().displayImage(comment.getCpic(),
+				(ImageView) view.findViewById(R.id.iv_commentupic));
 		return view;
 	}
 

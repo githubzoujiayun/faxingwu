@@ -3,16 +3,17 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jm.entity.NewsList;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class NewsListAdapter extends BaseAdapter {
 	private LayoutInflater inflater;
@@ -61,8 +62,8 @@ public class NewsListAdapter extends BaseAdapter {
 				R.layout.newsinfolist_list, null);
 		type = mlist.get(position);
 
-		FinalBitmap.create(context).display(
-				view.findViewById(R.id.iv_NewListInfo), type.getImage());
+		ImageLoader.getInstance().displayImage(type.getImage(),
+				(ImageView) view.findViewById(R.id.iv_NewListInfo));
 		((TextView) view.findViewById(R.id.tv_NewListInfo)).setText("      "
 				+ type.getContent());
 		return view;

@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.ImageView;
 
 import com.jm.entity.User;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class UserGalleryAdapter extends BaseAdapter implements OnClickListener {
 
@@ -22,7 +22,6 @@ public class UserGalleryAdapter extends BaseAdapter implements OnClickListener {
 
 	private Context context;
 
-	private FinalBitmap fb;
 	private boolean isProgress = false;
 
 	public UserGalleryAdapter(Context context) {
@@ -103,9 +102,8 @@ public class UserGalleryAdapter extends BaseAdapter implements OnClickListener {
 			} else {
 				view = inflater.inflate(R.layout.hair_list, null);
 			}
-			fb = FinalBitmap.create(context);
-			fb.display((ImageView) view.findViewById(R.id.img_hair),
-					type.getHead_photo());
+			ImageLoader.getInstance().displayImage(type.getHead_photo(),
+					(ImageView) view.findViewById(R.id.img_hair));
 			return view;
 		}
 	}

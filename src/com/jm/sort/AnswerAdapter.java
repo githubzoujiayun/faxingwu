@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 
 import com.jm.entity.Answer;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class AnswerAdapter extends BaseAdapter implements OnClickListener {
 
@@ -96,9 +96,9 @@ public class AnswerAdapter extends BaseAdapter implements OnClickListener {
 		} else {
 			view = inflater.inflate(R.layout.answer_list, null);
 		}
-		FinalBitmap.create(context).display(
-				(ImageView) view.findViewById(R.id.iv_pic), type.head_photo);
 
+		ImageLoader.getInstance().displayImage(type.head_photo,
+				(ImageView) view.findViewById(R.id.iv_pic));
 		((TextView) view.findViewById(R.id.tv_ta_id)).setText(type.ta_id);
 		((TextView) view.findViewById(R.id.tv_tid)).setText(type.pid);
 		((TextView) view.findViewById(R.id.tv_1_1)).setText(type.ta_name);

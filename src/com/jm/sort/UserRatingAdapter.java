@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 
 import com.jm.entity.Rating;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class UserRatingAdapter extends BaseAdapter implements OnClickListener {
 
@@ -25,9 +25,6 @@ public class UserRatingAdapter extends BaseAdapter implements OnClickListener {
 	private Context context;
 
 	private int position;
-	private FinalBitmap fb;
-
-	private ImageView hairPic;
 	private boolean isProgress = false;
 
 	public UserRatingAdapter(Context context) {
@@ -110,9 +107,8 @@ public class UserRatingAdapter extends BaseAdapter implements OnClickListener {
 				view = inflater.inflate(R.layout.rating_list, null);
 			}
 
-			fb = FinalBitmap.create(context);
-			fb.display((ImageView) view.findViewById(R.id.iv_pic),
-					type.getHead_photo());
+			ImageLoader.getInstance().displayImage(type.getHead_photo(),
+					(ImageView) view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_info))
 					.setText(type.getInfo());
 			((TextView) view.findViewById(R.id.tv_time)).setText(type

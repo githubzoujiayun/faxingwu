@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +10,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jm.entity.Reserve;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ReserveAdapter extends BaseAdapter implements OnClickListener {
 
@@ -107,8 +108,7 @@ public class ReserveAdapter extends BaseAdapter implements OnClickListener {
 			} else {
 				view = inflater.inflate(R.layout.reserve_list, null);
 			}
-			FinalBitmap.create(context).display(view.findViewById(R.id.iv_pic),
-					type.getHead_photo());
+			ImageLoader.getInstance().displayImage(type.getHead_photo(), (ImageView)view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type
 					.getMy_name());
 			((TextView) view.findViewById(R.id.tv_reservetype)).setText("‘§‘º¿‡–Õ:"

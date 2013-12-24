@@ -1,6 +1,5 @@
 package com.jm.sort;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
@@ -16,6 +15,7 @@ import com.jm.entity.QuestionChat;
 import com.jm.fxw.HisInfoUI;
 import com.jm.fxw.R;
 import com.jm.session.SessionManager;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class QuesionChatItem extends LinearLayout implements OnClickListener {
 
@@ -24,7 +24,6 @@ public class QuesionChatItem extends LinearLayout implements OnClickListener {
 	private ImageView imgFriend;
 	private ImageView imgMy;
 
-	private FinalBitmap fb1, fb2;
 	private LinearLayout mylin, hislin, lin_voice, lin_text;
 	private RelativeLayout chat_layout;
 	private ImageView image;
@@ -41,8 +40,6 @@ public class QuesionChatItem extends LinearLayout implements OnClickListener {
 	}
 
 	public void initView() {
-		fb1 = FinalBitmap.create(context);
-		fb2 = FinalBitmap.create(context);
 		time = (TextView) findViewById(R.id.time);
 		lin_voice = (LinearLayout) findViewById(R.id.lin_voice);
 		chat_layout = (RelativeLayout) findViewById(R.id.team_singlechat_id_listiteam);
@@ -84,7 +81,7 @@ public class QuesionChatItem extends LinearLayout implements OnClickListener {
 			rl_tv_msg_left.addRule(RelativeLayout.LEFT_OF, 0);
 
 			lin_text.setBackgroundResource(R.drawable.balloon_l_selector);
-			fb1.display(imgFriend, u.getSenderpic());
+			ImageLoader.getInstance().displayImage(u.getSenderpic(), imgFriend);
 			lin_text.setGravity(Gravity.LEFT);
 			imgMy.setVisibility(View.GONE);
 			mylin.setVisibility(View.GONE);
@@ -106,7 +103,7 @@ public class QuesionChatItem extends LinearLayout implements OnClickListener {
 			lin_text.setGravity(Gravity.RIGHT);
 			imgFriend.setVisibility(View.GONE);
 			hislin.setVisibility(View.GONE);
-			fb2.display(imgMy, u.getMypic());
+			ImageLoader.getInstance().displayImage(u.getMypic(), imgMy);
 			lin_text.setBackgroundResource(R.drawable.balloon_r_selector);
 			lin_text.setGravity(Gravity.RIGHT);
 			imgFriend.setVisibility(View.GONE);
@@ -114,8 +111,9 @@ public class QuesionChatItem extends LinearLayout implements OnClickListener {
 		}
 		if (!u.getPic().equals("")) {
 			findViewById(R.id.chatpicture).setVisibility(View.VISIBLE);
-			FinalBitmap.create(context).display(findViewById(R.id.chatpicture),
-					u.getPic());
+
+			ImageLoader.getInstance().displayImage(u.getPic(),
+					(ImageView) findViewById(R.id.chatpicture));
 		}
 		if (u.getMessage().equals("")) {
 			text.setVisibility(View.GONE);

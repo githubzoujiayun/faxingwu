@@ -48,32 +48,7 @@
         android:background="#FFFFFF"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:id="@+id/lin_choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40sp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:visibility="gone" >
-
-            <ImageView
-                android:id="@+id/iv_user"
-                android:layout_width="97.5sp"
-                android:layout_height="42.5sp"
-                android:layout_margin="10sp"
-                android:background="@drawable/iamuser"
-                android:scaleType="fitXY" />
-
-            <ImageView
-                android:id="@+id/iv_hair"
-                android:layout_width="97.5sp"
-                android:layout_height="42.5sp"
-                android:layout_margin="10sp"
-                android:background="@drawable/iamhairer"
-                android:scaleType="fitXY" />
-        </LinearLayout>
-
+        
         <LinearLayout
             android:id="@+id/lin_hair_info"
             android:layout_width="fill_parent"

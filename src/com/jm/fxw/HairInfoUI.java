@@ -110,7 +110,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
 		viewPagerAdapter = new ViewPagerAdapter(this);
@@ -398,14 +398,14 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 			@Override
 			public void onCancel() {
-				
+
 				super.onCancel();
 				LogUtil.e("=======================================onCancel");
 			}
 
 			@Override
 			public void onError(UiError e) {
-				
+
 				super.onError(e);
 				LogUtil.e("=======================================onError"
 						+ e.toString());
@@ -440,7 +440,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 						new RequestListener() {
 							@Override
 							public void onIOException(IOException arg0) {
-								
+
 								showTipInHandler("onIOException–¬¿ÀŒ¢≤©∑÷œÌ ß∞‹"
 										+ arg0.toString());
 								LogUtil.e(arg0.toString());
@@ -448,7 +448,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 							@Override
 							public void onError(WeiboException arg0) {
-								
+
 								showTipInHandler("onError–¬¿ÀŒ¢≤©∑÷œÌ ß∞‹"
 										+ arg0.toString());
 								LogUtil.e(arg0.toString());
@@ -885,7 +885,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 		@Override
 		public void onHttpStatusException(HttpStatusException arg0, Object arg1) {
-			
 
 			showTipInHandler("∑÷œÌ ß∞‹_" + "onHttpStatusException");
 
@@ -893,14 +892,12 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 		@Override
 		public void onIOException(IOException arg0, Object arg1) {
-			
 
 			showTipInHandler("∑÷œÌ ß∞‹_" + "onIOException");
 		}
 
 		@Override
 		public void onJSONException(JSONException arg0, Object arg1) {
-			
 
 			showTipInHandler("∑÷œÌ ß∞‹_" + "onJSONException");
 
@@ -1000,7 +997,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onPageScrolled(int arg0, float arg1, int arg2) {
-		
 
 	}
 

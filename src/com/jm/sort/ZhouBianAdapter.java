@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +15,13 @@ import android.widget.TextView;
 
 import com.jm.entity.ZhouBian;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 
 	private LayoutInflater inflater;
 	private List<ZhouBian> mlist;
 	private Context context;
-	private FinalBitmap fb;
 
 	public boolean isDianPu = false;
 	private boolean isProgress = false;
@@ -105,9 +104,8 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 			view.setZhouBian(mlist.get(position));
 			view.initView();
 
-			fb = FinalBitmap.create(context);
-			fb.display((ImageView) view.findViewById(R.id.iv_pic),
-					type.getHead_photo());
+			ImageLoader.getInstance().displayImage(type.getHead_photo(),
+					(ImageView) view.findViewById(R.id.iv_pic));
 			((Button) view.findViewById(R.id.btn_isconcerns))
 					.setText(type.isconcerns.equals("1") ? "ÒÑ¹Ø×¢" : " + ¹Ø×¢");
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type
@@ -123,7 +121,7 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 				((TextView) view.findViewById(R.id.tv_4_1))
 						.setVisibility(View.GONE);
 			}
-			
+
 			if (!type.status.equals("1")) {
 				view.findViewById(R.id.iv_renzheng).setVisibility(View.GONE);
 			}

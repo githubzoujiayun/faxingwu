@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 
 import com.jm.entity.User;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class UserAdapter extends BaseAdapter implements OnClickListener {
 
@@ -22,7 +22,6 @@ public class UserAdapter extends BaseAdapter implements OnClickListener {
 	private List<User> mlist;
 
 	private Context context;
-	private FinalBitmap fb;
 	private boolean isProgress = false;
 
 	public UserAdapter(Context context) {
@@ -102,9 +101,8 @@ public class UserAdapter extends BaseAdapter implements OnClickListener {
 				view = inflater.inflate(R.layout.user_list, null);
 			}
 
-			fb = FinalBitmap.create(context);
-			fb.display((ImageView) view.findViewById(R.id.iv_pic),
-					type.getHead_photo());
+			ImageLoader.getInstance().displayImage(type.getHead_photo(),
+					(ImageView) view.findViewById(R.id.iv_pic));
 
 			// else {
 			// hairPic.setImageResource(R.drawable.moren_touxiang);

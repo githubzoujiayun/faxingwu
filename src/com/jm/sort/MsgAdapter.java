@@ -3,19 +3,18 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jm.entity.Msg;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MsgAdapter extends BaseAdapter implements OnClickListener {
 
@@ -23,12 +22,7 @@ public class MsgAdapter extends BaseAdapter implements OnClickListener {
 	private List<Msg> mlist;
 
 	private Context context;
-
 	private int position;
-	private Button btn;
-	private FinalBitmap fb;
-
-	private ImageView hairPic;
 
 	public MsgAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
@@ -96,9 +90,8 @@ public class MsgAdapter extends BaseAdapter implements OnClickListener {
 				.getUser_name());
 		((TextView) view.findViewById(R.id.tv_tid)).setText(type.getUid());
 
-		fb = FinalBitmap.create(context);
-		fb.display((ImageView) view.findViewById(R.id.iv_msgupic),
-				type.getUser_pic());
+		ImageLoader.getInstance().displayImage(type.getUser_pic(),
+				(ImageView) view.findViewById(R.id.iv_msgupic));
 		return view;
 	}
 

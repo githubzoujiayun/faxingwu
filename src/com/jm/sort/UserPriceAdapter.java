@@ -3,7 +3,6 @@ package com.jm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.tsz.afinal.FinalBitmap;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 
 import com.jm.entity.User;
 import com.jm.fxw.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class UserPriceAdapter extends BaseAdapter implements OnClickListener {
 
@@ -26,9 +26,7 @@ public class UserPriceAdapter extends BaseAdapter implements OnClickListener {
 
 	private int position;
 	private Button btn;
-	private FinalBitmap fb;
 	private int discount = 1;
-	private ImageView hairPic;
 	private boolean isProgress = false;
 
 	public UserPriceAdapter(Context context) {
@@ -151,9 +149,8 @@ public class UserPriceAdapter extends BaseAdapter implements OnClickListener {
 			}
 
 			setPriceList(discount);
-			fb = FinalBitmap.create(context);
-			fb.display((ImageView) view.findViewById(R.id.iv_pic),
-					type.getHead_photo());
+			ImageLoader.getInstance().displayImage(type.getHead_photo(),
+					(ImageView) view.findViewById(R.id.iv_pic));
 
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type
 					.getUsername());

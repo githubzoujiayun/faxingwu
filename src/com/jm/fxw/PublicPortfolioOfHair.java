@@ -131,7 +131,7 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 		Display display = windowManager.getDefaultDisplay();
 		int screenWidth = display.getWidth();
 		Calendar_Width = screenWidth - 15;
-		Cell_Width = Calendar_Width / 4 + 1;
+		Cell_Width = Calendar_Width / 4 ;
 		findViewById(R.id.btn_PublicTop).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		et_hairinfo = (EditText) findViewById(R.id.et_hairinfo);

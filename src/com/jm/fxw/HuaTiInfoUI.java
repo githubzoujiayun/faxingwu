@@ -40,6 +40,7 @@ import com.jm.sort.CommentAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.weibo.sdk.android.Oauth2AccessToken;
 
 public class HuaTiInfoUI extends Activity implements OnClickListener,
@@ -50,7 +51,6 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 	private List<Comment> mlist = new ArrayList<Comment>();
 	private String to_uid = "";
 	private SessionManager sm;
-	private FinalBitmap fbPic;
 	// //////////////////////////////////
 	public static Oauth2AccessToken accessToken;
 	private EditText ed_comment;
@@ -75,7 +75,6 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 		// 初始化缓存对象.S
 
 		// ///////////////////////////////
-		fbPic = FinalBitmap.create(this);
 		mHandler = new Handler();
 		sm = SessionManager.getInstance();
 		setContentView(R.layout.huatiinfo);
@@ -263,8 +262,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 		usertype = res.getString("type");
 		to_uid = res.getString("uid");
 		findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
-		fbPic.display((ImageView) findViewById(R.id.iv_hairinfo_headphoto),
-				res.getString("head_photo"));
+		ImageLoader.getInstance().displayImage(res.getString("head_photo"), (ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 		if (to_uid.equals(sm.getUserId())) {
 			findViewById(R.id.lin_sixin).setVisibility(View.GONE);
 		} else {
