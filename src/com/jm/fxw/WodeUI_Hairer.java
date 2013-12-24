@@ -113,8 +113,7 @@ public class WodeUI_Hairer extends FinalActivity implements OnItemClickListener 
 			StartActivityContController.goPage(this, SettingUI.class, true);
 			break;
 		case R.id.btn_rightTop:
-			StartActivityContController.goPage(this, PublicPortfolio.class,
-					true);
+			StartActivityContController.goPage(this, 105);
 			break;
 		case R.id.iv_minfouserpic:
 			StartActivityContController.goPage(this, ChangeInfo.class, true);

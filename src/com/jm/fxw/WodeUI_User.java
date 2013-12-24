@@ -102,8 +102,7 @@ public class WodeUI_User extends FinalActivity implements OnItemClickListener {
 			StartActivityContController.goPage(this, SettingUI.class, true);
 			break;
 		case R.id.btn_rightTop:
-			StartActivityContController.goPage(this, PublicPortfolio.class,
-					true);
+			StartActivityContController.goPage(this, 105);
 			break;
 		case R.id.lin_yuyue:
 			StartActivityContController.goPage(this, 102);
