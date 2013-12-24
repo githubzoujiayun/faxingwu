@@ -41,13 +41,15 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private List<Hair> mlist = new ArrayList<Hair>();
 	private int page = 1;
 	private int pageCount = 0;
-	private String type;
-	private String condition = "new";
-	private SessionManager sm;
+	private String condition = "";
 	private boolean isloading = false;
 	private boolean showlast = false;
 
 	private boolean baseDate = true;
+
+	private String firstType;
+	private String secondType;
+	private boolean typeBySex;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +57,13 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zhaofaxinglist);
 		init();
-		sm = SessionManager.getInstance();
 		ListView = (GridView) findViewById(R.id.zhaofaxing_hairgridview);
 		adapter = new HairAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
-		getDataFromDataBase();
+		// getDataFromDataBase();
+		condition = getCondition(1);
 		new GetHairListTask().execute();
 
 	}
@@ -84,12 +86,11 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 		List<Hair> baseHairList = null;
 		DatabaseHelper db = getHelper();
-		try {
-			baseHairList = db.getHairsList(type);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			LogUtil.e("SQLException + " + e.toString());
-		}
+		// try {
+		// baseHairList = db.getHairsList(type);
+		// } catch (SQLException e) {
+		// LogUtil.e("SQLException + " + e.toString());
+		// }
 
 		if (baseHairList.isEmpty()) {
 		} else {
@@ -101,39 +102,50 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	private void init() {
 
-		findViewById(R.id.btn_zuixin).setOnClickListener(this);
-		findViewById(R.id.btn_tuijian).setOnClickListener(this);
-		ResetButtonBg();
-		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color.rgb(240,
-				28, 97));
-		tv_mainhead = (TextView) findViewById(R.id.tv_mainhead);
-		Intent i = getIntent();
-		type = i.getStringExtra("type");
-
-		if ("1".equals(type)) {
-			tv_mainhead.setText("短发");
-		}
-
-		else if ("2".equals(type)) {
-			tv_mainhead.setText("中发");
-
-		} else if ("3".equals(type)) {
-			tv_mainhead.setText("长发");
-
-		} else if ("4".equals(type)) {
-			tv_mainhead.setText("盘发");
-
-		} else if ("5".equals(type)) {
-			tv_mainhead.setText("男发");
-
-		} else if ("6".equals(type)) {
-			tv_mainhead.setText("全部");
-
-		} else if ("7".equals(type)) {
-			tv_mainhead.setText("收藏榜");
-			findViewById(R.id.lin_fenlei).setVisibility(View.GONE);
-		}
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
+		findViewById(R.id.btn_leftType).setOnClickListener(this);
+		findViewById(R.id.btn_rightType).setOnClickListener(this);
+		ResetButtonBg();
+		((Button) findViewById(R.id.btn_leftType)).setTextColor(Color.rgb(240,
+				28, 97));
+		Intent i = getIntent();
+		((TextView) findViewById(R.id.tv_mainhead)).setText(i
+				.getStringExtra("hairName"));
+		typeBySex = i.getBooleanExtra("typeBySex", false);
+		LogUtil.e("typeBySex = " + typeBySex);
+		if (typeBySex) {
+			((Button) findViewById(R.id.btn_leftType)).setText("女生");
+			((Button) findViewById(R.id.btn_rightType)).setText("男生");
+		} else {
+			((Button) findViewById(R.id.btn_leftType)).setText("最新作品");
+			((Button) findViewById(R.id.btn_rightType)).setText("推荐作品");
+		}
+		firstType = i.getStringExtra("firstType");
+		secondType = i.getStringExtra("secondType");
+	}
+
+	private String getCondition(int page) {
+		if (typeBySex) {
+			switch (page) {
+			case 1:
+				condition = "woman";
+				break;
+			case 2:
+				condition = "man";
+				break;
+			}
+
+		} else {
+			switch (page) {
+			case 1:
+				condition = "new";
+				break;
+			case 2:
+				condition = "recommend";
+				break;
+			}
+		}
+		return condition;
 
 	}
 
@@ -154,8 +166,8 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 		protected Map<String, Object> getInfoInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("uid", sm.getUserId());
-			map.put("cid", type);
+			map.put("bcid", firstType);
+			map.put("scid", secondType);
 			map.put("condition", condition);
 			return map;
 		}
@@ -198,24 +210,25 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 				if (mlist == null || mlist.size() == 0) {
 					TispToastFactory.getToast(ZhaoFaXingListUI.this, "暂无数据")
 							.show();
-				} else {
-					for (int i = 0; i < mlist.size(); i++) {
-						Hair hair = mlist.get(i);
-						hair.setType(type);
-						String id = hair.getId() + "";
-						if (id != null && !id.equals("")) {
-							try {
-								if (getHelper().getHair(id, type) == null) {
-									getHelper().getHairDao().create(hair);
-								} else {
-								}
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								LogUtil.e(e.toString());
-							}
-						}
-					}
 				}
+				// else {
+				// for (int i = 0; i < mlist.size(); i++) {
+				// Hair hair = mlist.get(i);
+				// hair.setType(type);
+				// String id = hair.getId() + "";
+				// if (id != null && !id.equals("")) {
+				// try {
+				// if (getHelper().getHair(id, type) == null) {
+				// getHelper().getHairDao().create(hair);
+				// } else {
+				// }
+				// } catch (Exception e) {
+				// // TODO Auto-generated catch block
+				// LogUtil.e(e.toString());
+				// }
+				// }
+				// }
+				// }
 
 				showlast = false;
 				adapter.appendHairList(mlist);
@@ -236,17 +249,18 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 			// 打开分类
 			this.finish();
 			break;
-		case R.id.btn_zuixin:
-			changeCondition("new", v);
+		case R.id.btn_leftType:
+			changeCondition(getCondition(1), v);
 			break;
-		case R.id.btn_tuijian:
-			changeCondition("recommend", v);
+		case R.id.btn_rightType:
+			changeCondition(getCondition(2), v);
 			break;
 		}
 	}
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
+		((Button) v).getPaint().setFakeBoldText(true);
 		((Button) v).setTextColor(Color.rgb(240, 28, 97));
 		adapter.clear();
 		this.mlist.clear();
@@ -257,10 +271,14 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	}
 
 	private void ResetButtonBg() {
-		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color
-				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Color.rgb(0, 0,
+		((Button) findViewById(R.id.btn_leftType)).setTextColor(Color.rgb(0, 0,
 				0));
+		((Button) findViewById(R.id.btn_leftType)).getPaint().setFakeBoldText(
+				false);
+		((Button) findViewById(R.id.btn_rightType)).setTextColor(Color.rgb(0,
+				0, 0));
+		((Button) findViewById(R.id.btn_rightType)).getPaint().setFakeBoldText(
+				false);
 	}
 
 	@Override
