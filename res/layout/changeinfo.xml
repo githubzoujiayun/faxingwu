@@ -91,11 +91,12 @@
                         <EditText
                             android:id="@+id/et_username"
                             android:layout_width="160sp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10sp"
+                            android:layout_height="37sp"
+                            android:layout_marginLeft="5sp"
+                            android:background="@drawable/shape_white"
                             android:maxLength="14"
+                            android:paddingLeft="5sp"
                             android:singleLine="true"
-                            android:text=""
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -165,8 +166,11 @@
                     <EditText
                         android:id="@+id/et_city"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="37sp"
+                        android:layout_marginLeft="5sp"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_white"
+                        android:paddingLeft="5sp"
                         android:textSize="14sp" >
                     </EditText>
                 </LinearLayout>
@@ -191,8 +195,11 @@
                     <EditText
                         android:id="@+id/et_qq"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="37sp"
+                        android:layout_marginLeft="5sp"
                         android:layout_weight="1"
+                        android:background="@drawable/shape_white"
+                        android:paddingLeft="5sp"
                         android:textSize="14sp" >
                     </EditText>
                 </LinearLayout>
@@ -202,6 +209,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="100sp"
                     android:layout_margin="5sp"
+                    android:background="@drawable/shape_white"
                     android:gravity="left|top"
                     android:hint="请输入您的个性简介"
                     android:lineSpacingExtra="5sp"
