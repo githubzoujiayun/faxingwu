@@ -62,7 +62,6 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onAnimationRepeat(Animation animation) {
-				
 
 			}
 
@@ -98,14 +97,14 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "程序载入页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "程序载入页面");
 	}
@@ -136,8 +135,6 @@ public class MainActivity extends Activity {
 				sb.append(location.getAddrStr());
 			}
 			if (location.getAddrStr() != null) {
-				TispToastFactory.getToast(MainActivity.this,
-						"定位成功:" + location.getAddrStr()).show();
 				sm.setCity(location.getCity());
 				sm.setLat(location.getLatitude());
 				sm.setLng(location.getLongitude());

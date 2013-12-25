@@ -25,14 +25,13 @@ public class HairTypeUtil {
 	}
 
 	private void initrecommendList() {
-
-		recommendList.add(new Type(1, 8, R.drawable.hairtype_1_8, "波波头"));
+		recommendList.add(new Type(1, 9, R.drawable.hairtype_1_9, "波波头"));
 		recommendList.add(new Type(1, 7, R.drawable.hairtype_1_7, "梨花头"));
 		recommendList.add(new Type(4, 4, R.drawable.hairtype_4_4, "水波纹", true));
 		recommendList.add(new Type(4, 1, R.drawable.hairtype_4_1, "纹理烫", true));
 		recommendList.add(new Type(1, 4, R.drawable.hairtype_1_4, "编发"));
 		recommendList.add(new Type(1, 5, R.drawable.hairtype_1_5, "盘发"));
-		recommendList.add(new Type(2, 10, R.drawable.hairtype_2_10, "男明星"));
+		recommendList.add(new Type(2, 9, R.drawable.hairtype_2_9, "男明星"));
 		recommendList.add(new Type(1, 10, R.drawable.hairtype_1_10, "女明星"));
 		recommendList.add(new Type(5, 2, R.drawable.hairtype_5_2, "渐变色", true));
 	}
@@ -59,7 +58,7 @@ public class HairTypeUtil {
 		manList.add(new Type(2, 6, R.drawable.hairtype_2_6, "中发"));
 		manList.add(new Type(2, 7, R.drawable.hairtype_2_7, "长发"));
 		manList.add(new Type(2, 8, R.drawable.hairtype_2_8, "蘑菇头"));
-		manList.add(new Type(2, 9, R.drawable.hairtype_2_9, "其他"));
+		manList.add(new Type(2, 10, R.drawable.hairtype_2_10, "其他"));
 		// manList.add(new Type(2, 10, R.drawable.hairtype_2_10, "男明星"));
 
 	}

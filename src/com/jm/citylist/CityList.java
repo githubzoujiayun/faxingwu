@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PixelFormat;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 
 import com.jm.citydb.DBManager;
 import com.jm.citylist.MyLetterListView.OnTouchingLetterChangedListener;
+import com.jm.finals.Constant;
 import com.jm.fxw.R;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
@@ -46,11 +48,16 @@ public class CityList extends Activity {
 	private SQLiteDatabase database;
 	private ArrayList<CityModel> mCityNames;
 
+	// //////////////////////////////////
+	private SharedPreferences share;
+	private SharedPreferences.Editor editor;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.city_list);
-
+		share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
+		editor = share.edit();
 		mCityLit = (ListView) findViewById(R.id.city_list);
 		letterListView = (MyLetterListView) findViewById(R.id.cityLetterListView);
 		DBManager dbManager = new DBManager(this);
@@ -108,6 +115,8 @@ public class CityList extends Activity {
 			CityModel cityModel = (CityModel) mCityLit.getAdapter()
 					.getItem(pos);
 			SessionManager.getInstance().setCity(cityModel.getCityName());
+			editor.putString("city", cityModel.getCityName());
+			editor.commit();
 			finish();
 		}
 
