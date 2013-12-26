@@ -1688,7 +1688,7 @@ containing a value of this type.
         public static final int like1=0x7f02008c;
         public static final int line=0x7f02008d;
         public static final int logo=0x7f02008e;
-        public static final int main_bg=0x7f02008f;
+        public static final int message=0x7f02008f;
         public static final int money=0x7f020090;
         public static final int more=0x7f020091;
         public static final int moreinfo=0x7f020092;
@@ -1705,48 +1705,54 @@ containing a value of this type.
         public static final int qingbaozhan=0x7f02009d;
         public static final int qqlogin=0x7f02009e;
         public static final int question=0x7f02009f;
-        public static final int redianhuati=0x7f0200a0;
-        public static final int renzhengfaxingshi=0x7f0200a1;
-        public static final int renzhengziliao=0x7f0200a2;
-        public static final int right=0x7f0200a3;
-        public static final int right1=0x7f0200a4;
-        public static final int send_img=0x7f0200a5;
-        public static final int send_music_thumb=0x7f0200a6;
-        public static final int send_music_thumb_backup=0x7f0200a7;
-        public static final int server_liebiao=0x7f0200a8;
-        public static final int server_liebiao_click=0x7f0200a9;
-        public static final int server_liebiao_style=0x7f0200aa;
-        public static final int shalong=0x7f0200ab;
-        public static final int shangchuanzuopin=0x7f0200ac;
-        public static final int shape=0x7f0200ad;
-        public static final int shape_blue=0x7f0200ae;
-        public static final int shape_green=0x7f0200af;
-        public static final int shape_guanzhured=0x7f0200b0;
-        public static final int shape_red=0x7f0200b1;
-        public static final int shape_sina=0x7f0200b2;
-        public static final int shape_white=0x7f0200b3;
-        public static final int shoucang=0x7f0200b4;
-        public static final int sinalogin=0x7f0200b5;
-        public static final int sinalogined=0x7f0200b6;
-        public static final int sixin=0x7f0200b7;
-        public static final int start=0x7f0200b8;
-        public static final int tongcheng=0x7f0200b9;
-        public static final int trans_bg=0x7f0200ba;
-        public static final int tubiao=0x7f0200bb;
-        public static final int type_triangle=0x7f0200bc;
-        public static final int voice=0x7f0200bd;
-        public static final int wode=0x7f0200be;
-        public static final int wode1=0x7f0200bf;
-        public static final int woxingwoxiu=0x7f0200c0;
-        public static final int woyaoxiu=0x7f0200c1;
-        public static final int xian=0x7f0200c2;
-        public static final int xiaoxi=0x7f0200c3;
-        public static final int xunzhang=0x7f0200c4;
-        public static final int yuyue=0x7f0200c5;
-        public static final int zan=0x7f0200c6;
-        public static final int zhaofaxing=0x7f0200c7;
-        public static final int zhaofaxing1=0x7f0200c8;
-        public static final int zhaopin=0x7f0200c9;
+        public static final int recently=0x7f0200a0;
+        public static final int redianhuati=0x7f0200a1;
+        public static final int renzhengfaxingshi=0x7f0200a2;
+        public static final int renzhengziliao=0x7f0200a3;
+        public static final int reserve=0x7f0200a4;
+        public static final int right=0x7f0200a5;
+        public static final int right1=0x7f0200a6;
+        public static final int send_img=0x7f0200a7;
+        public static final int send_music_thumb=0x7f0200a8;
+        public static final int send_music_thumb_backup=0x7f0200a9;
+        public static final int server_liebiao=0x7f0200aa;
+        public static final int server_liebiao_click=0x7f0200ab;
+        public static final int server_liebiao_style=0x7f0200ac;
+        public static final int setting=0x7f0200ad;
+        public static final int shalong=0x7f0200ae;
+        public static final int shangchuanzuopin=0x7f0200af;
+        public static final int shape=0x7f0200b0;
+        public static final int shape_blue=0x7f0200b1;
+        public static final int shape_green=0x7f0200b2;
+        public static final int shape_guanzhured=0x7f0200b3;
+        public static final int shape_red=0x7f0200b4;
+        public static final int shape_sina=0x7f0200b5;
+        public static final int shape_white=0x7f0200b6;
+        public static final int shoucang=0x7f0200b7;
+        public static final int shwoprice=0x7f0200b8;
+        public static final int sinalogin=0x7f0200b9;
+        public static final int sinalogined=0x7f0200ba;
+        public static final int sixin=0x7f0200bb;
+        public static final int start=0x7f0200bc;
+        public static final int tongcheng=0x7f0200bd;
+        public static final int tools=0x7f0200be;
+        public static final int trans_bg=0x7f0200bf;
+        public static final int tubiao=0x7f0200c0;
+        public static final int type_triangle=0x7f0200c1;
+        public static final int uploadpic=0x7f0200c2;
+        public static final int voice=0x7f0200c3;
+        public static final int wode=0x7f0200c4;
+        public static final int wode1=0x7f0200c5;
+        public static final int woxingwoxiu=0x7f0200c6;
+        public static final int woyaoxiu=0x7f0200c7;
+        public static final int xian=0x7f0200c8;
+        public static final int xiaoxi=0x7f0200c9;
+        public static final int xunzhang=0x7f0200ca;
+        public static final int yuyue=0x7f0200cb;
+        public static final int zan=0x7f0200cc;
+        public static final int zhaofaxing=0x7f0200cd;
+        public static final int zhaofaxing1=0x7f0200ce;
+        public static final int zhaopin=0x7f0200cf;
     }
     public static final class id {
         public static final int LinearLayout=0x7f090063;
@@ -1768,7 +1774,7 @@ containing a value of this type.
         public static final int btn_addhuati1=0x7f090126;
         public static final int btn_addhuati2=0x7f090129;
         public static final int btn_addhuati3=0x7f09012c;
-        public static final int btn_btn=0x7f090170;
+        public static final int btn_btn=0x7f090171;
         public static final int btn_checkagain=0x7f090055;
         public static final int btn_checkmobile=0x7f09005b;
         public static final int btn_city=0x7f0900cc;
@@ -1792,7 +1798,7 @@ containing a value of this type.
         public static final int btn_jibenxinxi=0x7f09007e;
         public static final int btn_leftTop=0x7f090049;
         public static final int btn_leftType=0x7f0901c0;
-        public static final int btn_lishiyuyue=0x7f09016e;
+        public static final int btn_lishiyuyue=0x7f09016f;
         public static final int btn_location=0x7f09008f;
         public static final int btn_logout=0x7f090153;
         public static final int btn_mingdianzhanshi=0x7f090133;
@@ -1824,7 +1830,7 @@ containing a value of this type.
         public static final int btn_update=0x7f090152;
         public static final int btn_weizhi=0x7f090080;
         public static final int btn_yuyue=0x7f0900a2;
-        public static final int btn_yuyuecheck=0x7f090181;
+        public static final int btn_yuyuecheck=0x7f090182;
         public static final int btn_zuixin=0x7f09008b;
         public static final int card_list=0x7f0900c6;
         public static final int cb_changlian=0x7f09010f;
@@ -1876,7 +1882,7 @@ containing a value of this type.
         public static final int et_signature=0x7f090053;
         public static final int et_title=0x7f090124;
         public static final int et_username=0x7f09004d;
-        public static final int et_userphone=0x7f090180;
+        public static final int et_userphone=0x7f090181;
         public static final int et_zhuanrangmianji=0x7f090130;
         public static final int et_zhuanrangname=0x7f09012f;
         public static final int etxt_mobile=0x7f090058;
@@ -1958,13 +1964,13 @@ containing a value of this type.
         public static final int layout_myexam_item=0x7f090061;
         public static final int lbl_tip=0x7f090057;
         public static final int left=0x7f090011;
-        public static final int like_gallery=0x7f090161;
+        public static final int like_gallery=0x7f090163;
         public static final int lin_1=0x7f0900cb;
         public static final int lin_2_1=0x7f090036;
         public static final int lin_all=0x7f090093;
         public static final int lin_attention_num=0x7f09015f;
         public static final int lin_basic_info=0x7f090081;
-        public static final int lin_btn=0x7f09016f;
+        public static final int lin_btn=0x7f090170;
         public static final int lin_btns=0x7f0900a3;
         public static final int lin_chakanjiange=0x7f09009a;
         public static final int lin_checkmobile=0x7f090056;
@@ -2000,11 +2006,11 @@ containing a value of this type.
         public static final int lin_location=0x7f090087;
         public static final int lin_login=0x7f0900dd;
         public static final int lin_man=0x7f0901ae;
-        public static final int lin_message=0x7f090162;
-        public static final int lin_nobasic_info=0x7f09017c;
+        public static final int lin_message=0x7f090165;
+        public static final int lin_nobasic_info=0x7f09017d;
         public static final int lin_opinion=0x7f09014e;
         public static final int lin_perm=0x7f0901b6;
-        public static final int lin_phone=0x7f090169;
+        public static final int lin_phone=0x7f09016a;
         public static final int lin_pingjia=0x7f0900b5;
         public static final int lin_price_hu=0x7f0900fb;
         public static final int lin_price_ran=0x7f0900f9;
@@ -2016,18 +2022,18 @@ containing a value of this type.
         public static final int lin_ran=0x7f090186;
         public static final int lin_recommend=0x7f0901a6;
         public static final int lin_redianhuati=0x7f090098;
-        public static final int lin_renzheng=0x7f090168;
+        public static final int lin_renzheng=0x7f090169;
         public static final int lin_setting=0x7f090145;
         public static final int lin_shalongInfo=0x7f0900bc;
         public static final int lin_shalonginfo=0x7f0900ee;
         public static final int lin_sina=0x7f090148;
         public static final int lin_sixin=0x7f0900a8;
         public static final int lin_tang=0x7f090185;
-        public static final int lin_tip1=0x7f090172;
-        public static final int lin_tip2=0x7f090174;
-        public static final int lin_tip3=0x7f090176;
-        public static final int lin_tip4=0x7f090178;
-        public static final int lin_tip5=0x7f09017a;
+        public static final int lin_tip1=0x7f090173;
+        public static final int lin_tip2=0x7f090175;
+        public static final int lin_tip3=0x7f090177;
+        public static final int lin_tip4=0x7f090179;
+        public static final int lin_tip5=0x7f09017b;
         public static final int lin_tips=0x7f09014b;
         public static final int lin_tongcheng=0x7f09009c;
         public static final int lin_userinfo=0x7f090164;
@@ -2037,8 +2043,8 @@ containing a value of this type.
         public static final int lin_women=0x7f0901aa;
         public static final int lin_xi=0x7f090184;
         public static final int lin_xihuan=0x7f0900a5;
-        public static final int lin_yuyue=0x7f090166;
-        public static final int lin_yuyue_list=0x7f09017d;
+        public static final int lin_yuyue=0x7f090167;
+        public static final int lin_yuyue_list=0x7f09017e;
         public static final int lin_zhaofaxing=0x7f09003d;
         public static final int lin_zhaopinxinxi=0x7f09009d;
         public static final int lin_zuopin=0x7f09015c;
@@ -2128,18 +2134,18 @@ containing a value of this type.
         public static final int tv_3_2=0x7f09003a;
         public static final int tv_4_1=0x7f090096;
         public static final int tv_NewListInfo=0x7f0900e4;
-        public static final int tv_address=0x7f09017e;
+        public static final int tv_address=0x7f09017f;
         public static final int tv_attention_num=0x7f090160;
         public static final int tv_cache=0x7f090150;
         public static final int tv_city=0x7f0900f0;
         public static final int tv_collect=0x7f0900bb;
-        public static final int tv_collect_num=0x7f090165;
+        public static final int tv_collect_num=0x7f090162;
         public static final int tv_color=0x7f0901bc;
         public static final int tv_commentsize=0x7f0900af;
         public static final int tv_daddress=0x7f090084;
-        public static final int tv_date=0x7f09017f;
+        public static final int tv_date=0x7f090180;
         public static final int tv_dialog=0x7f09007a;
-        public static final int tv_discount=0x7f09016d;
+        public static final int tv_discount=0x7f09016e;
         public static final int tv_dname=0x7f090082;
         public static final int tv_dongtai_info=0x7f09008a;
         public static final int tv_dphone=0x7f090083;
@@ -2153,24 +2159,24 @@ containing a value of this type.
         public static final int tv_logintips=0x7f0900dc;
         public static final int tv_mainhead=0x7f09004a;
         public static final int tv_man=0x7f0901b0;
-        public static final int tv_medal_num=0x7f09016a;
+        public static final int tv_medal_num=0x7f09016b;
         public static final int tv_message=0x7f090067;
         public static final int tv_mobile=0x7f090054;
         public static final int tv_money=0x7f0901c6;
-        public static final int tv_mssage=0x7f090163;
+        public static final int tv_mssage=0x7f090166;
         public static final int tv_name=0x7f090138;
         public static final int tv_nickname=0x7f0900ec;
         public static final int tv_number=0x7f0901c5;
         public static final int tv_perm=0x7f0901b8;
         public static final int tv_phone=0x7f09019d;
-        public static final int tv_pingjia=0x7f090183;
-        public static final int tv_price=0x7f09016c;
+        public static final int tv_pingjia=0x7f090161;
+        public static final int tv_price=0x7f09016d;
         public static final int tv_qq=0x7f090147;
         public static final int tv_quesion=0x7f090135;
         public static final int tv_rate_num=0x7f0900b6;
         public static final int tv_realprice=0x7f090119;
         public static final int tv_recommend=0x7f0901a8;
-        public static final int tv_reserve_num=0x7f090167;
+        public static final int tv_reserve_num=0x7f090168;
         public static final int tv_reservetype=0x7f090144;
         public static final int tv_rightTop=0x7f09007d;
         public static final int tv_score=0x7f0900b4;
@@ -2180,13 +2186,13 @@ containing a value of this type.
         public static final int tv_ta_id=0x7f090033;
         public static final int tv_tid=0x7f090032;
         public static final int tv_time=0x7f0900e7;
-        public static final int tv_tip1=0x7f090173;
-        public static final int tv_tip2=0x7f090175;
-        public static final int tv_tip3=0x7f090177;
-        public static final int tv_tip4=0x7f090179;
-        public static final int tv_tip5=0x7f09017b;
+        public static final int tv_tip1=0x7f090174;
+        public static final int tv_tip2=0x7f090176;
+        public static final int tv_tip3=0x7f090178;
+        public static final int tv_tip4=0x7f09017a;
+        public static final int tv_tip5=0x7f09017c;
         public static final int tv_title=0x7f0900e6;
-        public static final int tv_type=0x7f090171;
+        public static final int tv_type=0x7f090172;
         public static final int tv_uname=0x7f090077;
         public static final int tv_username=0x7f0900b3;
         public static final int tv_utext=0x7f090079;
@@ -2194,7 +2200,7 @@ containing a value of this type.
         public static final int tv_wode=0x7f090048;
         public static final int tv_women=0x7f0901ac;
         public static final int tv_zhaofaxing=0x7f09003f;
-        public static final int tv_zuopin=0x7f090182;
+        public static final int tv_zuopin=0x7f090183;
         public static final int tv_zuopinji=0x7f0900b7;
         public static final int vertical=0x7f090005;
         public static final int viewEnd=0x7f090020;
@@ -2202,7 +2208,7 @@ containing a value of this type.
         public static final int visible=0x7f090000;
         public static final int yes=0x7f090021;
         public static final int yuyue_list=0x7f0900e5;
-        public static final int yuyueinfo_list=0x7f09016b;
+        public static final int yuyueinfo_list=0x7f09016c;
         public static final int zhaofaxing_hairgridview=0x7f0901c2;
         public static final int zoom_image_view=0x7f0901c7;
     }
@@ -2414,11 +2420,13 @@ containing a value of this type.
 
 
 
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
 
 
 
@@ -2456,6 +2464,7 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f060009;
+        public static final int BlackText=0x7f06000d;
         public static final int MyDialog=0x7f060000;
         public static final int Translucent_NoTitle=0x7f06000a;
         public static final int TypeText=0x7f06000c;

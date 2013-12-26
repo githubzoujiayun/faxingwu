@@ -52,14 +52,14 @@ public class TongChengUI extends Activity implements OnClickListener,
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "周边页面");
+		MobileProbe.onResume(this, "附近的人");
 	}
 
 	@Override
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "周边页面");
+		MobileProbe.onPause(this, "附近的人");
 	}
 
 	private void init() {

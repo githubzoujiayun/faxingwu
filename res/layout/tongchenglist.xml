@@ -27,7 +27,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="同城"
+            android:text="附近的人"
             android:textColor="#ffffff"
             android:textSize="18sp" />
 

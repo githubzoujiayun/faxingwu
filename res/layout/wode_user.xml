@@ -64,6 +64,7 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="90sp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal" >
 
                     <LinearLayout
@@ -110,74 +111,61 @@
                             android:textColor="#000000"
                             android:textSize="14sp" />
                     </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lin_zuopin"
-                    android:layout_width="fill_parent"
-                    android:layout_height="40sp"
-                    android:layout_margin="5sp"
-                    android:gravity="left"
-                    android:orientation="horizontal" >
 
                     <LinearLayout
                         android:id="@+id/lin_fans_num"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="5sp"
-                        android:background="@drawable/shape_blue"
+                        android:background="@drawable/shape_white"
                         android:gravity="center"
                         android:orientation="horizontal" >
 
                         <TextView
+                            style="@style/BlackText"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:layout_marginLeft="15sp"
                             android:gravity="center"
-                            android:text="我的粉丝"
-                            android:textColor="@color/white"
-                            android:textSize="14sp" />
+                            android:text="粉丝" />
 
                         <TextView
                             android:id="@+id/tv_fans_num"
+                            style="@style/BlackText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="3sp"
                             android:layout_marginRight="15sp"
                             android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="14sp" />
+                            android:text="0" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/lin_attention_num"
                         android:layout_width="wrap_content"
-                        android:layout_height="fill_parent"
+                        android:layout_height="40sp"
                         android:layout_marginLeft="20sp"
-                        android:background="@drawable/shape_green"
+                        android:background="@drawable/shape_white"
                         android:gravity="center"
                         android:orientation="horizontal" >
 
                         <TextView
+                            style="@style/BlackText"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:layout_marginLeft="15sp"
                             android:gravity="center"
-                            android:text="我的关注"
-                            android:textColor="@color/white"
-                            android:textSize="14sp" />
+                            android:text="关注" />
 
                         <TextView
                             android:id="@+id/tv_attention_num"
+                            style="@style/BlackText"
                             android:layout_width="wrap_content"
                             android:layout_height="fill_parent"
                             android:layout_marginLeft="3sp"
                             android:layout_marginRight="15sp"
                             android:gravity="center"
-                            android:text="0"
-                            android:textColor="@color/white"
-                            android:textSize="14sp" />
+                            android:text="0" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -262,7 +250,7 @@
                         android:layout_height="45sp"
                         android:layout_marginBottom="3sp"
                         android:layout_marginTop="3sp"
-                    android:background="@drawable/shape_white"
+                        android:background="@drawable/shape_white"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         android:paddingLeft="10sp"
