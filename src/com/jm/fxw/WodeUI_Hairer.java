@@ -153,8 +153,8 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 			break;
 		case R.id.lin_gongjuxiang:
 			StartActivityContController.goPage(this, 104);
-			break;	
-			
+			break;
+
 		case R.id.lin_guangchang:
 			StartActivityContController.goPage(this, GuangChangUI.class, false);
 			break;

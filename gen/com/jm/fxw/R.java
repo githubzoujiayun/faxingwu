@@ -1969,7 +1969,7 @@ containing a value of this type.
         public static final int lin_1=0x7f0900cb;
         public static final int lin_2_1=0x7f090036;
         public static final int lin_all=0x7f090093;
-        public static final int lin_attention_num=0x7f09015f;
+        public static final int lin_attention_num=0x7f09015e;
         public static final int lin_basic_info=0x7f090081;
         public static final int lin_btn=0x7f09016f;
         public static final int lin_btns=0x7f0900a3;
@@ -1989,7 +1989,7 @@ containing a value of this type.
         public static final int lin_d7=0x7f090199;
         public static final int lin_dongtai=0x7f090097;
         public static final int lin_facetype=0x7f0901b1;
-        public static final int lin_fans_num=0x7f09015d;
+        public static final int lin_fans_num=0x7f09015c;
         public static final int lin_faxingbaojia=0x7f090166;
         public static final int lin_faxingshi=0x7f090040;
         public static final int lin_fenlei=0x7f0901be;
@@ -2009,7 +2009,7 @@ containing a value of this type.
         public static final int lin_location=0x7f090087;
         public static final int lin_login=0x7f0900dd;
         public static final int lin_man=0x7f0901ad;
-        public static final int lin_message=0x7f090164;
+        public static final int lin_message=0x7f090163;
         public static final int lin_nobasic_info=0x7f09017c;
         public static final int lin_opinion=0x7f09014e;
         public static final int lin_perm=0x7f0901b5;
@@ -2039,7 +2039,7 @@ containing a value of this type.
         public static final int lin_tip5=0x7f09017a;
         public static final int lin_tips=0x7f09014b;
         public static final int lin_tongcheng=0x7f09009c;
-        public static final int lin_userinfo=0x7f090163;
+        public static final int lin_userinfo=0x7f090162;
         public static final int lin_voice=0x7f090069;
         public static final int lin_weibo=0x7f09014c;
         public static final int lin_wode=0x7f090046;
@@ -2047,11 +2047,11 @@ containing a value of this type.
         public static final int lin_woxingwoxiu=0x7f09016a;
         public static final int lin_xi=0x7f090183;
         public static final int lin_xihuan=0x7f0900a5;
-        public static final int lin_yuyue=0x7f090165;
+        public static final int lin_yuyue=0x7f090164;
         public static final int lin_yuyue_list=0x7f09017d;
         public static final int lin_zhaofaxing=0x7f09003d;
         public static final int lin_zhaopinxinxi=0x7f09009d;
-        public static final int lin_zuopin=0x7f09015c;
+        public static final int lin_zuopin=0x7f090165;
         public static final int list=0x7f09002f;
         public static final int ll_hairinfo_like_gallery=0x7f0900ad;
         public static final int locale=0x7f090018;
@@ -2139,11 +2139,11 @@ containing a value of this type.
         public static final int tv_4_1=0x7f090096;
         public static final int tv_NewListInfo=0x7f0900e4;
         public static final int tv_address=0x7f09017e;
-        public static final int tv_attention_num=0x7f090160;
+        public static final int tv_attention_num=0x7f09015f;
         public static final int tv_cache=0x7f090150;
         public static final int tv_city=0x7f0900f0;
         public static final int tv_collect=0x7f0900bb;
-        public static final int tv_collect_num=0x7f090162;
+        public static final int tv_collect_num=0x7f090161;
         public static final int tv_color=0x7f0901bb;
         public static final int tv_commentsize=0x7f0900af;
         public static final int tv_daddress=0x7f090084;
@@ -2154,7 +2154,7 @@ containing a value of this type.
         public static final int tv_dongtai_info=0x7f09008a;
         public static final int tv_dphone=0x7f090083;
         public static final int tv_facetype=0x7f0901b3;
-        public static final int tv_fans_num=0x7f09015e;
+        public static final int tv_fans_num=0x7f09015d;
         public static final int tv_faxingshi=0x7f090042;
         public static final int tv_guangchang=0x7f090045;
         public static final int tv_hairtype=0x7f0900b2;
@@ -2171,7 +2171,7 @@ containing a value of this type.
         public static final int tv_number=0x7f0901c4;
         public static final int tv_perm=0x7f0901b7;
         public static final int tv_phone=0x7f09019c;
-        public static final int tv_pingjia=0x7f090161;
+        public static final int tv_pingjia=0x7f090160;
         public static final int tv_price=0x7f09016c;
         public static final int tv_qq=0x7f090147;
         public static final int tv_quesion=0x7f090135;
