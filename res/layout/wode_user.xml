@@ -73,7 +73,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10sp"
                         android:layout_marginTop="5sp"
-                        android:background="@drawable/line" >
+                        android:background="@drawable/shape_white" >
 
                         <ImageView
                             android:id="@+id/iv_minfouserpic"
@@ -432,7 +432,7 @@
                     android:layout_marginLeft="10sp"
                     android:layout_marginRight="10sp"
                     android:layout_marginTop="5sp"
-                    android:background="@drawable/line"
+                    android:background="@drawable/shape_white"
                     android:lineSpacingExtra="5sp"
                     android:padding="5sp"
                     android:textColor="@color/black2"

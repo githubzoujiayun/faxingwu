@@ -17,7 +17,7 @@
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_margin="2sp"
-            android:background="@drawable/line" >
+            android:background="@drawable/shape_white" >
 
             <ImageView
                 android:id="@+id/iv_hairinfo_headphoto"
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5sp"
                 android:layout_marginTop="5sp"
-                android:background="@drawable/line"
+                android:background="@drawable/shape_white"
                 android:gravity="center" >
 
                 <ImageView

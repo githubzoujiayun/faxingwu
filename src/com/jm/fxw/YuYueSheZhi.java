@@ -53,7 +53,7 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyueshezhi);
 		init();

@@ -105,8 +105,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		ResetButtonBg();
 		((Button) findViewById(R.id.btn_leftType))
 				.setTextColor(Constant.color_RoseRed);
-		((Button) findViewById(R.id.btn_leftType)).getPaint().setFakeBoldText(
-				true);
+
 		Intent i = getIntent();
 		((TextView) findViewById(R.id.tv_mainhead)).setText(i
 				.getStringExtra("hairName"));
@@ -259,7 +258,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
-		((Button) v).getPaint().setFakeBoldText(true);
 		((Button) v).setTextColor(Constant.color_RoseRed);
 		adapter.clear();
 		this.mlist.clear();
@@ -272,12 +270,8 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private void ResetButtonBg() {
 		((Button) findViewById(R.id.btn_leftType))
 				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_leftType)).getPaint().setFakeBoldText(
-				false);
 		((Button) findViewById(R.id.btn_rightType))
 				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_rightType)).getPaint().setFakeBoldText(
-				false);
 	}
 
 	@Override
