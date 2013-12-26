@@ -32,7 +32,7 @@ import com.jm.util.TispToastFactory;
 /**
  * 作品列表页
  */
-public class WorkListUI extends Activity implements OnClickListener,
+public class WorkDoListUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
 	private GridView ListView;
 	private HairAdapter adapter;
@@ -58,13 +58,8 @@ public class WorkListUI extends Activity implements OnClickListener,
 		sm = SessionManager.getInstance();
 		Intent i = getIntent();
 		uid = i.getStringExtra("uid");
+		((TextView) findViewById(R.id.tv_mainhead)).setText("会做发型");
 		if (uid != null && !uid.equals("")) {
-			if (sm.getUserId().equals(uid)) {
-				((TextView) findViewById(R.id.tv_mainhead)).setText("我的作品");
-			} else {
-
-				((TextView) findViewById(R.id.tv_mainhead)).setText("TA的作品");
-			}
 		} else {
 			finish();
 		}
@@ -81,14 +76,14 @@ public class WorkListUI extends Activity implements OnClickListener,
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "作品列表页面");
+		MobileProbe.onResume(this, "会做发型列表");
 	}
 
 	@Override
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "作品列表页面");
+		MobileProbe.onPause(this, "会做发型列表");
 	}
 
 	/*
@@ -115,8 +110,8 @@ public class WorkListUI extends Activity implements OnClickListener,
 		protected Response doInBackground(String... params) {
 			Connection conn = ((ClientApp) getApplication()).getConnection();
 
-			return conn.executeAndParse(Constant.URN_MYWORKLIST_LIST + "&page="
-					+ page, getInfoInqVal());
+			return conn.executeAndParse(Constant.URN_MYWORKDOLIST_LIST
+					+ "&page=" + page, getInfoInqVal());
 
 		}
 
@@ -129,12 +124,13 @@ public class WorkListUI extends Activity implements OnClickListener,
 				LogUtil.e("can't get typelist");
 				return;
 			} else {
-				if (!result.getString("works_info").equals("")) {
-					mlist = result.getList("works_info", new Hair());
+
+				if (!result.getString("willdo_info").equals("")) {
+					mlist = result.getList("willdo_info", new Hair());
 				}
 				if (mlist == null || mlist.size() == 0) {
 
-					TispToastFactory.getToast(WorkListUI.this, "暂无数据").show();
+					TispToastFactory.getToast(WorkDoListUI.this, "暂无数据").show();
 					return;
 				}
 				pageCount = Integer.parseInt(result.getString("page_count"));
@@ -152,7 +148,6 @@ public class WorkListUI extends Activity implements OnClickListener,
 
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
-			// 打开分类
 			this.finish();
 			break;
 		}
@@ -167,7 +162,7 @@ public class WorkListUI extends Activity implements OnClickListener,
 			return;
 		}
 		Hair hair = adapter.getHairList().get(position);
-		Intent intent = new Intent(WorkListUI.this, HairInfoUI.class);
+		Intent intent = new Intent(WorkDoListUI.this, HairInfoUI.class);
 		intent.putExtra("hlist", (Serializable) adapter.getList());
 		intent.putExtra("id", hair.getId());
 		startActivity(intent);

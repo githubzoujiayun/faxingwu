@@ -23,6 +23,9 @@ public class Constant {
 	public final static String URN_TYPE_LIST = "?m=soufaxing&a=type";
 	public final static String URN_MYCOLLECTLIST_LIST = "http://wap.faxingw.cn/index.php?m=User&a=collectlist";
 	public final static String URN_MYWORKLIST_LIST = "http://wap.faxingw.cn/index.php?m=User&a=workslist";
+	public final static String URN_MYWORKDOLIST_LIST = "http://wap.faxingw.cn/index.php?m=Willdo&a=willDoList";
+	
+	
 	public final static String URN_ALLDONGTAI_LIST = "http://wap.faxingw.cn/index.php?m=Dynamic&a=allnews";
 	public final static String URN_ZHAOFAXING_LIST = "http://wap.faxingw.cn/index.php?m=Forhair&a=newCate";
 

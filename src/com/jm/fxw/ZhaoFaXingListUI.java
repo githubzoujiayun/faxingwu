@@ -1,6 +1,7 @@
 package com.jm.fxw;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,6 +49,8 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private String secondType;
 	private boolean typeBySex;
 
+	private String type;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -59,7 +62,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
-		// getDataFromDataBase();
+		getDataFromDataBase();
 		condition = getCondition(1);
 		new GetHairListTask().execute();
 
@@ -83,11 +86,11 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 		List<Hair> baseHairList = null;
 		DatabaseHelper db = getHelper();
-		// try {
-		// baseHairList = db.getHairsList(type);
-		// } catch (SQLException e) {
-		// LogUtil.e("SQLException + " + e.toString());
-		// }
+		try {
+			baseHairList = db.getHairsList(type);
+		} catch (SQLException e) {
+			LogUtil.e("SQLException + " + e.toString());
+		}
 
 		if (baseHairList.isEmpty()) {
 		} else {
@@ -120,6 +123,8 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		}
 		firstType = i.getStringExtra("firstType");
 		secondType = i.getStringExtra("secondType");
+
+		type = firstType + "_" + secondType;
 	}
 
 	private String getCondition(int page) {
@@ -208,25 +213,24 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 				if (mlist == null || mlist.size() == 0) {
 					TispToastFactory.getToast(ZhaoFaXingListUI.this, "ÔÝÎÞÊý¾Ý")
 							.show();
+				} else {
+					for (int i = 0; i < mlist.size(); i++) {
+						Hair hair = mlist.get(i);
+						hair.setType(type);
+						String id = hair.getId() + "";
+						if (id != null && !id.equals("")) {
+							try {
+								if (getHelper().getHair(id, type) == null) {
+									getHelper().getHairDao().create(hair);
+								} else {
+								}
+							} catch (Exception e) {
+								// TODO Auto-generated catch block
+								LogUtil.e(e.toString());
+							}
+						}
+					}
 				}
-				// else {
-				// for (int i = 0; i < mlist.size(); i++) {
-				// Hair hair = mlist.get(i);
-				// hair.setType(type);
-				// String id = hair.getId() + "";
-				// if (id != null && !id.equals("")) {
-				// try {
-				// if (getHelper().getHair(id, type) == null) {
-				// getHelper().getHairDao().create(hair);
-				// } else {
-				// }
-				// } catch (Exception e) {
-				// // TODO Auto-generated catch block
-				// LogUtil.e(e.toString());
-				// }
-				// }
-				// }
-				// }
 
 				showlast = false;
 				adapter.appendHairList(mlist);

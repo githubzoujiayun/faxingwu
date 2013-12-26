@@ -65,6 +65,7 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 		findViewById(R.id.lin_zuopin).setOnClickListener(this);
 
 		findViewById(R.id.lin_gongjuxiang).setOnClickListener(this);
+		findViewById(R.id.lin_faxingbaojia).setOnClickListener(this);
 	}
 
 	@Override
@@ -146,6 +147,13 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 			map = new HashMap<String, String>();
 			map.put("uid", sm.getUserId());
 			StartActivityContController.goPage(this, WorkListUI.class, false,
+					map);
+			break;
+
+		case R.id.lin_faxingbaojia:
+			map = new HashMap<String, String>();
+			map.put("uid", sm.getUserId());
+			StartActivityContController.goPage(this, WorkDoListUI.class, true,
 					map);
 			break;
 		case R.id.lin_dongtai:

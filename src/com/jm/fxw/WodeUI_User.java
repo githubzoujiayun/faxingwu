@@ -144,6 +144,7 @@ public class WodeUI_User extends Activity implements OnClickListener {
 		case R.id.lin_gongjuxiang:
 			StartActivityContController.goPage(this, 104);
 			break;
+
 		case R.id.lin_woxingwoxiu:
 			StartActivityContController.goPage(this, DongTaiUI.class, false);
 			break;

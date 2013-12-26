@@ -288,6 +288,13 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
+           <activity
+            android:name="com.jm.fxw.WorkDoListUI"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        
         <activity
             android:name="com.jm.fxw.ImageInfo"
             android:launchMode="singleTask"

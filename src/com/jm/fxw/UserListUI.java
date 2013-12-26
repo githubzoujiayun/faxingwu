@@ -85,14 +85,16 @@ public class UserListUI extends Activity implements OnClickListener,
 		ListView.setOnItemClickListener(this);
 
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_RoseRed);
+		((Button) findViewById(R.id.btn_faxingshi))
+				.setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
 	}
 
 	private void ResetButtonBg() {
 
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_faxingshi))
+				.setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_geren))
 				.setTextColor(Constant.color_Black);
 	}

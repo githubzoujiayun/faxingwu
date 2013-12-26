@@ -122,7 +122,6 @@
                         android:id="@+id/lin_fans_num"
                         android:layout_width="0sp"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="5sp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical" >
@@ -153,7 +152,6 @@
                         android:id="@+id/lin_attention_num"
                         android:layout_width="0sp"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="20sp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical" >
@@ -184,7 +182,6 @@
                         android:id="@+id/lin_pingjia"
                         android:layout_width="0sp"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="20sp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical" >
@@ -215,7 +212,6 @@
                         android:id="@+id/lin_collect"
                         android:layout_width="0sp"
                         android:layout_height="fill_parent"
-                        android:layout_marginLeft="20sp"
                         android:layout_marginRight="5sp"
                         android:layout_weight="1"
                         android:gravity="center"
@@ -438,7 +434,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10sp"
                                 android:layout_weight="1"
-                                android:text="报价发型"
+                                android:text="会做发型"
                                 android:textColor="@color/black" />
 
                             <ImageView
