@@ -37,5 +37,8 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/black2</item>
     </style>
-
+ <style name="RedText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/rosered</item>
+    </style>
 </resources>
