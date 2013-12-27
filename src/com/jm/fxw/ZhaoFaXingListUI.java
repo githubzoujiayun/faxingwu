@@ -63,8 +63,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
 		getDataFromDataBase();
-		condition = getCondition(1);
-		new GetHairListTask().execute();
+		changeCondition(getCondition(1), findViewById(R.id.btn_leftType));
 
 	}
 
@@ -84,31 +83,23 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	private void getDataFromDataBase() {
 
-		List<Hair> baseHairList = null;
+		List<Hair> baseHairList = new ArrayList<Hair>();
 		DatabaseHelper db = getHelper();
 		try {
 			baseHairList = db.getHairsList(type);
 		} catch (SQLException e) {
 			LogUtil.e("SQLException + " + e.toString());
 		}
-
-		if (baseHairList.isEmpty()) {
-		} else {
-			adapter.setHairList(baseHairList);
-			adapter.notifyDataSetChanged();
-		}
+		adapter.setHairList(baseHairList);
+		adapter.notifyDataSetChanged();
 
 	}
 
 	private void init() {
-
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_leftType).setOnClickListener(this);
 		findViewById(R.id.btn_rightType).setOnClickListener(this);
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_leftType))
-				.setTextColor(Constant.color_RoseRed);
-
 		Intent i = getIntent();
 		((TextView) findViewById(R.id.tv_mainhead)).setText(i
 				.getStringExtra("hairName"));
@@ -123,7 +114,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		}
 		firstType = i.getStringExtra("firstType");
 		secondType = i.getStringExtra("secondType");
-
 		type = firstType + "_" + secondType;
 	}
 
@@ -245,7 +235,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	@Override
 	public void onClick(View v) {
-
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -262,7 +251,8 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	private void changeCondition(String condition, View v) {
 		ResetButtonBg();
-		((Button) v).setTextColor(Constant.color_RoseRed);
+		((Button) v).setTextColor(Constant.color_White);
+		((Button) v).setBackgroundColor(Constant.color_RoseRed);
 		adapter.clear();
 		this.mlist.clear();
 		this.condition = condition;
@@ -274,8 +264,12 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	private void ResetButtonBg() {
 		((Button) findViewById(R.id.btn_leftType))
 				.setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_leftType))
+				.setBackgroundColor(Constant.color_White);
 		((Button) findViewById(R.id.btn_rightType))
 				.setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_rightType))
+				.setBackgroundColor(Constant.color_White);
 	}
 
 	@Override

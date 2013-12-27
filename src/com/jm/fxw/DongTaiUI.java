@@ -54,7 +54,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		ListView.setOnScrollListener(this);
 		init();
 		getDataFromDataBase();
-		new GetDongTaiListTask().execute();
+		changeBtn("add_time", findViewById(R.id.btn_zuixin));
 	}
 
 	@Override
@@ -70,17 +70,14 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	}
 
 	private void getDataFromDataBase() {
-		List<DongTai> baseHairList = null;
+		List<DongTai> baseHairList = new ArrayList<DongTai>();
 		DatabaseHelper db = getHelper();
 		try {
 			baseHairList = db.getDongTaiList();
 		} catch (SQLException e) {
 		}
-		if (baseHairList.isEmpty()) {
-		} else {
-			adapter.setHairList(baseHairList);
-			adapter.notifyDataSetChanged();
-		}
+		adapter.setHairList(baseHairList);
+		adapter.notifyDataSetChanged();
 
 	}
 
@@ -88,13 +85,8 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		findViewById(R.id.btn_zuixin).setOnClickListener(this);
 		findViewById(R.id.btn_tongcheng).setOnClickListener(this);
 		findViewById(R.id.btn_tuijian).setOnClickListener(this);
-		ResetButtonBg();
-
-		((Button) findViewById(R.id.btn_zuixin))
-				.setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
-
 	}
 
 	/*
@@ -206,7 +198,8 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	private void changeBtn(String urnAllDongtai, View v) {
 		ResetButtonBg();
-		((Button) v).setTextColor(Constant.color_RoseRed);
+		((Button) v).setTextColor(Constant.color_White);
+		((Button) v).setBackgroundColor(Constant.color_RoseRed);
 		adapter.clear();
 		mlist.clear();
 		hlist.clear();
@@ -219,12 +212,19 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	private void ResetButtonBg() {
 
-		((Button) findViewById(R.id.btn_zuixin)).setTextColor(Color
-				.rgb(0, 0, 0));
+		((Button) findViewById(R.id.btn_zuixin))
+				.setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_tongcheng))
 				.setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_tuijian))
 				.setTextColor(Constant.color_Black);
+
+		((Button) findViewById(R.id.btn_zuixin))
+				.setBackgroundColor(Constant.color_White);
+		((Button) findViewById(R.id.btn_tongcheng))
+				.setBackgroundColor(Constant.color_White);
+		((Button) findViewById(R.id.btn_tuijian))
+				.setBackgroundColor(Constant.color_White);
 	}
 
 	@Override

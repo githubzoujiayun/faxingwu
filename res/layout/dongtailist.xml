@@ -57,9 +57,7 @@
             android:layout_margin="5sp"
             android:background="@drawable/shape_white"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="5sp"
-            android:paddingRight="5sp" >
+            android:orientation="horizontal" >
 
             <Button
                 android:id="@+id/btn_zuixin"
