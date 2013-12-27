@@ -51,9 +51,8 @@ public class ChangeInfo extends Activity implements OnClickListener {
 	protected ImageButton btn_about, btn_update, btn_help;
 	protected TextView tv_mainhead, tv_tophead, tv_uphead;
 	private Button btn_getvcode;
-	private EditText etxt_vcode, etxt_mobile;
+	private EditText etxt_mobile, et_username;
 	private CameraAndGallery cag;
-	private String vcode = "";
 	private String sex = "";
 	private int handlerTime = 60;
 	private SessionManager sm;
@@ -70,12 +69,9 @@ public class ChangeInfo extends Activity implements OnClickListener {
 	private void init() {
 		cag = new CameraAndGallery(this);
 		sm = SessionManager.getInstance();
-		etxt_mobile = (EditText) findViewById(R.id.etxt_mobile);
-		etxt_vcode = (EditText) findViewById(R.id.etxt_vcode);
-		btn_getvcode = (Button) findViewById(R.id.btn_getvcode);
-		btn_getvcode.setOnClickListener(this);
+		etxt_mobile = (EditText) findViewById(R.id.et_mobile);
+		et_username = (EditText) findViewById(R.id.et_username);
 		findViewById(R.id.btn_checkmobile).setOnClickListener(this);
-		etxt_vcode = (EditText) findViewById(R.id.etxt_vcode);
 		handler = new Handler();
 		findViewById(R.id.btn_checkagain).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -123,8 +119,7 @@ public class ChangeInfo extends Activity implements OnClickListener {
 
 				JSONObject jb = result.getJsonString("user_info");
 				try {
-					((TextView) findViewById(R.id.et_username)).setText(jb
-							.getString("username"));
+					et_username.setText(jb.getString("username"));
 
 					ImageLoader.getInstance().displayImage(
 							jb.getString("head_photo"),
@@ -148,6 +143,9 @@ public class ChangeInfo extends Activity implements OnClickListener {
 					}
 					((EditText) findViewById(R.id.et_city)).setText(jb
 							.getString("city"));
+
+					((EditText) findViewById(R.id.et_mobile)).setText(jb
+							.getString("mobile"));
 					((EditText) findViewById(R.id.et_qq)).setText(jb
 							.getString("qq"));
 					((TextView) findViewById(R.id.tv_mobile)).setText(jb
@@ -174,19 +172,12 @@ public class ChangeInfo extends Activity implements OnClickListener {
 		case R.id.btn_leftTop:
 			this.finish();
 			break;
-		case R.id.btn_getvcode:
-			doGetvcode();
-			break;
-		case R.id.btn_checkmobile:
-			// 验证手机
-			checkVcode();
-			break;
 		case R.id.btn_checkagain:
 			findViewById(R.id.lin_checkmobile).setVisibility(View.VISIBLE);
 			break;
 		case R.id.btn_changinfo:
 			setUserSex();
-			new ChangUserInfo().execute();
+			checkUserInfo();
 			break;
 
 		case R.id.iv_minfouserpic:
@@ -240,32 +231,6 @@ public class ChangeInfo extends Activity implements OnClickListener {
 		}
 	}
 
-	/**
-	 * 判断用户数据
-	 */
-	private void doGetvcode() {
-		if (etxt_mobile.getText() == null
-				|| etxt_mobile.getText().toString().trim().equals("")) {
-			TispToastFactory.getToast(this, "请填写手机号码").show();
-			return;
-		}
-		Pattern p = Pattern
-				.compile("(^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\\d{8}$)");
-		Matcher m = p.matcher(etxt_mobile.getText().toString().trim());
-		if (!m.matches()) {
-			TispToastFactory.getToast(this, "电话号码错误").show();
-			return;
-		}
-		new GetvcodeTask().execute();
-
-	}
-
-	protected Map<String, Object> getVcodeFormatInqVal(String feild) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("mobile", etxt_mobile.getText().toString().trim());
-		return map;
-	}
-
 	protected Map<String, Object> getChangeInfoInqVal() {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("uid", sm.getUserId());
@@ -275,10 +240,12 @@ public class ChangeInfo extends Activity implements OnClickListener {
 		map.put("head_photo", UploadUrl1);
 		map.put("qq", ((EditText) findViewById(R.id.et_qq)).getText()
 				.toString().trim());
-		map.put("username", ((EditText) findViewById(R.id.et_username))
-				.getText().toString().trim());
+		map.put("username", et_username.getText().toString().trim());
 		map.put("signature", ((EditText) findViewById(R.id.et_signature))
 				.getText().toString().trim());
+
+		map.put("mobile", etxt_mobile.getText().toString().trim());
+
 		return map;
 	}
 
@@ -356,97 +323,106 @@ public class ChangeInfo extends Activity implements OnClickListener {
 		}
 	}
 
-	/*
-	 * 获取验证码
-	 */
-	class GetvcodeTask extends AsyncTask<String, Integer, Response> {
-
-		protected void onPreExecute() {
-
-			TispToastFactory.getToast(ChangeInfo.this, "验证码正在发送中").show();
-		}
-
-		@Override
-		protected Response doInBackground(String... params) {
-			Connection conn = ((ClientApp) getApplication()).getConnection();
-			Response res = conn.executeAndParse(Constant.URN_GETVCODE,
-					getVcodeFormatInqVal(""));
-
-			return res;
-		}
-
-		@Override
-		protected void onPostExecute(Response result) {
-			if (result == null) {
-				return;
-			}
-			if (result.isSuccessful()) {
-				TispToastFactory.getToast(ChangeInfo.this, "验证码已发送,请输入验证码")
-						.show();
-				vcode = result.getString("verify").toString().trim();
-				handlerTime = 60;
-				handler.post(timeback);
-				btn_getvcode.setEnabled(false);
-			}
-
-		}
-	}
+	// /*
+	// * 获取验证码
+	// */
+	// class GetvcodeTask extends AsyncTask<String, Integer, Response> {
+	//
+	// protected void onPreExecute() {
+	//
+	// TispToastFactory.getToast(ChangeInfo.this, "验证码正在发送中").show();
+	// }
+	//
+	// @Override
+	// protected Response doInBackground(String... params) {
+	// Connection conn = ((ClientApp) getApplication()).getConnection();
+	// Response res = conn.executeAndParse(Constant.URN_GETVCODE,
+	// getVcodeFormatInqVal(""));
+	//
+	// return res;
+	// }
+	//
+	// @Override
+	// protected void onPostExecute(Response result) {
+	// if (result == null) {
+	// return;
+	// }
+	// if (result.isSuccessful()) {
+	// TispToastFactory.getToast(ChangeInfo.this, "验证码已发送,请输入验证码")
+	// .show();
+	// vcode = result.getString("verify").toString().trim();
+	// handlerTime = 60;
+	// handler.post(timeback);
+	// btn_getvcode.setEnabled(false);
+	// }
+	//
+	// }
+	// }
 
 	/**
 	 * 用户信息非空检测
 	 */
-	private void checkVcode() {
-		if (etxt_vcode.getText() == null
-				|| etxt_vcode.getText().toString().trim().equals("")) {
-			TispToastFactory.getToast(ChangeInfo.this, "请输入验证码").show();
+	private void checkUserInfo() {
+		if (et_username.getText() == null
+				|| et_username.getText().toString().trim().equals("")) {
+			TispToastFactory.getToast(this, "请输入昵称").show();
 			return;
 		}
-		if (!etxt_vcode.getText().toString().trim().equals(vcode)) {
-			TispToastFactory.getToast(ChangeInfo.this, "验证码输入错误").show();
+
+		if (etxt_mobile.getText() == null
+				|| etxt_mobile.getText().toString().trim().equals("")) {
+			TispToastFactory.getToast(this, "请填写手机号码").show();
 			return;
 		}
-		new CheckMobilesuccessTask().execute();
-
+		Pattern p = Pattern
+				.compile("(^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\\d{8}$)");
+		Matcher m = p.matcher(etxt_mobile.getText().toString().trim());
+		if (!m.matches()) {
+			TispToastFactory.getToast(this, "手机号码填写错误").show();
+			return;
+		}
+		new ChangUserInfo().execute();
 	}
 
-	/**
-	 * 手机验证成功告知服务器
-	 * 
-	 * @author win
-	 * 
-	 */
-	class CheckMobilesuccessTask extends AsyncTask<String, Integer, Response> {
-
-		protected Map<String, Object> getVcodeSuccessFormatInqVal(String feild) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("mobile", etxt_mobile.getText().toString().trim());
-			map.put("uid", sm.getUserId());
-			return map;
-		}
-
-		@Override
-		protected Response doInBackground(String... params) {
-			Connection conn = ((ClientApp) getApplication()).getConnection();
-			Response res = conn.executeAndParse(Constant.URN_VCOCESUCCESS,
-					getVcodeSuccessFormatInqVal(""));
-			return res;
-		}
-
-		@Override
-		protected void onPostExecute(Response result) {
-			if (result == null) {
-				return;
-			}
-			if (result.isSuccessful()) {
-				TispToastFactory.getToast(ChangeInfo.this, result.getMsg())
-						.show();
-				finish();
-			} else {
-				TispToastFactory.getToast(ChangeInfo.this, result.getMsg())
-						.show();
-			}
-		}
-	}
+	// /**
+	// * 手机验证成功告知服务器
+	// *
+	// * @author win
+	// *
+	// */
+	// class CheckMobilesuccessTask extends AsyncTask<String, Integer, Response>
+	// {
+	//
+	// protected Map<String, Object> getVcodeSuccessFormatInqVal(String feild) {
+	// Map<String, Object> map = new HashMap<String, Object>();
+	// map.put("mobile", etxt_mobile.getText().toString().trim());
+	// map.put("uid", sm.getUserId());
+	// return map;
+	// }
+	//
+	// @Override
+	// protected Response doInBackground(String... params) {
+	// Connection conn = ((ClientApp) getApplication()).getConnection();
+	// Response res = conn.executeAndParse(Constant.URN_VCOCESUCCESS,
+	// getVcodeSuccessFormatInqVal(""));
+	// return res;
+	// }
+	//
+	// @Override
+	// protected void onPostExecute(Response result) {
+	// if (result == null) {
+	// return;
+	// }
+	// if (result.isSuccessful()) {
+	// TispToastFactory.getToast(ChangeInfo.this, result.getMsg())
+	// .show();
+	// finish();
+	// } else {
+	// TispToastFactory.getToast(ChangeInfo.this, result.getMsg())
+	// .show();
+	// }
+	// }
+	// }
 
 	Runnable timeback = new Runnable() {
 

@@ -105,7 +105,8 @@ public class CheckUpdate {
 				}
 			} else {
 				if (shownonewversion) {
-					TispToastFactory.getToast(context, "当前已经是最新版本了").show();
+					Toast.makeText(context, "当前已经是最新版本了", Toast.LENGTH_SHORT)
+							.show();
 				}
 			}
 
