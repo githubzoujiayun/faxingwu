@@ -70,82 +70,9 @@ public class QuestionUI extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btn_leftTop:
-			finish();
-			break;
-		case R.id.iv_btn_getquesion:
-			if (((Button) v).getText().equals("我要提问")) {
-				StartActivityContController.goPage(QuestionUI.this,
-						PublicQuestionUI.class, true);
-				// 跳转提问页面
-			}
-			if (((Button) v).getText().equals("发现问题")) {
-				// 跳转发现问题
-				new getMsgInfoTask().execute();
-			}
-			break;
-		case R.id.iv_btn_myquesion:
-			if (((Button) v).getText().equals("我的问题")) {
-				// 我的问题
-				StartActivityContController.goPage(QuestionUI.this,
-						MyQuestionListUI.class, true);
-			}
-			if (((Button) v).getText().equals("我的回答")) {
-
-				StartActivityContController.goPage(QuestionUI.this,
-						MyAnswerListUI.class, true);
-
-				// 我的回答
-			}
-			break;
-		}
+		
 	}
 
-	/*
-	 * 读取消息详情
-	 */
-
-	class getMsgInfoTask extends AsyncTask<String, Integer, Response> {
-
-		@Override
-		protected void onPreExecute() {
-		}
-
-		protected Map<String, Object> getMsgInqVal() {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("city", SessionManager.getInstance().getCity());
-			return map;
-		}
-
-		@Override
-		protected Response doInBackground(String... params) {
-			Connection conn = ((ClientApp) getApplication()).getConnection();
-
-			return conn.executeAndParse(Constant.URN_FINDQUESTION,
-					getMsgInqVal());
-
-		}
-
-		protected void onPostExecute(Response result) {
-
-			if (result == null) {
-				LogUtil.e("can not get answer List");
-				return;
-			}
-			if (result.isSuccessful()) {
-				Intent intent = new Intent(QuestionUI.this,
-						ChatQuestionUI.class);
-				LogUtil.e("pid = " + result.getString("pid"));
-				LogUtil.e("uid = " + result.getString("uid"));
-				intent.putExtra("pid", result.getString("pid"));
-				intent.putExtra("tid", result.getString("uid"));
-				startActivity(intent);
-			} else {
-				TispToastFactory.getToast(QuestionUI.this, result.getMsg())
-						.show();
-			}
-		}
-	}
+	
 
 }

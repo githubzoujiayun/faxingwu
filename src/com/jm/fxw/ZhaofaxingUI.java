@@ -220,7 +220,7 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener,
 		switch (v.getId()) {
 		case R.id.lin_guangchang:
 			StartActivityContController.goPage(ZhaofaxingUI.this,
-					GuangChangUI.class, false);
+					GuangChangUI.class, true);
 			break;
 		case R.id.lin_zhaofaxing:
 			StartActivityContController.goPage(ZhaofaxingUI.this,

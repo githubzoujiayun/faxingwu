@@ -28,6 +28,7 @@ import com.jm.data.DatabaseHelper;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
 import com.jm.sort.HairAdapter;
+import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
@@ -99,7 +100,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_leftType).setOnClickListener(this);
 		findViewById(R.id.btn_rightType).setOnClickListener(this);
-		ResetButtonBg();
 		Intent i = getIntent();
 		((TextView) findViewById(R.id.tv_mainhead)).setText(i
 				.getStringExtra("hairName"));
@@ -250,26 +250,18 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 	}
 
 	private void changeCondition(String condition, View v) {
-		ResetButtonBg();
-		((Button) v).setTextColor(Constant.color_White);
-		((Button) v).setBackgroundColor(Constant.color_RoseRed);
+
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.btn_leftType));
+		blist.add(findViewById(R.id.btn_rightType));
+		ButtonsUtil.ResetAllButton(blist);
+		ButtonsUtil.setChangeButton(v);
 		adapter.clear();
 		this.mlist.clear();
 		this.condition = condition;
 		page = 1;
 		pageCount = 0;
 		new GetHairListTask().execute();
-	}
-
-	private void ResetButtonBg() {
-		((Button) findViewById(R.id.btn_leftType))
-				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_leftType))
-				.setBackgroundColor(Constant.color_White);
-		((Button) findViewById(R.id.btn_rightType))
-				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_rightType))
-				.setBackgroundColor(Constant.color_White);
 	}
 
 	@Override

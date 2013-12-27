@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.graphics.Color;
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -25,10 +25,12 @@ import com.jm.entity.DongTai;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
 import com.jm.sort.DongTaiAdapter;
+import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
 
+@SuppressLint("ResourceAsColor")
 public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		OnClickListener, OnScrollListener {
 	private GridView ListView;
@@ -197,9 +199,13 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	}
 
 	private void changeBtn(String urnAllDongtai, View v) {
-		ResetButtonBg();
-		((Button) v).setTextColor(Constant.color_White);
-		((Button) v).setBackgroundColor(Constant.color_RoseRed);
+
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.btn_zuixin));
+		blist.add(findViewById(R.id.btn_tongcheng));
+		blist.add(findViewById(R.id.btn_tuijian));
+		ButtonsUtil.ResetAllButton(blist);
+		ButtonsUtil.setChangeButton(v);
 		adapter.clear();
 		mlist.clear();
 		hlist.clear();
@@ -208,23 +214,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		pageCount = 0;
 		new GetDongTaiListTask().execute();
 
-	}
-
-	private void ResetButtonBg() {
-
-		((Button) findViewById(R.id.btn_zuixin))
-				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_tongcheng))
-				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_tuijian))
-				.setTextColor(Constant.color_Black);
-
-		((Button) findViewById(R.id.btn_zuixin))
-				.setBackgroundColor(Constant.color_White);
-		((Button) findViewById(R.id.btn_tongcheng))
-				.setBackgroundColor(Constant.color_White);
-		((Button) findViewById(R.id.btn_tuijian))
-				.setBackgroundColor(Constant.color_White);
 	}
 
 	@Override

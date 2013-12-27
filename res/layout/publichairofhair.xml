@@ -389,7 +389,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
                     android:background="@drawable/shape_white"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:maxLength="4"
                     android:paddingLeft="5sp"
                     android:textColor="@color/black"
@@ -495,7 +495,7 @@
                     android:id="@+id/btn_PublicTop"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/shape_blue"
+                    android:background="@drawable/shape_red"
                     android:text="上 传 发 型"
                     android:textColor="@color/white"
                     android:textSize="16sp" />

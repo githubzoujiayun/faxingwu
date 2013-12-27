@@ -83,7 +83,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	private EditText ed_comment;
 	private Handler mHandler;
 	private String usertype;
-
 	private Button ok;
 	private Button cancel;
 	private Dialog dialog;
@@ -91,11 +90,8 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	private int galleryindex;
 	private static final String SCOPE = "get_simple_userinfo,add_share";
 	// /////////////////////////////////////////s
-	private SharedPreferences mSharedPreferences;
 	private ViewPagerAdapter viewPagerAdapter;
 	private boolean isPushIn;
-	// 初始化参数
-	// private SamplePagerAdapter spa;
 	/**
 	 * 用于管理图片的滑动
 	 */
@@ -114,11 +110,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		callback = new PictureTaskCallback();
 		viewPagerAdapter = new ViewPagerAdapter(this);
-		// 初始化缓存对象.S
-		mSharedPreferences = getSharedPreferences(getPackageName(),
-				MODE_PRIVATE);
 
-		// ///////////////////////////////
 		initweibo();
 		mTencent = Tencent.createInstance(Constant.APP_ID,
 				this.getApplicationContext());
@@ -1010,53 +1002,21 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		}
 	}
 
-	Bitmap bitmap = null;
-
 	/**
 	 * ViewPager的适配器
 	 * 
 	 * @author guolin
 	 */
 	class ViewPagerAdapter extends PagerAdapter {
-		private int mChildCount = 0;
 		private Context context;
 
 		public ViewPagerAdapter(Context context) {
 			this.context = context;
 		}
 
-		// @Override
-		// public void notifyDataSetChanged() {
-		// mChildCount = getCount();
-		// super.notifyDataSetChanged();
-		// }
-		//
-		//
-		//
-		// @Override
-		// public int getItemPosition(Object object) {
-		// if (mChildCount > 0) {
-		// mChildCount--;
-		// return POSITION_NONE;
-		// }
-		// return super.getItemPosition(object);
-		// }
-
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
 
-			// String imagePath = ImageUtil.pictureStringExists(imageUrls
-			// .get(position));
-			// Options ops = new Options();
-			// ops.inScaled = false;
-			// ops.inSampleSize = 1;
-			//
-			// bitmap = BitmapFactory.decodeFile(imagePath, ops);
-			//
-			// if (bitmap == null) {
-			// bitmap = BitmapFactory.decodeResource(getResources(),
-			// R.drawable.empty_photo);
-			// }
 			View view = LayoutInflater.from(HairInfoUI.this).inflate(
 					R.layout.zoom_image_layout, null);
 			FinalBitmap.create(context).display(
