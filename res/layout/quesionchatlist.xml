@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.jm.sort.QuesionChatItem xmlns:android="http://schemas.android.com/apk/res/android"
+<com.jm.sort.ChatItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/layout_myexam_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="3sp"
-                                    android:scaleType="fitXY"
+                                    android:scaleType="matrix"
                                     android:visibility="gone" />
                             </LinearLayout>
                         </RelativeLayout>
@@ -158,4 +158,4 @@
             android:textSize="10dip" />
     </RelativeLayout>
 
-</com.jm.sort.QuesionChatItem>
+</com.jm.sort.ChatItem>

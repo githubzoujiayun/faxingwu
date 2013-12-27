@@ -43,7 +43,7 @@ import com.jm.connection.Response;
 import com.jm.entity.QuestionChat;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
-import com.jm.sort.QuesionChatAdapter;
+import com.jm.sort.ChatAdapter;
 import com.jm.util.CameraAndGallery;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -56,7 +56,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 	protected ImageButton btn_about, btn_update, btn_help;
 	protected TextView tv_mainhead, tv_tophead, tv_uphead;
 	private ListView ListView;
-	private QuesionChatAdapter adapter;
+	private ChatAdapter adapter;
 	private List<QuestionChat> mlist = new ArrayList<QuestionChat>();
 	private Timer timer;
 	private SessionManager sm;
@@ -107,7 +107,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 			finish();
 		}
 		ListView = (ListView) findViewById(R.id.my_listview);
-		adapter = new QuesionChatAdapter(this);
+		adapter = new ChatAdapter(this);
 		ListView.setAdapter(adapter);
 		findViewById(R.id.btn_send).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);

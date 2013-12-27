@@ -44,13 +44,6 @@
                             android:layout_alignParentLeft="true"
                             android:clickable="false" >
 
-                            <ImageView
-                                android:id="@+id/team_singlechat_id_listiteam_headicon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="10dip" />
-
                             <LinearLayout
                                 android:id="@+id/team_singlechat_id_listiteam_message"
                                 android:layout_width="wrap_content"
@@ -73,39 +66,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="3sp"
-                                    android:scaleType="fitXY"
+                                    android:scaleType="matrix"
                                     android:visibility="gone" />
                             </LinearLayout>
                         </RelativeLayout>
                     </RelativeLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lin_voice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:orientation="vertical" >
-
-                    <ImageView
-                        android:id="@+id/play"
-                        android:layout_width="70sp"
-                        android:layout_height="50sp"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginRight="10sp"
-                        android:scaleType="fitXY"
-                        android:visibility="gone" />
-
-                    <ImageView
-                        android:id="@+id/stop"
-                        android:layout_width="70sp"
-                        android:layout_height="50sp"
-                        android:layout_marginLeft="10sp"
-                        android:layout_marginRight="10sp"
-                        android:scaleType="fitXY"
-                        android:visibility="gone" />
                 </LinearLayout>
             </LinearLayout>
 
