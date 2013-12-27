@@ -252,33 +252,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_messag" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="消息"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_messag" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="消息"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -293,33 +285,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_yuyue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="我的预约"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_yuyue" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="我的预约"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -334,33 +318,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_dongtai" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="附近的人"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_dongtai" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="附近的人"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -375,33 +351,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_mypic" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="我的作品"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_mypic" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="我的作品"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -416,33 +384,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_faxingbaojia" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="会做发型"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_faxingbaojia" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="会做发型"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -457,33 +417,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_shalong" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="认证沙龙"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_shalong" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="认证沙龙"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -498,33 +450,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_gongjuxiang" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="发型工具箱"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_gongjuxiang" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="发型工具箱"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -539,33 +483,25 @@
                         android:paddingLeft="10sp"
                         android:paddingRight="10sp" >
 
-                        <LinearLayout
-                            android:layout_width="fill_parent"
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/mycenter_shezhi" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:text="设置"
+                            android:textColor="@color/black" />
 
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/mycenter_shezhi" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10sp"
-                                android:layout_weight="1"
-                                android:text="设置"
-                                android:textColor="@color/black" />
-
-                            <ImageView
-                                android:layout_width="30sp"
-                                android:layout_height="26sp"
-                                android:layout_marginLeft="10sp"
-                                android:src="@drawable/jiantou_go" />
-                        </LinearLayout>
+                        <ImageView
+                            android:layout_width="30sp"
+                            android:layout_height="26sp"
+                            android:layout_marginLeft="10sp"
+                            android:src="@drawable/jiantou_go" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

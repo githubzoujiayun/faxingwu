@@ -25,6 +25,7 @@ import com.jm.connection.Response;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
+import com.jm.util.TispToastFactory;
 
 public class CheckUpdate {
 
@@ -93,7 +94,6 @@ public class CheckUpdate {
 			if (result.isSuccessful()) {
 				if (!result.getString("url").equals("")) {
 					_urlStr = result.getString("url");
-					LogUtil.e("有新版本可以更新");
 					String tip = "";
 					try {
 						tip = result.getString("msg");
@@ -105,8 +105,7 @@ public class CheckUpdate {
 				}
 			} else {
 				if (shownonewversion) {
-					Toast.makeText(context, "当前已经是最新版本了", Toast.LENGTH_SHORT)
-							.show();
+					TispToastFactory.getToast(context, "当前已经是最新版本了").show();
 				}
 			}
 

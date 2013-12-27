@@ -79,7 +79,7 @@ public class ChangeInfo extends Activity implements OnClickListener {
 		handler = new Handler();
 		findViewById(R.id.btn_checkagain).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-		findViewById(R.id.btn_rightTop).setOnClickListener(this);
+		findViewById(R.id.btn_changinfo).setOnClickListener(this);
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(this);
 	}
 
@@ -184,7 +184,7 @@ public class ChangeInfo extends Activity implements OnClickListener {
 		case R.id.btn_checkagain:
 			findViewById(R.id.lin_checkmobile).setVisibility(View.VISIBLE);
 			break;
-		case R.id.btn_rightTop:
+		case R.id.btn_changinfo:
 			setUserSex();
 			new ChangUserInfo().execute();
 			break;

@@ -8,7 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="44sp"
         android:background="#212529"
-        android:gravity="center_vertical" 
+        android:gravity="center_vertical"
         android:orientation="horizontal" >
 
         <Button
@@ -38,7 +38,8 @@
             android:background="@drawable/btn_long_selector"
             android:text="修改资料"
             android:textColor="#ffffff"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <ScrollView
@@ -57,249 +58,254 @@
             <LinearLayout
                 android:id="@+id/lin_setting"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/server_liebiao_style"
-                android:gravity="center" >
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="3sp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" >
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10sp"
                     android:layout_weight="1"
                     android:text="设置预约"
-                    android:textColor="@color/black2" />
+                    android:textColor="@color/black" />
 
                 <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="26sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@drawable/jiantou_go" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lin_changeinfo"
+                android:layout_width="fill_parent"
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="3sp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" >
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10sp"
-                    android:padding="12sp"
-                    android:src="@drawable/jiantou_red" />
+                    android:layout_marginLeft="10sp"
+                    android:layout_weight="1"
+                    android:text="修改资料"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="26sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@drawable/jiantou_go" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lin_qq"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/server_liebiao_style"
-                android:gravity="center" >
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="3sp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" >
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10sp"
                     android:layout_weight="1"
-                    android:text="腾讯空间绑定"
-                    android:textColor="#d64e50" />
+                    android:text="绑定腾讯QQ"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/tv_qq"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10sp"
+                    android:layout_marginLeft="10sp"
                     android:text="读取中..."
-                    android:textColor="#d64e50" />
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="26sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@drawable/jiantou_go" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lin_sina"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/server_liebiao_style"
-                android:gravity="center" >
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="3sp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" >
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10sp"
                     android:layout_weight="1"
-                    android:text="新浪微博绑定"
-                    android:textColor="#37a8a4" />
+                    android:text="绑定新浪微博"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:id="@+id/tv_sina"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10sp"
+                    android:layout_marginLeft="10sp"
                     android:text="读取中..."
-                    android:textColor="#37a8a4" />
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="26sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@drawable/jiantou_go" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layout_about"
+                android:id="@+id/lin_tips"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="5sp"
-                android:layout_marginTop="5sp"
-                android:gravity="center"
-                android:orientation="horizontal" >
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="3sp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" >
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_margin="5dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
                     android:layout_weight="1"
-                    android:background="@drawable/server_liebiao_style"
-                    android:gravity="center" >
+                    android:text="推送设置"
+                    android:textColor="@color/black" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10sp"
-                        android:gravity="center"
-                        android:text="发型必备"
-                        android:textColor="@color/black2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lin_tips"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/server_liebiao_style"
-                    android:gravity="center" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10sp"
-                        android:gravity="center"
-                        android:text="消息提醒设置"
-                        android:textColor="@color/black2" />
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="26sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@drawable/jiantou_go" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lin_opinion"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="5sp"
-                android:layout_marginTop="5sp"
-                android:gravity="center"
-                android:orientation="horizontal" >
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="3sp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" >
 
-                <LinearLayout
-                    android:id="@+id/lin_weibo"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_margin="5dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
                     android:layout_weight="1"
-                    android:background="@drawable/server_liebiao_style"
-                    android:gravity="center" >
+                    android:text="反馈建议"
+                    android:textColor="@color/black" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10sp"
-                        android:gravity="center"
-                        android:text="官方微博"
-                        android:textColor="@color/black2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lin_help"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/server_liebiao_style"
-                    android:gravity="center" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10sp"
-                        android:gravity="center"
-                        android:text="使用帮助"
-                        android:textColor="@color/black2" />
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="26sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@drawable/jiantou_go" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/lin_help"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="10sp"
-                android:layout_marginTop="5sp"
-                android:gravity="center"
-                android:orientation="horizontal" >
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginTop="3sp"
+                android:background="@drawable/shape_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp" >
 
-                <LinearLayout
-                    android:id="@+id/lin_opinion"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_margin="5dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10sp"
                     android:layout_weight="1"
-                    android:background="@drawable/server_liebiao_style"
-                    android:gravity="center" >
+                    android:text="帮助信息"
+                    android:textColor="@color/black" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10sp"
-                        android:gravity="center"
-                        android:text="意见反馈"
-                        android:textColor="@color/black2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lin_cleatcache"
-                    android:layout_width="0dp"
-                    android:layout_height="42dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/server_liebiao_style"
-                    android:gravity="center" >
-
-                    <TextView
-                        android:id="@+id/tv_cache"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10sp"
-                        android:gravity="center"
-                        android:text="清除缓存"
-                        android:textColor="@color/black2" />
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="30sp"
+                    android:layout_height="26sp"
+                    android:layout_marginLeft="10sp"
+                    android:src="@drawable/jiantou_go" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_support"
+                android:id="@+id/btn_clearCache"
+                style="@style/WriteText"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_marginBottom="5sp"
-                android:layout_marginTop="5sp"
-                android:focusable="true"
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="3sp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_green"
                 android:gravity="center"
-                android:text="给个好评，支持一下！"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:visibility="gone" />
+                android:orientation="horizontal"
+                android:text="清除缓存" >
+            </Button>
 
             <Button
                 android:id="@+id/btn_update"
+                style="@style/WriteText"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5sp"
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="3sp"
+                android:layout_weight="1"
                 android:background="@drawable/shape_blue"
-                android:focusable="true"
                 android:gravity="center"
-                android:text="检查更新"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:orientation="horizontal"
+                android:text="检查更新" >
+            </Button>
 
             <Button
                 android:id="@+id/btn_logout"
+                style="@style/WriteText"
                 android:layout_width="fill_parent"
-                android:layout_height="42dp"
-                android:layout_margin="5sp"
+                android:layout_height="45sp"
+                android:layout_marginBottom="3sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="3sp"
                 android:background="@drawable/shape_red"
-                android:focusable="true"
                 android:gravity="center"
-                android:text="退出登录"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:orientation="horizontal"
+                android:text="退出登录" >
+            </Button>
         </LinearLayout>
     </ScrollView>
 

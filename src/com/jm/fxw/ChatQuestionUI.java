@@ -92,7 +92,8 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 		// ///////////////////////////////
 		cag = new CameraAndGallery(this);
 		setContentView(R.layout.chat);
-		((TextView)findViewById(R.id.tv_mainhead)).setText(getString(R.string.question_info));
+		((TextView) findViewById(R.id.tv_mainhead))
+				.setText(getString(R.string.question_info));
 		Intent i = getIntent();
 		isPushIn = i.getBooleanExtra("isPushIn", false);
 		tid = i.getStringExtra("tid");
@@ -127,7 +128,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "问题私信页面");
 	}
@@ -414,7 +415,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		
+
 		EditText et = (EditText) findViewById(R.id.text);
 		switch (v.getId()) {
 		case R.id.iv_hairpic1:
@@ -455,7 +456,6 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onEnd(SpeechError arg0) {
-		
 
 	}
 

@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.tsz.afinal.FinalBitmap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +14,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,6 +34,7 @@ import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
@@ -72,7 +74,7 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	// /////////////////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.setting);
 		init();
@@ -80,7 +82,7 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "设置页面");
 	}
@@ -100,14 +102,12 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		findViewById(R.id.lin_setting).setOnClickListener(this);
 		findViewById(R.id.lin_qq).setOnClickListener(this);
 		findViewById(R.id.lin_sina).setOnClickListener(this);
-		findViewById(R.id.btn_support).setOnClickListener(this);
 		findViewById(R.id.btn_update).setOnClickListener(this);
 		findViewById(R.id.btn_logout).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-		findViewById(R.id.btn_rightTop).setOnClickListener(this);
+		findViewById(R.id.lin_changeinfo).setOnClickListener(this);
 		findViewById(R.id.lin_tips).setOnClickListener(this);
-		findViewById(R.id.lin_cleatcache).setOnClickListener(this);
-		findViewById(R.id.lin_weibo).setOnClickListener(this);
+		findViewById(R.id.btn_clearCache).setOnClickListener(this);
 		findViewById(R.id.lin_help).setOnClickListener(this);
 		findViewById(R.id.lin_opinion).setOnClickListener(this);
 		((Button) findViewById(R.id.btn_update)).setText("检查更新(当前版本"
@@ -129,7 +129,7 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "设置页面");
 		getUserSettingInfo();
@@ -382,9 +382,6 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 				mWeibo.authorize(SettingUI.this, new AuthDialogListener());
 			}
 			break;
-		case R.id.btn_support:
-			TispToastFactory.getToast(this, "打开支持页面").show();
-			break;
 		case R.id.btn_update:
 			checkUpdate = new CheckUpdate(SettingUI.this);
 			checkUpdate.setNoNewversion(true);
@@ -398,12 +395,6 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 			StartActivityContController.goPage(this, OpinionUI.class, true);
 			break;
-
-		case R.id.lin_weibo:
-			Uri uri = Uri.parse("http://e.weibo.com/515345585");
-			Intent it = new Intent(Intent.ACTION_VIEW, uri);
-			startActivity(it);
-			break;
 		case R.id.btn_logout:
 			ShowDialog(getString(R.string.comfirm_logout));
 
@@ -414,36 +405,17 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		case R.id.lin_tips:
 			StartActivityContController.goPage(this, TipsSettingUI.class, true);
 			break;
-		case R.id.btn_rightTop:
-
+		case R.id.lin_changeinfo:
 			StartActivityContController.goPage(this, ChangeInfo.class, true);
 			break;
-		case R.id.lin_cleatcache:
-			delete(new File(SessionManager.getInstance().getCacheDir()));
+		case R.id.btn_clearCache:
+			FinalBitmap.create(this).clearCache();
+			ImageLoader.getInstance().clearDiscCache();
+			ImageLoader.getInstance().clearMemoryCache();
 			TispToastFactory.getToast(this, "清除缓存成功").show();
 			break;
 		}
 
-	}
-
-	public static void delete(File file) {
-		if (file.isFile()) {
-			file.delete();
-			return;
-		}
-
-		if (file.isDirectory()) {
-			File[] childFiles = file.listFiles();
-			if (childFiles == null || childFiles.length == 0) {
-				file.delete();
-				return;
-			}
-
-			for (int i = 0; i < childFiles.length; i++) {
-				delete(childFiles[i]);
-			}
-			file.delete();
-		}
 	}
 
 	private void ShowDialog(String info) {

@@ -35,6 +35,7 @@
             android:id="@+id/btn_rightTop"
             android:layout_width="58sp"
             android:layout_height="30sp"
+            android:visibility="invisible"
             android:layout_marginRight="5sp"
             android:background="@drawable/btn_selector"
             android:text="保存"
@@ -216,13 +217,29 @@
                     android:padding="5sp"
                     android:textSize="14sp" />
 
+                <Button
+                    android:id="@+id/btn_changinfo"
+                    style="@style/WriteText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45sp"
+                    android:layout_marginBottom="3sp"
+                    android:layout_marginLeft="10sp"
+                    android:layout_marginRight="10sp"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/shape_red"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:text="保存信息" >
+                </Button>
+
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="40sp"
                     android:layout_marginLeft="10sp"
                     android:layout_marginRight="5sp"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
 
                     <TextView
                         android:layout_width="wrap_content"
