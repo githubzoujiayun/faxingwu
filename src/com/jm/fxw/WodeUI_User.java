@@ -55,6 +55,7 @@ public class WodeUI_User extends Activity implements OnClickListener {
 		findViewById(R.id.lin_zuopin).setOnClickListener(this);
 		findViewById(R.id.lin_woxingwoxiu).setOnClickListener(this);
 		findViewById(R.id.lin_gongjuxiang).setOnClickListener(this);
+		findViewById(R.id.lin_shoucang).setOnClickListener(this);
 
 	}
 
@@ -179,8 +180,7 @@ public class WodeUI_User extends Activity implements OnClickListener {
 		case R.id.lin_setting:
 			StartActivityContController.goPage(this, SettingUI.class, true);
 			break;
-		case R.id.lin_collect:
-
+		case R.id.lin_shoucang:
 			map = new HashMap<String, String>();
 			map.put("uid", sm.getUserId());
 			StartActivityContController.goPage(this, CollectListUI.class, true,

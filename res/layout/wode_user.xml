@@ -47,7 +47,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:background="#e8e7e7" >
+        android:background="#e8e7e7"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -166,14 +167,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/lin_yuyue"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5sp"
-                    android:orientation="vertical" >
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/lin_dongtai"
                     android:layout_width="fill_parent"
                     android:layout_height="45sp"
@@ -197,6 +190,39 @@
                         android:layout_marginLeft="10sp"
                         android:layout_weight="1"
                         android:text="附近的人"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:layout_width="30sp"
+                        android:layout_height="26sp"
+                        android:layout_marginLeft="10sp"
+                        android:src="@drawable/jiantou_go" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_woxingwoxiu"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45sp"
+                    android:layout_marginBottom="3sp"
+                    android:layout_marginTop="3sp"
+                    android:background="@drawable/shape_white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10sp"
+                    android:paddingRight="10sp" >
+
+                    <ImageView
+                        android:layout_width="30sp"
+                        android:layout_height="26sp"
+                        android:layout_marginLeft="10sp"
+                        android:src="@drawable/mycenter_woxingwoxiu" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10sp"
+                        android:layout_weight="1"
+                        android:text="我型我秀"
                         android:textColor="@color/black" />
 
                     <ImageView
@@ -362,39 +388,6 @@
                         android:layout_marginLeft="10sp"
                         android:layout_weight="1"
                         android:text="发型工具箱"
-                        android:textColor="@color/black" />
-
-                    <ImageView
-                        android:layout_width="30sp"
-                        android:layout_height="26sp"
-                        android:layout_marginLeft="10sp"
-                        android:src="@drawable/jiantou_go" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lin_woxingwoxiu"
-                    android:layout_width="fill_parent"
-                    android:layout_height="45sp"
-                    android:layout_marginBottom="3sp"
-                    android:layout_marginTop="3sp"
-                    android:background="@drawable/shape_white"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingLeft="10sp"
-                    android:paddingRight="10sp" >
-
-                    <ImageView
-                        android:layout_width="30sp"
-                        android:layout_height="26sp"
-                        android:layout_marginLeft="10sp"
-                        android:src="@drawable/mycenter_woxingwoxiu" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10sp"
-                        android:layout_weight="1"
-                        android:text="我型我秀"
                         android:textColor="@color/black" />
 
                     <ImageView

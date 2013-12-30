@@ -34,7 +34,7 @@ public class YuYueUI_Haier extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyue_haier);
 		init();

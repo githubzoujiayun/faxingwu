@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,6 +23,7 @@ import com.jm.entity.ZhouBian;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.ZhouBianAdapter;
+import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
@@ -45,7 +45,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tongchenglist);
 		init();
-		new GetTongchengListTask().execute();
+		changeCondition("hairstylist", findViewById(R.id.btn_faxingshi));
 	}
 
 	@Override
@@ -73,17 +73,9 @@ public class TongChengUI extends Activity implements OnClickListener,
 		ListView.setAdapter(adapter);
 		ListView.setOnScrollListener(this);
 
-		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_RoseRed);
 		((TextView) findViewById(R.id.tv_rightTop)).setText(sm.getCity());
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
-	}
-
-	private void ResetButtonBg() {
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_geren))
-				.setTextColor(Constant.color_Black);
 	}
 
 	/*
@@ -155,25 +147,10 @@ public class TongChengUI extends Activity implements OnClickListener,
 			this.finish();
 			break;
 		case R.id.btn_faxingshi:
-			ResetButtonBg();
-			((Button) v).setTextColor(Constant.color_RoseRed);
-			adapter.clear();
-
-			adapter.isDianPu = false;
-			condition = "hairstylist";
-			page = 1;
-			pageCount = 0;
-			new GetTongchengListTask().execute();
+			changeCondition("hairstylist", v);
 			break;
 		case R.id.btn_geren:
-			ResetButtonBg();
-			((Button) v).setTextColor(Constant.color_RoseRed);
-			adapter.clear();
-			adapter.isDianPu = false;
-			condition = "person";
-			page = 1;
-			pageCount = 0;
-			new GetTongchengListTask().execute();
+			changeCondition("person", v);
 			break;
 
 		case R.id.btn_search:
@@ -184,6 +161,19 @@ public class TongChengUI extends Activity implements OnClickListener,
 			break;
 
 		}
+	}
+
+	private void changeCondition(String s, View v) {
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.btn_faxingshi));
+		blist.add(findViewById(R.id.btn_geren));
+		ButtonsUtil.ResetAllButton(blist);
+		ButtonsUtil.setChangeButton(v);
+		adapter.clear();
+		condition = s;
+		page = 1;
+		pageCount = 0;
+		new GetTongchengListTask().execute();
 	}
 
 	@Override

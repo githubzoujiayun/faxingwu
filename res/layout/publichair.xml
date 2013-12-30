@@ -46,7 +46,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:background="@color/bg" >
+        android:background="@color/bg"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -183,8 +184,6 @@
                 android:gravity="left|top"
                 android:hint="请为您的发型添加描述"
                 android:padding="3sp" />
-
-         
 
             <LinearLayout
                 android:layout_width="fill_parent"

@@ -298,12 +298,14 @@ public class LoginUI extends Activity implements OnClickListener {
 				LogUtil.i("登录成功");
 				if ("1".equals(type)) {
 					saveUserInfo(uid, type);
-					StartActivityContController.goPage(LoginUI.this,
-							StartActivityContController.wode);
+					finish();
+					// tartActivityContController.goPage(LoginUI.this,
+					// StartActivityContController.wode);
 				} else if ("2".equals(type)) {
 					saveUserInfo(uid, type);
-					StartActivityContController.goPage(LoginUI.this,
-							StartActivityContController.wode);
+					finish();
+					// StartActivityContController.goPage(LoginUI.this,
+					// StartActivityContController.wode);
 				} else {
 					LogUtil.i("新用户");
 					saveOpenId();

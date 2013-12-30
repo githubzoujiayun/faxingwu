@@ -26,6 +26,7 @@ import com.jm.connection.Response;
 import com.jm.entity.News;
 import com.jm.finals.Constant;
 import com.jm.sort.NewsAdapter;
+import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
@@ -63,7 +64,8 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
-		new GetHairListTask().execute();
+
+		changeCondition("2", findViewById(R.id.btn_mingrentang));
 
 	}
 
@@ -84,11 +86,8 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 		findViewById(R.id.btn_mingrentang).setOnClickListener(this);
 		findViewById(R.id.btn_hangyexinwen).setOnClickListener(this);
-
 		findViewById(R.id.btn_mingdianzhanshi).setOnClickListener(this);
 		findViewById(R.id.btn_shalongzhuanrang).setOnClickListener(this);
-		ResetButtonBg();
-		((Button) findViewById(R.id.btn_mingrentang)).setTextColor(Constant.color_RoseRed);
 	}
 
 	/*
@@ -155,16 +154,12 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		switch (v.getId()) {
 		case R.id.btn_mingrentang:
 			changeCondition("2", v);
-			pubtype = "2";
 			break;
 		case R.id.btn_hangyexinwen:
 			changeCondition("3", v);
-			pubtype = "3";
 			break;
-
 		case R.id.btn_mingdianzhanshi:
 			changeCondition("1", v);
-			pubtype = "1";
 			break;
 		case R.id.btn_shalongzhuanrang:
 
@@ -184,22 +179,20 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 	}
 
 	private void changeCondition(String condition, View v) {
-		ResetButtonBg();
-		((Button) v).setTextColor(Constant.color_RoseRed);
+
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.btn_mingrentang));
+		blist.add(findViewById(R.id.btn_hangyexinwen));
+		blist.add(findViewById(R.id.btn_mingdianzhanshi));
+		blist.add(findViewById(R.id.btn_shalongzhuanrang));
+		ButtonsUtil.ResetAllButton(blist);
+		ButtonsUtil.setChangeButton(v);
+		pubtype = condition;
 		adapter.clear();
 		this.news_type = condition;
 		page = 1;
 		pageCount = 0;
 		new GetHairListTask().execute();
-	}
-
-	private void ResetButtonBg() {
-
-		((Button) findViewById(R.id.btn_mingrentang)).setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_hangyexinwen)).setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_mingdianzhanshi)).setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_shalongzhuanrang)).setTextColor(Constant.color_Black);
-
 	}
 
 	@Override

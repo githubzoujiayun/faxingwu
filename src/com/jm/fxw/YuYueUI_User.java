@@ -30,6 +30,7 @@ import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.ReserveAdapter;
+import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
@@ -46,7 +47,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyue_user);
 		init();
@@ -54,6 +55,9 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		adapter = new ReserveAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
+		ResetButtonBgAndViews();
+		ButtonsUtil.setChangeButton(findViewById(R.id.btn_jibenxinxi));
+		new getCurrentYuYueInfo().execute();
 	}
 
 	private void init() {
@@ -63,7 +67,8 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		findViewById(R.id.btn_lishiyuyue).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		ResetButtonBgAndViews();
-		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Constant.color_RoseRed);
+		((Button) findViewById(R.id.btn_jibenxinxi))
+				.setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_btn).setOnClickListener(this);
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(
 				new OnClickListener() {
@@ -78,7 +83,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 
 					}
 				});
-		new getCurrentYuYueInfo().execute();
 
 	}
 
@@ -86,8 +90,10 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		findViewById(R.id.lin_basic_info).setVisibility(View.GONE);
 		findViewById(R.id.lin_nobasic_info).setVisibility(View.GONE);
 		findViewById(R.id.lin_yuyue_list).setVisibility(View.GONE);
-		((Button) findViewById(R.id.btn_jibenxinxi)).setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_lishiyuyue)).setTextColor(Constant.color_Black);
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.btn_jibenxinxi));
+		blist.add(findViewById(R.id.btn_lishiyuyue));
+		ButtonsUtil.ResetAllButton(blist);
 	}
 
 	@Override
@@ -100,7 +106,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 	protected void onResume() {
 		super.onResume();
 		MobileProbe.onResume(this, "用户预约管理页面");
-		new getCurrentYuYueListInfo().execute();
 	}
 
 	/*
@@ -337,7 +342,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_jibenxinxi:
 			ResetButtonBgAndViews();
-			((Button) v).setTextColor(Constant.color_RoseRed);
+			ButtonsUtil.setChangeButton(v);
 			if (reserve != null) {
 				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
 			} else {
@@ -348,7 +353,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_lishiyuyue:
 			ResetButtonBgAndViews();
-			((Button) v).setTextColor(Constant.color_RoseRed);
+			ButtonsUtil.setChangeButton(v);
 			findViewById(R.id.lin_yuyue_list).setVisibility(View.VISIBLE);
 			new getCurrentYuYueListInfo().execute();
 			break;

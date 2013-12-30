@@ -63,6 +63,7 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 		findViewById(R.id.lin_setting).setOnClickListener(this);
 		findViewById(R.id.lin_dongtai).setOnClickListener(this);
 		findViewById(R.id.lin_zuopin).setOnClickListener(this);
+		findViewById(R.id.lin_woxingwoxiu).setOnClickListener(this);
 
 		findViewById(R.id.lin_gongjuxiang).setOnClickListener(this);
 		findViewById(R.id.lin_faxingbaojia).setOnClickListener(this);
@@ -162,7 +163,9 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 		case R.id.lin_gongjuxiang:
 			StartActivityContController.goPage(this, 104);
 			break;
-
+		case R.id.lin_woxingwoxiu:
+			StartActivityContController.goPage(this, DongTaiUI.class, false);
+			break;
 		case R.id.lin_guangchang:
 			StartActivityContController.goPage(this, GuangChangUI.class, true);
 			break;

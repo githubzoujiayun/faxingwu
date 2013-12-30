@@ -22,8 +22,6 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 	private LayoutInflater inflater;
 	private List<ZhouBian> mlist;
 	private Context context;
-
-	public boolean isDianPu = false;
 	private boolean isProgress = false;
 
 	public ZhouBianAdapter(Context context) {
@@ -124,17 +122,6 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 
 			if (!type.status.equals("1")) {
 				view.findViewById(R.id.iv_renzheng).setVisibility(View.GONE);
-			}
-			if (isDianPu) {
-				view.isDianPu = isDianPu;
-				((Button) view.findViewById(R.id.btn_isconcerns))
-						.setVisibility(View.GONE);
-
-				((TextView) view.findViewById(R.id.tv_3_1))
-						.setVisibility(View.GONE);
-
-				((TextView) view.findViewById(R.id.tv_2_1)).setText(type
-						.getAddress());
 			}
 			return view;
 		}

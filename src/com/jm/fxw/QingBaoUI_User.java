@@ -28,6 +28,7 @@ import com.jm.entity.News;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.NewsAdapter;
+import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
@@ -64,7 +65,7 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
-		new GetHairListTask().execute();
+		changeCondition("4", findViewById(R.id.btn_quanbu));
 
 	}
 
@@ -88,8 +89,6 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 		findViewById(R.id.btn_tongcheng).setOnClickListener(this);
 		findViewById(R.id.btn_tuijian).setOnClickListener(this);
 		findViewById(R.id.btn_guanzhu).setOnClickListener(this);
-		ResetButtonBg();
-		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Constant.color_RoseRed);
 	}
 
 	/*
@@ -173,25 +172,19 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 	}
 
 	private void changeCondition(String condition, View v) {
-		ResetButtonBg();
-		((Button) v).setTextColor(Constant.color_RoseRed);
+
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.btn_quanbu));
+		blist.add(findViewById(R.id.btn_tongcheng));
+		blist.add(findViewById(R.id.btn_tuijian));
+		blist.add(findViewById(R.id.btn_guanzhu));
+		ButtonsUtil.ResetAllButton(blist);
+		ButtonsUtil.setChangeButton(v);
 		adapter.clear();
 		this.news_type = condition;
 		page = 1;
 		pageCount = 0;
 		new GetHairListTask().execute();
-	}
-
-	private void ResetButtonBg() {
-
-		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Color
-				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_tongcheng))
-				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_tuijian))
-				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_guanzhu))
-				.setTextColor(Constant.color_Black);
 	}
 
 	@Override
