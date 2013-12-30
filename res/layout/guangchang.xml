@@ -23,16 +23,9 @@
         android:layout_height="0sp"
         android:layout_weight="1"
         android:background="@color/bg"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tv_quesion"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            android:textColor="@color/black2"
-            android:textSize="18sp" />
 
         <Button
             android:id="@+id/iv_btn_getquesion"

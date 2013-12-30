@@ -90,16 +90,11 @@ public class GuangChangUI extends FinalActivity implements OnClickListener {
 			((Button) findViewById(R.id.iv_btn_getquesion)).setText("提出问题");
 			((Button) findViewById(R.id.iv_btn_myquesion)).setText("我的问题");
 
-			((TextView) findViewById(R.id.tv_quesion))
-					.setText("    您可以以图文结合的方式发布问题，将由业内专业知名发型师团队为您解答，并且在第一时间通知您。");
 		}
 		if ((SessionManager.getInstance().getUsertype().equals("2"))) {
 			((Button) findViewById(R.id.iv_btn_getquesion)).setText("同城问题");
 			((Button) findViewById(R.id.iv_btn_myquesion)).setText("我的回答");
 			// 发型师
-
-			((TextView) findViewById(R.id.tv_quesion))
-					.setText("    系统将按照提问者距离、用户活跃程度和问题的回答情况为您自动获取问题，发现您的潜在客户，赶紧试一下吧！");
 		}
 	}
 
