@@ -63,10 +63,10 @@
 
                                 <ImageView
                                     android:id="@+id/chatpicture"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="fill_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="3sp"
-                                    android:scaleType="matrix"
+                                    android:scaleType="fitCenter"
                                     android:visibility="gone" />
                             </LinearLayout>
                         </RelativeLayout>

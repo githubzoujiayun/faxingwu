@@ -63,8 +63,7 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	 * SsoHandler 仅当sdk支持sso时有效，
 	 */
 	SsoHandler mSsoHandler;
-	private String qq_keyid = "", sina_keyid = "", access_token, expires_in,
-			username, meg;
+	private String qq_keyid = "", sina_keyid = "";
 	// //////////////////////////////////
 	private SharedPreferences share;
 	private SharedPreferences.Editor editor;

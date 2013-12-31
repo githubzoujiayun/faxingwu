@@ -34,8 +34,6 @@ public class UserListUI extends Activity implements OnClickListener,
 	private UserAdapter adapter;
 	private List<User> mlist = new ArrayList<User>();
 	private SessionManager sm;
-	private boolean isloading = false;
-	private boolean showlast = false;
 	private String type;
 
 	private boolean isPushIn;
@@ -132,7 +130,6 @@ public class UserListUI extends Activity implements OnClickListener,
 
 		protected void onPostExecute(Response result) {
 
-			isloading = false;
 			adapter.setProgress(false);
 			if (result == null) {
 				return;
@@ -144,7 +141,6 @@ public class UserListUI extends Activity implements OnClickListener,
 					TispToastFactory.getToast(UserListUI.this, result.getMsg());
 					return;
 				}
-				showlast = false;
 				adapter.appendUserList(mlist);
 				adapter.notifyDataSetChanged();
 

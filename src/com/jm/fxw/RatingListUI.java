@@ -17,7 +17,6 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Rating;
 import com.jm.finals.Constant;
-import com.jm.session.SessionManager;
 import com.jm.sort.UserRatingAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
@@ -28,21 +27,19 @@ public class RatingListUI extends Activity implements OnClickListener,
 		ScrollCallback {
 	private MyListView ListView;
 	private UserRatingAdapter adapter;
-	private List<Rating> mlist =  new ArrayList<Rating>();
+	private List<Rating> mlist = new ArrayList<Rating>();
 	private int page = 1;
 	private int pageCount = 0;
-	private SessionManager sm;
 	private boolean isloading = false;
 	private boolean showlast = false;
 	private String uid;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ratinglist);
 		init();
-		sm = SessionManager.getInstance();
 		uid = getIntent().getStringExtra("uid");
 		ListView = (MyListView) findViewById(R.id.lv_rating_listview);
 		adapter = new UserRatingAdapter(this);
@@ -61,14 +58,14 @@ public class RatingListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "评价列表页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "评价列表页面");
 	}
@@ -86,7 +83,7 @@ public class RatingListUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			
+
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -164,7 +161,6 @@ public class RatingListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollChanged(AbsListView view, int scrollState) {
-		
 
 	}
 }

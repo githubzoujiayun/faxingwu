@@ -23,7 +23,7 @@ import com.jm.entity.ZhouBian;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.ZhouBianAdapter;
-import com.jm.util.ButtonsUtil;
+import com.jm.util.WidgetUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
@@ -167,8 +167,8 @@ public class TongChengUI extends Activity implements OnClickListener,
 		List<View> blist = new ArrayList<View>();
 		blist.add(findViewById(R.id.btn_faxingshi));
 		blist.add(findViewById(R.id.btn_geren));
-		ButtonsUtil.ResetAllButton(blist);
-		ButtonsUtil.setChangeButton(v);
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
 		adapter.clear();
 		condition = s;
 		page = 1;

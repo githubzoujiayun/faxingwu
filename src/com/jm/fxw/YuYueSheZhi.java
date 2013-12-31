@@ -47,7 +47,6 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 			"0.5" };
 
 	ArrayAdapter<String> adapter;
-	private ArrayAdapter<CharSequence> discount_adapter;
 	private Spinner sp;
 	private String[] price;
 

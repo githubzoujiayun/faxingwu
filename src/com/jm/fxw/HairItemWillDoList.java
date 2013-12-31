@@ -51,7 +51,7 @@ import com.jm.view.HorizontalListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.weibo.sdk.android.Oauth2AccessToken;
 
-public class HairItemInfoUI extends Activity implements OnClickListener,
+public class HairItemWillDoList extends Activity implements OnClickListener,
 		OnItemClickListener, RecognizerDialogListener {
 
 	private CommentAdapter adapter;
@@ -67,17 +67,14 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 	private Handler mHandler;
 	private String usertype;
 	private String inthid;
-	// /////////////////////////////////////////s
 	// 识别Dialog
 	private RecognizerDialog iatDialog;
-
 	private boolean isPushIn;
 	// 初始化参数
 	private String mInitParams;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState);
 		mInitParams = "appid=" + "522405c5";
 		iatDialog = new RecognizerDialog(this, mInitParams);
@@ -146,14 +143,14 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 
 		case R.id.lin_sixin:
 			map.put("tid", to_uid);
-			StartActivityContController.goPage(HairItemInfoUI.this,
+			StartActivityContController.goPage(HairItemWillDoList.this,
 					ChatUI.class, true, map);
 			break;
 		case R.id.btn_yuyue:
 			// 打开预约界面
 			if (((Button) v).getText().equals("预约TA")) {
 				map.put("tid", to_uid);
-				StartActivityContController.goPage(HairItemInfoUI.this,
+				StartActivityContController.goPage(HairItemWillDoList.this,
 						YuYueUI.class, true, map);
 			} else {
 				goUserInfoPage();
@@ -161,7 +158,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_leftTop:
 			if (isPushIn) {
-				StartActivityContController.goPage(HairItemInfoUI.this,
+				StartActivityContController.goPage(HairItemWillDoList.this,
 						StartActivityContController.wode);
 			}
 			this.finish();
@@ -171,7 +168,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 			 * 发布评论
 			 */
 			if ("".equals(ed_comment.getText().toString().trim())) {
-				TispToastFactory.getToast(HairItemInfoUI.this, "请输入评论内容")
+				TispToastFactory.getToast(HairItemWillDoList.this, "请输入评论内容")
 						.show();
 			}
 			if (sm.isLogin()) {
@@ -179,8 +176,9 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 				 * 取消输入法
 				 */
 				InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-				inputMethodManager.hideSoftInputFromWindow(HairItemInfoUI.this
-						.getCurrentFocus().getWindowToken(),
+				inputMethodManager.hideSoftInputFromWindow(
+						HairItemWillDoList.this.getCurrentFocus()
+								.getWindowToken(),
 						InputMethodManager.HIDE_NOT_ALWAYS);
 
 				new PublicCommentTask().execute();
@@ -205,7 +203,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("uid", to_uid);
 			map.put("type", usertype);
-			StartActivityContController.goPage(HairItemInfoUI.this,
+			StartActivityContController.goPage(HairItemWillDoList.this,
 					HisInfoUI.class, false, map);
 		}
 
@@ -241,15 +239,15 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 				return;
 			} else if (result.isSuccessful()) {
 
-				TispToastFactory.getToast(HairItemInfoUI.this, result.getMsg())
-						.show();
+				TispToastFactory.getToast(HairItemWillDoList.this,
+						result.getMsg()).show();
 				ed_comment.setText("");
 				new getCommentListTask().execute();
 
 			} else {
 
-				TispToastFactory.getToast(HairItemInfoUI.this, result.getMsg())
-						.show();
+				TispToastFactory.getToast(HairItemWillDoList.this,
+						result.getMsg()).show();
 			}
 		}
 	}
@@ -259,7 +257,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 		mHandler.post(new Runnable() {
 			@Override
 			public void run() {
-				TispToastFactory.getToast(HairItemInfoUI.this, str).show();
+				TispToastFactory.getToast(HairItemWillDoList.this, str).show();
 			}
 		});
 	}
@@ -308,7 +306,9 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 			findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
 			ImageLoader.getInstance().displayImage(jb.getString("head_photo"),
 					(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
+
 			JSONArray ja = jb.getJSONArray("works_pic");
+
 			// 设置发型图片大小
 
 			FinalBitmap.create(this).display(findViewById(R.id.iv_photo),
@@ -450,7 +450,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 			}
 			Like like = likeadapter.getList().get(position);
 			if (!like.getId().equals(sm.getUserId())) {
-				intent = new Intent(HairItemInfoUI.this, HisInfoUI.class);
+				intent = new Intent(HairItemWillDoList.this, HisInfoUI.class);
 				intent.putExtra("uid", like.getId());
 				intent.putExtra("type", like.getType());
 				startActivity(intent);
@@ -465,7 +465,7 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 			}
 			Comment comment = adapter.getList().get(position - 1);
 			if (!comment.getUid().equals(sm.getUserId())) {
-				intent = new Intent(HairItemInfoUI.this, HisInfoUI.class);
+				intent = new Intent(HairItemWillDoList.this, HisInfoUI.class);
 				intent.putExtra("uid", comment.getUid());
 				intent.putExtra("type", comment.getType());
 				startActivity(intent);

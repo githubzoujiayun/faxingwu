@@ -26,7 +26,6 @@ import com.jm.connection.Response;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
-import com.jm.util.StartActivityContController;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
@@ -47,8 +46,7 @@ public class LoginUI extends Activity implements OnClickListener {
 	// 新浪微博相关
 	private Weibo mWeibo;
 	public static Oauth2AccessToken accessToken;
-	private String qq_keyid = "", sina_keyid = "", access_token, expires_in,
-			username, meg;
+	private String qq_keyid = "", sina_keyid = "", access_token, expires_in;
 
 	private SessionManager sm;
 
@@ -224,7 +222,7 @@ public class LoginUI extends Activity implements OnClickListener {
 
 			@Override
 			public void run() {
-				Toast.makeText(getApplicationContext(), "正在拉取您的个人信息",
+				Toast.makeText(getApplicationContext(), "登录成功,请稍等",
 						Toast.LENGTH_SHORT).show();
 				new UpLoadUserInfoTask().execute();
 			}

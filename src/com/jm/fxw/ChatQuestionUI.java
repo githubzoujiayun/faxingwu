@@ -12,7 +12,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -67,12 +66,8 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 	private Bitmap bitmap = null;
 	private Bitmap mCurrentBitMap1;
 	private String UploadUrl1 = "";
-	// /////////////////////////////////////////s
-	private static final String TAG = "IatDemoActivity";
 
 	private Matrix matrix = new Matrix();
-	// 缓存，保存当前的引擎参数到下一次启动应用程序使用.
-	private SharedPreferences mSharedPreferences;
 	// 识别Dialog
 	private RecognizerDialog iatDialog;
 
@@ -85,9 +80,6 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 		mInitParams = "appid=" + "522405c5";
 		iatDialog = new RecognizerDialog(this, mInitParams);
 		iatDialog.setListener(this);
-		// 初始化缓存对象.
-		mSharedPreferences = getSharedPreferences(getPackageName(),
-				MODE_PRIVATE);
 
 		// ///////////////////////////////
 		cag = new CameraAndGallery(this);

@@ -19,21 +19,26 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,8 +50,10 @@ import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.ImageUtil;
 import com.jm.util.LogUtil;
+import com.jm.util.PriceUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.tencent.open.HttpStatusException;
 import com.tencent.open.NetworkUnavailableException;
@@ -70,7 +77,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	private PictureTaskCallback callback;
 	private String url;
 	private String to_uid = "";
-	private ArrayList<Hair> alist = new ArrayList<Hair>();
+	private ArrayList<Hair> alist;
 	private String type = "0";
 	private SessionManager sm;
 	// //////////////////////////////////
@@ -80,7 +87,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	private Weibo mWeibo;
 	public static Oauth2AccessToken accessToken;
 	private String qq_keyid = "", sina_keyid = "", access_token, expires_in;
-	private EditText ed_comment;
 	private Handler mHandler;
 	private String usertype;
 	private Button ok;
@@ -101,7 +107,12 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	 * 显示当前图片的页数
 	 */
 	private TextView pageText;
+	private String[] discount = { "9.5", "9", "8.5", "8", "7.5", "7", "6.5",
+			"6", "5.5", "5", "4.5", "4", "3.5", "3", "2.5", "2", "1.5", "1",
+			"0.5" };
 
+	ArrayAdapter<String> adapter;
+	private Spinner sp;
 	public List<String> imageUrls = new ArrayList<String>();
 
 	@Override
@@ -149,7 +160,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 	}
 
 	private void initView() {
-		ed_comment = (EditText) findViewById(R.id.et_comment);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.lin_xihuan).setOnClickListener(this);
 		findViewById(R.id.lin_fenxiang).setOnClickListener(this);
@@ -157,6 +167,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		findViewById(R.id.lin_comment).setOnClickListener(this);
 
 		findViewById(R.id.btn_yuyue).setOnClickListener(this);
+
 		Intent intent = getIntent();
 		inthid = intent.getIntExtra("id", 0);
 		alist = (ArrayList<Hair>) intent.getSerializableExtra("hlist");
@@ -168,29 +179,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			imageUrls.add(h.getPic());
 		}
 
-		// List<String> items = new ArrayList<String>();
-		//
-		// UrlPagerAdapter pagerAdapter = new UrlPagerAdapter(this, items);
-		// pagerAdapter.setOnItemChangeListener(new OnItemChangeListener() {
-		// @Override
-		// public void onItemChange(int currentPosition) {
-		// ((TextView) findViewById(R.id.tv_mainhead)).setText("发型图册("
-		// + (currentPosition + 1) + "/" + (alist.size()) + ")");
-		//
-		// if (alist.get(galleryindex).getId() != alist.get(
-		// currentPosition).getId()) {
-		// LogUtil.e("galleryindex = " + galleryindex);
-		// galleryindex = currentPosition;
-		// new getHairInfoTask().execute();
-		// }
-		// }
-		// });
-
-		// ViewPager mViewPager = (HackyViewPager) findViewById(R.id.photoview);
-		// mViewPager.setAdapter(spa);
-		// mViewPager.setOnPageChangeListener(this);
-
-		// }
 		new getHairInfoTask().execute();
 
 		pageText = (TextView) findViewById(R.id.tv_mainhead);
@@ -223,13 +211,12 @@ public class HairInfoUI extends Activity implements OnClickListener,
 					true, map);
 			break;
 		case R.id.btn_yuyue:
-			// 打开预约界面
-			if (((Button) v).getText().equals("预约TA")) {
+			if (((Button) v).getText().equals("预约")) {
 				map.put("tid", to_uid);
 				StartActivityContController.goPage(HairInfoUI.this,
 						YuYueUI.class, true, map);
 			} else {
-				goUserInfoPage();
+				ShowDialogforAddPrice();
 			}
 			break;
 		case R.id.btn_leftTop:
@@ -261,6 +248,86 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	}
 
+	private View dialogView;
+
+	private void ShowDialogforAddPrice() {
+
+		dialogView = LayoutInflater.from(this).inflate(R.layout.confirmprice,
+				null);
+
+		sp = (Spinner) dialogView.findViewById(R.id.sp_discount);
+		adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_spinner_item, discount);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		sp.setAdapter(adapter);
+		sp.setSelection(0);
+		sp.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				PriceUtil.setRealPrice(
+						((EditText) dialogView.findViewById(R.id.et_serprice)),
+						((Spinner) dialogView.findViewById(R.id.sp_discount)),
+						((TextView) dialogView.findViewById(R.id.tv_realprice)));
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+
+			}
+		});
+
+		((EditText) dialogView.findViewById(R.id.et_serprice))
+				.addTextChangedListener(new TextWatcher() {
+
+					@Override
+					public void onTextChanged(CharSequence s, int start,
+							int before, int count) {
+
+					}
+
+					@Override
+					public void beforeTextChanged(CharSequence s, int start,
+							int count, int after) {
+
+					}
+
+					@Override
+					public void afterTextChanged(Editable s) {
+						PriceUtil.setRealPrice(((EditText) dialogView
+								.findViewById(R.id.et_serprice)),
+								((Spinner) dialogView
+										.findViewById(R.id.sp_discount)),
+								((TextView) dialogView
+										.findViewById(R.id.tv_realprice)));
+
+					}
+				});
+
+		ok = (Button) dialogView.findViewById(R.id.loginoutdialog_button_ok);
+		cancel = (Button) dialogView
+				.findViewById(R.id.loginoutdialog_button_cancel);
+		dialog = new Dialog(this, R.style.MyDialog);
+		dialog.setContentView(dialogView);
+		dialog.show();
+		ok.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				addWillDo();
+
+			}
+
+		});
+		cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+	}
+
 	private void goUserInfoPage() {
 		if (!to_uid.equals(sm.getUserId())) {
 			Map<String, String> map = new HashMap<String, String>();
@@ -271,15 +338,36 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		}
 	}
 
+	private void addWillDo() {
+
+		if (WidgetUtil.CheckAllEditTextValue((EditText) dialogView
+				.findViewById(R.id.et_sertime))
+				&& WidgetUtil.CheckAllEditTextValue((EditText) dialogView
+						.findViewById(R.id.et_serprice))) {
+			new PublicWillDoTask().execute();
+
+		} else {
+			TispToastFactory.getToast(this, "请输入完整的价格信息").show();
+		}
+	}
+
 	/*
-	 * 用户发布评论
+	 * 发型师添加我会做
 	 */
-	class PublicCommentTask extends AsyncTask<String, Integer, Response> {
+	class PublicWillDoTask extends AsyncTask<String, Integer, Response> {
 		private Map<String, Object> getListInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("from_uid", sm.getUserId());
-			map.put("works_id", alist.get(galleryindex).getId());
-			map.put("content", ed_comment.getText().toString().trim());
+			map.put("uid", sm.getUserId());
+			map.put("work_id", alist.get(galleryindex).getId());
+			map.put("long_service",
+					((EditText) dialogView.findViewById(R.id.et_sertime))
+							.getText().toString().trim());
+			map.put("price",
+					((EditText) dialogView.findViewById(R.id.et_serprice))
+							.getText().toString().trim());
+			map.put("rebate",
+					((Spinner) dialogView.findViewById(R.id.sp_discount))
+							.getSelectedItem().toString().trim());
 			return map;
 		}
 
@@ -290,31 +378,27 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		@Override
 		protected Response doInBackground(String... params) {
 			Connection conn = ((ClientApp) getApplication()).getConnection();
-			return conn.executeAndParse(Constant.URN_COMMENT, getListInqVal());
+			return conn
+					.executeAndParse(Constant.URN_ADDWILLDO, getListInqVal());
 
 		}
 
 		protected void onPostExecute(Response result) {
 
 			if (result == null) {
-				LogUtil.e("can not publish comment");
+				LogUtil.e("error");
 				return;
-			} else if (result.isSuccessful()) {
-
-				TispToastFactory.getToast(HairInfoUI.this, result.getMsg())
-						.show();
-				ed_comment.setText("");
-
 			} else {
-
+				dialog.dismiss();
 				TispToastFactory.getToast(HairInfoUI.this, result.getMsg())
 						.show();
+				new getHairInfoTask().execute();
 			}
 		}
 	}
 
 	private void ShowDialog() {
-		View dialogView = LayoutInflater.from(HairInfoUI.this).inflate(
+		dialogView = LayoutInflater.from(HairInfoUI.this).inflate(
 				R.layout.choiceshare, null);
 		ok = (Button) dialogView.findViewById(R.id.dialog_button_qq);
 		cancel = (Button) dialogView.findViewById(R.id.dialog_button_sina);
@@ -378,10 +462,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 							values.getString("access_token"));
 					access_token = values.getString("access_token");
 					editor.commit();
-
-					mTencent.requestAsync(Constants.GRAPH_SIMPLE_USER_INFO,
-							null, Constants.HTTP_GET, new LoginApiListener(
-									"get_simple_userinfo", false), null);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					LogUtil.e("doComplete" + e.toString());
@@ -449,7 +529,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 							@Override
 							public void onComplete(String arg0) {
 								showTipInHandler("新浪微博分享成功");
-								addPoint();
 							}
 						});
 
@@ -479,44 +558,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 				TispToastFactory.getToast(HairInfoUI.this, str).show();
 			}
 		});
-	}
-
-	private void addPoint() {
-		mHandler.post(new Runnable() {
-			@Override
-			public void run() {
-				new addPointTask().execute();
-			}
-		});
-	}
-
-	/*
-	 * 用户增加积分评论
-	 */
-	class addPointTask extends AsyncTask<String, Integer, Response> {
-		private Map<String, Object> getListInqVal() {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("uid", sm.getUserId());
-			map.put("score", "1");
-			map.put("status", "1");
-			return map;
-		}
-
-		@Override
-		protected void onPreExecute() {
-		}
-
-		@Override
-		protected Response doInBackground(String... params) {
-			Connection conn = ((ClientApp) getApplication()).getConnection();
-			return conn.executeAndParse(Constant.URN_ADDPOINT, getListInqVal());
-
-		}
-
-		protected void onPostExecute(Response result) {
-
-			LogUtil.i("addPointTask onPostExecute");
-		}
 	}
 
 	private void qqShare() {
@@ -624,23 +665,22 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			usertype = jb.getString("type");
 			to_uid = jb.getString("uid");
 			findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
-
 			ImageLoader.getInstance().displayImage(jb.getString("head_photo"),
 					(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 			if (to_uid.equals(sm.getUserId())) {
 				findViewById(R.id.lin_sixin).setVisibility(View.GONE);
 			} else {
-
 				findViewById(R.id.lin_sixin).setVisibility(View.VISIBLE);
 			}
-			if (usertype.equals("2") && !to_uid.equals(sm.getUserId())) {
+			if (SessionManager.getInstance().getUsertype().equals("2")
+					&& usertype.equals("2")
+					&& jb.getString("isWillDo").equals("0")) {
+				((Button) findViewById(R.id.btn_yuyue)).setText("我会做");
 				findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
-				if (jb.getString("clear_reserve").equals("0")) {
-					((Button) findViewById(R.id.btn_yuyue)).setText("查看发型师");
-				} else {
-
-					((Button) findViewById(R.id.btn_yuyue)).setText("预约TA");
-				}
+			} else if (SessionManager.getInstance().getUsertype().equals("1")
+					&& usertype.equals("2")) {
+				((Button) findViewById(R.id.btn_yuyue)).setText("预约");
+				findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
 			} else {
 				findViewById(R.id.btn_yuyue).setVisibility(View.GONE);
 			}
@@ -720,8 +760,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		}
 
 		protected void doComplete(JSONObject response, Object state) {
-
-			addPoint();
 			showTipInHandler("QQ空间分享成功");
 			try {
 				int ret = response.getInt("ret");
@@ -736,13 +774,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 						HairInfoUI.this.runOnUiThread(r);
 					}
 				}
-				// azrael 2/1注释掉了, 这里为何要在api返回的时候设置token呢,
-				// 如果cgi返回的值没有token, 则会清空原来的token
-				// String token = response.getString("access_token");
-				// String expire = response.getString("expires_in");
-				// String openid = response.getString("openid");
-				// mTencent.setAccessToken(token, expire);
-				// mTencent.setOpenId(openid);
 			} catch (JSONException e) {
 				e.printStackTrace();
 				Log.e("toddtest", response.toString());
@@ -845,86 +876,6 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			sharesina();
 		}
 
-	}
-
-	// 请求访问个人信息回调监听
-	private class LoginApiListener implements IRequestListener {
-
-		private String mScope = "all";
-		private Boolean mNeedReAuth = false;
-
-		public LoginApiListener(String scope, boolean needReAuth) {
-			mScope = scope;
-			mNeedReAuth = needReAuth;
-		}
-
-		@Override
-		public void onComplete(final JSONObject response, Object state) {
-			doComplete(response, state);
-		}
-
-		protected void doComplete(JSONObject response, Object state) {
-			uploadUserInfo();
-		}
-
-		@Override
-		public void onConnectTimeoutException(ConnectTimeoutException arg0,
-				Object arg1) {
-
-			showTipInHandler("分享失败_" + "onConnectTimeoutException");
-
-		}
-
-		@Override
-		public void onHttpStatusException(HttpStatusException arg0, Object arg1) {
-
-			showTipInHandler("分享失败_" + "onHttpStatusException");
-
-		}
-
-		@Override
-		public void onIOException(IOException arg0, Object arg1) {
-
-			showTipInHandler("分享失败_" + "onIOException");
-		}
-
-		@Override
-		public void onJSONException(JSONException arg0, Object arg1) {
-
-			showTipInHandler("分享失败_" + "onJSONException");
-
-		}
-
-		@Override
-		public void onMalformedURLException(MalformedURLException arg0,
-				Object arg1) {
-
-			showTipInHandler("分享失败_" + "onMalformedURLException");
-
-		}
-
-		@Override
-		public void onNetworkUnavailableException(
-				NetworkUnavailableException arg0, Object arg1) {
-
-			showTipInHandler("分享失败_" + "onNetworkUnavailableException");
-
-		}
-
-		@Override
-		public void onSocketTimeoutException(SocketTimeoutException arg0,
-				Object arg1) {
-
-			showTipInHandler("分享失败_" + "onSocketTimeoutException");
-
-		}
-
-		@Override
-		public void onUnknowException(Exception arg0, Object arg1) {
-
-			showTipInHandler("分享失败_" + "onUnknowException");
-
-		}
 	}
 
 	class AuthDialogListener implements WeiboAuthListener {

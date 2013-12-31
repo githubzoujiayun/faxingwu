@@ -25,7 +25,6 @@ import com.jm.connection.Response;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
-import com.jm.util.TispToastFactory;
 
 public class CheckUpdate {
 

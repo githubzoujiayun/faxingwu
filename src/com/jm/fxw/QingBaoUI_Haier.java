@@ -7,7 +7,6 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.baidu.location.LocationClient;
@@ -26,19 +24,16 @@ import com.jm.connection.Response;
 import com.jm.entity.News;
 import com.jm.finals.Constant;
 import com.jm.sort.NewsAdapter;
-import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 
 public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
 
 	public LocationClient mLocationClient = null;
 
-	// //////////////////////////////////
-	private SharedPreferences share;
-	private SharedPreferences.Editor editor;
 	private ListView ListView;
 	private NewsAdapter adapter;
 	private List<News> mlist = new ArrayList<News>();
@@ -55,9 +50,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qingbao_haier);
 		init();
-
-		share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
-		editor = share.edit();
 
 		ListView = (ListView) findViewById(R.id.lv_faxingshi_listview);
 		adapter = new NewsAdapter(this);
@@ -185,8 +177,8 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		blist.add(findViewById(R.id.btn_hangyexinwen));
 		blist.add(findViewById(R.id.btn_mingdianzhanshi));
 		blist.add(findViewById(R.id.btn_shalongzhuanrang));
-		ButtonsUtil.ResetAllButton(blist);
-		ButtonsUtil.setChangeButton(v);
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
 		pubtype = condition;
 		adapter.clear();
 		this.news_type = condition;

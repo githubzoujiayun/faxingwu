@@ -28,13 +28,13 @@ import com.jm.data.DatabaseHelper;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
 import com.jm.sort.HairAdapter;
-import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 
 public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		implements OnClickListener, OnScrollListener, OnItemClickListener {
-	private TextView tv_mainhead;
+
 	private GridView ListView;
 	private HairAdapter adapter;
 	private List<Hair> mlist = new ArrayList<Hair>();
@@ -254,8 +254,8 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		List<View> blist = new ArrayList<View>();
 		blist.add(findViewById(R.id.btn_leftType));
 		blist.add(findViewById(R.id.btn_rightType));
-		ButtonsUtil.ResetAllButton(blist);
-		ButtonsUtil.setChangeButton(v);
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
 		adapter.clear();
 		this.mlist.clear();
 		this.condition = condition;

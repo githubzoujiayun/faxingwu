@@ -12,7 +12,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -57,7 +56,6 @@ public class ChatUI extends Activity implements OnClickListener,
 	protected TextView tv_mainhead, tv_tophead, tv_uphead;
 	private ListView ListView;
 	private ChatAdapter adapter;
-	private EditText text;
 	private List<QuestionChat> mlist = new ArrayList<QuestionChat>();
 	private Timer timer;
 	private SessionManager sm;
@@ -68,11 +66,6 @@ public class ChatUI extends Activity implements OnClickListener,
 	private CameraAndGallery cag;
 	private Bitmap mCurrentBitMap1;
 	private String UploadUrl1 = "";
-	// /////////////////////////////////////////s
-	private static final String TAG = "IatDemoActivity";
-
-	// 缓存，保存当前的引擎参数到下一次启动应用程序使用.
-	private SharedPreferences mSharedPreferences;
 	// 识别Dialog
 	private RecognizerDialog iatDialog;
 
@@ -85,11 +78,7 @@ public class ChatUI extends Activity implements OnClickListener,
 		mInitParams = "appid=" + "522405c5";
 		iatDialog = new RecognizerDialog(this, mInitParams);
 		iatDialog.setListener(this);
-		// 初始化缓存对象.
-		mSharedPreferences = getSharedPreferences(getPackageName(),
-				MODE_PRIVATE);
 
-		// ///////////////////////////////
 		cag = new CameraAndGallery(this);
 		setContentView(R.layout.chat);
 		Intent i = getIntent();

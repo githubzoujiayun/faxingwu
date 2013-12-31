@@ -113,6 +113,13 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
+          <activity
+            android:name="com.jm.fxw.HairItemWillDoList"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        
         <activity
             android:name="com.jm.fxw.LoginUI"
             android:launchMode="singleTask"

@@ -26,7 +26,6 @@ import com.jm.util.TispToastFactory;
 
 public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener {
 	private Reserve reserve;
-	private SessionManager sm;
 	private FinalBitmap fb;
 	private String rid;
 	private String status;
@@ -36,7 +35,7 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyueinfo_haier);
 		init();
@@ -47,7 +46,6 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 		isPushIn = getIntent().getBooleanExtra("isPushIn", false);
 		rid = getIntent().getStringExtra("rid");
 		fb = FinalBitmap.create(this);
-		sm = SessionManager.getInstance();
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(

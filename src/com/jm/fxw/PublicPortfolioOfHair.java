@@ -38,7 +38,9 @@ import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.CameraAndGallery;
 import com.jm.util.LogUtil;
+import com.jm.util.PriceUtil;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 import com.weibo.sdk.android.Oauth2AccessToken;
 
 public class PublicPortfolioOfHair extends FinalActivity implements
@@ -58,7 +60,6 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 	private Bitmap mCurrentBitMap4;
 	private String UploadUrl4 = "";
 	private SessionManager sm;
-	private EditText et_hairinfo;
 	private String ImageIndex = "";
 	public static Oauth2AccessToken accessToken;
 
@@ -134,7 +135,6 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 		Cell_Width = Calendar_Width / 4;
 		findViewById(R.id.btn_PublicTop).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-		et_hairinfo = (EditText) findViewById(R.id.et_hairinfo);
 		findViewById(R.id.iv_hairpic1).setOnClickListener(this);
 		findViewById(R.id.iv_hairpic2).setOnClickListener(this);
 		findViewById(R.id.iv_hairpic3).setOnClickListener(this);
@@ -160,13 +160,15 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				setRealPrice();
+				PriceUtil.setRealPrice(
+						((EditText) findViewById(R.id.et_serprice)),
+						((Spinner) findViewById(R.id.sp_discount)),
+						((TextView) findViewById(R.id.tv_realprice)));
 
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
-				// TODO Auto-generated method stub
 
 			}
 		});
@@ -177,20 +179,21 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 					@Override
 					public void onTextChanged(CharSequence s, int start,
 							int before, int count) {
-						// TODO Auto-generated method stub
 
 					}
 
 					@Override
 					public void beforeTextChanged(CharSequence s, int start,
 							int count, int after) {
-						// TODO Auto-generated method stub
 
 					}
 
 					@Override
 					public void afterTextChanged(Editable s) {
-						setRealPrice();
+						PriceUtil.setRealPrice(
+								((EditText) findViewById(R.id.et_serprice)),
+								((Spinner) findViewById(R.id.sp_discount)),
+								((TextView) findViewById(R.id.tv_realprice)));
 
 					}
 				});
@@ -280,13 +283,18 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 			return false;
 
 		}
-		if ("".equals(et_hairinfo.getText().toString().trim())) {
-			TispToastFactory.getToast(PublicPortfolioOfHair.this, "请输入发型描述")
-					.show();
+		if (WidgetUtil
+				.CheckAllEditTextValue((EditText) findViewById(R.id.et_sertime))
+				&& WidgetUtil
+						.CheckAllEditTextValue((EditText) findViewById(R.id.et_serprice))
+				&& WidgetUtil
+						.CheckAllEditTextValue((EditText) findViewById(R.id.et_hairinfo))) {
+			return true;
+		} else {
+			TispToastFactory.getToast(this, "请输入完整的发型信息").show();
 			return false;
-
 		}
-		return true;
+
 	}
 
 	private String getImageStringList() {
@@ -367,7 +375,8 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("uid", sm.getUserId());
 			map.put("type", sm.getUsertype());
-			map.put("content", et_hairinfo.getText().toString().trim());
+			map.put("content", ((EditText) findViewById(R.id.et_hairinfo))
+					.getText().toString().trim());
 			map.put("face", getFaceString());
 			map.put("hair_color", getColorString());
 			map.put("sex", ((RadioButton) findViewById(R.id.rb_female))
@@ -458,25 +467,6 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 				finish();
 			}
 
-		}
-	}
-
-	private void setRealPrice() {
-		try {
-
-			float price = Float
-					.valueOf(((EditText) findViewById(R.id.et_serprice))
-							.getText().toString().trim());
-			float discount = Float
-					.valueOf(((Spinner) findViewById(R.id.sp_discount))
-							.getSelectedItem().toString().trim());
-
-			((TextView) findViewById(R.id.tv_realprice)).setText((int) (price
-					* discount / 10)
-					+ "");
-		} catch (Exception e) {
-
-			((TextView) findViewById(R.id.tv_realprice)).setText("-");
 		}
 	}
 

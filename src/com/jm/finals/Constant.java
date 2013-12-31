@@ -131,6 +131,8 @@ public class Constant {
 	public final static String URN_ADD_LOG = "http://wap.faxingw.cn/index.php?m=Up&a=add_log";
 
 	public final static String URN_COMMENT = "http://wap.faxingw.cn/index.php?m=Works&a=comment";
+	public final static String URN_ADDWILLDO = "http://wap.faxingw.cn/index.php?m=Willdo&a=addWillDo";
+	
 	public final static String URN_ADDPOINT = "http://wap.faxingw.cn/index.php?m=User&a=score";
 	public final static String URN_HUATICOMMENT = "http://wap.faxingw.cn/index.php?m=Infostation&a=commentadd";
 

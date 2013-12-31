@@ -24,7 +24,6 @@ import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
-
 public class YuYueCheck extends FinalActivity implements OnClickListener {
 
 	@ViewInject(id = R.id.btn_leftTop, click = "Click")
@@ -32,7 +31,6 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 	private FinalBitmap fb;
 	private String tid;
 	private String discount;
-	private String price;
 	private String date;
 	private String week;
 	private String type;
@@ -41,7 +39,7 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyuecheck);
 		init();
@@ -73,7 +71,6 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 		week = i.getStringExtra("week");
 		discount = i.getStringExtra("discount");
 		type = i.getStringExtra("type");
-		price = i.getStringExtra("price");
 		time = i.getStringExtra("time");
 		((TextView) findViewById(R.id.tv_date)).setText(date.split("-")[0]
 				+ "ÔÂ" + date.split("-")[1] + "ÈÕ" + "(" + week + ")");

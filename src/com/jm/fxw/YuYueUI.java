@@ -60,7 +60,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 	private String week;
 	private String type;
 
-	private SessionManager sm;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +108,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 	}
 
 	private void init() {
-		sm = SessionManager.getInstance();
 		this.type = "Ï´¼ô´µ";
 		price = new String[] { "", "", "", "", "", "", "", "" };
 		yuyuelist = (android.widget.ListView) findViewById(R.id.yuyueinfo_list);

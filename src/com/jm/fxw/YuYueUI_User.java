@@ -30,7 +30,7 @@ import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.ReserveAdapter;
-import com.jm.util.ButtonsUtil;
+import com.jm.util.WidgetUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
@@ -56,7 +56,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ResetButtonBgAndViews();
-		ButtonsUtil.setChangeButton(findViewById(R.id.btn_jibenxinxi));
+		WidgetUtil.setChangeButton(findViewById(R.id.btn_jibenxinxi));
 		new getCurrentYuYueInfo().execute();
 	}
 
@@ -93,7 +93,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		List<View> blist = new ArrayList<View>();
 		blist.add(findViewById(R.id.btn_jibenxinxi));
 		blist.add(findViewById(R.id.btn_lishiyuyue));
-		ButtonsUtil.ResetAllButton(blist);
+		WidgetUtil.ResetAllButton(blist);
 	}
 
 	@Override
@@ -342,7 +342,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_jibenxinxi:
 			ResetButtonBgAndViews();
-			ButtonsUtil.setChangeButton(v);
+			WidgetUtil.setChangeButton(v);
 			if (reserve != null) {
 				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
 			} else {
@@ -353,7 +353,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			break;
 		case R.id.btn_lishiyuyue:
 			ResetButtonBgAndViews();
-			ButtonsUtil.setChangeButton(v);
+			WidgetUtil.setChangeButton(v);
 			findViewById(R.id.lin_yuyue_list).setVisibility(View.VISIBLE);
 			new getCurrentYuYueListInfo().execute();
 			break;

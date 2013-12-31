@@ -8,7 +8,6 @@ import java.util.Map;
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -41,9 +40,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 	public LocationClient mLocationClient = null;
 
-	// //////////////////////////////////
-	private SharedPreferences share;
-	private SharedPreferences.Editor editor;
 	private ListView ListView;
 	private FaXingShiAdapter adapter;
 	private List<FaXingShi> mlist = new ArrayList<FaXingShi>();
@@ -69,8 +65,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 		setContentView(R.layout.faxingshi);
 		init();
 		sm = SessionManager.getInstance();
-		share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
-		editor = share.edit();
 
 		ListView = (ListView) findViewById(R.id.lv_faxingshi_listview);
 		adapter = new FaXingShiAdapter(this);
@@ -134,7 +128,8 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 		findViewById(R.id.btn_location).setOnClickListener(this);
 		ResetButtonBg();
 
-		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Constant.color_RoseRed);
+		((Button) findViewById(R.id.btn_quanbu))
+				.setTextColor(Constant.color_RoseRed);
 	}
 
 	/*
@@ -255,9 +250,12 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 		((Button) findViewById(R.id.btn_quanbu)).setTextColor(Color
 				.rgb(0, 0, 0));
-		((Button) findViewById(R.id.btn_tongcheng)).setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_tuijian)).setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_guanzhu)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_tongcheng))
+				.setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_tuijian))
+				.setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_guanzhu))
+				.setTextColor(Constant.color_Black);
 	}
 
 	@Override

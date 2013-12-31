@@ -11,7 +11,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,16 +47,13 @@ public class NewUserInfo extends Activity implements OnClickListener {
 	private Bitmap mCurrentBitMap1;
 	private String UploadUrl1 = "";
 	private ProgressDialog dialog;
-	private String strCity;
 	public static final int CHECK_MOBILE_OK = 113;
 	protected Button btn_leftTop;
 	protected ImageButton btn_about, btn_update, btn_help;
 	protected TextView tv_mainhead, tv_tophead, tv_uphead;
-	private EditText etxt_vcode, etxt_mobile;
+	private EditText etxt_mobile;
 	private CameraAndGallery cag;
 	private String type = "1";
-	private Matrix matrix = new Matrix();
-
 	private String uid = "";
 	private SharedPreferences share;
 	private SharedPreferences.Editor editor;

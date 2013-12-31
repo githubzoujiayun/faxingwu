@@ -7,8 +7,6 @@ import java.util.Map;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +15,6 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.baidu.location.LocationClient;
@@ -26,27 +23,22 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.News;
 import com.jm.finals.Constant;
-import com.jm.session.SessionManager;
 import com.jm.sort.NewsAdapter;
-import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 
 public class QingBaoUI_User extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
 
 	public LocationClient mLocationClient = null;
 
-	// //////////////////////////////////
-	private SharedPreferences share;
-	private SharedPreferences.Editor editor;
 	private ListView ListView;
 	private NewsAdapter adapter;
 	private List<News> mlist = new ArrayList<News>();
 	private int page = 1;
 	private int pageCount = 0;
 	private String news_type = "4";
-	private SessionManager sm;
 	private boolean isloading = false;
 	private boolean showlast = false;
 
@@ -56,9 +48,6 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.qingbao_user);
 		init();
-		sm = SessionManager.getInstance();
-		share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
-		editor = share.edit();
 
 		ListView = (ListView) findViewById(R.id.lv_faxingshi_listview);
 		adapter = new NewsAdapter(this);
@@ -178,8 +167,8 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 		blist.add(findViewById(R.id.btn_tongcheng));
 		blist.add(findViewById(R.id.btn_tuijian));
 		blist.add(findViewById(R.id.btn_guanzhu));
-		ButtonsUtil.ResetAllButton(blist);
-		ButtonsUtil.setChangeButton(v);
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
 		adapter.clear();
 		this.news_type = condition;
 		page = 1;

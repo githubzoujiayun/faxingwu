@@ -24,13 +24,12 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
-import com.jm.session.SessionManager;
 import com.jm.sort.HairAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
 /**
- * 作品列表页
+ * 会做列表页
  */
 public class WorkDoListUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
@@ -39,7 +38,6 @@ public class WorkDoListUI extends Activity implements OnClickListener,
 	private List<Hair> mlist = new ArrayList<Hair>();
 	private int page = 1;
 	private int pageCount = 0;
-	private SessionManager sm;
 	private boolean isloading = false;
 	private boolean showlast = false;
 
@@ -55,7 +53,6 @@ public class WorkDoListUI extends Activity implements OnClickListener,
 	}
 
 	private void init() {
-		sm = SessionManager.getInstance();
 		Intent i = getIntent();
 		uid = i.getStringExtra("uid");
 		((TextView) findViewById(R.id.tv_mainhead)).setText("会做发型");

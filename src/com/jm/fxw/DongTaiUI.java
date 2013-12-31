@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.Button;
 import android.widget.GridView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
@@ -25,10 +24,10 @@ import com.jm.entity.DongTai;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
 import com.jm.sort.DongTaiAdapter;
-import com.jm.util.ButtonsUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 
 @SuppressLint("ResourceAsColor")
 public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
@@ -204,8 +203,8 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		blist.add(findViewById(R.id.btn_zuixin));
 		blist.add(findViewById(R.id.btn_tongcheng));
 		blist.add(findViewById(R.id.btn_tuijian));
-		ButtonsUtil.ResetAllButton(blist);
-		ButtonsUtil.setChangeButton(v);
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
 		adapter.clear();
 		mlist.clear();
 		hlist.clear();
