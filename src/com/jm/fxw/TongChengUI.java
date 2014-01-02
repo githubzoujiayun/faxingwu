@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,16 +31,15 @@ import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
 public class TongChengUI extends Activity implements OnClickListener,
-		OnScrollListener {
+		OnScrollListener, OnItemClickListener {
 	private ListView ListView;
 	private ZhouBianAdapter adapter;
 	private List<ZhouBian> mlist = new ArrayList<ZhouBian>();
 	private int page = 1;
 	private int pageCount = 0;
-	private SessionManager sm;
 	private boolean isloading = false;
 	private boolean showlast = false;
-	private String condition = "hairstylist";
+	private String condition = "2";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tongchenglist);
 		init();
-		changeCondition("hairstylist", findViewById(R.id.btn_faxingshi));
+		changeCondition("2", findViewById(R.id.btn_faxingshi));
 	}
 
 	@Override
@@ -67,13 +69,13 @@ public class TongChengUI extends Activity implements OnClickListener,
 		findViewById(R.id.btn_faxingshi).setOnClickListener(this);
 		findViewById(R.id.btn_geren).setOnClickListener(this);
 		findViewById(R.id.btn_search).setOnClickListener(this);
-		sm = SessionManager.getInstance();
 		ListView = (ListView) findViewById(R.id.my_zhoubianlistview);
 		adapter = new ZhouBianAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnScrollListener(this);
-
-		((TextView) findViewById(R.id.tv_rightTop)).setText(sm.getCity());
+		ListView.setOnItemClickListener(this);
+		((TextView) findViewById(R.id.tv_rightTop)).setText(SessionManager
+				.getInstance().getCity());
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
 	}
@@ -94,10 +96,12 @@ public class TongChengUI extends Activity implements OnClickListener,
 
 		protected Map<String, Object> getInfoInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("uid", sm.getUserId());
-			map.put("city", sm.getCity());
-			map.put("condition", condition);
-			map.put("keys", ((EditText) findViewById(R.id.et_keys)).getText()
+			map.put("uid", SessionManager.getInstance().getUserId());
+			map.put("city", SessionManager.getInstance().getCity());
+			map.put("type", condition);
+			map.put("lng", SessionManager.getInstance().getLng());
+			map.put("lat", SessionManager.getInstance().getLat());
+			map.put("search", ((EditText) findViewById(R.id.et_keys)).getText()
 					.toString().trim());
 			return map;
 		}
@@ -121,10 +125,10 @@ public class TongChengUI extends Activity implements OnClickListener,
 			if (result.isSuccessful()) {
 
 				pageCount = Integer.parseInt(result.getString("page_count"));
-				mlist = result.getList("list", new ZhouBian());
+				mlist = result.getList("user_info", new ZhouBian());
 				if (mlist == null || mlist.size() == 0) {
 					TispToastFactory
-							.getToast(TongChengUI.this, result.getMsg());
+							.getToast(TongChengUI.this, result.getMsg()).show();
 					return;
 				}
 				showlast = false;
@@ -147,10 +151,10 @@ public class TongChengUI extends Activity implements OnClickListener,
 			this.finish();
 			break;
 		case R.id.btn_faxingshi:
-			changeCondition("hairstylist", v);
+			changeCondition("2", v);
 			break;
 		case R.id.btn_geren:
-			changeCondition("person", v);
+			changeCondition("1", v);
 			break;
 
 		case R.id.btn_search:
@@ -161,6 +165,22 @@ public class TongChengUI extends Activity implements OnClickListener,
 			break;
 
 		}
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+			long arg3) {
+		if (adapter.getUserList() == null || position < 0
+				|| position >= adapter.getUserList().size()) {
+			LogUtil.e("position = " + position);
+			return;
+		}
+		ZhouBian user = adapter.getUserList().get(position);
+		Intent intent = new Intent(TongChengUI.this, HisInfoUI.class);
+		intent.putExtra("uid", user.uid);
+		intent.putExtra("type", user.type);
+		startActivity(intent);
+
 	}
 
 	private void changeCondition(String s, View v) {

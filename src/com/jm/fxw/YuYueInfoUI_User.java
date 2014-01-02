@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
-import net.tsz.afinal.FinalBitmap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,11 +26,11 @@ import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 	private Reserve reserve;
 	private SessionManager sm;
-	private FinalBitmap fb;
 	private String rid;
 	private String status;
 
@@ -40,7 +39,7 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.yuyueinfo_user);
 		init();
@@ -50,7 +49,6 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 	private void init() {
 		isPushIn = getIntent().getBooleanExtra("isPushIn", false);
 		rid = getIntent().getStringExtra("rid");
-		fb = FinalBitmap.create(this);
 		sm = SessionManager.getInstance();
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(
@@ -113,9 +111,8 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 
 				reserve = (Reserve) result.getObject("order_info",
 						new Reserve());
-				fb.display((ImageView) findViewById(R.id.iv_minfouserpic),
-						reserve.getHead_photo());
-
+				ImageLoader.getInstance().displayImage(reserve.getHead_photo(),
+						(ImageView) findViewById(R.id.iv_minfouserpic));
 				((TextView) findViewById(R.id.tv_username)).setText(reserve
 						.getTo_username());
 				((TextView) findViewById(R.id.tv_dname)).setText(reserve

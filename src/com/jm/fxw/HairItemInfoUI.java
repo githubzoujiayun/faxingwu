@@ -310,7 +310,6 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 					(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 			JSONArray ja = jb.getJSONArray("works_pic");
 			// 设置发型图片大小
-
 			FinalBitmap.create(this).display(findViewById(R.id.iv_photo),
 					ja.get(0).toString(),
 					getWindowManager().getDefaultDisplay().getWidth() / 2,

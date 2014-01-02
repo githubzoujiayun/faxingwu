@@ -34,7 +34,8 @@ public class Constant {
 	public final static String URN_TIPSSETTING = "http://wap.faxingw.cn/index.php?m=User&a=settinginfo";
 	public final static String URN_GETCHANGINFO = "http://wap.faxingw.cn/index.php?m=User&a=data_info";
 	public final static String URN_HAIRINFO_LIST = "http://wap.faxingw.cn/index.php?m=Dynamic&a=workinfo";
-
+	public final static String URN_WILLDOINFO = "http://wap.faxingw.cn/index.php?m=Willdo&a=willDoItem";
+	
 	public final static String URN_HUATIINFO = "http://wap.faxingw.cn/index.php?m=Infostation&a=skillview";
 
 	public final static String URN_NEWS_INFO = "http://wap.faxingw.cn/index.php?m=Infostation&a=newsview";
@@ -49,7 +50,8 @@ public class Constant {
 	public final static String URN_CHANGE_STORE = "http://wap.faxingw.cn/index.php?m=User&a=legalize";
 	public final static String URN_COMMENT_LIST = "http://wap.faxingw.cn/index.php?m=Works&a=commentlist";
 	public final static String URN_PRICE_LIST = "http://wap.faxingw.cn/index.php?m=Reserve&a=check_prices";
-
+	public final static String URN_HAIRINFOWILLDO_LIST = "http://wap.faxingw.cn/index.php?m=Willdo&a=reWorksList";
+	
 	public final static String URN_SENDLOCATION = "http://wap.faxingw.cn/index.php?m=User&a=coordinates";
 	public final static String URN_MSG_LIST = "http://wap.faxingw.cn/index.php?m=Message&a=index";
 
@@ -86,7 +88,7 @@ public class Constant {
 	public final static String URN_GUANZHU = "http://wap.faxingw.cn/index.php?m=User&a=follow";
 
 	public final static String URN_SHALONGINFO = "http://wap.faxingw.cn/index.php?m=Works&a=store_info";
-	public final static String URN_NEAR = "http://wap.faxingw.cn/index.php?m=Near&a=index";
+	public final static String URN_NEAR = "http://wap.faxingw.cn/index.php?m=Nearby&a=searchNearby";
 	public final static String URN_JOB_LIST = "http://wap.faxingw.cn/index.php?m=Infostation&a=jobslist";
 	public final static String URN_SKILLLIST = "http://wap.faxingw.cn/index.php?m=Infostation&a=skilllist";
 	public final static String URN_SHALONGZHUANRANGIST = "http://wap.faxingw.cn/index.php?m=Infostation&a=transferlist";

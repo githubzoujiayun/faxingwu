@@ -1,5 +1,7 @@
 package com.jm.entity;
 
+import java.util.ArrayList;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,58 +14,21 @@ public class ZhouBian implements ListItem {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public String id = "";
+	public String uid = "";
 	public String username = "";
 	public String type = "";
 	public String head_photo = "";
-	public String address = "";
-public String status="";
-	public String store_address ="";
+	public String city = "";
 	public String signature = "";
-
+	public String problem_num = "";
+	public String distance = "";
+	public String assess_num = "";
 	public String works_num = "";
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getHead_photo() {
-		return head_photo;
-	}
-
-	public void setHead_photo(String head_photo) {
-		this.head_photo = head_photo;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String isconcerns = "";
+	public String store_name = "";
+	public String status = "";
+	public String store_address = "";
+	public String str_works_list = "";
+	public ArrayList<Hair> works_list = new ArrayList<Hair>();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -74,47 +39,50 @@ public String status="";
 
 	@Override
 	public void parseFromJson(JSONObject json) throws JSONException {
-		if (json.has("id")) {
-			setId(json.getString("id"));
 
-		}
-		if (json.has("name")) {
-			setUsername(json.getString("name"));
-
+		if (json.has("uid")) {
+			this.uid = json.getString("uid");
 		}
 
+		if (json.has("username")) {
+			this.username = json.getString("username");
+		}
 		if (json.has("type")) {
-			setType(json.getString("type"));
+			this.type = json.getString("type");
 		}
 		if (json.has("head_photo")) {
-			setHead_photo(json.getString("head_photo"));
-
+			this.head_photo = json.getString("head_photo");
 		}
-		if (json.has("address")) {
-			setAddress(json.getString("address"));
+		if (json.has("city")) {
+			this.city = json.getString("city");
 		}
-
 		if (json.has("signature")) {
 			this.signature = json.getString("signature");
+		}
+		if (json.has("problem_num")) {
+			this.problem_num = json.getString("problem_num");
+		}
+		if (json.has("distance")) {
+			this.distance = json.getString("distance");
+		}
+		if (json.has("assess_num")) {
+			this.assess_num = json.getString("assess_num");
 		}
 		if (json.has("works_num")) {
 			this.works_num = json.getString("works_num");
 		}
-		if (json.has("signature")) {
-			this.signature = json.getString("signature");
-		}
-		if (json.has("isconcerns")) {
-			this.isconcerns = json.getString("isconcerns");
-		}
-		if (json.has("isconcerns")) {
-			this.isconcerns = json.getString("isconcerns");
+		if (json.has("store_name")) {
+			this.store_name = json.getString("store_name");
 		}
 		if (json.has("store_address")) {
 			this.store_address = json.getString("store_address");
 		}
-		if (json.has("status")) {
-			this.status = json.getString("status");
+		if (json.has("str_works_list")) {
+			this.str_works_list = json.getString("str_works_list");
 		}
-		
+		if (json.has("status")) {
+			this.str_works_list = json.getString("status");
+		}
+
 	}
 }

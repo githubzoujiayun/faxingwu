@@ -67,7 +67,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		mInitParams = "appid=" + "522405c5";
 		iatDialog = new RecognizerDialog(this, mInitParams);
@@ -84,14 +84,14 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "话题详情页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "话题详情页面");
 	}
@@ -262,7 +262,8 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 		usertype = res.getString("type");
 		to_uid = res.getString("uid");
 		findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
-		ImageLoader.getInstance().displayImage(res.getString("head_photo"), (ImageView) findViewById(R.id.iv_hairinfo_headphoto));
+		ImageLoader.getInstance().displayImage(res.getString("head_photo"),
+				(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 		if (to_uid.equals(sm.getUserId())) {
 			findViewById(R.id.lin_sixin).setVisibility(View.GONE);
 		} else {
@@ -271,8 +272,8 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 		((Button) findViewById(R.id.btn_yuyue)).setVisibility(View.GONE);
 
-		FinalBitmap.create(this).display(findViewById(R.id.iv_photo),
-				res.getString("pic"));
+		ImageLoader.getInstance().displayImage(res.getString("pic"),
+				(ImageView) findViewById(R.id.iv_photo));
 
 		((TextView) findViewById(R.id.tv_utext)).setText(res
 				.getString("content"));
@@ -361,7 +362,6 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onEnd(SpeechError arg0) {
-		
 
 	}
 
@@ -401,7 +401,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onDestroy() {
-		
+
 		super.onDestroy();
 	}
 

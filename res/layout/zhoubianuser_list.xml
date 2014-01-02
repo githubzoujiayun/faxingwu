@@ -94,16 +94,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_isconcerns"
-            android:layout_width="wrap_content"
-            android:layout_height="33sp"
-            android:layout_marginRight="5sp"
-            android:background="@drawable/shape_guanzhured"
-            android:paddingLeft="3sp"
-            android:paddingRight="3sp"
-            android:scaleType="fitXY"
-            android:textColor="@color/white" />
     </LinearLayout>
 
     <TextView

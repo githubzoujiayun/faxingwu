@@ -23,10 +23,10 @@ import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener {
 	private Reserve reserve;
-	private FinalBitmap fb;
 	private String rid;
 	private String status;
 	private String uid;
@@ -45,7 +45,6 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 	private void init() {
 		isPushIn = getIntent().getBooleanExtra("isPushIn", false);
 		rid = getIntent().getStringExtra("rid");
-		fb = FinalBitmap.create(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
 		findViewById(R.id.iv_minfouserpic).setOnClickListener(
@@ -145,8 +144,9 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 
 				reserve = (Reserve) result.getObject("order_info",
 						new Reserve());
-				fb.display((ImageView) findViewById(R.id.iv_minfouserpic),
-						reserve.getHead_photo());
+
+				ImageLoader.getInstance().displayImage(reserve.getHead_photo(),
+						(ImageView) findViewById(R.id.iv_minfouserpic));
 				((TextView) findViewById(R.id.tv_username)).setText(reserve
 						.getMy_name());
 				((TextView) findViewById(R.id.tv_phone)).setText(reserve

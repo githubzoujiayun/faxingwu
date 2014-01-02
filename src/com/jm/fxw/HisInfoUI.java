@@ -50,7 +50,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.hisinfo);
 		initView();
@@ -58,7 +58,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "查看他人详情页面");
 	}
@@ -185,7 +185,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "查看他们详情页面");
 		getUserInfo();

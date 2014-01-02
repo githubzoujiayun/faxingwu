@@ -212,9 +212,10 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_yuyue:
 			if (((Button) v).getText().equals("ԤԼ")) {
-				map.put("tid", to_uid);
+
+				map.put("hid", alist.get(galleryindex).getId() + "");
 				StartActivityContController.goPage(HairInfoUI.this,
-						YuYueUI.class, true, map);
+						HairItemWillDoList.class, true, map);
 			} else {
 				ShowDialogforAddPrice();
 			}

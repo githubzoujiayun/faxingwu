@@ -32,6 +32,7 @@ import com.jm.sort.YuYueAdapter;
 import com.jm.sort.YuYueItem;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Android实现日历控件
@@ -50,8 +51,6 @@ import com.jm.util.StartActivityContController;
  */
 public class YuYueUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
-
-	private FinalBitmap fb;
 	private ListView yuyuelist;
 	private String tid;
 	private String[] price;
@@ -59,7 +58,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 	private String date;
 	private String week;
 	private String type;
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +114,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		yuyuelist.setOnItemClickListener(this);
 		adapter = new YuYueAdapter(this);
 		yuyuelist.setAdapter(adapter);
-		fb = FinalBitmap.create(this);
 		Intent i = getIntent();
 		tid = i.getStringExtra("tid");
 		if (tid == null || tid.equals("")) {
@@ -256,8 +253,10 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 				try {
 					((TextView) findViewById(R.id.tv_username)).setText(result
 							.getString("username"));
-					fb.display((ImageView) findViewById(R.id.iv_minfouserpic),
-							result.getString("head_photo"));
+
+					ImageLoader.getInstance().displayImage(
+							result.getString("head_photo"),
+							(ImageView) findViewById(R.id.iv_minfouserpic));
 					((TextView) findViewById(R.id.tv_address)).setText("地址:"
 							+ result.getString("store_address"));
 					((TextView) findViewById(R.id.tv_dname)).setText("店名:"

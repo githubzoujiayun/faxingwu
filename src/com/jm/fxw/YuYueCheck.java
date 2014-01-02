@@ -23,12 +23,12 @@ import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class YuYueCheck extends FinalActivity implements OnClickListener {
 
 	@ViewInject(id = R.id.btn_leftTop, click = "Click")
 	Button btn_leftTop;
-	private FinalBitmap fb;
 	private String tid;
 	private String discount;
 	private String date;
@@ -60,7 +60,6 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 
 	private void init() {
 		sm = SessionManager.getInstance();
-		fb = FinalBitmap.create(this);
 		Intent i = getIntent();
 		tid = i.getStringExtra("tid");
 		if (tid == null || tid.equals("")) {
@@ -220,8 +219,7 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 				try {
 					((TextView) findViewById(R.id.tv_username)).setText(result
 							.getString("username"));
-					fb.display((ImageView) findViewById(R.id.iv_minfouserpic),
-							result.getString("head_photo"));
+					ImageLoader.getInstance().displayImage(result.getString("head_photo"), (ImageView) findViewById(R.id.iv_minfouserpic));
 					((TextView) findViewById(R.id.tv_dname)).setText("µÍ√˚:"
 							+ result.getString("store_name"));
 					((TextView) findViewById(R.id.tv_address)).setText("µÿ÷∑:"

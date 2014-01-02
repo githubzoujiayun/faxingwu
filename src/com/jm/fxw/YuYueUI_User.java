@@ -33,6 +33,7 @@ import com.jm.sort.ReserveAdapter;
 import com.jm.util.WidgetUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
@@ -41,7 +42,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 	private ReserveAdapter adapter;
 	private ListView ListView;
 	private SessionManager sm;
-	private FinalBitmap fb;
 	private String status;
 	private String uid;
 
@@ -61,7 +61,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 	}
 
 	private void init() {
-		fb = FinalBitmap.create(this);
 		sm = SessionManager.getInstance();
 		findViewById(R.id.btn_jibenxinxi).setOnClickListener(this);
 		findViewById(R.id.btn_lishiyuyue).setOnClickListener(this);
@@ -145,9 +144,9 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 				if (!"".equals(result.getString("order_info"))) {
 
 					reserve = (Reserve) result.getObject("order_info",
-							new Reserve());
-					fb.display((ImageView) findViewById(R.id.iv_minfouserpic),
-							reserve.getHead_photo());
+							new Reserve());					
+					ImageLoader.getInstance().displayImage(reserve.getHead_photo(),
+							(ImageView) findViewById(R.id.iv_minfouserpic));
 					((TextView) findViewById(R.id.tv_username)).setText(reserve
 							.getTo_username());
 					((TextView) findViewById(R.id.tv_dname)).setText(reserve
