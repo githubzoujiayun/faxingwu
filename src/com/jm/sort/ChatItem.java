@@ -15,6 +15,7 @@ import com.jm.entity.QuestionChat;
 import com.jm.fxw.HisInfoUI;
 import com.jm.fxw.R;
 import com.jm.session.SessionManager;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ChatItem extends LinearLayout implements OnClickListener {
@@ -109,7 +110,6 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 		}
 		if (!u.getPic().equals("")) {
 			findViewById(R.id.chatpicture).setVisibility(View.VISIBLE);
-
 			ImageLoader.getInstance().displayImage(u.getPic(),
 					(ImageView) findViewById(R.id.chatpicture));
 		}

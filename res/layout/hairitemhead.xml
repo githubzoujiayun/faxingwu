@@ -64,12 +64,23 @@
             <TextView
                 android:id="@+id/tv_utext"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10sp"
                 android:layout_marginRight="10sp"
                 android:layout_marginTop="2sp"
                 android:textColor="@color/black2"
                 android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tv_utext2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="2sp"
+                android:textColor="@color/rosered"
+                android:textSize="13sp"
+                android:visibility="gone" />
         </LinearLayout>
 
         <Button
@@ -86,90 +97,40 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/lin_btns"
+        android:id="@+id/lin_address"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:gravity="right"
         android:orientation="horizontal"
         android:visibility="gone" >
 
-        <LinearLayout
-            android:id="@+id/lin_comment"
-            android:layout_width="50sp"
-            android:layout_height="30sp"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:layout_width="31sp"
-                android:layout_height="26sp"
-                android:background="@drawable/comment" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin_xihuan"
-            android:layout_width="50sp"
-            android:layout_height="30sp"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/iv_islike"
-                android:layout_width="31sp"
-                android:layout_height="26sp"
-                android:background="@drawable/like" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin_fenxiang"
-            android:layout_width="50sp"
-            android:layout_height="30sp"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:layout_width="31sp"
-                android:layout_height="26sp"
-                android:background="@drawable/fenxiang" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lin_sixin"
-            android:layout_width="50sp"
-            android:layout_height="30sp"
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:layout_width="31sp"
-                android:layout_height="26sp"
-                android:background="@drawable/sixin" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bg"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
-
-        <LinearLayout
-            android:id="@+id/ll_hairinfo_like_gallery"
+        <TextView
+            android:id="@+id/tv_address"
             android:layout_width="fill_parent"
-            android:layout_height="40sp"
-            android:layout_margin="5sp"
-            android:background="@color/bg" >
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="2sp"
+            android:layout_weight="1"
+            android:textColor="@color/black2"
+            android:textSize="13sp" />
 
-            <com.jm.view.HorizontalListView
-                android:id="@+id/hairinfo_like"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/bg"
-                android:spacing="2sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:layout_marginTop="2sp"
+            android:textColor="@color/rosered"
+            android:textSize="13sp" />
     </LinearLayout>
+
+    <com.jm.view.HorizontalListView
+        android:id="@+id/hairinfo_like"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:background="@color/bg"
+        android:spacing="2sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -183,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5sp"
             android:layout_marginTop="3sp"
-            android:text="评论读取中..."
+            android:text="数据读取中..."
             android:textColor="#808080"
             android:textSize="13sp" />
 

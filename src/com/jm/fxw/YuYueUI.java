@@ -52,7 +52,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class YuYueUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private ListView yuyuelist;
-	private String tid;
+	private String tid, hid;
+
 	private String[] price;
 	private YuYueAdapter adapter;
 	private String date;
@@ -120,13 +121,15 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			LogUtil.e("tid = " + tid);
 			finish();
 		}
-
+		hid = i.getStringExtra("hid");
+		if (hid == null || hid.equals("")) {
+			LogUtil.e("该页面为预约发型");
+		}
 		resetTypeButtonBg();
 		resetTimeButtonBg();
 		((TextView) findViewById(R.id.btn_t1))
 				.setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.lin_d1).setBackgroundResource(R.color.red);
-
 		Date dt = new Date();
 		((TextView) findViewById(R.id.btn_d1)).setText(getWeekOfDate(dt, 0));
 		((TextView) findViewById(R.id.btn_d2)).setText(getWeekOfDate(dt, 1));

@@ -5,11 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalBitmap;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -19,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,27 +21,24 @@ import android.widget.TextView;
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
-import com.jm.entity.Comment;
+import com.jm.entity.WillDo;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
-import com.jm.sort.CommentAdapter;
+import com.jm.sort.WillDoAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
 import com.jm.view.HorizontalListView;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.weibo.sdk.android.Oauth2AccessToken;
 
 public class HairItemWillDoList extends Activity implements OnClickListener {
 
-	private CommentAdapter adapter;
+	private WillDoAdapter adapter;
 	private ListView listView;
-	private List<Comment> mlist;
+	private List<WillDo> mlist;
 	private String to_uid = "";
 	private HorizontalListView likeGallery;
 	private SessionManager sm;
-	public static Oauth2AccessToken accessToken;
 	private Handler mHandler;
 	private String usertype;
 	private String inthid;
@@ -83,11 +74,9 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 		View view = LayoutInflater.from(this).inflate(R.layout.hairitemhead,
 				null);
 		listView.addHeaderView(view);
-		adapter = new CommentAdapter(this);
+		adapter = new WillDoAdapter(this);
 		listView.setAdapter(adapter);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-		findViewById(R.id.lin_sixin).setOnClickListener(this);
-		findViewById(R.id.btn_yuyue).setOnClickListener(this);
 		findViewById(R.id.iv_photo).setOnClickListener(this);
 		findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
 		likeGallery = (HorizontalListView) findViewById(R.id.hairinfo_like);
@@ -199,12 +188,23 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 				getWindowManager().getDefaultDisplay().getHeight() / 2);
 
 		StringBuffer sb = new StringBuffer();
-		sb.append("服务时长" + jb.getString("long_service"));
-		sb.append("服务价格" + jb.getString("price"));
-		sb.append("折扣" + jb.getString("rebate"));
+		sb.append("时长" + jb.getString("long_service"));
+		sb.append("价格" + jb.getString("price"));
+
+		StringBuffer sb2 = new StringBuffer();
+		sb2.append("实际价格" + jb.getString("reserve_price"));
+		sb2.append("(" + jb.getString("rebate") + "折)");
 		((TextView) findViewById(R.id.tv_utext)).setText(sb.toString());
+
+		findViewById(R.id.tv_utext2).setVisibility(View.VISIBLE);
+		findViewById(R.id.lin_address).setVisibility(View.VISIBLE);
+		((TextView) findViewById(R.id.tv_utext2)).setText(sb2.toString());
 		((TextView) findViewById(R.id.tv_uname)).setText(jb
 				.getString("username"));
+		((TextView) findViewById(R.id.tv_address)).setText(jb
+				.getString("store_address"));
+		((TextView) findViewById(R.id.tv_distance)).setText(jb
+				.getString("distance"));
 	}
 
 	/*
@@ -237,6 +237,7 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 				LogUtil.e("can not get hair info");
 				return;
 			}
+			new getWillDoListTask().execute();
 			if (result.isSuccessful()) {
 				setHairInfo(result);
 
@@ -247,7 +248,7 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 	}
 
 	/*
-	 * 读取评论列表
+	 * 读取WillDo列表
 	 */
 	class getWillDoListTask extends AsyncTask<String, Integer, Response> {
 
@@ -279,20 +280,20 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 			}
 			if (result.isSuccessful()) {
 				adapter.clear();
-				if (!"".equals(result.getString("comment_list"))) {
-					mlist = result.getList("comment_list", new Comment());
+				if (!"".equals(result.getString("willdo_list"))) {
+					mlist = result.getList("willdo_list", new WillDo());
 					if (mlist != null) {
 						adapter.setTypeList(mlist);
 						adapter.notifyDataSetChanged();
 						((TextView) findViewById(R.id.tv_commentsize))
-								.setText("共有" + mlist.size() + "条评论");
+								.setText("周边共有" + mlist.size() + "个发型师会做此发型");
 					} else {
 						((TextView) findViewById(R.id.tv_commentsize))
-								.setText("暂无评论");
+								.setText("周边暂无发型师会做此发型");
 					}
 				} else {
 					((TextView) findViewById(R.id.tv_commentsize))
-							.setText("暂无评论");
+							.setText("周边暂无发型师会做此发型");
 				}
 			}
 		}

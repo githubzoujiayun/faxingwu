@@ -49,7 +49,6 @@ import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
 import com.jm.view.HorizontalListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.weibo.sdk.android.Oauth2AccessToken;
 
 public class HairItemInfoUI extends Activity implements OnClickListener,
 		OnItemClickListener, RecognizerDialogListener {
@@ -62,7 +61,6 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 	private List<Like> likelist;
 	private LikeImageAdapter likeadapter;
 	private SessionManager sm;
-	public static Oauth2AccessToken accessToken;
 	private EditText ed_comment;
 	private Handler mHandler;
 	private String usertype;
@@ -114,19 +112,10 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 		ed_comment = (EditText) findViewById(R.id.et_comment);
 		findViewById(R.id.btn_ok).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-		findViewById(R.id.lin_xihuan).setOnClickListener(this);
-		findViewById(R.id.lin_fenxiang).setOnClickListener(this);
-		findViewById(R.id.lin_sixin).setOnClickListener(this);
-		findViewById(R.id.btn_yuyue).setOnClickListener(this);
 		findViewById(R.id.iv_voice).setOnClickListener(this);
 		findViewById(R.id.iv_photo).setOnClickListener(this);
 		findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
 
-		// mgadapter = new MerchantGalleryAdapter(this, bitmap);
-		// FallingGallery gallery = (FallingGallery)
-		// findViewById(R.id.gallery_photos);
-		// gallery.setAdapter(mgadapter);
-		// gallery.setOnItemSelectedListener(this);
 		likeadapter = new LikeImageAdapter(this);
 		likeGallery = (HorizontalListView) findViewById(R.id.hairinfo_like);
 		likeGallery.setAdapter(likeadapter);
@@ -364,16 +353,16 @@ public class HairItemInfoUI extends Activity implements OnClickListener,
 						if (likelist != null) {
 							likeadapter.setLikeList(likelist);
 							likeadapter.notifyDataSetChanged();
-							findViewById(R.id.ll_hairinfo_like_gallery)
-									.setVisibility(View.VISIBLE);
+							findViewById(R.id.hairinfo_like).setVisibility(
+									View.VISIBLE);
 						}
 						if (likelist == null || likelist.size() == 0) {
-							findViewById(R.id.ll_hairinfo_like_gallery)
-									.setVisibility(View.GONE);
+							findViewById(R.id.hairinfo_like).setVisibility(
+									View.GONE);
 						}
 					} else {
-						findViewById(R.id.ll_hairinfo_like_gallery)
-								.setVisibility(View.GONE);
+						findViewById(R.id.hairinfo_like).setVisibility(
+								View.GONE);
 
 					}
 
