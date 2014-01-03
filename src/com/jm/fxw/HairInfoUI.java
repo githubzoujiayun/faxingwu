@@ -211,7 +211,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 					true, map);
 			break;
 		case R.id.btn_yuyue:
-			if (((Button) v).getText().equals("ԤԼ")) {
+			if (((Button) v).getText().equals(" Ԥ Լ ")) {
 
 				map.put("hid", alist.get(galleryindex).getId() + "");
 				StartActivityContController.goPage(HairInfoUI.this,
@@ -362,7 +362,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			map.put("work_id", alist.get(galleryindex).getId());
 			map.put("long_service",
 					((EditText) dialogView.findViewById(R.id.et_sertime))
-							.getText().toString().trim());
+							.getText().toString().trim()+"Сʱ");
 			map.put("price",
 					((EditText) dialogView.findViewById(R.id.et_serprice))
 							.getText().toString().trim());
@@ -680,7 +680,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 				findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
 			} else if (SessionManager.getInstance().getUsertype().equals("1")
 					&& usertype.equals("2")) {
-				((Button) findViewById(R.id.btn_yuyue)).setText("ԤԼ");
+				((Button) findViewById(R.id.btn_yuyue)).setText(" Ԥ Լ ");
 				findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
 			} else {
 				findViewById(R.id.btn_yuyue).setVisibility(View.GONE);

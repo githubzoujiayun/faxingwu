@@ -57,6 +57,7 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="90sp"
+                android:layout_marginBottom="10sp"
                 android:orientation="horizontal" >
 
                 <LinearLayout
@@ -126,7 +127,8 @@
                 android:layout_height="40sp"
                 android:layout_margin="5sp"
                 android:gravity="left"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:visibility="gone" >
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -189,167 +191,6 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <LinearLayout
-                    android:id="@+id/lin_sixin"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10sp"
-                    android:layout_weight="1"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="3sp"
-                        android:layout_marginLeft="3sp"
-                        android:layout_marginRight="3sp"
-                        android:layout_marginTop="3sp"
-                        android:text="提示信息："
-                        android:textColor="#000000"
-                        android:textSize="14sp" />
-
-                    <LinearLayout
-                        android:id="@+id/lin_tip1"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3sp"
-                        android:layout_marginRight="3sp"
-                        android:layout_marginTop="3sp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:visibility="gone" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1."
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_tip1"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lin_tip2"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3sp"
-                        android:layout_marginRight="3sp"
-                        android:layout_marginTop="3sp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:visibility="gone" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="2."
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_tip2"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lin_tip3"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3sp"
-                        android:layout_marginRight="3sp"
-                        android:layout_marginTop="3sp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:visibility="gone" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="3."
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_tip3"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lin_tip4"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3sp"
-                        android:layout_marginRight="3sp"
-                        android:layout_marginTop="3sp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:visibility="gone" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4."
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_tip4"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/lin_tip5"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3sp"
-                        android:layout_marginRight="3sp"
-                        android:layout_marginTop="3sp"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:visibility="gone" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="5."
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/tv_tip5"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textColor="#000000"
-                            android:textSize="14sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/lin_yuyuetype"
                 android:layout_width="fill_parent"
                 android:layout_height="40sp"
@@ -361,7 +202,7 @@
                 <Button
                     android:id="@+id/lin_xi"
                     android:layout_width="fill_parent"
-                    android:layout_height="40sp"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:text="洗剪吹" >
@@ -370,7 +211,7 @@
                 <Button
                     android:id="@+id/lin_tang"
                     android:layout_width="fill_parent"
-                    android:layout_height="40sp"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:text="烫发" >
@@ -379,7 +220,7 @@
                 <Button
                     android:id="@+id/lin_ran"
                     android:layout_width="fill_parent"
-                    android:layout_height="40sp"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:text="染发" >
@@ -388,7 +229,7 @@
                 <Button
                     android:id="@+id/lin_hu"
                     android:layout_width="fill_parent"
-                    android:layout_height="40sp"
+                    android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:text="护理" >
@@ -446,6 +287,20 @@
                 android:layout_marginRight="10sp"
                 android:layout_marginTop="2sp"
                 android:layout_weight="1"
+                android:textColor="@color/rosered"
+                android:textSize="14sp" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/fuwushichang"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="2sp"
+                android:layout_weight="1"
+                android:visibility="gone"
                 android:textColor="@color/rosered"
                 android:textSize="14sp" >
             </TextView>

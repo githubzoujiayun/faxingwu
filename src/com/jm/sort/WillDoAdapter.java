@@ -108,11 +108,11 @@ public class WillDoAdapter extends BaseAdapter implements OnClickListener {
 				view.findViewById(R.id.iv_renzheng).setVisibility(View.GONE);
 			}
 			StringBuffer sb = new StringBuffer();
-			sb.append("时长" + type.long_service);
-			sb.append("价格" + type.price);
+			sb.append("时长" + type.long_service + "  ");
+			sb.append("价格" + type.price + "元");
 
 			StringBuffer sb2 = new StringBuffer();
-			sb2.append("实际价格" + type.reserve_price);
+			sb2.append("优惠价" + type.reserve_price + "元");
 			sb2.append("(" + type.rebate + "折)");
 			((TextView) view.findViewById(R.id.tv_2_1)).setText(sb.toString());
 			((TextView) view.findViewById(R.id.tv_3_1)).setText(sb2.toString());

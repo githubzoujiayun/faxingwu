@@ -386,7 +386,8 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 			map.put("price", ((EditText) findViewById(R.id.et_serprice))
 					.getText().toString().trim());
 			map.put("long_service", ((EditText) findViewById(R.id.et_sertime))
-					.getText().toString().trim());
+					.getText().toString().trim()
+					+ "Сʱ");
 			map.put("rebate", ((Spinner) findViewById(R.id.sp_discount))
 					.getSelectedItem().toString().trim());
 			// map.put("text", access_token);

@@ -3,6 +3,9 @@ package com.jm.fxw;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.annotation.view.ViewInject;
@@ -34,6 +37,7 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 	private String date;
 	private String week;
 	private String type;
+	private String typeurl;
 	private String time;
 	private SessionManager sm;
 
@@ -56,6 +60,7 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 		new getUserInfo().execute();
 		new getUserPhone().execute();
 
+		new getTipsInfo().execute();
 	}
 
 	private void init() {
@@ -70,6 +75,12 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 		week = i.getStringExtra("week");
 		discount = i.getStringExtra("discount");
 		type = i.getStringExtra("type");
+		typeurl = i.getStringExtra("typeurl");
+		if (typeurl == null || typeurl.equals("")) {
+			LogUtil.i("预约发型");
+		} else {
+			LogUtil.i("预约发型师");
+		}
 		time = i.getStringExtra("time");
 		((TextView) findViewById(R.id.tv_date)).setText(date.split("-")[0]
 				+ "月" + date.split("-")[1] + "日" + "(" + week + ")");
@@ -184,6 +195,59 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 				((EditText) findViewById(R.id.et_userphone)).setText(result
 						.getString("mobile"));
 
+			}
+		}
+	}
+
+	/*
+	 * 读取提示信息
+	 */
+	class getTipsInfo extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		protected Map<String, Object> getInfoInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uid", tid);
+			return map;
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn
+					.executeAndParse(Constant.URN_TIPS_INFO, getInfoInqVal());
+		}
+
+		protected void onPostExecute(Response result) {
+			if (result == null) {
+				LogUtil.e("can't get userinfo");
+				return;
+			}
+			if (result.isSuccessful()) {
+				try {
+					JSONArray alist = result.getJsonString("notice_info")
+							.getJSONArray("info");
+					((TextView) findViewById(R.id.tv_tip1))
+							.setText((CharSequence) alist.get(0));
+					findViewById(R.id.lin_tip1).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip2))
+							.setText((CharSequence) alist.get(1));
+					findViewById(R.id.lin_tip2).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip3))
+							.setText((CharSequence) alist.get(2));
+					findViewById(R.id.lin_tip3).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip4))
+							.setText((CharSequence) alist.get(3));
+					findViewById(R.id.lin_tip4).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip5))
+							.setText((CharSequence) alist.get(4));
+					findViewById(R.id.lin_tip5).setVisibility(View.VISIBLE);
+				} catch (JSONException e) {
+					LogUtil.e(e.toString());
+				}
 			}
 		}
 	}

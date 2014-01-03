@@ -8,25 +8,23 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
+import com.jm.sort.YuYueItem;
 import com.jm.util.LogUtil;
+import com.jm.util.PriceUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.WidgetUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -61,7 +59,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 
 	private String getDateOfYeay(Date dt, int adddays) {
 		Calendar cal = Calendar.getInstance();
-
 		cal.setTime(dt);
 		cal.set(Calendar.DATE, adddays + 1);
 		int month = cal.get(Calendar.MONTH) + 1;
@@ -83,7 +80,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 
 	private void getUserInfo() {
 		new getUserInfo().execute();
-		new getTipsInfo().execute();
 	}
 
 	private void init() {
@@ -216,69 +212,34 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 				ImageLoader.getInstance().displayImage(
 						result.getString("work_image"),
 						(ImageView) findViewById(R.id.iv_yuyuehair));
-				setPirce(result.getString("price"),
-						result.getString("reserve_price"),
-						result.getString("rebate"));
+				setPrice(result.getString("price"), result.getString("rebate"),
+						result.getString("long_service"));
 			}
 		}
 
 	}
 
-	private void setPirce(String price, String reserve_price, String rebate) {
+	private void setPrice(String price, String rebate) {
+		((TextView) findViewById(R.id.yuyuejiage)).setText("平时价格:" + price
+				+ "元");
+		((TextView) findViewById(R.id.yuyuejiage)).getPaint().setFlags(
+				Paint.STRIKE_THRU_TEXT_FLAG);
+		((TextView) findViewById(R.id.zhekoujiage)).setText("优惠价"
+				+ PriceUtil.getRealPrice(price, rebate) + "元" + "(" + rebate
+				+ "折)");
 
 	}
 
-	/*
-	 * 读取提示信息
-	 */
-	class getTipsInfo extends AsyncTask<String, Integer, Response> {
+	private void setPrice(String price, String rebate, String long_service) {
+		((TextView) findViewById(R.id.fuwushichang)).setText("服务时长:"
+				+ long_service);
+		findViewById(R.id.fuwushichang).setVisibility(View.VISIBLE);
+		setPrice(price, rebate);
+	}
 
-		@Override
-		protected void onPreExecute() {
-		}
+	private void setTime(String rebate) {
+		((TextView) findViewById(R.id.yuyueshijian)).setText("预约时间:" + rebate);
 
-		protected Map<String, Object> getInfoInqVal() {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("uid", tid);
-			return map;
-		}
-
-		@Override
-		protected Response doInBackground(String... params) {
-			Connection conn = ((ClientApp) getApplication()).getConnection();
-			return conn
-					.executeAndParse(Constant.URN_TIPS_INFO, getInfoInqVal());
-		}
-
-		protected void onPostExecute(Response result) {
-			if (result == null) {
-				LogUtil.e("can't get userinfo");
-				return;
-			}
-			if (result.isSuccessful()) {
-				try {
-					JSONArray alist = result.getJsonString("notice_info")
-							.getJSONArray("info");
-					((TextView) findViewById(R.id.tv_tip1))
-							.setText((CharSequence) alist.get(0));
-					findViewById(R.id.lin_tip1).setVisibility(View.VISIBLE);
-					((TextView) findViewById(R.id.tv_tip2))
-							.setText((CharSequence) alist.get(1));
-					findViewById(R.id.lin_tip2).setVisibility(View.VISIBLE);
-					((TextView) findViewById(R.id.tv_tip3))
-							.setText((CharSequence) alist.get(2));
-					findViewById(R.id.lin_tip3).setVisibility(View.VISIBLE);
-					((TextView) findViewById(R.id.tv_tip4))
-							.setText((CharSequence) alist.get(3));
-					findViewById(R.id.lin_tip4).setVisibility(View.VISIBLE);
-					((TextView) findViewById(R.id.tv_tip5))
-							.setText((CharSequence) alist.get(4));
-					findViewById(R.id.lin_tip5).setVisibility(View.VISIBLE);
-				} catch (JSONException e) {
-					LogUtil.e(e.toString());
-				}
-			}
-		}
 	}
 
 	/*
@@ -326,7 +287,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 							.getString("assess_num"));
 
 					price = result.getString("price_info").split("_");
-
+					ChangeType("洗剪吹", 1, findViewById(R.id.lin_xi));
 				} catch (Exception e) {
 					LogUtil.e(e.toString());
 				}
@@ -426,14 +387,15 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 		WidgetUtil.ResetAllButton(blist);
 		WidgetUtil.setChangeButton(v);
 		this.time = ((Button) v).getText().toString().trim();
+		setTime(date + week + time);
 
-		LogUtil.e("time");
 	}
 
 	private void ChangeType(String string, int i, View v) {
 
 		type = string;
-		// setPriceType(i);
+		setPriceType(i);
+
 		List<View> blist = new ArrayList<View>();
 		blist.add(findViewById(R.id.lin_xi));
 		blist.add(findViewById(R.id.lin_tang));
@@ -448,7 +410,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 		if (i == 1) {
 			date = ((TextView) findViewById(R.id.btn_r1)).getText().toString();
 			week = ((TextView) findViewById(R.id.btn_d1)).getText().toString();
-
 		}
 		if (i == 2) {
 			date = ((TextView) findViewById(R.id.btn_r2)).getText().toString();
@@ -474,9 +435,9 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 			date = ((TextView) findViewById(R.id.btn_r7)).getText().toString();
 			week = ((TextView) findViewById(R.id.btn_d7)).getText().toString();
 		}
-
 		resetTimeButtonBg();
 		setRedBg(v);
+		setTime(date + week + time);
 	}
 
 	private void resetTimeButtonBg() {
@@ -493,60 +454,43 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 		v.setBackgroundResource(R.color.red);
 	}
 
-	// private void setPriceType(int type) {
-	//
-	// if (price.length < 7) {
-	// return;
-	// }
-	// if (type == 1) {
-	//
-	// adapter.setPrice(price[0], price[4]);
-	// }
-	// if (type == 2) {
-	//
-	// adapter.setPrice(price[1], price[5]);
-	// }
-	// if (type == 3) {
-	//
-	// adapter.setPrice(price[2], price[6]);
-	// }
-	// if (type == 4) {
-	//
-	// adapter.setPrice(price[3], price[7]);
-	// }
-	//
-	// adapter.notifyDataSetChanged();
-	// }
+	private void setPriceType(int type) {
 
-	// @Override
-	// public void onItemClick(AdapterView<?> arg0, View view, int position,
-	// long arg3) {
-	// LogUtil.e("onItemClick");
-	// Map<String, String> map = new HashMap<String, String>();
-	// if (adapter.getList() == null || position < 0
-	// || position >= adapter.getList().size()) {
-	// LogUtil.e("position = " + position);
-	// return;
-	// }
-	//
-	// map.put("tid", tid);
-	// map.put("type", type);
-	// map.put("date", date);
-	// map.put("week", week);
-	// com.jm.entity.YuYue y = (com.jm.entity.YuYue) adapter.getItem(position);
-	// map.put("price", y.getPrice());
-	// map.put("rebate", y.getDiscount());
-	// try {
-	// YuYueItem yy = (YuYueItem) view;
-	// map.put("discount", ((TextView) yy.findViewById(R.id.tv_discount))
-	// .getText().toString().trim());
-	// map.put("time", ((TextView) yy.findViewById(R.id.tv_time))
-	// .getText().toString().trim());
-	// StartActivityContController.goPage(YuYueUI.this, YuYueCheck.class,
-	// true, map);
-	// } catch (Exception e) {
-	// LogUtil.e(e.toString());
-	// }
-	//
-	// }
+		if (price.length < 7) {
+			return;
+		}
+		if (type == 1) {
+			setPrice(price[0], price[4]);
+		}
+		if (type == 2) {
+			setPrice(price[1], price[5]);
+		}
+		if (type == 3) {
+			setPrice(price[2], price[6]);
+		}
+		if (type == 4) {
+			setPrice(price[3], price[7]);
+		}
+
+	}
+
+	public void onItemClick(View view, int position, long arg3) {
+		LogUtil.e("onItemClick");
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("tid", tid);
+		map.put("type", type);
+		map.put("date", date);
+		map.put("week", week);
+		// com.jm.entity.YuYue y = (com.jm.entity.YuYue)
+		// adapter.getItem(position);
+		// map.put("price", y.getPrice());
+		// map.put("rebate", y.getDiscount());
+		YuYueItem yy = (YuYueItem) view;
+		map.put("discount", ((TextView) yy.findViewById(R.id.tv_discount))
+				.getText().toString().trim());
+		map.put("time", ((TextView) yy.findViewById(R.id.tv_time)).getText()
+				.toString().trim());
+		StartActivityContController.goPage(YuYueUI.this, YuYueCheck.class,
+				true, map);
+	}
 }

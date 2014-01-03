@@ -26,6 +26,17 @@ public class PriceUtil {
 		}
 	}
 
+	public static String getRealPrice(String et_serprice, String str_discount) {
+		try {
+
+			double price = Double.valueOf(et_serprice);
+			double discount = Double.valueOf(str_discount);
+			return mul(div(price, 10.0), discount) + "";
+		} catch (Exception e) {
+			return "-";
+		}
+	}
+
 	/**
 	 * 提供（相对）精确的除法运算，当发生除不尽的情况时，精确到 小数点以后10位，以后的数字四舍五入。
 	 * 
