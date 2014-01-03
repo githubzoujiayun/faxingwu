@@ -41,6 +41,7 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.QuestionChat;
 import com.jm.finals.Constant;
+import com.jm.service.PushService;
 import com.jm.session.SessionManager;
 import com.jm.sort.ChatAdapter;
 import com.jm.util.CameraAndGallery;
@@ -113,13 +114,14 @@ public class ChatUI extends Activity implements OnClickListener,
 
 		super.onResume();
 		MobileProbe.onResume(this, "私信页面");
+		PushService.isPush = false;
 	}
 
 	@Override
 	protected void onPause() {
-
 		super.onPause();
 		MobileProbe.onPause(this, "私信页面");
+		PushService.isPush = true;
 	}
 
 	@Override

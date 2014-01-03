@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
 		AlphaAnimation animation = new AlphaAnimation(1, 1);
 		imageView.startAnimation(animation);
 
-		animation.setDuration(1000);
+		animation.setDuration(50);
 		animation.setAnimationListener(new AnimationListener() {
 
 			@Override
