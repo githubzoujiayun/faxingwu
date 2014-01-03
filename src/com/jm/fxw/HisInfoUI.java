@@ -39,8 +39,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 		OnClickListener {
 	private SmallImageAdapter likeadapter;
-	private List<Hair> portfoliolist = new ArrayList<Hair>();
 	private HorizontalListView likeGallery;
+	private List<Hair> portfoliolist = new ArrayList<Hair>();
 	private SessionManager sm;
 	private List<Hair> mlist = new ArrayList<Hair>();
 	LinearLayout lin_message;
@@ -76,7 +76,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 		uid = i.getStringExtra("uid");
 		type = i.getStringExtra("type");
 		sm = SessionManager.getInstance();
-		likeadapter = new SmallImageAdapter(this);
+		
 		initGallery();
 
 	}
@@ -198,7 +198,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 	}
 
 	private void initGallery() {
-
+		likeadapter = new SmallImageAdapter(this);
 		likeGallery = (HorizontalListView) findViewById(R.id.his_gallery);
 		likeGallery.setAdapter(likeadapter);
 		likeGallery.setOnItemClickListener(this);

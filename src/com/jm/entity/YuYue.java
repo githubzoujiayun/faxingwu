@@ -15,20 +15,17 @@ public class YuYue implements ListItem {
 
 	}
 
-	private String time = "";
+	public String time = "";
+	public String time1 = "";
+	public String time2 = "";
+	public String time3 = "";
 	private String price = "";
 	private String discount = "";
 
-	public YuYue(String s) {
-		setTime(s);
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
+	public YuYue(String s1, String s2, String s3) {
+		this.time1 = s1;
+		this.time2 = s2;
+		this.time3 = s3;
 	}
 
 	public String getPrice() {

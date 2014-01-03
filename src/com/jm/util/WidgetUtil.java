@@ -30,6 +30,7 @@ public class WidgetUtil {
 		}
 	}
 
+
 	public static void setChangeButton(View view) {
 		setButton(view, ButtonTextColor, ButtonBackGround);
 	}

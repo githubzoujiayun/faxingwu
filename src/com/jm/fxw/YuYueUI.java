@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
-import net.tsz.afinal.FinalBitmap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,11 +15,9 @@ import org.json.JSONException;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,29 +26,25 @@ import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
-import com.jm.sort.YuYueAdapter;
-import com.jm.sort.YuYueItem;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.WidgetUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class YuYueUI extends FinalActivity implements OnClickListener,
-		OnItemClickListener {
-	private ListView yuyuelist;
+public class YuYueUI extends FinalActivity implements OnClickListener {
 	private String tid, hid;
-
 	private String[] price;
-	private YuYueAdapter adapter;
 	private String date;
 	private String week;
 	private String type;
+	private List<View> blist;
+	private String time;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.yuyue);
+		setContentView(R.layout.yuyuehead);
 		init();
 	}
 
@@ -96,12 +89,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 	private void init() {
 		this.type = "洗剪吹";
 		price = new String[] { "", "", "", "", "", "", "", "" };
-		yuyuelist = (android.widget.ListView) findViewById(R.id.yuyueinfo_list);
-		yuyuelist.addHeaderView(LayoutInflater.from(this).inflate(
-				R.layout.yuyuehead, null));
-		yuyuelist.setOnItemClickListener(this);
-		adapter = new YuYueAdapter(this);
-		yuyuelist.setAdapter(adapter);
+
 		Intent i = getIntent();
 		tid = i.getStringExtra("tid");
 		if (tid == null || tid.equals("")) {
@@ -113,9 +101,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			YuyueType();
 		} else {
 			YuyueHair();
-			ImageLoader.getInstance().displayImage(
-					i.getStringExtra("work_image"),
-					(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 		}
 
 		ChangeType("洗剪吹", 1, findViewById(R.id.lin_xi));
@@ -161,7 +146,26 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.lin_zuopin).setOnClickListener(this);
 		findViewById(R.id.lin_pingjia).setOnClickListener(this);
-		setDateAndWeek(1);
+
+		blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.tv_time1));
+		blist.add(findViewById(R.id.tv_time2));
+		blist.add(findViewById(R.id.tv_time3));
+		blist.add(findViewById(R.id.tv_time4));
+		blist.add(findViewById(R.id.tv_time5));
+		blist.add(findViewById(R.id.tv_time6));
+		blist.add(findViewById(R.id.tv_time7));
+		blist.add(findViewById(R.id.tv_time8));
+		blist.add(findViewById(R.id.tv_time9));
+		blist.add(findViewById(R.id.tv_time10));
+		blist.add(findViewById(R.id.tv_time11));
+		blist.add(findViewById(R.id.tv_time12));
+		WidgetUtil.ResetAllButton(blist);
+		for (View view : blist) {
+			view.setOnClickListener(this);
+		}
+		ChangeTime(findViewById(R.id.tv_time1));
+		setDateAndWeek(1, findViewById(R.id.lin_d1));
 	}
 
 	private void YuyueType() {
@@ -173,10 +177,54 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 	}
 
 	private void YuyueHair() {
-
+		new getYuYueHairInfo().execute();
 		LogUtil.e("该页面为预约发型");
 		findViewById(R.id.lin_yuyuetype).setVisibility(View.GONE);
 		findViewById(R.id.lin_yuyuehair).setVisibility(View.VISIBLE);
+
+	}
+
+	/*
+	 * 读取预约发型的信息
+	 */
+	class getYuYueHairInfo extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		protected Map<String, Object> getInfoInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("work_id", hid);
+			map.put("uid", tid);
+			return map;
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn.executeAndParse(Constant.URN_OTHERWILLDO,
+					getInfoInqVal());
+		}
+
+		protected void onPostExecute(Response result) {
+			if (result == null) {
+				LogUtil.e("can't get YuYueHairInfo");
+				return;
+			}
+			if (result.isSuccessful()) {
+				ImageLoader.getInstance().displayImage(
+						result.getString("work_image"),
+						(ImageView) findViewById(R.id.iv_yuyuehair));
+				setPirce(result.getString("price"),
+						result.getString("reserve_price"),
+						result.getString("rebate"));
+			}
+		}
+
+	}
+
+	private void setPirce(String price, String reserve_price, String rebate) {
 
 	}
 
@@ -278,7 +326,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 							.getString("assess_num"));
 
 					price = result.getString("price_info").split("_");
-					setPriceType(1);
+
 				} catch (Exception e) {
 					LogUtil.e(e.toString());
 				}
@@ -329,54 +377,63 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 
 		case R.id.lin_d1:
 
-			setDateAndWeek(1);
-			resetTimeButtonBg();
-			setRedBg(v);
+			setDateAndWeek(1, v);
 			break;
 
 		case R.id.lin_d2:
-			setDateAndWeek(2);
-			resetTimeButtonBg();
-			setRedBg(v);
+			setDateAndWeek(2, v);
 			break;
 
 		case R.id.lin_d3:
-			setDateAndWeek(3);
-			resetTimeButtonBg();
-			setRedBg(v);
+			setDateAndWeek(3, v);
 			break;
 
 		case R.id.lin_d4:
-			setDateAndWeek(4);
-			resetTimeButtonBg();
-			setRedBg(v);
+			setDateAndWeek(4, v);
 			break;
 
 		case R.id.lin_d5:
-			setDateAndWeek(5);
-			resetTimeButtonBg();
-			setRedBg(v);
+			setDateAndWeek(5, v);
 			break;
 
 		case R.id.lin_d6:
-			setDateAndWeek(6);
-			resetTimeButtonBg();
-			setRedBg(v);
+			setDateAndWeek(6, v);
 			break;
 
 		case R.id.lin_d7:
-			setDateAndWeek(7);
-			resetTimeButtonBg();
-			setRedBg(v);
+			setDateAndWeek(7, v);
+			break;
+
+		case R.id.tv_time1:
+		case R.id.tv_time2:
+		case R.id.tv_time3:
+		case R.id.tv_time4:
+		case R.id.tv_time5:
+		case R.id.tv_time6:
+		case R.id.tv_time7:
+		case R.id.tv_time8:
+		case R.id.tv_time9:
+		case R.id.tv_time10:
+		case R.id.tv_time11:
+		case R.id.tv_time12:
+			ChangeTime(v);
 			break;
 		}
 
 	}
 
+	private void ChangeTime(View v) {
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
+		this.time = ((Button) v).getText().toString().trim();
+
+		LogUtil.e("time");
+	}
+
 	private void ChangeType(String string, int i, View v) {
 
 		type = string;
-		setPriceType(i);
+		// setPriceType(i);
 		List<View> blist = new ArrayList<View>();
 		blist.add(findViewById(R.id.lin_xi));
 		blist.add(findViewById(R.id.lin_tang));
@@ -387,7 +444,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 
 	}
 
-	private void setDateAndWeek(int i) {
+	private void setDateAndWeek(int i, View v) {
 		if (i == 1) {
 			date = ((TextView) findViewById(R.id.btn_r1)).getText().toString();
 			week = ((TextView) findViewById(R.id.btn_d1)).getText().toString();
@@ -418,36 +475,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			week = ((TextView) findViewById(R.id.btn_d7)).getText().toString();
 		}
 
-	}
-
-	private void setRedBg(View v) {
-		v.setBackgroundResource(R.color.red);
-
-	}
-
-	private void setPriceType(int type) {
-
-		if (price.length < 7) {
-			return;
-		}
-		if (type == 1) {
-
-			adapter.setPrice(price[0], price[4]);
-		}
-		if (type == 2) {
-
-			adapter.setPrice(price[1], price[5]);
-		}
-		if (type == 3) {
-
-			adapter.setPrice(price[2], price[6]);
-		}
-		if (type == 4) {
-
-			adapter.setPrice(price[3], price[7]);
-		}
-
-		adapter.notifyDataSetChanged();
+		resetTimeButtonBg();
+		setRedBg(v);
 	}
 
 	private void resetTimeButtonBg() {
@@ -460,35 +489,64 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		findViewById(R.id.lin_d7).setBackgroundResource(R.color.black_gary);
 	}
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View view, int position,
-			long arg3) {
-		LogUtil.e("onItemClick");
-		Map<String, String> map = new HashMap<String, String>();
-		if (adapter.getList() == null || position < 0
-				|| position >= adapter.getList().size()) {
-			LogUtil.e("position = " + position);
-			return;
-		}
-
-		map.put("tid", tid);
-		map.put("type", type);
-		map.put("date", date);
-		map.put("week", week);
-		com.jm.entity.YuYue y = (com.jm.entity.YuYue) adapter.getItem(position);
-		map.put("price", y.getPrice());
-		map.put("rebate", y.getDiscount());
-		try {
-			YuYueItem yy = (YuYueItem) view;
-			map.put("discount", ((TextView) yy.findViewById(R.id.tv_discount))
-					.getText().toString().trim());
-			map.put("time", ((TextView) yy.findViewById(R.id.tv_time))
-					.getText().toString().trim());
-			StartActivityContController.goPage(YuYueUI.this, YuYueCheck.class,
-					true, map);
-		} catch (Exception e) {
-			LogUtil.e(e.toString());
-		}
-
+	private void setRedBg(View v) {
+		v.setBackgroundResource(R.color.red);
 	}
+
+	// private void setPriceType(int type) {
+	//
+	// if (price.length < 7) {
+	// return;
+	// }
+	// if (type == 1) {
+	//
+	// adapter.setPrice(price[0], price[4]);
+	// }
+	// if (type == 2) {
+	//
+	// adapter.setPrice(price[1], price[5]);
+	// }
+	// if (type == 3) {
+	//
+	// adapter.setPrice(price[2], price[6]);
+	// }
+	// if (type == 4) {
+	//
+	// adapter.setPrice(price[3], price[7]);
+	// }
+	//
+	// adapter.notifyDataSetChanged();
+	// }
+
+	// @Override
+	// public void onItemClick(AdapterView<?> arg0, View view, int position,
+	// long arg3) {
+	// LogUtil.e("onItemClick");
+	// Map<String, String> map = new HashMap<String, String>();
+	// if (adapter.getList() == null || position < 0
+	// || position >= adapter.getList().size()) {
+	// LogUtil.e("position = " + position);
+	// return;
+	// }
+	//
+	// map.put("tid", tid);
+	// map.put("type", type);
+	// map.put("date", date);
+	// map.put("week", week);
+	// com.jm.entity.YuYue y = (com.jm.entity.YuYue) adapter.getItem(position);
+	// map.put("price", y.getPrice());
+	// map.put("rebate", y.getDiscount());
+	// try {
+	// YuYueItem yy = (YuYueItem) view;
+	// map.put("discount", ((TextView) yy.findViewById(R.id.tv_discount))
+	// .getText().toString().trim());
+	// map.put("time", ((TextView) yy.findViewById(R.id.tv_time))
+	// .getText().toString().trim());
+	// StartActivityContController.goPage(YuYueUI.this, YuYueCheck.class,
+	// true, map);
+	// } catch (Exception e) {
+	// LogUtil.e(e.toString());
+	// }
+	//
+	// }
 }

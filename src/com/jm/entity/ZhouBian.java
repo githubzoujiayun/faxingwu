@@ -1,11 +1,14 @@
 package com.jm.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jm.connection.ListItem;
+import com.jm.util.JSONUtil;
+import com.jm.util.LogUtil;
 
 public class ZhouBian implements ListItem {
 
@@ -27,8 +30,7 @@ public class ZhouBian implements ListItem {
 	public String store_name = "";
 	public String status = "";
 	public String store_address = "";
-	public String str_works_list = "";
-	public ArrayList<Hair> works_list = new ArrayList<Hair>();
+	public List<Hair> works_list = new ArrayList<Hair>();
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -77,11 +79,11 @@ public class ZhouBian implements ListItem {
 		if (json.has("store_address")) {
 			this.store_address = json.getString("store_address");
 		}
-		if (json.has("str_works_list")) {
-			this.str_works_list = json.getString("str_works_list");
+		if (json.has("works_list")) {
+			this.works_list = JSONUtil.getList(json, "works_list", new Hair());
 		}
 		if (json.has("status")) {
-			this.str_works_list = json.getString("status");
+			this.status = json.getString("status");
 		}
 
 	}

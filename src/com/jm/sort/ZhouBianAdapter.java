@@ -9,23 +9,27 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jm.entity.ZhouBian;
 import com.jm.fxw.R;
+import com.jm.view.HorizontalListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 
+	private SmallImageAdapter likeadapter;
+	private HorizontalListView likeGallery;
 	private LayoutInflater inflater;
 	private List<ZhouBian> mlist;
 	private boolean isProgress = false;
+	private Context context;
 
 	public ZhouBianAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<ZhouBian>();
+		this.context = context;
 	}
 
 	public boolean isProgress() {
@@ -100,7 +104,8 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 			ImageLoader.getInstance().displayImage(type.head_photo,
 					(ImageView) view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type.username);
-
+			((TextView) view.findViewById(R.id.tv_3_2)).setText(type.distance);
+			
 			if (type.type.equals("2")) {
 				((TextView) view.findViewById(R.id.tv_2_1)).setText("用户评价("
 						+ type.assess_num + ")");
@@ -113,6 +118,18 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 					((TextView) view.findViewById(R.id.tv_4_1))
 							.setVisibility(View.GONE);
 				}
+				view.findViewById(R.id.lin_gallery).setVisibility(View.VISIBLE);
+
+				likeadapter = new SmallImageAdapter(context);
+				likeGallery = (HorizontalListView) view
+						.findViewById(R.id.his_gallery);
+				likeGallery.setAdapter(likeadapter);
+				likeadapter.setImageList(type.works_list);
+				if (type.works_list == null || type.works_list.size() == 0) {
+					view.findViewById(R.id.lin_gallery)
+							.setVisibility(View.GONE);
+				}
+
 			} else {
 				((TextView) view.findViewById(R.id.tv_2_1)).setText("用户提问("
 						+ type.problem_num + ")");
@@ -129,6 +146,7 @@ public class ZhouBianAdapter extends BaseAdapter implements OnClickListener {
 			if (!type.status.equals("1")) {
 				view.findViewById(R.id.iv_renzheng).setVisibility(View.GONE);
 			}
+			likeadapter.notifyDataSetChanged();
 			return view;
 		}
 	}

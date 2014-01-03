@@ -73,7 +73,8 @@ public class Constant {
 
 	public final static String URN_YUYUCHANGE = "http://wap.faxingw.cn/index.php?m=Reserve&a=edit_status";
 	public final static String URN_TIPS_INFO = "http://wap.faxingw.cn/index.php?m=Reserve&a=notice_show";
-
+	public final static String URN_OTHERWILLDO = "http://wap.faxingw.cn/index.php?m=Willdo&a=otherWillDoItem";
+	
 	public final static String URN_SETTIPS_INFO = "http://wap.faxingw.cn/index.php?m=Reserve&a=notice";
 
 	public final static String URN_MSG_PUSH = "http://wap.faxingw.cn/index.php?m=Message&a=push_andrews";
