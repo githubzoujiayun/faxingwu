@@ -84,9 +84,9 @@
             android:id="@+id/lin_zuopin"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
+            android:layout_marginLeft="5sp"
             android:background="@drawable/shape_blue"
             android:gravity="center"
-            android:layout_marginLeft="5sp"
             android:orientation="horizontal" >
 
             <TextView
@@ -306,76 +306,45 @@
         android:layout_width="fill_parent"
         android:layout_height="40sp"
         android:layout_margin="5sp"
+        android:background="@drawable/shape_white"
         android:gravity="center"
         android:orientation="horizontal" >
 
-        <LinearLayout
+        <Button
             android:id="@+id/lin_xi"
             android:layout_width="fill_parent"
             android:layout_height="40sp"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:text="洗剪吹" >
+        </Button>
 
-            <TextView
-                android:id="@+id/btn_t1"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="洗剪吹"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
             android:id="@+id/lin_tang"
             android:layout_width="fill_parent"
             android:layout_height="40sp"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:text="烫发" >
+        </Button>
 
-            <TextView
-                android:id="@+id/btn_t2"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="烫发"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
             android:id="@+id/lin_ran"
             android:layout_width="fill_parent"
             android:layout_height="40sp"
             android:layout_weight="1"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:text="染发" >
+        </Button>
 
-            <TextView
-                android:id="@+id/btn_t3"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="染发"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
             android:id="@+id/lin_hu"
             android:layout_width="fill_parent"
             android:layout_height="40sp"
             android:layout_weight="1"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/btn_t4"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:text="护理"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-        </LinearLayout>
+            android:orientation="vertical"
+            android:text="护理" >
+        </Button>
     </LinearLayout>
 
     <LinearLayout
@@ -397,7 +366,6 @@
                 android:id="@+id/btn_r1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-               
                 android:gravity="center"
                 android:textColor="@color/white" />
 
@@ -422,7 +390,6 @@
                 android:id="@+id/btn_r2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-               
                 android:gravity="center"
                 android:textColor="@color/white" />
 
@@ -447,7 +414,6 @@
                 android:id="@+id/btn_r3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-               
                 android:gravity="center"
                 android:textColor="@color/white" />
 
@@ -472,7 +438,6 @@
                 android:id="@+id/btn_r4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-               
                 android:gravity="center"
                 android:textColor="@color/white" />
 
@@ -497,7 +462,6 @@
                 android:id="@+id/btn_r5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-               
                 android:gravity="center"
                 android:textColor="@color/white" />
 
@@ -522,7 +486,6 @@
                 android:id="@+id/btn_r6"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-               
                 android:gravity="center"
                 android:textColor="@color/white" />
 
@@ -547,7 +510,6 @@
                 android:id="@+id/btn_r7"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-               
                 android:gravity="center"
                 android:textColor="@color/white" />
 

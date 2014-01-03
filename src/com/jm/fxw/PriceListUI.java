@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,7 @@ import com.jm.session.SessionManager;
 import com.jm.sort.UserPriceAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 
 public class PriceListUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
@@ -40,7 +42,7 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.pricelist);
 		init();
@@ -50,14 +52,14 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "查看价格页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "查看价格页面");
 	}
@@ -70,8 +72,7 @@ public class PriceListUI extends Activity implements OnClickListener,
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
-		resetTypeButtonBg();
-		((TextView) findViewById(R.id.btn_t1)).setTextColor(Constant.color_RoseRed);
+		ChangeType(1, findViewById(R.id.lin_price_xi));
 		((TextView) findViewById(R.id.tv_rightTop)).setText(SessionManager
 				.getInstance().getCity());
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -82,19 +83,6 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 	}
 
-	private void resetTypeButtonBg() {
-
-		((TextView) findViewById(R.id.btn_t1)).setTextColor(Constant.color_Black);
-
-		((TextView) findViewById(R.id.btn_t2)).setTextColor(Constant.color_Black);
-
-		((TextView) findViewById(R.id.btn_t3)).setTextColor(Constant.color_Black);
-
-		((TextView) findViewById(R.id.btn_t4)).setTextColor(Constant.color_Black);
-
-	
-	}
-
 	/*
 	 * 读取同城列表
 	 */
@@ -102,7 +90,7 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			
+
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -153,34 +141,39 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
 			this.finish();
 			break;
 		case R.id.lin_price_xi:
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t1)).setTextColor(Constant.color_RoseRed);
-			setPrice(1);
+			ChangeType(1, v);
 			break;
 		case R.id.lin_price_tang:
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t2)).setTextColor(Constant.color_RoseRed);
-			setPrice(2);
+			ChangeType(2, v);
 			break;
 		case R.id.lin_price_ran:
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t3)).setTextColor(Constant.color_RoseRed);
-			setPrice(3);
+			ChangeType(3, v);
 			break;
 		case R.id.lin_price_hu:
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t4)).setTextColor(Constant.color_RoseRed);
-			setPrice(4);
+			ChangeType(4, v);
 			break;
 
 		}
+	}
+
+	private void ChangeType(int i, View v) {
+
+		setPrice(i);
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.lin_price_xi));
+		blist.add(findViewById(R.id.lin_price_tang));
+		blist.add(findViewById(R.id.lin_price_ran));
+		blist.add(findViewById(R.id.lin_price_hu));
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
+
 	}
 
 	private void setPrice(int i) {
@@ -207,7 +200,7 @@ public class PriceListUI extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		
+
 		if (showlast) {
 			return;
 		}
@@ -227,7 +220,6 @@ public class PriceListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		
 
 	}
 }

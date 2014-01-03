@@ -56,69 +56,37 @@
             android:gravity="center"
             android:orientation="horizontal" >
 
-            <LinearLayout
+            <Button
                 android:id="@+id/lin_price_xi"
                 android:layout_width="fill_parent"
                 android:layout_height="40sp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:text="洗剪吹" />
 
-                <TextView
-                    android:id="@+id/btn_t1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:text="洗剪吹"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
+            <Button
                 android:id="@+id/lin_price_tang"
                 android:layout_width="fill_parent"
                 android:layout_height="40sp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:text="烫发" />
 
-                <TextView
-                    android:id="@+id/btn_t2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:text="烫发"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
+            <Button
                 android:id="@+id/lin_price_ran"
                 android:layout_width="fill_parent"
                 android:layout_height="40sp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:text="染发" />
 
-                <TextView
-                    android:id="@+id/btn_t3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:text="染发"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
+            <Button
                 android:id="@+id/lin_price_hu"
                 android:layout_width="fill_parent"
                 android:layout_height="40sp"
                 android:layout_weight="1"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/btn_t4"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:text="护理"
-                    android:textColor="@color/white" />
-            </LinearLayout>
+                android:orientation="vertical"
+                android:text="护理" />
         </LinearLayout>
 
         <ListView

@@ -1,12 +1,13 @@
 package com.jm.fxw;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
-import net.tsz.afinal.FinalBitmap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,11 +28,11 @@ import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
-import com.jm.session.SessionManager;
 import com.jm.sort.YuYueAdapter;
 import com.jm.sort.YuYueItem;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
+import com.jm.util.WidgetUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
@@ -125,10 +126,10 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		if (hid == null || hid.equals("")) {
 			LogUtil.e("该页面为预约发型");
 		}
-		resetTypeButtonBg();
+
+		ChangeType("洗剪吹", 1, findViewById(R.id.lin_xi));
 		resetTimeButtonBg();
-		((TextView) findViewById(R.id.btn_t1))
-				.setTextColor(Constant.color_RoseRed);
+
 		findViewById(R.id.lin_d1).setBackgroundResource(R.color.red);
 		Date dt = new Date();
 		((TextView) findViewById(R.id.btn_d1)).setText(getWeekOfDate(dt, 0));
@@ -299,38 +300,24 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 
 		case R.id.lin_xi:
 			// 用户点击洗剪吹
-			type = "洗剪吹";
-			setPriceType(1);
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t1))
-					.setTextColor(Constant.color_RoseRed);
+
+			ChangeType("洗剪吹", 1, v);
 			break;
 
 		case R.id.lin_tang:
 			// 用户点击烫发
-			type = "烫发";
-			setPriceType(2);
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t2))
-					.setTextColor(Constant.color_RoseRed);
+			ChangeType("烫发", 2, v);
 			break;
 
 		case R.id.lin_ran:
 			// 用户点击染发
-			type = "染发";
-			setPriceType(3);
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t3))
-					.setTextColor(Constant.color_RoseRed);
+
+			ChangeType("染发", 3, v);
 			break;
 
 		case R.id.lin_hu:
 			// 用户点击护理
-			type = "护理";
-			setPriceType(4);
-			resetTypeButtonBg();
-			((TextView) findViewById(R.id.btn_t4))
-					.setTextColor(Constant.color_RoseRed);
+			ChangeType("护理", 4, v);
 			break;
 
 		case R.id.lin_d1:
@@ -376,6 +363,20 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 			setRedBg(v);
 			break;
 		}
+
+	}
+
+	private void ChangeType(String string, int i, View v) {
+
+		type = string;
+		setPriceType(i);
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.lin_xi));
+		blist.add(findViewById(R.id.lin_tang));
+		blist.add(findViewById(R.id.lin_ran));
+		blist.add(findViewById(R.id.lin_hu));
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
 
 	}
 
@@ -440,17 +441,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		}
 
 		adapter.notifyDataSetChanged();
-	}
-
-	private void resetTypeButtonBg() {
-		((TextView) findViewById(R.id.btn_t1))
-				.setTextColor(Constant.color_Black);
-		((TextView) findViewById(R.id.btn_t2))
-				.setTextColor(Constant.color_Black);
-		((TextView) findViewById(R.id.btn_t3))
-				.setTextColor(Constant.color_Black);
-		((TextView) findViewById(R.id.btn_t4))
-				.setTextColor(Constant.color_Black);
 	}
 
 	private void resetTimeButtonBg() {
