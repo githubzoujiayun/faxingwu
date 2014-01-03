@@ -37,6 +37,8 @@ public class PushService extends Service {
 
 	private int id = 0;
 
+	public static boolean isPush = true;
+
 	@Override
 	public IBinder onBind(Intent arg0) {
 		// We don't provide binding, so return null
@@ -51,7 +53,9 @@ public class PushService extends Service {
 			@Override
 			public void run() {
 				if (checkNetworkInfo()) {
-					checkRese();
+					if (isPush) {
+						checkRese();
+					}
 				}
 			}
 		}, 300 * 1000, 300 * 1000);
