@@ -103,7 +103,7 @@
             android:paddingLeft="3sp"
             android:paddingRight="3sp"
             android:scaleType="fitXY"
-            android:text="预约"
+            android:text="   预 约   "
             android:textColor="@color/white" />
     </LinearLayout>
 

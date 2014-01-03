@@ -39,7 +39,7 @@
                 android:layout_marginRight="5sp"
                 android:background="@drawable/shape_white"
                 android:inputType="numberDecimal"
-                android:maxLength="4"
+                android:maxLength="3"
                 android:paddingLeft="5sp"
                 android:textColor="@color/black"
                 android:textSize="13dp" >

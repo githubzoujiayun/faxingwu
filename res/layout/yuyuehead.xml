@@ -397,7 +397,7 @@
 
             <LinearLayout
                 android:id="@+id/lin_yuyuehair"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
                 android:gravity="center"
@@ -420,45 +420,49 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="预约如图所示的发型"
+                    android:text="预约上图所示的发型"
                     android:textColor="@color/rosered" />
             </LinearLayout>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/yuyuejiage"
                 android:layout_width="fill_parent"
-                android:layout_height="30sp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="2sp"
+                android:layout_weight="1"
+                android:textColor="@color/black2"
+                android:textSize="14sp" >
+            </TextView>
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
-                    android:layout_weight="1"
-                    android:text="预约时间"
-                    android:textColor="@color/black2"
-                    android:textSize="14sp" >
-                </TextView>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/zhekoujiage"
                 android:layout_width="fill_parent"
-                android:layout_height="30sp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="2sp"
+                android:layout_weight="1"
+                android:textColor="@color/rosered"
+                android:textSize="14sp" >
+            </TextView>
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10sp"
-                    android:layout_marginRight="10sp"
-                    android:layout_weight="1"
-                    android:text="请选择预约时间"
-                    android:textColor="@color/black2"
-                    android:textSize="14sp" >
-                </TextView>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/yuyueshijian"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:layout_marginTop="2sp"
+                android:layout_weight="1"
+                android:text="请选择预约时间"
+                android:textColor="@color/black2"
+                android:textSize="14sp" >
+            </TextView>
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -795,6 +799,17 @@
                     android:textSize="14sp" >
                 </Button>
             </LinearLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="40sp"
+                android:layout_margin="10sp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_red"
+                android:text="确 定 预 约"
+                android:textColor="@color/white"
+                android:textSize="14sp" >
+            </Button>
         </LinearLayout>
     </ScrollView>
 
