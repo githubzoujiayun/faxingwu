@@ -219,7 +219,9 @@ public class YuYueCheck extends FinalActivity implements OnClickListener {
 				try {
 					((TextView) findViewById(R.id.tv_username)).setText(result
 							.getString("username"));
-					ImageLoader.getInstance().displayImage(result.getString("head_photo"), (ImageView) findViewById(R.id.iv_minfouserpic));
+					ImageLoader.getInstance().displayImage(
+							result.getString("head_photo"),
+							(ImageView) findViewById(R.id.iv_minfouserpic));
 					((TextView) findViewById(R.id.tv_dname)).setText("µÍ√˚:"
 							+ result.getString("store_name"));
 					((TextView) findViewById(R.id.tv_address)).setText("µÿ÷∑:"

@@ -81,7 +81,6 @@
         android:orientation="horizontal" >
 
         <LinearLayout
-            android:id="@+id/lin_zuopin"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginLeft="5sp"
@@ -303,6 +302,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/lin_yuyuetype"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
         android:layout_margin="5sp"
@@ -345,6 +345,53 @@
             android:orientation="vertical"
             android:text="护理" >
         </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lin_yuyuehair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_white" >
+
+            <ImageView
+                android:id="@+id/iv_yuyuehair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1sp"
+                android:background="#ffffff"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约如图所示的发型"
+            android:textColor="@color/rosered" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="30sp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:text="请选择预约时间"
+            android:textColor="@color/black2"
+            android:textSize="14sp" >
+        </TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -521,54 +568,6 @@
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="40sp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="预约时间"
-            android:textColor="@color/black2"
-            android:textSize="14sp" >
-        </TextView>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:singleLine="true"
-            android:text="平时价格"
-            android:textColor="@color/black2"
-            android:textSize="14sp" >
-        </TextView>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:singleLine="true"
-            android:text="折扣价格"
-            android:textColor="@color/black2"
-            android:textSize="14sp" >
-        </TextView>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:singleLine="true"
-            android:textColor="@color/black2" >
-        </TextView>
     </LinearLayout>
 
 </LinearLayout>

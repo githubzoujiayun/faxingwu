@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
+import net.tsz.afinal.FinalBitmap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,21 +36,6 @@ import com.jm.util.StartActivityContController;
 import com.jm.util.WidgetUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-/**
- * Android实现日历控件
- * 
- * @Description: Android实现日历控件
- * 
- * @File: MainActivity.java
- * 
- * @Package com.calendar.demo
- * 
- * @Author Hanyonglu
- * 
- * @Date 2012-6-21 上午11:42:32
- * 
- * @Version V1.0
- */
 public class YuYueUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private ListView yuyuelist;
@@ -124,7 +110,12 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		}
 		hid = i.getStringExtra("hid");
 		if (hid == null || hid.equals("")) {
-			LogUtil.e("该页面为预约发型");
+			YuyueType();
+		} else {
+			YuyueHair();
+			ImageLoader.getInstance().displayImage(
+					i.getStringExtra("work_image"),
+					(ImageView) findViewById(R.id.iv_hairinfo_headphoto));
 		}
 
 		ChangeType("洗剪吹", 1, findViewById(R.id.lin_xi));
@@ -171,6 +162,22 @@ public class YuYueUI extends FinalActivity implements OnClickListener,
 		findViewById(R.id.lin_zuopin).setOnClickListener(this);
 		findViewById(R.id.lin_pingjia).setOnClickListener(this);
 		setDateAndWeek(1);
+	}
+
+	private void YuyueType() {
+
+		LogUtil.e("该页面为预约发型师");
+		findViewById(R.id.lin_yuyuetype).setVisibility(View.VISIBLE);
+		findViewById(R.id.lin_yuyuehair).setVisibility(View.GONE);
+
+	}
+
+	private void YuyueHair() {
+
+		LogUtil.e("该页面为预约发型");
+		findViewById(R.id.lin_yuyuetype).setVisibility(View.GONE);
+		findViewById(R.id.lin_yuyuehair).setVisibility(View.VISIBLE);
+
 	}
 
 	/*
