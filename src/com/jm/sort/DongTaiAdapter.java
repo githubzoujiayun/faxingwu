@@ -23,7 +23,6 @@ public class DongTaiAdapter extends BaseAdapter {
 	private ArrayList<Hair> hair_list;
 	private LayoutInflater inflater;
 	private List<DongTai> mlist;
-	private Context context;
 	private DongTai dongtai;;
 	private boolean isProgress = false;
 
@@ -31,13 +30,14 @@ public class DongTaiAdapter extends BaseAdapter {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<DongTai>();
 		hair_list = new ArrayList<Hair>();
-		this.context = context;
 	}
 
 	public List<DongTai> getHairList() {
 		return mlist;
 	}
-
+	public List<Hair> getHList() {
+		return hair_list;
+	}
 	public boolean isProgress() {
 		return isProgress;
 	}
@@ -58,11 +58,8 @@ public class DongTaiAdapter extends BaseAdapter {
 
 	public void appendHairList(List<Hair> list) {
 		if (hair_list == null) {
-			LogUtil.e("hair_list = new ArrayList<Hair>();");
 			hair_list = new ArrayList<Hair>();
-		} else {
-			LogUtil.e("hair_list.size = " + hair_list.size());
-		}
+		} 
 		hair_list.addAll(list);
 	}
 
@@ -104,9 +101,6 @@ public class DongTaiAdapter extends BaseAdapter {
 			DongTaiItem view = (DongTaiItem) inflater.inflate(
 					R.layout.dongtai_list, null);
 			dongtai = mlist.get(position);
-			view.setHairList(hair_list, Integer.parseInt(dongtai.getWork_id()));
-			view.setDongTai(dongtai);
-			view.initView();
 			ImageLoader.getInstance().displayImage(dongtai.getWork_image(),
 					(ImageView) view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_utext)).setText(dongtai

@@ -1,5 +1,6 @@
 package com.jm.fxw;
 
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,12 +8,15 @@ import java.util.List;
 import java.util.Map;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
@@ -31,7 +35,7 @@ import com.jm.util.WidgetUtil;
 
 @SuppressLint("ResourceAsColor")
 public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
-		OnClickListener, OnScrollListener {
+		OnClickListener, OnScrollListener, OnItemClickListener {
 	private GridView ListView;
 	private DongTaiAdapter adapter;
 	private List<DongTai> mlist = new ArrayList<DongTai>();
@@ -127,6 +131,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 					pageCount = 0;
 					adapter.clear();
 					baseDate = false;
+					ListView.setOnItemClickListener(DongTaiUI.this);
 				}
 				try {
 
@@ -239,5 +244,20 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 			}
 		}
 
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		if (adapter.getHairList() == null || position < 0
+				|| position >= adapter.getHairList().size()) {
+			LogUtil.e("position = " + position);
+			return;
+		}
+		DongTai dongtai = adapter.getHairList().get(position);
+		Intent intent = new Intent(DongTaiUI.this, HairInfoUI.class);
+		intent.putExtra("hlist", (Serializable) adapter.getHList());
+		intent.putExtra("id", dongtai.getWork_id());
+		startActivity(intent);
 	}
 }
