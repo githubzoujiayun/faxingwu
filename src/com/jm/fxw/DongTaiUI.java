@@ -49,8 +49,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dongtailist);
 		ListView = (GridView) findViewById(R.id.staggeredGridView);
-		adapter = new DongTaiAdapter(this, getWindow().getWindowManager()
-				.getDefaultDisplay().getWidth());
+		adapter = new DongTaiAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnScrollListener(this);
 		init();
@@ -205,7 +204,9 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		blist.add(findViewById(R.id.btn_tuijian));
 		WidgetUtil.ResetAllButton(blist);
 		WidgetUtil.setChangeButton(v);
-		adapter.clear();
+		if (!baseDate) {
+			adapter.clear();
+		}
 		mlist.clear();
 		hlist.clear();
 		condition = urnAllDongtai;

@@ -26,13 +26,11 @@ public class DongTaiAdapter extends BaseAdapter {
 	private Context context;
 	private DongTai dongtai;;
 	private boolean isProgress = false;
-	private int screenwidth = 0;
 
-	public DongTaiAdapter(Context context, int screenwidth) {
+	public DongTaiAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<DongTai>();
 		hair_list = new ArrayList<Hair>();
-		screenwidth = screenwidth;
 		this.context = context;
 	}
 

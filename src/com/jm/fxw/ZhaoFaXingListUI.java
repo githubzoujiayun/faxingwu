@@ -61,7 +61,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		ListView = (GridView) findViewById(R.id.zhaofaxing_hairgridview);
 		adapter = new HairAdapter(this);
 		ListView.setAdapter(adapter);
-		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
 		getDataFromDataBase();
 		changeCondition(getCondition(1), findViewById(R.id.btn_leftType));
@@ -92,6 +91,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 			LogUtil.e("SQLException + " + e.toString());
 		}
 		adapter.setHairList(baseHairList);
+		LogUtil.e("从本地读取..." + baseHairList.size() + "条数据");
 		adapter.notifyDataSetChanged();
 
 	}
@@ -104,7 +104,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		((TextView) findViewById(R.id.tv_mainhead)).setText(i
 				.getStringExtra("hairName"));
 		typeBySex = i.getBooleanExtra("typeBySex", false);
-		LogUtil.e("typeBySex = " + typeBySex);
 		if (typeBySex) {
 			((Button) findViewById(R.id.btn_leftType)).setText("女生");
 			((Button) findViewById(R.id.btn_rightType)).setText("男生");
@@ -175,10 +174,8 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		}
 
 		protected void onPostExecute(Response result) {
-
 			isloading = false;
 			adapter.setProgress(false);
-
 			if (result == null) {
 				return;
 			}
@@ -188,9 +185,9 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 					pageCount = 0;
 					adapter.clear();
 					baseDate = false;
+					ListView.setOnItemClickListener(ZhaoFaXingListUI.this);
 				}
 				try {
-
 					pageCount = Integer
 							.parseInt(result.getString("page_count"));
 				} catch (Exception e) {
@@ -256,8 +253,9 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		blist.add(findViewById(R.id.btn_rightType));
 		WidgetUtil.ResetAllButton(blist);
 		WidgetUtil.setChangeButton(v);
-		adapter.clear();
-		this.mlist.clear();
+		if (!baseDate) {
+			adapter.clear();
+		}
 		this.condition = condition;
 		page = 1;
 		pageCount = 0;

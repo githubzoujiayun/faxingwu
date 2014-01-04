@@ -41,7 +41,7 @@ public class ClientApp extends Application {
 		sm.setLng(Double.valueOf(lng));
 		initCacheDir();
 		DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-				.cacheInMemory(false).cacheOnDisc(true).build();
+				.cacheInMemory(true).cacheOnDisc(true).build();
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
 				getApplicationContext()).defaultDisplayImageOptions(
 				defaultOptions).build();
