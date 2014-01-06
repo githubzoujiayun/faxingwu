@@ -94,14 +94,14 @@
         </LinearLayout>
 
         <GridView
-            android:id="@+id/staggeredGridView"
+            android:id="@+id/gv_dongtai"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
             android:background="@color/bg"
             android:fadingEdge="none"
             android:footerDividersEnabled="false"
-            android:numColumns="2" >
+            android:numColumns="2"
+            android:scrollbars="none" >
         </GridView>
     </LinearLayout>
 

@@ -44,7 +44,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:background="@color/bg" 
+        android:background="@color/bg"
         android:scrollbars="none" >
 
         <LinearLayout
@@ -127,7 +127,7 @@
                             android:id="@+id/btn_btn"
                             android:layout_width="fill_parent"
                             android:layout_height="37sp"
-                            android:background="@drawable/shape_blue"
+                            android:background="@drawable/shape_red"
                             android:textColor="@color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -264,6 +264,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lin_tip"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15sp"
@@ -280,7 +281,7 @@
                         android:layout_marginRight="3sp"
                         android:layout_marginTop="5sp"
                         android:text="提示信息："
-                        android:textColor="#000000"
+                        android:textColor="@color/rosered"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -298,7 +299,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1."
-                            android:textColor="#000000"
+                            android:textColor="@color/rosered"
                             android:textSize="14sp" />
 
                         <TextView
@@ -325,7 +326,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2."
-                            android:textColor="#000000"
+                            android:textColor="@color/rosered"
                             android:textSize="14sp" />
 
                         <TextView
@@ -352,7 +353,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="3."
-                            android:textColor="#000000"
+                            android:textColor="@color/rosered"
                             android:textSize="14sp" />
 
                         <TextView
@@ -379,7 +380,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="4."
-                            android:textColor="#000000"
+                            android:textColor="@color/rosered"
                             android:textSize="14sp" />
 
                         <TextView
@@ -406,7 +407,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5."
-                            android:textColor="#000000"
+                            android:textColor="@color/rosered"
                             android:textSize="14sp" />
 
                         <TextView

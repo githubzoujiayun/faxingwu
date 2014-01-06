@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.jm.entity.DongTai;
 import com.jm.entity.Hair;
 import com.jm.fxw.R;
-import com.jm.util.LogUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class DongTaiAdapter extends BaseAdapter {
@@ -35,9 +34,11 @@ public class DongTaiAdapter extends BaseAdapter {
 	public List<DongTai> getHairList() {
 		return mlist;
 	}
+
 	public List<Hair> getHList() {
 		return hair_list;
 	}
+
 	public boolean isProgress() {
 		return isProgress;
 	}
@@ -59,7 +60,7 @@ public class DongTaiAdapter extends BaseAdapter {
 	public void appendHairList(List<Hair> list) {
 		if (hair_list == null) {
 			hair_list = new ArrayList<Hair>();
-		} 
+		}
 		hair_list.addAll(list);
 	}
 
@@ -108,8 +109,6 @@ public class DongTaiAdapter extends BaseAdapter {
 			if (dongtai.getContent().toString().trim().equals("")) {
 				view.findViewById(R.id.tv_utext).setVisibility(View.GONE);
 			}
-			((TextView) view.findViewById(R.id.tv_utime)).setText(dongtai
-					.getAdd_time());
 			StringBuffer sb = new StringBuffer();
 			sb.append(dongtai.getCollect_num());
 			((Button) view.findViewById(R.id.btn_dongtai_info)).setText(sb
@@ -126,12 +125,11 @@ public class DongTaiAdapter extends BaseAdapter {
 	public void clear() {
 		if (mlist != null) {
 			mlist.clear();
-			notifyDataSetChanged();
 		}
 		if (hair_list != null) {
 			hair_list.clear();
-			notifyDataSetChanged();
 		}
+		notifyDataSetChanged();
 
 	}
 

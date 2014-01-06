@@ -117,6 +117,7 @@
             android:layout_height="fill_parent"
             android:divider="@drawable/xian"
             android:dividerHeight="2px"
+            android:focusable="false"
             android:fadingEdge="none"
             android:footerDividersEnabled="false" >
         </ListView>

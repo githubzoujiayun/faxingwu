@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RatingBar;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
@@ -20,7 +21,6 @@ import com.jm.util.TispToastFactory;
 
 public class RatingUI extends Activity implements OnClickListener {
 
-	private SessionManager sm;
 	private String hid, oid;
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,20 +30,18 @@ public class RatingUI extends Activity implements OnClickListener {
 		oid = getIntent().getStringExtra("oid");
 		findViewById(R.id.btn_ok).setOnClickListener(this);
 		findViewById(R.id.btn_no).setOnClickListener(this);
-		sm = SessionManager.getInstance();
-
 	}
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "发表评价页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "发表评价页面");
 	}
@@ -57,12 +55,22 @@ public class RatingUI extends Activity implements OnClickListener {
 
 		private Map<String, Object> getMyReserveInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("uid", sm.getUserId());
+			map.put("uid", SessionManager.getInstance().getUserId());
 			map.put("assess_uid", hid);
 			map.put("order_id", oid);
-			map.put("service", ((RatingBar) findViewById(R.id.rb1)).getRating());
-			map.put("price", ((RatingBar) findViewById(R.id.rb2)).getRating());
-			map.put("milieu", ((RatingBar) findViewById(R.id.rb3)).getRating());
+
+			if (((RadioButton) findViewById(R.id.cb_haoping)).isChecked()) {
+
+				map.put("score", "1");
+			}
+			if (((RadioButton) findViewById(R.id.cb_haoping)).isChecked()) {
+
+				map.put("score", "2");
+			}
+			if (((RadioButton) findViewById(R.id.cb_haoping)).isChecked()) {
+
+				map.put("score", "3");
+			}
 			map.put("info", ((EditText) findViewById(R.id.comment)).getText()
 					.toString().trim());
 			return map;
@@ -93,7 +101,6 @@ public class RatingUI extends Activity implements OnClickListener {
 		case R.id.btn_ok:
 			new CommentTask().execute();
 			break;
-
 		case R.id.btn_no:
 			finish();
 			break;

@@ -69,19 +69,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		((Button) findViewById(R.id.btn_jibenxinxi))
 				.setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_btn).setOnClickListener(this);
-		findViewById(R.id.iv_minfouserpic).setOnClickListener(
-				new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(YuYueUI_User.this,
-								HisInfoUI.class);
-						intent.putExtra("uid", uid);
-						intent.putExtra("type", "2");
-						startActivity(intent);
-
-					}
-				});
 
 	}
 
@@ -142,25 +129,36 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 				findViewById(R.id.lin_nobasic_info).setVisibility(View.GONE);
 				findViewById(R.id.lin_yuyue_list).setVisibility(View.GONE);
 				if (!"".equals(result.getString("order_info"))) {
-
 					reserve = (Reserve) result.getObject("order_info",
-							new Reserve());					
-					ImageLoader.getInstance().displayImage(reserve.getHead_photo(),
-							(ImageView) findViewById(R.id.iv_minfouserpic));
-					((TextView) findViewById(R.id.tv_username)).setText(reserve
-							.getTo_username());
+							new Reserve());
+					if (reserve.getOrder_type().equals("2")) {
+						findViewById(R.id.iv_workpic).setVisibility(
+								View.VISIBLE);
+						ImageLoader.getInstance().displayImage(
+								reserve.getImage_path(),
+								(ImageView) findViewById(R.id.iv_workpic));
+						((TextView) findViewById(R.id.tv_type))
+								.setText("预约如图发型");
+						findViewById(R.id.lin_username)
+								.setVisibility(View.GONE);
+					} else {
+						findViewById(R.id.iv_workpic).setVisibility(View.GONE);
+						((TextView) findViewById(R.id.tv_type)).setText(reserve
+								.getReserver_type());
+						((TextView) findViewById(R.id.tv_username))
+								.setText(reserve.getTo_username());
+					}
 					((TextView) findViewById(R.id.tv_dname)).setText(reserve
 							.getStore_name());
 					((TextView) findViewById(R.id.tv_dphone)).setText(reserve
-							.getMy_tel());
+							.getTelephone());
 					((TextView) findViewById(R.id.tv_daddress)).setText(reserve
 							.getStore_address());
 					((TextView) findViewById(R.id.tv_time)).setText(reserve
 							.getReserve_time() + reserve.getReserve_hour());
-					((TextView) findViewById(R.id.tv_type)).setText(reserve
-							.getReserver_type());
-					((TextView) findViewById(R.id.tv_price)).setText(reserve
-							.getPrice());
+
+					((TextView) findViewById(R.id.tv_price)).setText("价格:"
+							+ reserve.getPrice());
 					setBtnByStaues(reserve.getStatus());
 					uid = reserve.getTo_uid();
 					new getTipsInfo().execute();
@@ -169,6 +167,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 				}
 
 			} else {
+				findViewById(R.id.lin_basic_info).setVisibility(View.GONE);
 				findViewById(R.id.lin_nobasic_info).setVisibility(View.VISIBLE);
 			}
 		}
@@ -176,7 +175,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 	}
 
 	private void setBtnByStaues(String price) {
-		findViewById(R.id.lin_btn).setVisibility(View.GONE);
+		findViewById(R.id.btn_btn).setVisibility(View.GONE);
 		// 0(自己取消) 都不显示
 		// 1(进行中) 只能取消
 		// 2(已完成，未评价) 只能评价
@@ -185,11 +184,11 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 		if ("0".equals(price)) {
 		}
 		if ("1".equals(price)) {
-			findViewById(R.id.lin_btn).setVisibility(View.VISIBLE);
+			findViewById(R.id.btn_btn).setVisibility(View.VISIBLE);
 			((Button) findViewById(R.id.btn_btn)).setText("取消预约");
 		}
 		if ("2".equals(price)) {
-			findViewById(R.id.lin_btn).setVisibility(View.VISIBLE);
+			findViewById(R.id.btn_btn).setVisibility(View.VISIBLE);
 			((Button) findViewById(R.id.btn_btn)).setText("消费评价");
 		}
 		if ("3".equals(price)) {
@@ -248,8 +247,8 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 					LogUtil.e(e.toString());
 				}
 			} else {
-				TispToastFactory.getToast(YuYueUI_User.this, result.getMsg())
-						.show();
+				findViewById(R.id.lin_tip).setVisibility(View.GONE);
+
 			}
 		}
 	}
@@ -347,7 +346,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			} else {
 				findViewById(R.id.lin_nobasic_info).setVisibility(View.VISIBLE);
 			}
-
 			new getCurrentYuYueInfo().execute();
 			break;
 		case R.id.btn_lishiyuyue:
@@ -361,6 +359,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			if (((Button) v).getText().equals("取消预约")) {
 				LogUtil.i("取消预约");
 				status = "0";
+				reserve = null;
 				new changeYuYueInfo().execute();
 			} else if (((Button) v).getText().equals("消费评价")) {
 				LogUtil.i("消费评价");

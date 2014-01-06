@@ -171,7 +171,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 		Intent intent = getIntent();
 		inthid = intent.getIntExtra("id", 0);
 		alist = (ArrayList<Hair>) intent.getSerializableExtra("hlist");
-		if (alist.size() == 0) {
+		if (alist == null || alist.size() == 0) {
 			finish();
 		}
 		imageUrls.clear();
@@ -362,7 +362,8 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			map.put("work_id", alist.get(galleryindex).getId());
 			map.put("long_service",
 					((EditText) dialogView.findViewById(R.id.et_sertime))
-							.getText().toString().trim()+"Сʱ");
+							.getText().toString().trim()
+							+ "Сʱ");
 			map.put("price",
 					((EditText) dialogView.findViewById(R.id.et_serprice))
 							.getText().toString().trim());

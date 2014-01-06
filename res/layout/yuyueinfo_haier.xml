@@ -44,7 +44,7 @@
         android:layout_width="fill_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:background="@color/bg" 
+        android:background="@color/bg"
         android:scrollbars="none" >
 
         <LinearLayout
@@ -234,14 +234,12 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="leixing"
                         android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="jiage"
                         android:textColor="@color/black" />
                 </LinearLayout>
             </LinearLayout>
@@ -259,7 +257,7 @@
                     android:layout_height="37sp"
                     android:layout_margin="5sp"
                     android:layout_weight="1"
-                    android:background="@drawable/shape_blue"
+                    android:background="@drawable/shape_red"
                     android:text="确定"
                     android:textColor="@color/white" />
 
@@ -269,7 +267,7 @@
                     android:layout_height="37sp"
                     android:layout_margin="5sp"
                     android:layout_weight="1"
-                    android:background="@drawable/shape_guanzhured"
+                    android:background="@drawable/shape_blue"
                     android:text="取消"
                     android:textColor="@color/white" />
             </LinearLayout>

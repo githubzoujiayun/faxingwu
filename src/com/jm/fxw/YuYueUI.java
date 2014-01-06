@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.AsyncTask;
@@ -15,6 +19,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,10 +27,10 @@ import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
-import com.jm.sort.YuYueItem;
+import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.PriceUtil;
-import com.jm.util.StartActivityContController;
+import com.jm.util.TispToastFactory;
 import com.jm.util.WidgetUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -33,6 +38,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 	private String tid, hid;
 	private String[] price;
 	private String date;
+	private String str_price, str_long_service;
+	private String str_rebate;
 	private String week;
 	private String type;
 	private List<View> blist;
@@ -70,6 +77,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 		super.onResume();
 		MobileProbe.onResume(this, "预约页面");
 		getUserInfo();
+
 	}
 
 	@Override
@@ -80,6 +88,100 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 
 	private void getUserInfo() {
 		new getUserInfo().execute();
+
+		new getUserPhone().execute();
+		new getTipsInfo().execute();
+	}
+
+	/*
+	 * 读取电话信息
+	 */
+	class getUserPhone extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		protected Map<String, Object> getInfoInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uid", SessionManager.getInstance().getUserId());
+			return map;
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn.executeAndParse(Constant.URN_GETUSERPHONE,
+					getInfoInqVal());
+		}
+
+		protected void onPostExecute(Response result) {
+			if (result == null) {
+				LogUtil.e("can't get userinfo");
+				return;
+			}
+			if (result.isSuccessful()) {
+				((EditText) findViewById(R.id.et_userphone)).setText(result
+						.getString("mobile"));
+
+			}
+		}
+	}
+
+	/*
+	 * 读取提示信息
+	 */
+	class getTipsInfo extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		protected Map<String, Object> getInfoInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uid", tid);
+			return map;
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn
+					.executeAndParse(Constant.URN_TIPS_INFO, getInfoInqVal());
+		}
+
+		protected void onPostExecute(Response result) {
+			if (result == null) {
+				LogUtil.e("can't get userinfo");
+				return;
+			}
+			if (result.isSuccessful()) {
+				try {
+					JSONArray alist = result.getJsonString("notice_info")
+							.getJSONArray("info");
+					((TextView) findViewById(R.id.tv_tip1))
+							.setText((CharSequence) alist.get(0));
+					findViewById(R.id.lin_tip1).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip2))
+							.setText((CharSequence) alist.get(1));
+					findViewById(R.id.lin_tip2).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip3))
+							.setText((CharSequence) alist.get(2));
+					findViewById(R.id.lin_tip3).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip4))
+							.setText((CharSequence) alist.get(3));
+					findViewById(R.id.lin_tip4).setVisibility(View.VISIBLE);
+					((TextView) findViewById(R.id.tv_tip5))
+							.setText((CharSequence) alist.get(4));
+					findViewById(R.id.lin_tip5).setVisibility(View.VISIBLE);
+				} catch (JSONException e) {
+					LogUtil.e(e.toString());
+				}
+			} else {
+				findViewById(R.id.lin_yuyuetip).setVisibility(View.GONE);
+
+			}
+		}
 	}
 
 	private void init() {
@@ -140,9 +242,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 		findViewById(R.id.lin_d6).setOnClickListener(this);
 		findViewById(R.id.lin_d7).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-		findViewById(R.id.lin_zuopin).setOnClickListener(this);
-		findViewById(R.id.lin_pingjia).setOnClickListener(this);
-
+		findViewById(R.id.btn_yuyuecheck).setOnClickListener(this);
+		findViewById(R.id.checkyuyue).setOnClickListener(this);
 		blist = new ArrayList<View>();
 		blist.add(findViewById(R.id.tv_time1));
 		blist.add(findViewById(R.id.tv_time2));
@@ -220,6 +321,8 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 	}
 
 	private void setPrice(String price, String rebate) {
+		this.str_price = price;
+		this.str_rebate = rebate;
 		((TextView) findViewById(R.id.yuyuejiage)).setText("平时价格:" + price
 				+ "元");
 		((TextView) findViewById(R.id.yuyuejiage)).getPaint().setFlags(
@@ -233,12 +336,13 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 	private void setPrice(String price, String rebate, String long_service) {
 		((TextView) findViewById(R.id.fuwushichang)).setText("服务时长:"
 				+ long_service);
+		this.str_long_service = long_service;
 		findViewById(R.id.fuwushichang).setVisibility(View.VISIBLE);
 		setPrice(price, rebate);
 	}
 
-	private void setTime(String rebate) {
-		((TextView) findViewById(R.id.yuyueshijian)).setText("预约时间:" + rebate);
+	private void setTime(String time) {
+		((TextView) findViewById(R.id.yuyueshijian)).setText("预约时间:" + time);
 
 	}
 
@@ -281,10 +385,10 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 							+ result.getString("store_address"));
 					((TextView) findViewById(R.id.tv_dname)).setText("店名:"
 							+ result.getString("store_name"));
-					((TextView) findViewById(R.id.tv_zuopin)).setText(result
-							.getString("works_num"));
-					((TextView) findViewById(R.id.tv_pingjia)).setText(result
-							.getString("assess_num"));
+					// ((TextView) findViewById(R.id.tv_zuopin)).setText(result
+					// .getString("works_num"));
+					// ((TextView) findViewById(R.id.tv_pingjia)).setText(result
+					// .getString("assess_num"));
 
 					price = result.getString("price_info").split("_");
 					ChangeType("洗剪吹", 1, findViewById(R.id.lin_xi));
@@ -299,19 +403,16 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 	public void onClick(View v) {
 		Map<String, String> map = new HashMap<String, String>();
 		switch (v.getId()) {
+		case R.id.btn_yuyuecheck:
+			checkValue();
+			break;
+		case R.id.checkyuyue:
+			findViewById(R.id.lin_check).setVisibility(View.VISIBLE);
+			findViewById(R.id.lin_yuyue).setVisibility(View.GONE);
+
+			break;
 		case R.id.btn_leftTop:
 			finish();
-			break;
-		case R.id.lin_pingjia:
-			map.put("uid", tid);
-			StartActivityContController.goPage(YuYueUI.this,
-					RatingListUI.class, true, map);
-			break;
-		case R.id.lin_zuopin:
-
-			map.put("uid", tid);
-			StartActivityContController.goPage(YuYueUI.this, WorkListUI.class,
-					false, map);
 			break;
 
 		case R.id.lin_xi:
@@ -474,23 +575,76 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 
 	}
 
-	public void onItemClick(View view, int position, long arg3) {
-		LogUtil.e("onItemClick");
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("tid", tid);
-		map.put("type", type);
-		map.put("date", date);
-		map.put("week", week);
-		// com.jm.entity.YuYue y = (com.jm.entity.YuYue)
-		// adapter.getItem(position);
-		// map.put("price", y.getPrice());
-		// map.put("rebate", y.getDiscount());
-		YuYueItem yy = (YuYueItem) view;
-		map.put("discount", ((TextView) yy.findViewById(R.id.tv_discount))
-				.getText().toString().trim());
-		map.put("time", ((TextView) yy.findViewById(R.id.tv_time)).getText()
-				.toString().trim());
-		StartActivityContController.goPage(YuYueUI.this, YuYueCheck.class,
-				true, map);
+	/**
+	 * 用户信息非空检测
+	 */
+	private void checkValue() {
+		if (((EditText) findViewById(R.id.et_username)).getText() == null
+				|| ((EditText) findViewById(R.id.et_username)).getText()
+						.toString().trim().equals("")) {
+			TispToastFactory.getToast(YuYueUI.this, "请输入姓名").show();
+			return;
+		}
+		if (((EditText) findViewById(R.id.et_userphone)).getText() == null
+				|| ((EditText) findViewById(R.id.et_userphone)).getText()
+						.toString().trim().equals("")) {
+			TispToastFactory.getToast(YuYueUI.this, "请输入手机号码").show();
+			return;
+		}
+		new submitYuYue().execute();
+	}
+
+	/*
+	 * 提交预约
+	 */
+	class submitYuYue extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		protected Map<String, Object> getInfoInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+
+			if (hid == null || "".equals(hid)) {
+				map.put("order_type", "1");
+				map.put("reserve_type", type);
+			} else {
+				map.put("order_type", "2");
+				map.put("work_id", hid);
+				map.put("long_service", str_long_service);
+			}
+			map.put("my_uid", SessionManager.getInstance().getUserId());
+			map.put("to_uid", tid);
+			map.put("reserve_time", date + week);
+			map.put("reserve_hour", time);
+			map.put("price", str_price);
+			map.put("rebate", str_rebate);
+			map.put("my_name", ((EditText) findViewById(R.id.et_username))
+					.getText().toString().trim());
+			map.put("my_tel", ((EditText) findViewById(R.id.et_userphone))
+					.getText().toString().trim());
+			return map;
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn.executeAndParse(Constant.URN_YUYUECHECK,
+					getInfoInqVal());
+		}
+
+		protected void onPostExecute(Response result) {
+			if (result == null) {
+				LogUtil.e("can't get userinfo");
+				return;
+			}
+			if (result.isSuccessful()) {
+				TispToastFactory.getToast(YuYueUI.this, result.getMsg()).show();
+				finish();
+			} else {
+				TispToastFactory.getToast(YuYueUI.this, result.getMsg()).show();
+			}
+		}
 	}
 }

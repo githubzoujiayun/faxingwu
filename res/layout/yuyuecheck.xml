@@ -55,23 +55,6 @@
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:layout_width="80sp"
-                android:layout_height="80sp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10sp"
-                android:layout_marginTop="5sp"
-                android:background="@drawable/shape_white" >
-
-                <ImageView
-                    android:id="@+id/iv_minfouserpic"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_margin="1sp"
-                    android:background="#ffffff"
-                    android:scaleType="fitXY" />
-            </LinearLayout>
-
-            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="90sp"
                 android:layout_weight="1"
@@ -113,6 +96,35 @@
                     android:textColor="#000000"
                     android:textSize="14sp" />
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_yuyuehair"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_white" >
+
+                <ImageView
+                    android:id="@+id/iv_yuyuehair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1sp"
+                    android:background="#ffffff"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="预约上图所示的发型"
+                android:textColor="@color/rosered" />
         </LinearLayout>
 
         <LinearLayout
@@ -336,9 +348,9 @@
             android:layout_marginRight="10sp"
             android:layout_marginTop="20sp"
             android:gravity="center"
-            android:text="确认预约信息"
+            android:text="请确认您的预约信息"
             android:textColor="@color/black2"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -395,16 +407,6 @@
                 android:textColor="@color/black2" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_yuyuecheck"
-            android:layout_width="fill_parent"
-            android:layout_height="37sp"
-            android:layout_margin="10sp"
-            android:background="@drawable/shape_red"
-            android:text="确定预约"
-            android:textColor="@color/white"
-            android:textSize="16sp" >
-        </Button>
     </LinearLayout>
 
 </LinearLayout>

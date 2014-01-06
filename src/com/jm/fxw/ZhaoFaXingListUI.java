@@ -62,6 +62,7 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 		adapter = new HairAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnScrollListener(this);
+		ListView.setOnItemClickListener(this);
 		getDataFromDataBase();
 		changeCondition(getCondition(1), findViewById(R.id.btn_leftType));
 
@@ -185,7 +186,6 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 					pageCount = 0;
 					adapter.clear();
 					baseDate = false;
-					ListView.setOnItemClickListener(ZhaoFaXingListUI.this);
 				}
 				try {
 					pageCount = Integer

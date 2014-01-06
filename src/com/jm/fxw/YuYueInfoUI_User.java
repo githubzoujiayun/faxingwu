@@ -211,6 +211,8 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 				} catch (JSONException e) {
 					LogUtil.e(e.toString());
 				}
+			}else{
+				findViewById(R.id.lin_tip).setVisibility(View.GONE);
 			}
 		}
 	}

@@ -33,11 +33,12 @@
 
             <EditText
                 android:id="@+id/et_sertime"
-                android:layout_width="40sp"
+                android:layout_width="60sp"
                 android:layout_height="37sp"
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:background="@drawable/shape_white"
+                android:gravity="right"
                 android:inputType="numberDecimal"
                 android:maxLength="3"
                 android:paddingLeft="5sp"
@@ -70,11 +71,12 @@
 
             <EditText
                 android:id="@+id/et_serprice"
-                android:layout_width="40sp"
+                android:layout_width="60sp"
                 android:layout_height="37sp"
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:background="@drawable/shape_white"
+                android:gravity="right"
                 android:inputType="number"
                 android:maxLength="4"
                 android:paddingLeft="5sp"
@@ -107,11 +109,12 @@
 
             <Spinner
                 android:id="@+id/sp_discount"
-                android:layout_width="40sp"
+                android:layout_width="60sp"
                 android:layout_height="37sp"
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:background="@drawable/shape_white"
+                android:gravity="right"
                 android:paddingLeft="5sp"
                 android:textColor="@color/black"
                 android:textSize="13dp" >
@@ -170,7 +173,7 @@
                 android:id="@+id/loginoutdialog_button_ok"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
-                android:background="@drawable/shape_blue"
+                android:background="@drawable/shape_red"
                 android:text="确定"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
@@ -180,7 +183,7 @@
                 android:layout_width="100dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="15dp"
-                android:background="@drawable/shape_red"
+                android:background="@drawable/shape_blue"
                 android:text="取消"
                 android:textColor="#ffffff"
                 android:textSize="16sp" />

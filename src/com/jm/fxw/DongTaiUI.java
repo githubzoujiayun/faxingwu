@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,7 +32,6 @@ import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
 import com.jm.util.WidgetUtil;
 
-@SuppressLint("ResourceAsColor")
 public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		OnClickListener, OnScrollListener, OnItemClickListener {
 	private GridView ListView;
@@ -52,10 +50,11 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dongtailist);
-		ListView = (GridView) findViewById(R.id.staggeredGridView);
+		ListView = (GridView) findViewById(R.id.gv_dongtai);
+		ListView.setOnScrollListener(this);
+		ListView.setOnItemClickListener(this);
 		adapter = new DongTaiAdapter(this);
 		ListView.setAdapter(adapter);
-		ListView.setOnScrollListener(this);
 		init();
 		getDataFromDataBase();
 		changeBtn("add_time", findViewById(R.id.btn_zuixin));
@@ -131,7 +130,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 					pageCount = 0;
 					adapter.clear();
 					baseDate = false;
-					ListView.setOnItemClickListener(DongTaiUI.this);
 				}
 				try {
 
@@ -179,14 +177,12 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	public void onClick(View v) {
-
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
 			this.finish();
 			break;
 		case R.id.btn_rightTop:
-
 			StartActivityContController.goPage(this, 105);
 			break;
 		case R.id.btn_zuixin:
@@ -249,6 +245,7 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
+		LogUtil.e("------------------------onItemClick" + position);
 		if (adapter.getHairList() == null || position < 0
 				|| position >= adapter.getHairList().size()) {
 			LogUtil.e("position = " + position);
@@ -260,4 +257,5 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		intent.putExtra("id", dongtai.getWork_id());
 		startActivity(intent);
 	}
+
 }

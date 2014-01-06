@@ -45,20 +45,66 @@ public class Reserve implements ListItem {
 			setStatus(json.getString("status"));
 		if (json.has("head_photo"))
 			setHead_photo(json.getString("head_photo"));
+		if (json.has("image_path"))
+			setImage_path(json.getString("image_path"));
+		if (json.has("long_service"))
+			setLong_service(json.getString("long_service"));
+		if (json.has("order_type"))
+			setOrder_type(json.getString("order_type"));
+		if (json.has("telephone"))
+			setTelephone(json.getString("telephone"));
 
 	}
 
-	private String id;
-	private String my_uid;
-	private String to_uid;
-	private String to_username;
-	private String store_name;
-	private String store_address;
-	private String order_number;
-	private String reserve_time;
-	private String reserve_hour;
-	private String reserver_type;
-	private String head_photo;
+	public String id;
+	public String my_uid;
+	public String to_uid;
+	public String to_username;
+	public String store_name;
+	public String store_address;
+	public String order_number;
+	public String reserve_time;
+	public String reserve_hour;
+	public String reserver_type;
+	public String head_photo;
+
+	public String image_path;
+	public String long_service;
+	public String telephone;
+	
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String order_type;
+
+	public String getOrder_type() {
+		return order_type;
+	}
+
+	public void setOrder_type(String order_type) {
+		this.order_type = order_type;
+	}
+
+	public String getImage_path() {
+		return image_path;
+	}
+
+	public void setImage_path(String image_path) {
+		this.image_path = image_path;
+	}
+
+	public String getLong_service() {
+		return long_service;
+	}
+
+	public void setLong_service(String long_service) {
+		this.long_service = long_service;
+	}
 
 	public String getHead_photo() {
 		return head_photo;
