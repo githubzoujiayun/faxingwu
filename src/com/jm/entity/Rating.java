@@ -16,9 +16,7 @@ public class Rating implements ListItem {
 		setId(json.getString("assess_uid"));
 		setUid(json.getString("assess_uid"));
 		setAssess_uid(json.getString("assess_uid"));
-		setService(json.getString("service"));
-		setPrice(json.getString("price"));
-		setMilieu(json.getString("milieu"));
+		setScore(json.getString("score"));
 		setInfo(json.getString("info"));
 		setAdd_time(json.getString("add_time"));
 		setHead_photo(json.getString("head_photo"));
@@ -29,9 +27,16 @@ public class Rating implements ListItem {
 
 	private String uid;
 	private String assess_uid;
-	private String service;
-	private String price;
-	private String milieu;
+	private String score;
+
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
 	private String info;
 	private String add_time;
 	private String head_photo;
@@ -75,30 +80,6 @@ public class Rating implements ListItem {
 
 	public void setAssess_uid(String assess_uid) {
 		this.assess_uid = assess_uid;
-	}
-
-	public String getService() {
-		return service;
-	}
-
-	public void setService(String service) {
-		this.service = service;
-	}
-
-	public String getPrice() {
-		return price;
-	}
-
-	public void setPrice(String price) {
-		this.price = price;
-	}
-
-	public String getMilieu() {
-		return milieu;
-	}
-
-	public void setMilieu(String milieu) {
-		this.milieu = milieu;
 	}
 
 	public String getInfo() {

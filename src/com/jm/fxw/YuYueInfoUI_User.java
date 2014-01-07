@@ -8,13 +8,16 @@ import net.tsz.afinal.FinalActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.cnzz.mobile.android.sdk.MobileProbe;
@@ -34,6 +37,10 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 	private String rid;
 	private String status;
 
+	private View dialogView;
+	private Button ok;
+	private Button cancel;
+	private Dialog dialog;
 	private boolean isPushIn;
 
 	@Override
@@ -271,13 +278,85 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 				status = "0";
 				new changeYuYueInfo().execute();
 			} else if (((Button) v).getText().equals("Ïû·ÑÆÀ¼Û")) {
-				Intent i = new Intent();
-				i.putExtra("hid", reserve.getTo_uid());
-				i.putExtra("oid", reserve.getId());
-				i.setClass(YuYueInfoUI_User.this, RatingUI.class);
-				startActivity(i);
+				ShowDialog();
 			}
 			break;
+		}
+	}
+
+	private void ShowDialog() {
+		dialogView = LayoutInflater.from(this).inflate(R.layout.ratringinfo,
+				null);
+		ok = (Button) dialogView.findViewById(R.id.loginoutdialog_button_ok);
+		cancel = (Button) dialogView
+				.findViewById(R.id.loginoutdialog_button_cancel);
+		dialog = new Dialog(this, R.style.MyDialog);
+		dialog.setContentView(dialogView);
+		dialog.show();
+		ok.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				new CommentTask().execute();
+			}
+		});
+		cancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+	}
+
+	private class CommentTask extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+
+		}
+
+		private Map<String, Object> getMyReserveInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uid", SessionManager.getInstance().getUserId());
+			map.put("assess_uid", reserve.getTo_uid());
+			map.put("order_id", reserve.getId());
+
+			if (((RadioButton) dialogView.findViewById(R.id.cb_haoping))
+					.isChecked()) {
+
+				map.put("score", "1");
+			}
+			if (((RadioButton) dialogView.findViewById(R.id.cb_haoping))
+					.isChecked()) {
+
+				map.put("score", "2");
+			}
+			if (((RadioButton) dialogView.findViewById(R.id.cb_haoping))
+					.isChecked()) {
+
+				map.put("score", "3");
+			}
+			map.put("info", ((EditText) dialogView.findViewById(R.id.comment))
+					.getText().toString().trim());
+			return map;
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn.executeAndParse(Constant.URN_COMMENT_YUYUE,
+					getMyReserveInqVal());
+		}
+
+		protected void onPostExecute(Response result) {
+			if (result == null) {
+				return;
+			}
+			if (result.isSuccessful()) {
+				TispToastFactory.getToast(YuYueInfoUI_User.this,
+						result.getMsg());
+				finish();
+			}
 		}
 	}
 }

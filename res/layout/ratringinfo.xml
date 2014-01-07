@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/bg"
+    android:minWidth="320dip"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -80,21 +81,23 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/btn_ok"
+            android:id="@+id/loginoutdialog_button_ok"
             android:layout_width="fill_parent"
             android:layout_height="41dip"
             android:layout_marginRight="5dip"
             android:layout_weight="1"
+            android:textSize="14sp"
             android:background="@drawable/shape_red"
             android:text=" 确 定 "
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btn_no"
+            android:id="@+id/loginoutdialog_button_cancel"
             android:layout_width="fill_parent"
             android:layout_height="41dip"
             android:layout_marginLeft="5dip"
             android:layout_weight="1"
+            android:textSize="14sp"
             android:background="@drawable/shape_blue"
             android:text=" 取 消 "
             android:textColor="@color/white" />

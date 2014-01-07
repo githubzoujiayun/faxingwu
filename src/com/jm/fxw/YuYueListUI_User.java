@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
-import net.tsz.afinal.FinalBitmap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,9 +29,9 @@ import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.ReserveAdapter;
-import com.jm.util.WidgetUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class YuYueListUI_User extends FinalActivity implements OnClickListener,
@@ -186,8 +185,6 @@ public class YuYueListUI_User extends FinalActivity implements OnClickListener,
 			((Button) findViewById(R.id.btn_btn)).setText("取消预约");
 		}
 		if ("2".equals(price)) {
-			findViewById(R.id.btn_btn).setVisibility(View.VISIBLE);
-			((Button) findViewById(R.id.btn_btn)).setText("消费评价");
 		}
 		if ("3".equals(price)) {
 		}
@@ -363,11 +360,6 @@ public class YuYueListUI_User extends FinalActivity implements OnClickListener,
 				LogUtil.i("取消预约");
 				status = "0";
 				new changeYuYueInfo().execute();
-			} else if (((Button) v).getText().equals("消费评价")) {
-				LogUtil.i("消费评价");
-				Intent i = new Intent();
-				i.setClass(YuYueListUI_User.this, RatingUI.class);
-				startActivity(i);
 			}
 			break;
 		}

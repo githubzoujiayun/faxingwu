@@ -119,12 +119,12 @@ public class ReserveAdapter extends BaseAdapter implements OnClickListener {
 					.getMy_name());
 			if (SessionManager.getInstance().getUsertype().equals("1")) {
 
-				((TextView) view.findViewById(R.id.tv_2_1)).setText("手机号码:"
-						+ type.getMy_tel());
-			} else {
-
 				((TextView) view.findViewById(R.id.tv_2_1)).setText("店铺电话:"
 						+ type.getTelephone());
+
+			} else {
+				((TextView) view.findViewById(R.id.tv_2_1)).setText("手机号码:"
+						+ type.getMy_tel());
 			}
 			((TextView) view.findViewById(R.id.tv_3_1)).setText(type
 					.getReserve_time() + type.getReserve_hour());

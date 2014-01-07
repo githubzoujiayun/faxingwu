@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.jm.entity.Rating;
 import com.jm.fxw.R;
+import com.jm.util.LogUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class UserRatingAdapter extends BaseAdapter implements OnClickListener {
@@ -23,8 +24,6 @@ public class UserRatingAdapter extends BaseAdapter implements OnClickListener {
 	private List<Rating> mlist;
 
 	private Context context;
-
-	private int position;
 	private boolean isProgress = false;
 
 	public UserRatingAdapter(Context context) {
@@ -94,7 +93,6 @@ public class UserRatingAdapter extends BaseAdapter implements OnClickListener {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view;
-		this.position = position;
 		Rating type = mlist.get(position);
 		if (isProgress) {
 			view = inflater.inflate(R.layout.progress_footer, null);
@@ -115,12 +113,17 @@ public class UserRatingAdapter extends BaseAdapter implements OnClickListener {
 					.getAdd_time());
 			((TextView) view.findViewById(R.id.tv_name)).setText(type
 					.getUsername());
-			((RatingBar) view.findViewById(R.id.rb1)).setRating(Float
-					.valueOf(type.getService()));
-			((RatingBar) view.findViewById(R.id.rb2)).setRating(Float
-					.valueOf(type.getPrice()));
-			((RatingBar) view.findViewById(R.id.rb3)).setRating(Float
-					.valueOf(type.getMilieu()));
+			if (type.getScore().equals("1")) {
+				((TextView) view.findViewById(R.id.tv_score)).setText("∫√∆¿");
+			}
+			if (type.getScore().equals("2")) {
+				((TextView) view.findViewById(R.id.tv_score)).setText("÷–∆¿");
+			}
+			if (type.getScore().equals("3")) {
+				((TextView) view.findViewById(R.id.tv_score)).setText("≤Ó∆¿");
+			}else{
+				LogUtil.e("get Rating score error!!!");
+			}
 			return view;
 		}
 	}

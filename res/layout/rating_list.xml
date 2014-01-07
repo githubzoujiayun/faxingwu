@@ -25,7 +25,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
             android:orientation="vertical"
@@ -55,7 +55,6 @@
                     android:layout_marginRight="5sp"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:text=""
                     android:textColor="@color/black2" >
                 </TextView>
             </LinearLayout>
@@ -73,79 +72,19 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:singleLine="true"
-                    android:text="服务"
-                    android:textColor="@color/black2" >
+                    android:text="评价"
+                    android:textColor="@color/black2"
+                    android:textSize="14sp" >
                 </TextView>
-
-                <RatingBar
-                    android:id="@+id/rb1"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10sp"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="0.1" >
-                </RatingBar>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lin_2_1"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="1sp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:singleLine="true"
-                    android:text="价格"
-                    android:textColor="@color/black2" >
-                </TextView>
-
-                <RatingBar
-                    android:id="@+id/rb2"
-                    style="?android:attr/ratingBarStyleSmall"
+                    android:id="@+id/tv_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10sp"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="0.1" >
-                </RatingBar>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_margin="1sp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:singleLine="true"
-                    android:text="环境"
-                    android:textColor="@color/black2" >
+                    android:textColor="@color/black2"
+                    android:textSize="14sp" >
                 </TextView>
-
-                <RatingBar
-                    android:id="@+id/rb3"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10sp"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="0.1" >
-                </RatingBar>
 
                 <TextView
                     android:layout_width="fill_parent"
