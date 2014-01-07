@@ -145,8 +145,8 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 					findViewById(R.id.lin_username).setVisibility(View.GONE);
 				} else {
 					findViewById(R.id.iv_workpic).setVisibility(View.GONE);
-					((TextView) findViewById(R.id.tv_type)).setText(reserve
-							.getReserver_type());
+					((TextView) findViewById(R.id.tv_type)).setText("‘§‘º¿‡–Õ:"
+							+ reserve.getReserver_type());
 					((TextView) findViewById(R.id.tv_username)).setText(reserve
 							.getTo_username());
 				}

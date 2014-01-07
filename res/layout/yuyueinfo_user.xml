@@ -46,7 +46,6 @@
         android:layout_weight="1"
         android:background="@color/bg"
         android:scrollbars="none" >
-
         <include layout="@layout/yuyueinfo" />
     </ScrollView>
 
