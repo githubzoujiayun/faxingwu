@@ -88,7 +88,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 
 	private void getUserInfo() {
 		new getUserInfo().execute();
-
 		new getUserPhone().execute();
 		new getTipsInfo().execute();
 	}
@@ -156,6 +155,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 				return;
 			}
 			if (result.isSuccessful()) {
+				findViewById(R.id.lin_yuyuetip).setVisibility(View.VISIBLE);
 				try {
 					JSONArray alist = result.getJsonString("notice_info")
 							.getJSONArray("info");

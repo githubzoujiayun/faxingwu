@@ -57,6 +57,11 @@ public class SessionManager {
 		this.lng = lng;
 	}
 
+	/**
+	 * 1是用户，2是发型师
+	 * 
+	 * @return
+	 */
 	public String getUsertype() {
 		return usertype;
 	}

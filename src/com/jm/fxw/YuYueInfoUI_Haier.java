@@ -19,6 +19,7 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
+import com.jm.fxw.YuYueListUI_User.getTipsInfo;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -29,7 +30,6 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 	private Reserve reserve;
 	private String rid;
 	private String status;
-	private String uid;
 
 	private boolean isPushIn;
 
@@ -46,20 +46,6 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 		isPushIn = getIntent().getBooleanExtra("isPushIn", false);
 		rid = getIntent().getStringExtra("rid");
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-
-		findViewById(R.id.iv_minfouserpic).setOnClickListener(
-				new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(YuYueInfoUI_Haier.this,
-								HisInfoUI.class);
-						intent.putExtra("uid", uid);
-						intent.putExtra("type", "1");
-						startActivity(intent);
-
-					}
-				});
 
 	}
 
@@ -141,30 +127,42 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 				return;
 			}
 			if (result.isSuccessful()) {
+				setYuyue(result);
+				setBtnByStaues(reserve.getStatus());
+			}
+		}
 
+		private void setYuyue(Response result) {
+			if (!"".equals(result.getString("order_info"))) {
 				reserve = (Reserve) result.getObject("order_info",
 						new Reserve());
-
-				ImageLoader.getInstance().displayImage(reserve.getHead_photo(),
-						(ImageView) findViewById(R.id.iv_minfouserpic));
-				((TextView) findViewById(R.id.tv_username)).setText(reserve
-						.getMy_name());
-				((TextView) findViewById(R.id.tv_phone)).setText(reserve
-						.getMy_tel());
-				((TextView) findViewById(R.id.tv_time)).setText(reserve
-						.getReserve_time() + reserve.getReserve_hour());
-				((TextView) findViewById(R.id.tv_type)).setText(reserve
-						.getReserver_type());
-				((TextView) findViewById(R.id.tv_price)).setText(reserve
-						.getPrice());
-
+				if (reserve.getOrder_type().equals("2")) {
+					findViewById(R.id.iv_workpic).setVisibility(View.VISIBLE);
+					ImageLoader.getInstance().displayImage(
+							reserve.getImage_path(),
+							(ImageView) findViewById(R.id.iv_workpic));
+					((TextView) findViewById(R.id.tv_type)).setText("预约如图发型");
+					findViewById(R.id.lin_username).setVisibility(View.GONE);
+				} else {
+					findViewById(R.id.iv_workpic).setVisibility(View.GONE);
+					((TextView) findViewById(R.id.tv_type)).setText(reserve
+							.getReserver_type());
+					((TextView) findViewById(R.id.tv_username)).setText(reserve
+							.getTo_username());
+				}
 				((TextView) findViewById(R.id.tv_dname)).setText(reserve
 						.getStore_name());
+				((TextView) findViewById(R.id.tv_dphone)).setText(reserve
+						.getTelephone());
 				((TextView) findViewById(R.id.tv_daddress)).setText(reserve
 						.getStore_address());
-				setBtnByStaues(reserve.getStatus());
-				uid = reserve.getMy_uid();
+				((TextView) findViewById(R.id.tv_time)).setText(reserve
+						.getReserve_time() + reserve.getReserve_hour());
 
+				((TextView) findViewById(R.id.tv_price)).setText("价格:"
+						+ reserve.getPrice());
+				setBtnByStaues(reserve.getStatus());
+				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
 			}
 		}
 	}
@@ -182,8 +180,7 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 			findViewById(R.id.lin_btns).setVisibility(View.VISIBLE);
 			findViewById(R.id.btn_ok).setOnClickListener(this);
 			findViewById(R.id.btn_no).setOnClickListener(this);
-			findViewById(R.id.lin_btn).setOnClickListener(this);
-
+			findViewById(R.id.btn_btn).setOnClickListener(this);
 		}
 		if ("2".equals(price)) {
 		}
@@ -203,8 +200,7 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 			}
 			this.finish();
 			break;
-
-		case R.id.lin_btn:
+		case R.id.btn_btn:
 			if (((Button) v).getText().equals("取消预约")) {
 
 				status = "0";

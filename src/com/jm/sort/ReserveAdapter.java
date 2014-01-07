@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.jm.entity.Reserve;
 import com.jm.fxw.R;
+import com.jm.session.SessionManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ReserveAdapter extends BaseAdapter implements OnClickListener {
@@ -23,9 +24,6 @@ public class ReserveAdapter extends BaseAdapter implements OnClickListener {
 	private List<Reserve> mlist;
 
 	private Context context;
-
-	private int position;
-	private Button btn;
 
 	private boolean isProgress = false;
 
@@ -96,7 +94,6 @@ public class ReserveAdapter extends BaseAdapter implements OnClickListener {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view;
-		this.position = position;
 		Reserve type = mlist.get(position);
 		if (isProgress) {
 			view = inflater.inflate(R.layout.progress_footer, null);
@@ -108,14 +105,27 @@ public class ReserveAdapter extends BaseAdapter implements OnClickListener {
 			} else {
 				view = inflater.inflate(R.layout.reserve_list, null);
 			}
-			ImageLoader.getInstance().displayImage(type.getHead_photo(), (ImageView)view.findViewById(R.id.iv_pic));
+			ImageLoader.getInstance().displayImage(type.getHead_photo(),
+					(ImageView) view.findViewById(R.id.iv_pic));
+			if (type.getOrder_type().equals("1")) {
+
+				((TextView) view.findViewById(R.id.tv_reservetype))
+						.setText("预约类型:" + type.getReserver_type());
+			} else {
+				((TextView) view.findViewById(R.id.tv_reservetype))
+						.setText("预约类型:" + "发型图片");
+			}
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type
 					.getMy_name());
-			((TextView) view.findViewById(R.id.tv_reservetype)).setText("预约类型:"
-					+ type.getReserver_type());
+			if (SessionManager.getInstance().getUsertype().equals("1")) {
 
-			((TextView) view.findViewById(R.id.tv_2_1)).setText("手机号码:"
-					+ type.getMy_tel());
+				((TextView) view.findViewById(R.id.tv_2_1)).setText("手机号码:"
+						+ type.getMy_tel());
+			} else {
+
+				((TextView) view.findViewById(R.id.tv_2_1)).setText("店铺电话:"
+						+ type.getTelephone());
+			}
 			((TextView) view.findViewById(R.id.tv_3_1)).setText(type
 					.getReserve_time() + type.getReserve_hour());
 			//
@@ -140,7 +150,7 @@ public class ReserveAdapter extends BaseAdapter implements OnClickListener {
 				((TextView) view.findViewById(R.id.tv_3_2)).setText("已评价");
 
 			} else {
-				((TextView) view.findViewById(R.id.tv_2_2)).setText("未知状态");
+				((TextView) view.findViewById(R.id.tv_3_2)).setText("未知状态");
 			}
 			return view;
 		}

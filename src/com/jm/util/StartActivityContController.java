@@ -14,8 +14,8 @@ import com.jm.fxw.WodeUI_Hairer;
 import com.jm.fxw.WodeUI_User;
 import com.jm.fxw.YuYueInfoUI_Haier;
 import com.jm.fxw.YuYueInfoUI_User;
-import com.jm.fxw.YuYueUI_Haier;
-import com.jm.fxw.YuYueUI_User;
+import com.jm.fxw.YuYueListUI_Haier;
+import com.jm.fxw.YuYueListUI_User;
 import com.jm.session.SessionManager;
 
 public class StartActivityContController {
@@ -111,10 +111,10 @@ public class StartActivityContController {
 		if (102 == intent) {
 			if ("1".equals(sm.getUsertype())) {
 				LogUtil.i("跳转个人预约管理页面");
-				return in.setClass(c, YuYueUI_User.class);
+				return in.setClass(c, YuYueListUI_User.class);
 			} else if ("2".equals(sm.getUsertype())) {
 				LogUtil.i("跳转发型师管理预约");
-				return in.setClass(c, YuYueUI_Haier.class);
+				return in.setClass(c, YuYueListUI_Haier.class);
 			}
 		}
 		if (103 == intent) {

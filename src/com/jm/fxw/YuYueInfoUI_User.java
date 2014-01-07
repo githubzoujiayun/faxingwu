@@ -35,7 +35,6 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 	private String status;
 
 	private boolean isPushIn;
-	private String uid;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,19 +50,7 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 		rid = getIntent().getStringExtra("rid");
 		sm = SessionManager.getInstance();
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-		findViewById(R.id.iv_minfouserpic).setOnClickListener(
-				new OnClickListener() {
 
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(YuYueInfoUI_User.this,
-								HisInfoUI.class);
-						intent.putExtra("uid", uid);
-						intent.putExtra("type", "2");
-						startActivity(intent);
-
-					}
-				});
 	}
 
 	@Override
@@ -109,37 +96,50 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 			}
 			if (result.isSuccessful()) {
 
-				reserve = (Reserve) result.getObject("order_info",
-						new Reserve());
-				ImageLoader.getInstance().displayImage(reserve.getHead_photo(),
-						(ImageView) findViewById(R.id.iv_minfouserpic));
-				((TextView) findViewById(R.id.tv_username)).setText(reserve
-						.getTo_username());
-				((TextView) findViewById(R.id.tv_dname)).setText(reserve
-						.getStore_name());
-				((TextView) findViewById(R.id.tv_dphone)).setText(reserve
-						.getMy_tel());
-				((TextView) findViewById(R.id.tv_daddress)).setText(reserve
-						.getStore_address());
+				setYuyue(result);
 
-				((TextView) findViewById(R.id.tv_time)).setText(reserve
-						.getReserve_time() + reserve.getReserve_hour());
-				((TextView) findViewById(R.id.tv_type)).setText(reserve
-						.getReserver_type());
-				((TextView) findViewById(R.id.tv_price)).setText(reserve
-						.getPrice());
-				setBtnByStaues(reserve.getStatus());
-
-				uid = reserve.getTo_uid();
 				new getTipsInfo().execute();
 			}
 		}
 
+		private void setYuyue(Response result) {
+			if (!"".equals(result.getString("order_info"))) {
+				reserve = (Reserve) result.getObject("order_info",
+						new Reserve());
+				if (reserve.getOrder_type().equals("2")) {
+					findViewById(R.id.iv_workpic).setVisibility(View.VISIBLE);
+					ImageLoader.getInstance().displayImage(
+							reserve.getImage_path(),
+							(ImageView) findViewById(R.id.iv_workpic));
+					((TextView) findViewById(R.id.tv_type)).setText("预约如图发型");
+					findViewById(R.id.lin_username).setVisibility(View.GONE);
+				} else {
+					findViewById(R.id.iv_workpic).setVisibility(View.GONE);
+					((TextView) findViewById(R.id.tv_type)).setText(reserve
+							.getReserver_type());
+					((TextView) findViewById(R.id.tv_username)).setText(reserve
+							.getTo_username());
+				}
+				((TextView) findViewById(R.id.tv_dname)).setText(reserve
+						.getStore_name());
+				((TextView) findViewById(R.id.tv_dphone)).setText(reserve
+						.getTelephone());
+				((TextView) findViewById(R.id.tv_daddress)).setText(reserve
+						.getStore_address());
+				((TextView) findViewById(R.id.tv_time)).setText(reserve
+						.getReserve_time() + reserve.getReserve_hour());
+
+				((TextView) findViewById(R.id.tv_price)).setText("价格:"
+						+ reserve.getPrice());
+				setBtnByStaues(reserve.getStatus());
+				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
+			}
+		}
 	}
 
 	private void setBtnByStaues(String price) {
-		findViewById(R.id.lin_btn).setVisibility(View.GONE);
 		findViewById(R.id.btn_btn).setOnClickListener(this);
+		findViewById(R.id.btn_btn).setVisibility(View.GONE);
 		// 0(自己取消) 都不显示
 		// 1(进行中) 只能取消
 		// 2(已完成，未评价) 只能评价
@@ -148,11 +148,11 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 		if ("0".equals(price)) {
 		}
 		if ("1".equals(price)) {
-			findViewById(R.id.lin_btn).setVisibility(View.VISIBLE);
+			findViewById(R.id.btn_btn).setVisibility(View.VISIBLE);
 			((Button) findViewById(R.id.btn_btn)).setText("取消预约");
 		}
 		if ("2".equals(price)) {
-			findViewById(R.id.lin_btn).setVisibility(View.VISIBLE);
+			findViewById(R.id.btn_btn).setVisibility(View.VISIBLE);
 			((Button) findViewById(R.id.btn_btn)).setText("消费评价");
 		}
 		if ("3".equals(price)) {
@@ -190,6 +190,8 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 				return;
 			}
 			if (result.isSuccessful()) {
+
+				findViewById(R.id.lin_tip).setVisibility(View.VISIBLE);
 				try {
 					JSONArray alist = result.getJsonString("notice_info")
 							.getJSONArray("info");
@@ -211,7 +213,7 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 				} catch (JSONException e) {
 					LogUtil.e(e.toString());
 				}
-			}else{
+			} else {
 				findViewById(R.id.lin_tip).setVisibility(View.GONE);
 			}
 		}

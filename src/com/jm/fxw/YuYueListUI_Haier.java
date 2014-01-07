@@ -25,7 +25,7 @@ import com.jm.sort.ReserveAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
-public class YuYueUI_Haier extends FinalActivity implements OnClickListener,
+public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private List<Reserve> mlist = new ArrayList<Reserve>();
 	private ReserveAdapter adapter;
@@ -96,10 +96,10 @@ public class YuYueUI_Haier extends FinalActivity implements OnClickListener,
 					adapter.setTypeList(mlist);
 					adapter.notifyDataSetChanged();
 				} else {
-					TispToastFactory.getToast(YuYueUI_Haier.this, "暂无预约信息");
+					TispToastFactory.getToast(YuYueListUI_Haier.this, "暂无预约信息");
 				}
 			} else {
-				TispToastFactory.getToast(YuYueUI_Haier.this, result.getMsg())
+				TispToastFactory.getToast(YuYueListUI_Haier.this, result.getMsg())
 						.show();
 			}
 		}
@@ -123,7 +123,7 @@ public class YuYueUI_Haier extends FinalActivity implements OnClickListener,
 			return;
 		}
 		Reserve reserve = adapter.getReserveList().get(position);
-		Intent intent = new Intent(YuYueUI_Haier.this, YuYueInfoUI_Haier.class);
+		Intent intent = new Intent(YuYueListUI_Haier.this, YuYueInfoUI_Haier.class);
 		intent.putExtra("rid", reserve.getId());
 		startActivity(intent);
 	}

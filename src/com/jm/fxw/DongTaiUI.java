@@ -33,7 +33,7 @@ import com.jm.util.TispToastFactory;
 import com.jm.util.WidgetUtil;
 
 public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
-		OnClickListener, OnScrollListener, OnItemClickListener {
+		OnClickListener, OnScrollListener {
 	private GridView ListView;
 	private DongTaiAdapter adapter;
 	private List<DongTai> mlist = new ArrayList<DongTai>();
@@ -50,11 +50,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dongtailist);
-		ListView = (GridView) findViewById(R.id.gv_dongtai);
-		ListView.setOnScrollListener(this);
-		ListView.setOnItemClickListener(this);
-		adapter = new DongTaiAdapter(this);
-		ListView.setAdapter(adapter);
 		init();
 		getDataFromDataBase();
 		changeBtn("add_time", findViewById(R.id.btn_zuixin));
@@ -85,6 +80,10 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	}
 
 	private void init() {
+		ListView = (GridView) findViewById(R.id.gv_dongtai);
+		adapter = new DongTaiAdapter(this);
+		ListView.setAdapter(adapter);
+		ListView.setOnScrollListener(this);
 		findViewById(R.id.btn_zuixin).setOnClickListener(this);
 		findViewById(R.id.btn_tongcheng).setOnClickListener(this);
 		findViewById(R.id.btn_tuijian).setOnClickListener(this);
@@ -241,21 +240,4 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		}
 
 	}
-
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
-		LogUtil.e("------------------------onItemClick" + position);
-		if (adapter.getHairList() == null || position < 0
-				|| position >= adapter.getHairList().size()) {
-			LogUtil.e("position = " + position);
-			return;
-		}
-		DongTai dongtai = adapter.getHairList().get(position);
-		Intent intent = new Intent(DongTaiUI.this, HairInfoUI.class);
-		intent.putExtra("hlist", (Serializable) adapter.getHList());
-		intent.putExtra("id", dongtai.getWork_id());
-		startActivity(intent);
-	}
-
 }

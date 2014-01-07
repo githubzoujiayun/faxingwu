@@ -35,7 +35,7 @@ import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class YuYueUI_User extends FinalActivity implements OnClickListener,
+public class YuYueListUI_User extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private List<Reserve> mlist = new ArrayList<Reserve>();
 	private Reserve reserve;
@@ -43,7 +43,6 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 	private ListView ListView;
 	private SessionManager sm;
 	private String status;
-	private String uid;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,47 +127,46 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 				findViewById(R.id.lin_basic_info).setVisibility(View.GONE);
 				findViewById(R.id.lin_nobasic_info).setVisibility(View.GONE);
 				findViewById(R.id.lin_yuyue_list).setVisibility(View.GONE);
-				if (!"".equals(result.getString("order_info"))) {
-					reserve = (Reserve) result.getObject("order_info",
-							new Reserve());
-					if (reserve.getOrder_type().equals("2")) {
-						findViewById(R.id.iv_workpic).setVisibility(
-								View.VISIBLE);
-						ImageLoader.getInstance().displayImage(
-								reserve.getImage_path(),
-								(ImageView) findViewById(R.id.iv_workpic));
-						((TextView) findViewById(R.id.tv_type))
-								.setText("预约如图发型");
-						findViewById(R.id.lin_username)
-								.setVisibility(View.GONE);
-					} else {
-						findViewById(R.id.iv_workpic).setVisibility(View.GONE);
-						((TextView) findViewById(R.id.tv_type)).setText(reserve
-								.getReserver_type());
-						((TextView) findViewById(R.id.tv_username))
-								.setText(reserve.getTo_username());
-					}
-					((TextView) findViewById(R.id.tv_dname)).setText(reserve
-							.getStore_name());
-					((TextView) findViewById(R.id.tv_dphone)).setText(reserve
-							.getTelephone());
-					((TextView) findViewById(R.id.tv_daddress)).setText(reserve
-							.getStore_address());
-					((TextView) findViewById(R.id.tv_time)).setText(reserve
-							.getReserve_time() + reserve.getReserve_hour());
-
-					((TextView) findViewById(R.id.tv_price)).setText("价格:"
-							+ reserve.getPrice());
-					setBtnByStaues(reserve.getStatus());
-					uid = reserve.getTo_uid();
-					new getTipsInfo().execute();
-					findViewById(R.id.lin_basic_info).setVisibility(
-							View.VISIBLE);
-				}
+				setYuyue(result);
 
 			} else {
 				findViewById(R.id.lin_basic_info).setVisibility(View.GONE);
 				findViewById(R.id.lin_nobasic_info).setVisibility(View.VISIBLE);
+			}
+		}
+
+		private void setYuyue(Response result) {
+			if (!"".equals(result.getString("order_info"))) {
+				reserve = (Reserve) result.getObject("order_info",
+						new Reserve());
+				if (reserve.getOrder_type().equals("2")) {
+					findViewById(R.id.iv_workpic).setVisibility(View.VISIBLE);
+					ImageLoader.getInstance().displayImage(
+							reserve.getImage_path(),
+							(ImageView) findViewById(R.id.iv_workpic));
+					((TextView) findViewById(R.id.tv_type)).setText("预约如图发型");
+					findViewById(R.id.lin_username).setVisibility(View.GONE);
+				} else {
+					findViewById(R.id.iv_workpic).setVisibility(View.GONE);
+					((TextView) findViewById(R.id.tv_type)).setText(reserve
+							.getReserver_type());
+					((TextView) findViewById(R.id.tv_username)).setText(reserve
+							.getTo_username());
+				}
+				((TextView) findViewById(R.id.tv_dname)).setText(reserve
+						.getStore_name());
+				((TextView) findViewById(R.id.tv_dphone)).setText(reserve
+						.getTelephone());
+				((TextView) findViewById(R.id.tv_daddress)).setText(reserve
+						.getStore_address());
+				((TextView) findViewById(R.id.tv_time)).setText(reserve
+						.getReserve_time() + reserve.getReserve_hour());
+
+				((TextView) findViewById(R.id.tv_price)).setText("价格:"
+						+ reserve.getPrice());
+				setBtnByStaues(reserve.getStatus());
+				new getTipsInfo().execute();
+				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
 			}
 		}
 
@@ -225,6 +223,7 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 				return;
 			}
 			if (result.isSuccessful()) {
+				findViewById(R.id.lin_tip).setVisibility(View.VISIBLE);
 				try {
 					JSONArray alist = result.getJsonString("notice_info")
 							.getJSONArray("info");
@@ -285,11 +284,11 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 					adapter.setTypeList(mlist);
 					adapter.notifyDataSetChanged();
 				} else {
-					TispToastFactory.getToast(YuYueUI_User.this, "暂无预约信息");
+					TispToastFactory.getToast(YuYueListUI_User.this, "暂无预约信息");
 				}
 			} else {
-				TispToastFactory.getToast(YuYueUI_User.this, result.getMsg())
-						.show();
+				TispToastFactory.getToast(YuYueListUI_User.this,
+						result.getMsg()).show();
 			}
 		}
 	}
@@ -307,6 +306,9 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("order_id", reserve.getId());
 			map.put("status", status);
+			if ("0".equals(status)) {
+				reserve = null;
+			}
 			return map;
 		}
 
@@ -322,11 +324,12 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 				return;
 			}
 			if (result.isSuccessful()) {
-				TispToastFactory.getToast(YuYueUI_User.this, result.getMsg());
+				TispToastFactory.getToast(YuYueListUI_User.this,
+						result.getMsg());
 				new getCurrentYuYueInfo().execute();
 			} else {
-				TispToastFactory.getToast(YuYueUI_User.this, result.getMsg())
-						.show();
+				TispToastFactory.getToast(YuYueListUI_User.this,
+						result.getMsg()).show();
 			}
 		}
 
@@ -359,12 +362,11 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			if (((Button) v).getText().equals("取消预约")) {
 				LogUtil.i("取消预约");
 				status = "0";
-				reserve = null;
 				new changeYuYueInfo().execute();
 			} else if (((Button) v).getText().equals("消费评价")) {
 				LogUtil.i("消费评价");
 				Intent i = new Intent();
-				i.setClass(YuYueUI_User.this, RatingUI.class);
+				i.setClass(YuYueListUI_User.this, RatingUI.class);
 				startActivity(i);
 			}
 			break;
@@ -380,7 +382,8 @@ public class YuYueUI_User extends FinalActivity implements OnClickListener,
 			return;
 		}
 		Reserve reserve = adapter.getReserveList().get(position);
-		Intent intent = new Intent(YuYueUI_User.this, YuYueInfoUI_User.class);
+		Intent intent = new Intent(YuYueListUI_User.this,
+				YuYueInfoUI_User.class);
 		intent.putExtra("rid", reserve.getId());
 		startActivity(intent);
 	}

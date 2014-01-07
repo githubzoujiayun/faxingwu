@@ -102,6 +102,8 @@ public class DongTaiAdapter extends BaseAdapter {
 			DongTaiItem view = (DongTaiItem) inflater.inflate(
 					R.layout.dongtai_list, null);
 			dongtai = mlist.get(position);
+			view.setHairList(hair_list, Integer.parseInt(dongtai.getWork_id()));
+			view.initView();
 			ImageLoader.getInstance().displayImage(dongtai.getWork_image(),
 					(ImageView) view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_utext)).setText(dongtai
@@ -109,15 +111,10 @@ public class DongTaiAdapter extends BaseAdapter {
 			if (dongtai.getContent().toString().trim().equals("")) {
 				view.findViewById(R.id.tv_utext).setVisibility(View.GONE);
 			}
-			StringBuffer sb = new StringBuffer();
-			sb.append(dongtai.getCollect_num());
-			((Button) view.findViewById(R.id.btn_dongtai_info)).setText(sb
-					.toString());
-
-			StringBuffer sb2 = new StringBuffer();
-			sb2.append("ÆÀÂÛ(" + dongtai.getComment_num() + ")  ");
-			((TextView) view.findViewById(R.id.tv_dongtai_info)).setText(sb2
-					.toString());
+			((Button) view.findViewById(R.id.btn_dongtai_info)).setText(dongtai
+					.getCollect_num());
+			((TextView) view.findViewById(R.id.tv_dongtai_info))
+					.setText("  è¯„è®º (" + dongtai.getComment_num() + ")  ");
 			return view;
 		}
 	}
@@ -125,11 +122,12 @@ public class DongTaiAdapter extends BaseAdapter {
 	public void clear() {
 		if (mlist != null) {
 			mlist.clear();
+			notifyDataSetChanged();
 		}
 		if (hair_list != null) {
 			hair_list.clear();
+			notifyDataSetChanged();
 		}
-		notifyDataSetChanged();
 
 	}
 
