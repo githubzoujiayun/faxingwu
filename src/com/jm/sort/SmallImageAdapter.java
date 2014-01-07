@@ -19,7 +19,7 @@ public class SmallImageAdapter extends BaseAdapter {
 	private List<Hair> mlist;
 
 	private Context context;
-
+	private String WhosHair;
 
 	public SmallImageAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
@@ -35,6 +35,15 @@ public class SmallImageAdapter extends BaseAdapter {
 
 	}
 
+	public void setImageList(List<Hair> list, String WhosId) {
+		if (list == null) {
+			return;
+		}
+		mlist = list;
+		this.WhosHair = WhosId;
+
+	}
+
 	@Override
 	public int getCount() {
 
@@ -42,7 +51,7 @@ public class SmallImageAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Hair getItem(int position) {
 
 		return mlist.get(position);
 	}
@@ -56,7 +65,7 @@ public class SmallImageAdapter extends BaseAdapter {
 	public View getView(int position, View contentView, ViewGroup arg2) {
 		SmallImageItem view = (SmallImageItem) inflater.inflate(
 				R.layout.smallimg_grid, null);
-		
+		view.WhosHair = WhosHair;
 		ImageLoader.getInstance().displayImage(mlist.get(position).getPic(),
 				(ImageView) view.findViewById(R.id.iv_HairShow));
 		return view;

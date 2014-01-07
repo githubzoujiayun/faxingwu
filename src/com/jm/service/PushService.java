@@ -175,7 +175,7 @@ public class PushService extends Service {
 		if ("4".equals(type)) {
 			intent = new Intent(this, UserListUI.class);
 			intent.putExtra("isPushIn", true);
-			intent.putExtra("type", "watchlist");
+			intent.putExtra("type", "fanslist");
 			msg = "您有一个新粉丝";
 		}
 		NotificationManager mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -189,7 +189,7 @@ public class PushService extends Service {
 				getString(R.string.open_new_message), msg, contentIntent);
 		notification.defaults = Notification.DEFAULT_SOUND;
 		mNM.notify(id, notification);
-		id++;
+		// id++;
 	}
 
 	private Map<String, Object> getMsgInqVal() {

@@ -167,12 +167,12 @@ public class GuangChangUI extends FinalActivity implements OnClickListener {
 		case R.id.iv_btn_myquesion:
 			if (((Button) v).getText().equals("我的问题")) {
 				// 我的问题
-				StartActivityContController.goPage(this,
-						MyQuestionListUI.class, true);
+				StartActivityContController.goPage(this, QuestionListUI.class,
+						true);
 			}
 			if (((Button) v).getText().equals("我的回答")) {
 
-				StartActivityContController.goPage(this, MyAnswerListUI.class,
+				StartActivityContController.goPage(this, AnswerListUI.class,
 						true);
 
 				// 我的回答

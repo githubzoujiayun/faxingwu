@@ -36,6 +36,7 @@ public class Hair implements ListItem {
 
 	@DatabaseField
 	private String type;
+	public String whosHair;
 
 	public String getType() {
 		return type;

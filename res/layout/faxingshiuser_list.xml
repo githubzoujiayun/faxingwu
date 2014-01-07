@@ -2,7 +2,7 @@
 <com.jm.sort.FaXingShiItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg"
+    android:background="@drawable/shape_white"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -56,6 +56,15 @@
                     android:singleLine="true"
                     android:textColor="#ed145b" >
                 </TextView>
+
+                <TextView
+                    android:id="@+id/tv_1_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textColor="#ed145b" >
+                </TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -91,19 +100,17 @@
                     android:singleLine="true"
                     android:textColor="@color/black2" >
                 </TextView>
+
+                <TextView
+                    android:id="@+id/tv_3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textColor="@color/rosered" >
+                </TextView>
             </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_isconcerns"
-            android:layout_width="wrap_content"
-            android:layout_height="33sp"
-            android:layout_marginRight="5sp"
-            android:paddingLeft="3sp"
-            android:paddingRight="3sp"
-            android:background="@drawable/shape_guanzhured"
-            android:scaleType="fitXY"
-            android:textColor="@color/white" />
     </LinearLayout>
 
     <TextView
@@ -116,5 +123,25 @@
         android:gravity="left"
         android:textColor="@color/black2" >
     </TextView>
+
+    <LinearLayout
+        android:id="@+id/lin_gallery"
+        android:layout_width="fill_parent"
+        android:layout_height="100sp"
+        android:layout_marginBottom="3sp"
+        android:background="@color/white"
+        android:focusable="false"
+        android:visibility="gone" >
+
+        <com.jm.view.HorizontalListView
+            android:id="@+id/his_gallery"
+            android:layout_width="0sp"
+            android:layout_height="92sp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:spacing="1px"
+            android:unselectedAlpha="1" />
+    </LinearLayout>
 
 </com.jm.sort.FaXingShiItem>

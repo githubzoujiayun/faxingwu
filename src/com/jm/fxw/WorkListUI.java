@@ -39,7 +39,6 @@ public class WorkListUI extends Activity implements OnClickListener,
 	private List<Hair> mlist = new ArrayList<Hair>();
 	private int page = 1;
 	private int pageCount = 0;
-	private SessionManager sm;
 	private boolean isloading = false;
 	private boolean showlast = false;
 
@@ -55,18 +54,17 @@ public class WorkListUI extends Activity implements OnClickListener,
 	}
 
 	private void init() {
-		sm = SessionManager.getInstance();
 		Intent i = getIntent();
 		uid = i.getStringExtra("uid");
-		if (uid != null && !uid.equals("")) {
-			if (sm.getUserId().equals(uid)) {
+		if (uid == null || uid.equals("")) {
+
+			finish();
+		} else {
+			if (SessionManager.getInstance().getUserId().equals(uid)) {
 				((TextView) findViewById(R.id.tv_mainhead)).setText("我的作品");
 			} else {
-
 				((TextView) findViewById(R.id.tv_mainhead)).setText("TA的作品");
 			}
-		} else {
-			finish();
 		}
 		ListView = (GridView) findViewById(R.id.my_hairgridview);
 		adapter = new HairAdapter(this);

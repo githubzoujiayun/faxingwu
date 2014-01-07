@@ -24,6 +24,7 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
 import com.jm.finals.Constant;
+import com.jm.session.SessionManager;
 import com.jm.sort.HairAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
@@ -55,10 +56,15 @@ public class WorkDoListUI extends Activity implements OnClickListener,
 	private void init() {
 		Intent i = getIntent();
 		uid = i.getStringExtra("uid");
-		((TextView) findViewById(R.id.tv_mainhead)).setText("会做发型");
-		if (uid != null && !uid.equals("")) {
-		} else {
+		if (uid == null || uid.equals("")) {
+
 			finish();
+		} else {
+			if (SessionManager.getInstance().getUserId().equals(uid)) {
+				((TextView) findViewById(R.id.tv_mainhead)).setText("报价发型");
+			} else {
+				((TextView) findViewById(R.id.tv_mainhead)).setText("TA的报价");
+			}
 		}
 		ListView = (GridView) findViewById(R.id.my_hairgridview);
 		adapter = new HairAdapter(this);

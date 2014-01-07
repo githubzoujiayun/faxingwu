@@ -2,7 +2,7 @@
 <com.jm.sort.ZhouBianItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg"
+    android:background="@drawable/shape_white"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -91,7 +91,7 @@
                     android:singleLine="true"
                     android:textColor="@color/black2" >
                 </TextView>
-                <TextView
+                <TextView
                     android:id="@+id/tv_3_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
         android:layout_width="fill_parent"
         android:layout_height="100sp"
         android:layout_marginBottom="3sp"
-        android:background="@color/imagelist_bg"
+        android:background="@color/white"
         android:focusable="false"
         android:visibility="gone" >
 

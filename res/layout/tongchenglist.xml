@@ -115,7 +115,8 @@
             android:id="@+id/my_zhoubianlistview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@drawable/xian"
+            
+            android:divider="@color/white"
             android:dividerHeight="2px"
             android:focusable="false"
             android:fadingEdge="none"

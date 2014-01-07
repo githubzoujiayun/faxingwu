@@ -110,8 +110,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:background="@color/bg"
-                android:divider="@drawable/xian"
+                android:divider="@color/white"
                 android:dividerHeight="2px"
                 android:fadingEdge="none"
                 android:footerDividersEnabled="false" >

@@ -79,7 +79,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		findViewById(R.id.btn_mingrentang).setOnClickListener(this);
 		findViewById(R.id.btn_hangyexinwen).setOnClickListener(this);
 		findViewById(R.id.btn_mingdianzhanshi).setOnClickListener(this);
-		findViewById(R.id.btn_shalongzhuanrang).setOnClickListener(this);
 	}
 
 	/*
@@ -153,11 +152,7 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		case R.id.btn_mingdianzhanshi:
 			changeCondition("1", v);
 			break;
-		case R.id.btn_shalongzhuanrang:
 
-			StartActivityContController.goPage(this, ZhuanRangListUI.class,
-					true);
-			break;
 		case R.id.btn_leftTop:
 			finish();
 			break;
@@ -176,7 +171,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 		blist.add(findViewById(R.id.btn_mingrentang));
 		blist.add(findViewById(R.id.btn_hangyexinwen));
 		blist.add(findViewById(R.id.btn_mingdianzhanshi));
-		blist.add(findViewById(R.id.btn_shalongzhuanrang));
 		WidgetUtil.ResetAllButton(blist);
 		WidgetUtil.setChangeButton(v);
 		pubtype = condition;

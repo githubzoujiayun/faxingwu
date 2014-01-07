@@ -423,7 +423,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10sp"
                             android:layout_weight="1"
-                            android:text="会做发型"
+                            android:text="报价发型"
                             android:textColor="@color/black" />
 
                         <ImageView

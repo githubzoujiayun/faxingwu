@@ -94,23 +94,14 @@
                 android:textColor="#ffffff"
                 android:textSize="16sp" />
 
-            <Button
-                android:id="@+id/btn_shalongzhuanrang"
-                android:layout_width="fill_parent"
-                android:layout_height="39sp"
-                android:layout_weight="1"
-                android:background="@color/white"
-                android:gravity="center"
-                android:text="沙龙转让"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
         </LinearLayout>
 
         <ListView
             android:id="@+id/lv_faxingshi_listview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@drawable/xian"
+            
+                android:divider="@color/white"
             android:dividerHeight="2px"
             android:fadingEdge="none"
             android:footerDividersEnabled="false"

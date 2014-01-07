@@ -223,13 +223,13 @@
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.jm.fxw.MyQuestionListUI"
+            android:name="com.jm.fxw.QuestionListUI"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
         <activity
-            android:name="com.jm.fxw.MyAnswerListUI"
+            android:name="com.jm.fxw.AnswerListUI"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >

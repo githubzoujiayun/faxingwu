@@ -26,7 +26,7 @@ import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 import com.jm.view.MyListView;
 
-public class MyAnswerListUI extends FinalActivity implements OnClickListener,
+public class AnswerListUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
 	private SessionManager sm;
 	private AnswerAdapter adapter;
@@ -130,7 +130,7 @@ public class MyAnswerListUI extends FinalActivity implements OnClickListener,
 					mlist = result.getList("answer_list", new Answer());
 					adapter.setTypeList(mlist);
 				} else {
-					TispToastFactory.getToast(MyAnswerListUI.this,
+					TispToastFactory.getToast(AnswerListUI.this,
 							result.getMsg()).show();
 				}
 			}
@@ -146,7 +146,7 @@ public class MyAnswerListUI extends FinalActivity implements OnClickListener,
 				.toString().trim());
 		i.putExtra("tid", ((TextView) view.findViewById(R.id.tv_ta_id))
 				.getText().toString().trim());
-		i.setClass(MyAnswerListUI.this, ChatQuestionUI.class);
+		i.setClass(AnswerListUI.this, ChatQuestionUI.class);
 		startActivity(i);
 	}
 

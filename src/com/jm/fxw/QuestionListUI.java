@@ -26,33 +26,40 @@ import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 import com.jm.view.MyListView;
 
-public class MyQuestionListUI extends FinalActivity implements OnClickListener,
+public class QuestionListUI extends FinalActivity implements OnClickListener,
 		OnItemClickListener {
-	private SessionManager sm;
 	private QuesionAdapter adapter;
 	private List<Question> mlist = new ArrayList<Question>();
 	private MyListView myListView;
 
+	private String uid;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.questionlist);
-		sm = SessionManager.getInstance();
 
+		uid = getIntent().getStringExtra("uid");
+		if (uid == null || "".equals(uid)) {
+			uid = SessionManager.getInstance().getUserId();
+			((TextView) findViewById(R.id.tv_mainhead)).setText("我的提问");
+		} else {
+			((TextView) findViewById(R.id.tv_mainhead)).setText("TA的提问");
+		}
 		initView();
 	}
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "问题列表页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "问题列表页面");
 	}
@@ -95,7 +102,7 @@ public class MyQuestionListUI extends FinalActivity implements OnClickListener,
 
 		protected Map<String, Object> getMsgInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("uid", sm.getUserId());
+			map.put("uid", uid);
 			return map;
 		}
 
@@ -119,7 +126,7 @@ public class MyQuestionListUI extends FinalActivity implements OnClickListener,
 					mlist = result.getList("problem_list", new Question());
 					adapter.setTypeList(mlist);
 				} else {
-					TispToastFactory.getToast(MyQuestionListUI.this,
+					TispToastFactory.getToast(QuestionListUI.this,
 							result.getMsg()).show();
 				}
 			}
@@ -129,11 +136,25 @@ public class MyQuestionListUI extends FinalActivity implements OnClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> dapterView, View view, int arg2,
 			long arg3) {
-		Intent i = new Intent();
-		i.putExtra("pid", ((TextView) view.findViewById(R.id.tv_tid)).getText()
-				.toString().trim());
-		i.setClass(MyQuestionListUI.this, MyAnswerListUI.class);
-		startActivity(i);
-	}
+		if (((TextView) findViewById(R.id.tv_mainhead)).getText().equals(
+				"TA的提问")) {
+			Intent i = new Intent();
 
+			i.putExtra("pid", ((TextView) view.findViewById(R.id.tv_tid))
+					.getText().toString().trim());
+			i.putExtra("tid", uid);
+			i.setClass(QuestionListUI.this, ChatQuestionUI.class);
+			startActivity(i);
+		}
+
+		else {
+
+			Intent i = new Intent();
+			i.putExtra("pid", ((TextView) view.findViewById(R.id.tv_tid))
+					.getText().toString().trim());
+			i.setClass(QuestionListUI.this, AnswerListUI.class);
+
+			startActivity(i);
+		}
+	}
 }
