@@ -24,8 +24,7 @@ public class Constant {
 	public final static String URN_MYCOLLECTLIST_LIST = "http://wap.faxingw.cn/index.php?m=User&a=collectlist";
 	public final static String URN_MYWORKLIST_LIST = "http://wap.faxingw.cn/index.php?m=User&a=workslist";
 	public final static String URN_MYWORKDOLIST_LIST = "http://wap.faxingw.cn/index.php?m=Willdo&a=willDoList";
-	
-	
+
 	public final static String URN_ALLDONGTAI_LIST = "http://wap.faxingw.cn/index.php?m=Dynamic&a=allnews";
 	public final static String URN_ZHAOFAXING_LIST = "http://wap.faxingw.cn/index.php?m=Forhair&a=newCate";
 
@@ -35,7 +34,7 @@ public class Constant {
 	public final static String URN_GETCHANGINFO = "http://wap.faxingw.cn/index.php?m=User&a=data_info";
 	public final static String URN_HAIRINFO_LIST = "http://wap.faxingw.cn/index.php?m=Dynamic&a=workinfo";
 	public final static String URN_WILLDOINFO = "http://wap.faxingw.cn/index.php?m=Willdo&a=willDoItem";
-	
+
 	public final static String URN_HUATIINFO = "http://wap.faxingw.cn/index.php?m=Infostation&a=skillview";
 
 	public final static String URN_NEWS_INFO = "http://wap.faxingw.cn/index.php?m=Infostation&a=newsview";
@@ -51,7 +50,7 @@ public class Constant {
 	public final static String URN_COMMENT_LIST = "http://wap.faxingw.cn/index.php?m=Works&a=commentlist";
 	public final static String URN_PRICE_LIST = "http://wap.faxingw.cn/index.php?m=Reserve&a=check_prices";
 	public final static String URN_HAIRINFOWILLDO_LIST = "http://wap.faxingw.cn/index.php?m=Willdo&a=reWorksList";
-	
+
 	public final static String URN_SENDLOCATION = "http://wap.faxingw.cn/index.php?m=User&a=coordinates";
 	public final static String URN_MSG_LIST = "http://wap.faxingw.cn/index.php?m=Message&a=index";
 
@@ -67,6 +66,9 @@ public class Constant {
 	public final static String URN_LIKE = "http://wap.faxingw.cn/index.php?m=Works&a=collection";
 
 	public final static String URN_MYINFO = "http://wap.faxingw.cn/index.php?m=User&a=info";
+
+	public final static String URN_VISITINFO = "http://wap.faxingw.cn/index.php?m=User&a=visitInfo";
+
 	public final static String URN_YUYUE = "http://wap.faxingw.cn/index.php?m=Reserve&a=priceinfo";
 	public final static String URN_GETUSERPHONE = "http://wap.faxingw.cn/index.php?m=User&a=phone";
 	public final static String URN_YUYUECHECK = "http://wap.faxingw.cn/index.php?m=Reserve&a=reservation";
@@ -74,7 +76,7 @@ public class Constant {
 	public final static String URN_YUYUCHANGE = "http://wap.faxingw.cn/index.php?m=Reserve&a=edit_status";
 	public final static String URN_TIPS_INFO = "http://wap.faxingw.cn/index.php?m=Reserve&a=notice_show";
 	public final static String URN_OTHERWILLDO = "http://wap.faxingw.cn/index.php?m=Willdo&a=otherWillDoItem";
-	
+
 	public final static String URN_SETTIPS_INFO = "http://wap.faxingw.cn/index.php?m=Reserve&a=notice";
 
 	public final static String URN_MSG_PUSH = "http://wap.faxingw.cn/index.php?m=Message&a=push_andrews";
@@ -97,7 +99,8 @@ public class Constant {
 	public final static String URN_USER_LIST = "http://wap.faxingw.cn/index.php?m=User&a=";
 
 	public final static String URN_ALL_NEWSLIST = "http://wap.faxingw.cn/index.php?m=Infostation&a=newslist";
-	public final static String URN_ALL_FAXINGSHI = "http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists";
+	public final static String URN_ALL_FAXINGSHI = "http://wap.faxingw.cn/index.php?m=Reserve&a=check_prices";
+
 	public final static String URN_TONGCHENG_FAXINGSHI = "http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists";
 	public final static String URN_TUIJIAN_FAXINGSHI = "http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists";
 	public final static String URN_GUANZHU_FAXINGSHI = "http://wap.faxingw.cn/index.php?m=Hairstylist&a=followstylists";
@@ -114,8 +117,7 @@ public class Constant {
 
 	public final static String URN_PUBLICPORTFOLIO = "http://wap.faxingw.cn/index.php?m=Works&a=add_works";
 	public final static String URN_PUBLICPORTFOLIOOFHAIR = "http://wap.faxingw.cn/index.php?m=Works&a=newAddWorks";
-	
-	
+
 	public final static String URN_ADD_NEWS = "http://wap.faxingw.cn/index.php?m=Infostation&a=newsadd";
 
 	public final static String URN_PUBLICQUESTION = "http://wap.faxingw.cn/index.php?m=Problem&a=quizadd";
@@ -135,7 +137,7 @@ public class Constant {
 
 	public final static String URN_COMMENT = "http://wap.faxingw.cn/index.php?m=Works&a=comment";
 	public final static String URN_ADDWILLDO = "http://wap.faxingw.cn/index.php?m=Willdo&a=addWillDo";
-	
+
 	public final static String URN_ADDPOINT = "http://wap.faxingw.cn/index.php?m=User&a=score";
 	public final static String URN_HUATICOMMENT = "http://wap.faxingw.cn/index.php?m=Infostation&a=commentadd";
 
