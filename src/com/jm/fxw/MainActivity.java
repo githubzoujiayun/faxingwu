@@ -44,6 +44,9 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		sm = SessionManager.getInstance();
+		sm.windowW = getWindowManager().getDefaultDisplay().getWidth();
+		sm.windowH = getWindowManager().getDefaultDisplay().getHeight();
 		setContentView(R.layout.activity_main);
 		ClientApp app = (ClientApp) this.getApplication();
 		app.setRootpath(Environment.getExternalStorageDirectory().getPath()
@@ -67,7 +70,6 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				sm = SessionManager.getInstance();
 				share = getSharedPreferences(Constant.PREFS_NAME, MODE_PRIVATE);
 				editor = share.edit();
 				mLocationClient = new LocationClient(getApplicationContext()); // 声明LocationClient类
@@ -146,7 +148,7 @@ public class MainActivity extends Activity {
 			} else {
 				if (sm.getCity().equals("")) {
 					TispToastFactory.getToast(MainActivity.this,
-							"定位失败:请您手动选择您所在的城市").show();
+							"定位失败:请选择您所在的城市").show();
 					startActivity(new Intent(MainActivity.this, CityList.class));
 				}
 			}

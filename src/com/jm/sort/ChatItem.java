@@ -15,8 +15,9 @@ import com.jm.entity.QuestionChat;
 import com.jm.fxw.HisInfoUI;
 import com.jm.fxw.R;
 import com.jm.session.SessionManager;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.jm.util.ImageUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 
 public class ChatItem extends LinearLayout implements OnClickListener {
 
@@ -27,9 +28,11 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 
 	private LinearLayout mylin, hislin, lin_text;
 	private RelativeLayout chat_layout;
-	private ImageView image;
+	private ImageView image, chatpicture;
 	private TextView text;
 	public QuestionChat u;
+
+	private int h, w;
 
 	public ChatItem(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -44,6 +47,8 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 		time = (TextView) findViewById(R.id.time);
 		chat_layout = (RelativeLayout) findViewById(R.id.team_singlechat_id_listiteam);
 		image = (ImageView) findViewById(R.id.team_singlechat_id_listiteam_headicon);
+
+		chatpicture = (ImageView) findViewById(R.id.chatpicture);
 		lin_text = (LinearLayout) findViewById(R.id.team_singlechat_id_listiteam_message);
 
 		text = (TextView) findViewById(R.id.tv_message);
@@ -108,10 +113,24 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 			imgFriend.setVisibility(View.GONE);
 			hislin.setVisibility(View.GONE);
 		}
+
 		if (!u.getPic().equals("")) {
-			findViewById(R.id.chatpicture).setVisibility(View.VISIBLE);
-			ImageLoader.getInstance().displayImage(u.getPic(),
-					(ImageView) findViewById(R.id.chatpicture));
+			chatpicture.setVisibility(View.VISIBLE);
+
+			ImageLoader.getInstance().loadImage(u.getPic(),
+					new SimpleImageLoadingListener() {
+						public void onLoadingComplete(String imageUri,
+								android.view.View view,
+								android.graphics.Bitmap loadedImage) {
+							ImageUtil.getFitBitMap(
+									SessionManager.getInstance().windowH,
+									SessionManager.getInstance().windowW,
+									loadedImage.getWidth(),
+									loadedImage.getHeight(), chatpicture);
+							chatpicture.setImageBitmap(loadedImage);
+
+						};
+					});
 		}
 		if (u.getMessage().equals("")) {
 			text.setVisibility(View.GONE);

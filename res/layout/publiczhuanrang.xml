@@ -273,7 +273,7 @@
                     android:id="@+id/btn_PublicTop"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/shape_blue"
+                    android:background="@drawable/shape_red"
                     android:text="发 布 转 让"
                     android:textColor="@color/white"
                     android:textSize="16sp" />

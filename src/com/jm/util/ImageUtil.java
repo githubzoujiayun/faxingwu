@@ -9,6 +9,8 @@ import java.util.Date;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.jm.session.SessionManager;
 
@@ -166,5 +168,29 @@ public class ImageUtil {
 		// return compressBmpFromBmp(bitmap);//原来的方法调用了这个方法企图进行二次压缩
 		// 其实是无效的,大家尽管尝试
 		return bitmap;
+	}
+
+	public static void getFitBitMap(int WindowH, int WindowW, int bmw, int bmh,
+			ImageView iv) {
+		LogUtil.e("屏幕WindowH" + WindowH);
+		LogUtil.e("屏幕WindowW" + WindowW);
+		LogUtil.e("原图bm.w" + bmw);
+		LogUtil.e("原图bm.h" + bmh);
+		if (bmw > WindowW / 2) {
+			LogUtil.e("原图需要缩放");
+
+			double be = (double) bmw / (double) (WindowW / 2);
+
+			LogUtil.e("be =" + be);
+			LogUtil.e("新图" + bmw / be);
+			LogUtil.e("新图" + bmh / be);
+			int h = (int) (bmh / be);
+			int w = (int) (bmw / be);
+			ViewGroup.LayoutParams para;
+			para = iv.getLayoutParams();
+			para.height = h;
+			para.width = w;
+			iv.setLayoutParams(para);
+		}
 	}
 }

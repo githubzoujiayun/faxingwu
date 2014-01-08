@@ -19,6 +19,7 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Push;
 import com.jm.finals.Constant;
+import com.jm.fxw.ChatQuestionUI;
 import com.jm.fxw.ChatUI;
 import com.jm.fxw.ClientApp;
 import com.jm.fxw.HairItemInfoUI;
@@ -140,43 +141,51 @@ public class PushService extends Service {
 
 	private void showNotification(String msg) {
 
-		String activityid = msg.substring(2);
 		String type = msg.substring(0, 1);
 		LogUtil.e("type = " + type);
-		LogUtil.e("activityid = " + activityid);
 
-		Intent intent = null;
-
+		Intent intent = new Intent();
+		intent.putExtra("isPushIn", true);
 		// 私信1 评论2 预约3 粉丝4
 		if ("1".equals(type)) {
 			intent = new Intent(this, ChatUI.class);
 			intent.putExtra("isPushIn", true);
-			intent.putExtra("tid", activityid);
+			intent.putExtra("tid", msg.split(",")[1]);
 			msg = "您有一条新私信";
 		}
 		if ("2".equals(type)) {
 			intent = new Intent(this, HairItemInfoUI.class);
 			intent.putExtra("isPushIn", true);
-			intent.putExtra("hid", activityid);
+			intent.putExtra("hid", msg.split(",")[1]);
 			msg = "您有一条新评论";
 		}
 		if ("3".equals(type)) {
 			if (SessionManager.getInstance().getUsertype().equals("1")) {
-				intent = new Intent(this, YuYueInfoUI_User.class);
-				intent.putExtra("rid", activityid);
+				intent.setClass(this, YuYueInfoUI_User.class);
+				intent.putExtra("rid", msg.split(",")[1]);
 			}
 			if (SessionManager.getInstance().getUsertype().equals("2")) {
-				intent = new Intent(this, YuYueInfoUI_Haier.class);
-				intent.putExtra("rid", activityid);
+				intent.setClass(this, YuYueInfoUI_Haier.class);
+				intent.putExtra("rid", msg.split(",")[1]);
 			}
-			intent.putExtra("isPushIn", true);
 			msg = "您有一条新预约";
 		}
 		if ("4".equals(type)) {
-			intent = new Intent(this, UserListUI.class);
-			intent.putExtra("isPushIn", true);
+			intent.setClass(this, UserListUI.class);
 			intent.putExtra("type", "fanslist");
 			msg = "您有一个新粉丝";
+		}
+		if ("5".equals(type)) {
+			intent.setClass(this, ChatQuestionUI.class);
+			intent.putExtra("tid", msg.split(",")[1]);
+			intent.putExtra("pid", msg.split(",")[2]);
+			msg = "您的问题有了回答";
+		}
+		if ("6".equals(type)) {
+			intent.setClass(this, ChatQuestionUI.class);
+			intent.putExtra("tid", msg.split(",")[1]);
+			intent.putExtra("pid", msg.split(",")[2]);
+			msg = "周边有用户向您提问";
 		}
 		NotificationManager mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		mNM.cancel(R.string.open_new_message);

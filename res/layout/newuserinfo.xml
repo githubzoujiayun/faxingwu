@@ -47,7 +47,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:background="#e8e7e7" android:scrollbars="none" >
+        android:background="#e8e7e7"
+        android:scrollbars="none" >
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -253,8 +254,6 @@
                                 android:paddingLeft="3sp"
                                 android:scaleType="fitXY"
                                 android:textSize="14sp" />
-
-                            
                         </FrameLayout>
                     </LinearLayout>
 
@@ -350,7 +349,7 @@
                     android:layout_marginLeft="5sp"
                     android:layout_marginRight="5sp"
                     android:layout_marginTop="10sp"
-                    android:background="@drawable/shape_blue"
+                    android:background="@drawable/shape_red"
                     android:text="完 善 信 息"
                     android:textColor="#ffffff"
                     android:textSize="16sp" />

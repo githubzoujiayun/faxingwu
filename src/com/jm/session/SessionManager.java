@@ -9,10 +9,6 @@ public class SessionManager {
 	private static final int BITMAP_SMALL = 120;
 	private static final int BITMAP_LARGE = 480;
 	private static final int BITMAP_MID = 240;
-	// Keep 3 days at most
-	private static final long CACHED_TIME = 3 * 24 * 60 * 60 * 1000;
-
-	private final static String SUFFIX_TEMP = ".tmp";
 
 	private int smallsize = BITMAP_SMALL;
 	private int largesize = BITMAP_LARGE;
@@ -101,6 +97,9 @@ public class SessionManager {
 	private String appVersion = null;
 
 	private String cacheDir = "";
+
+	public int windowH;
+	public int windowW;
 
 	private SessionManager() {
 		super();

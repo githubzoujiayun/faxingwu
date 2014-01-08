@@ -42,24 +42,12 @@ public class ClientApp extends Application {
 		initCacheDir();
 		DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
 				.cacheInMemory(true).cacheOnDisc(true).build();
+
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
 				getApplicationContext()).defaultDisplayImageOptions(
 				defaultOptions).build();
 		ImageLoader.getInstance().init(config);
 	}
-
-	// private void initSystemInfo() {
-	// String versionName = "";
-	// try {
-	// PackageInfo info = getPackageManager().getPackageInfo(
-	// getPackageName(), 0);
-	// versionName = info.versionCode + ";" + info.versionName;
-	// } catch (Exception e) {
-	// LogUtil.e(e.getMessage(), e);
-	// }
-	//
-	// sm.setAppVersion(versionName);
-	// }
 
 	private void initCacheDir() {
 		SessionManager session = SessionManager.getInstance();

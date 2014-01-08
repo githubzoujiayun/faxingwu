@@ -132,7 +132,7 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:layout_marginTop="10sp"
-                android:background="@drawable/shape_red"
+                android:background="@drawable/shape_blue"
                 android:text="继 续 添 加"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -299,7 +299,7 @@
                     android:id="@+id/btn_PublicTop"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="@drawable/shape_blue"
+                    android:background="@drawable/shape_red"
                     android:text="上 传 信 息"
                     android:textColor="@color/white"
                     android:textSize="16sp" />

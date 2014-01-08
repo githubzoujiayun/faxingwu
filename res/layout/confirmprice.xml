@@ -171,8 +171,9 @@
 
             <Button
                 android:id="@+id/loginoutdialog_button_ok"
-                android:layout_width="100dp"
+                android:layout_width="fill_parent"
                 android:layout_height="35dp"
+                android:layout_weight="1"
                 android:background="@drawable/shape_red"
                 android:text="确定"
                 android:textColor="#ffffff"
@@ -180,9 +181,10 @@
 
             <Button
                 android:id="@+id/loginoutdialog_button_cancel"
-                android:layout_width="100dp"
+                android:layout_width="fill_parent"
                 android:layout_height="35dp"
                 android:layout_marginLeft="15dp"
+                android:layout_weight="1"
                 android:background="@drawable/shape_blue"
                 android:text="取消"
                 android:textColor="#ffffff"

@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.jm.finals.Constant;
 
-
 public class LogUtil {
 
 	public static final int NONE = 0;
@@ -29,7 +28,7 @@ public class LogUtil {
 		if (LOGGING_LEVEL >= ERROR_WARN)
 			Log.w(Constant.LOG_TAG, msg);
 	}
-	
+
 	public static void w(String msg, Throwable e) {
 		if (LOGGING_LEVEL >= ERROR_WARN)
 			Log.w(Constant.LOG_TAG, msg, e);
@@ -39,7 +38,7 @@ public class LogUtil {
 		if (LOGGING_LEVEL >= ERROR_WARN_INFO)
 			Log.i(Constant.LOG_TAG, msg);
 	}
-	
+
 	public static void i(String msg, Throwable e) {
 		if (LOGGING_LEVEL >= ERROR_WARN_INFO)
 			Log.i(Constant.LOG_TAG, msg, e);
@@ -49,7 +48,7 @@ public class LogUtil {
 		if (LOGGING_LEVEL >= ERROR_WARN_INFO_DEBUG)
 			Log.d(Constant.LOG_TAG, msg);
 	}
-	
+
 	public static void d(String msg, Throwable e) {
 		if (LOGGING_LEVEL >= ERROR_WARN_INFO_DEBUG)
 			Log.d(Constant.LOG_TAG, msg, e);

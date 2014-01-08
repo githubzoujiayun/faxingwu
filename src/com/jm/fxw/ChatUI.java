@@ -79,7 +79,6 @@ public class ChatUI extends Activity implements OnClickListener,
 		mInitParams = "appid=" + "522405c5";
 		iatDialog = new RecognizerDialog(this, mInitParams);
 		iatDialog.setListener(this);
-
 		cag = new CameraAndGallery(this);
 		setContentView(R.layout.chat);
 		Intent i = getIntent();
