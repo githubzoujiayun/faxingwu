@@ -50,7 +50,7 @@ public class PublicQuestionUI extends FinalActivity implements OnClickListener {
 	// /////////////////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.publicquestion);
 		sm = SessionManager.getInstance();
@@ -61,14 +61,14 @@ public class PublicQuestionUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
 		MobileProbe.onResume(this, "发布问题页面");
 	}
 
 	@Override
 	protected void onPause() {
-		
+
 		super.onPause();
 		MobileProbe.onPause(this, "发布问题页面");
 	}
@@ -183,6 +183,9 @@ public class PublicQuestionUI extends FinalActivity implements OnClickListener {
 		private Map<String, Object> getListInqVal() {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("uid", sm.getUserId());
+			map.put("lng", sm.getLng());
+			map.put("lat", sm.getLat());
+			map.put("city", sm.getCity());
 			map.put("content", et_hairinfo.getText().toString().trim());
 			map.put("image", UploadUrl1);
 			return map;

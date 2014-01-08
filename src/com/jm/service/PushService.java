@@ -36,8 +36,6 @@ public class PushService extends Service {
 
 	private Timer timer;
 
-	private int id = 0;
-
 	public static boolean isPush = true;
 
 	@Override
@@ -59,7 +57,7 @@ public class PushService extends Service {
 					}
 				}
 			}
-		}, 300 * 1000, 300 * 1000);
+		}, 3 * 1000, 3 * 1000);
 
 	}
 
@@ -197,8 +195,7 @@ public class PushService extends Service {
 		notification.setLatestEventInfo(this,
 				getString(R.string.open_new_message), msg, contentIntent);
 		notification.defaults = Notification.DEFAULT_SOUND;
-		mNM.notify(id, notification);
-		// id++;
+		mNM.notify(Integer.getInteger(type), notification);
 	}
 
 	private Map<String, Object> getMsgInqVal() {
