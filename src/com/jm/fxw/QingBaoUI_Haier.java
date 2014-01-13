@@ -18,7 +18,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.baidu.location.LocationClient;
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.News;
@@ -61,17 +60,6 @@ public class QingBaoUI_Haier extends Activity implements OnClickListener,
 
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		MobileProbe.onResume(this, "发型师情报页面");
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		MobileProbe.onPause(this, "发型师情报页面");
-	}
 
 	private void init() {
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);

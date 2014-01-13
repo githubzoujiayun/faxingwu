@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
@@ -48,7 +47,6 @@ public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
 	@Override
 	protected void onPause() {
 		super.onPause();
-		MobileProbe.onPause(this, "发型师预约管理页面");
 	}
 
 	private void init() {
@@ -60,7 +58,6 @@ public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
 	@Override
 	protected void onResume() {
 		super.onResume();
-		MobileProbe.onResume(this, "发型师预约管理页面");
 		new getCurrentYuYueListInfo().execute();
 	}
 

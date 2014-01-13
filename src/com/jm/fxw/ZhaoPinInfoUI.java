@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -38,11 +37,6 @@ public class ZhaoPinInfoUI extends FinalActivity implements OnClickListener {
 		initView();
 	}
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		 MobileProbe.onPause(this, "ÕÐÆ¸ÏêÇé");
-	}
 
 	private void initView() {
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -50,13 +44,6 @@ public class ZhaoPinInfoUI extends FinalActivity implements OnClickListener {
 		sid = i.getStringExtra("sid");
 
 		new getShaLongInfo().execute();
-
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		MobileProbe.onResume(this, "ÕÐÆ¸ÏêÇé");
 
 	}
 

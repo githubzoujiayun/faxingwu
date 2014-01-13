@@ -18,7 +18,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.baidu.location.LocationClient;
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.News;
@@ -56,20 +55,6 @@ public class QingBaoUI_User extends Activity implements OnClickListener,
 		ListView.setOnScrollListener(this);
 		changeCondition("4", findViewById(R.id.btn_quanbu));
 
-	}
-
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "用户情报页面");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "用户情报页面");
 	}
 
 	private void init() {

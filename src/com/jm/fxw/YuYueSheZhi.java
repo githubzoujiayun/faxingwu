@@ -16,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -62,7 +61,6 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		MobileProbe.onPause(this, "发型师价格和提示信息设置页面");
 	}
 
 	private void add_list() {
@@ -93,7 +91,6 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		MobileProbe.onResume(this, "发型师价格和提示信息设置页面");
 		new getTipsInfo().execute();
 		new getPriceInfo().execute();
 	}

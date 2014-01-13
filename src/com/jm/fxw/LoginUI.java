@@ -20,7 +20,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -71,7 +70,6 @@ public class LoginUI extends Activity implements OnClickListener {
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "登录页面");
 		if (sm.isLogin()) {
 			finish();
 		}
@@ -87,7 +85,6 @@ public class LoginUI extends Activity implements OnClickListener {
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "登录页面");
 	}
 
 	// 初始化微博相关

@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -69,14 +68,12 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 		((Button) findViewById(R.id.btn_location)).setText(SessionManager
 				.getInstance().getCity());
-		MobileProbe.onResume(this, "发型师页面");
 	}
 
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		MobileProbe.onPause(this, "发型师页面");
 	}
 
 	public void Click(View v) {

@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Rating;
@@ -56,19 +55,6 @@ public class RatingListUI extends Activity implements OnClickListener,
 		new GetRatingListTask().execute();
 	}
 
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "评价列表页面");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "评价列表页面");
-	}
 
 	private void init() {
 

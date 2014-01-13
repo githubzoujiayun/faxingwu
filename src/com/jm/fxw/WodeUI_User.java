@@ -14,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -57,18 +56,11 @@ public class WodeUI_User extends Activity implements OnClickListener {
 
 	}
 
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "用户个人中心页面");
-	}
 
 	@Override
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "用户个人中心页面");
 		if (sm.getUserId() == null || sm.getUserId().equals("")) {
 			finish();
 		}

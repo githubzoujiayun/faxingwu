@@ -36,6 +36,7 @@ public class PushService extends Service {
 
 	private Timer timer;
 
+	private int pusd_type;
 	public static boolean isPush = true;
 
 	@Override
@@ -52,9 +53,8 @@ public class PushService extends Service {
 			@Override
 			public void run() {
 				if (checkNetworkInfo()) {
-					if (isPush) {
-						checkRese();
-					}
+					checkRese();
+
 				}
 			}
 		}, 3 * 1000, 3 * 1000);
@@ -141,15 +141,20 @@ public class PushService extends Service {
 
 		String type = msg.substring(0, 1);
 		LogUtil.e("type = " + type);
-
+		this.pusd_type = Integer.valueOf(type);
 		Intent intent = new Intent();
 		intent.putExtra("isPushIn", true);
 		// 私信1 评论2 预约3 粉丝4
 		if ("1".equals(type)) {
-			intent = new Intent(this, ChatUI.class);
-			intent.putExtra("isPushIn", true);
-			intent.putExtra("tid", msg.split(",")[1]);
-			msg = "您有一条新私信";
+
+			if (isPush) {
+				intent = new Intent(this, ChatUI.class);
+				intent.putExtra("isPushIn", true);
+				intent.putExtra("tid", msg.split(",")[1]);
+				msg = "您有一条新私信";
+			} else {
+				return;
+			}
 		}
 		if ("2".equals(type)) {
 			intent = new Intent(this, HairItemInfoUI.class);
@@ -177,13 +182,13 @@ public class PushService extends Service {
 			intent.setClass(this, ChatQuestionUI.class);
 			intent.putExtra("tid", msg.split(",")[1]);
 			intent.putExtra("pid", msg.split(",")[2]);
-			msg = "您的问题有了回答";
+			msg = "您的问题有了发型师回答";
 		}
 		if ("6".equals(type)) {
 			intent.setClass(this, ChatQuestionUI.class);
 			intent.putExtra("tid", msg.split(",")[1]);
 			intent.putExtra("pid", msg.split(",")[2]);
-			msg = "周边有用户向您提问";
+			msg = "周边用户有人向您提问";
 		}
 		NotificationManager mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		mNM.cancel(R.string.open_new_message);
@@ -195,7 +200,7 @@ public class PushService extends Service {
 		notification.setLatestEventInfo(this,
 				getString(R.string.open_new_message), msg, contentIntent);
 		notification.defaults = Notification.DEFAULT_SOUND;
-		mNM.notify(Integer.getInteger(type), notification);
+		mNM.notify(pusd_type, notification);
 	}
 
 	private Map<String, Object> getMsgInqVal() {

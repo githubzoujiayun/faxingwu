@@ -19,7 +19,6 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -101,14 +100,12 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "程序载入页面");
 	}
 
 	@Override
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "程序载入页面");
 	}
 
 	public class MyLocationListener implements BDLocationListener {

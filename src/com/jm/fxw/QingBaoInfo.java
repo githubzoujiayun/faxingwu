@@ -14,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.NewsList;
@@ -33,7 +32,8 @@ public class QingBaoInfo extends FinalActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.newslist);
-		init();
+
+		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		ListView = (ListView) findViewById(R.id.yuyue_list);
 		View view = LayoutInflater.from(this).inflate(R.layout.newslisthead,
 				null);
@@ -48,22 +48,6 @@ public class QingBaoInfo extends FinalActivity implements OnClickListener {
 		}
 
 		new getNewListInfo().execute();
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		MobileProbe.onPause(this, "新闻详情");
-	}
-
-	private void init() {
-		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		MobileProbe.onResume(this, "新闻详情");
 	}
 
 	class getNewListInfo extends AsyncTask<String, Integer, Response> {

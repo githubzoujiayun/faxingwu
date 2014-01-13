@@ -113,7 +113,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:divider="@color/white"
-            android:dividerHeight="2px"
+            android:dividerHeight="5px"
             android:fadingEdge="none"
             android:footerDividersEnabled="false"
             android:numColumns="3" >

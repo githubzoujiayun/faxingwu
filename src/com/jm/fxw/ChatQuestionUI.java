@@ -31,7 +31,6 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.iflytek.speech.RecognizerResult;
 import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
@@ -116,19 +115,6 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 		public void run() {
 			getMsgList();
 		}
-	}
-
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "问题私信页面");
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		MobileProbe.onPause(this, "问题私信页面");
 	}
 
 	@Override

@@ -23,7 +23,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -61,19 +60,6 @@ public class PublicJiShuHuaTi extends FinalActivity implements OnClickListener {
 
 	}
 
-	@Override
-	protected void onResume() {
-		
-		super.onResume();
-		MobileProbe.onResume(this, "发布话题页面");
-	}
-
-	@Override
-	protected void onPause() {
-		
-		super.onPause();
-		MobileProbe.onPause(this, "发布话题页面");
-	}
 
 	private void showPicture(Uri uri) {
 		if (uri == null) {

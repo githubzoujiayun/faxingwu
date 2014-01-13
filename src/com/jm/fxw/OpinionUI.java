@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -30,18 +29,6 @@ public class OpinionUI extends Activity implements OnClickListener {
 
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		MobileProbe.onResume(this, "反馈页面");
-	}
-
-	@Override
-	protected void onPause() {
-		
-		super.onPause();
-		MobileProbe.onPause(this, "反馈页面");
-	}
 
 	/*
 	 * 用户发布评论

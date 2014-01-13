@@ -117,7 +117,7 @@
             android:layout_height="fill_parent"
             
             android:divider="@color/white"
-            android:dividerHeight="2px"
+            android:dividerHeight="5px"
             android:focusable="false"
             android:fadingEdge="none"
             android:footerDividersEnabled="false" >

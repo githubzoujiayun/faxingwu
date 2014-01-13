@@ -25,7 +25,6 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -82,18 +81,6 @@ public class ChangeInfo extends Activity implements OnClickListener {
 	private void getUserInfo() {
 		new getUserInfo().execute();
 
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		MobileProbe.onResume(this, "修改资料页面");
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		MobileProbe.onPause(this, "修改资料页面");
 	}
 
 	/*

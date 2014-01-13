@@ -19,7 +19,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -78,19 +77,6 @@ public class PublicJobUI extends FinalActivity implements OnClickListener {
 		loadSpinner();
 	}
 
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "发布工作页面");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "发布工作页面");
-	}
 
 	private void initView() {
 		findViewById(R.id.btn_PublicTop).setOnClickListener(this);

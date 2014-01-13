@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Msg;
@@ -46,14 +45,12 @@ public class MsgUI extends FinalActivity implements OnClickListener,
 	protected void onResume() {
 		
 		super.onResume();
-		MobileProbe.onResume(this, "私信列表页面");
 	}
 
 	@Override
 	protected void onPause() {
 		
 		super.onPause();
-		MobileProbe.onPause(this, "私信列表页面");
 	}
 
 	private void initView() {

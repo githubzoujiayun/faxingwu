@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.WillDo;
@@ -59,14 +58,12 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "预约作品详情页面");
 	}
 
 	@Override
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "预约作品详情页面");
 	}
 
 	private void initView() {

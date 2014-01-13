@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -68,20 +67,6 @@ public class PublicNewsList extends FinalActivity implements OnClickListener {
 			finish();
 		}
 
-	}
-
-	@Override
-	protected void onResume() {
-		
-		super.onResume();
-		MobileProbe.onResume(this, "发布新闻页面");
-	}
-
-	@Override
-	protected void onPause() {
-		
-		super.onPause();
-		MobileProbe.onPause(this, "发布新闻页面");
 	}
 
 	private void showPicture(Uri uri) {

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.tsz.afinal.FinalBitmap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +24,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.iflytek.speech.RecognizerResult;
 import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
@@ -86,14 +84,12 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "话题详情页面");
 	}
 
 	@Override
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "话题详情页面");
 	}
 
 	private void initView() {

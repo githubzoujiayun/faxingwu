@@ -18,7 +18,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -80,19 +79,6 @@ public class CollectListUI extends Activity implements OnClickListener,
 
 	}
 
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "收藏列表页面");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "收藏列表页面");
-	}
 
 	/*
 	 * 读取发型列表

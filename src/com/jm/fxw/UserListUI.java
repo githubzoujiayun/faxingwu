@@ -13,11 +13,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.User;
@@ -27,6 +25,7 @@ import com.jm.sort.UserAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 
 public class UserListUI extends Activity implements OnClickListener,
 		OnItemClickListener {
@@ -45,27 +44,13 @@ public class UserListUI extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.userlist);
 		init();
-		new GetUserTask().execute();
-	}
-
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "关注/粉丝列表页面");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "关注/粉丝列表页面");
 	}
 
 	private void init() {
 
 		findViewById(R.id.btn_faxingshi).setOnClickListener(this);
 		findViewById(R.id.btn_geren).setOnClickListener(this);
+		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		sm = SessionManager.getInstance();
 		type = getIntent().getStringExtra("type");
 		isPushIn = getIntent().getBooleanExtra("isPushIn", false);
@@ -81,20 +66,8 @@ public class UserListUI extends Activity implements OnClickListener,
 		adapter = new UserAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
+		changeUserType("1", findViewById(R.id.btn_faxingshi));
 
-		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi))
-				.setTextColor(Constant.color_RoseRed);
-		findViewById(R.id.btn_leftTop).setOnClickListener(this);
-
-	}
-
-	private void ResetButtonBg() {
-
-		((Button) findViewById(R.id.btn_faxingshi))
-				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_geren))
-				.setTextColor(Constant.color_Black);
 	}
 
 	/*
@@ -162,20 +135,25 @@ public class UserListUI extends Activity implements OnClickListener,
 			this.finish();
 			break;
 		case R.id.btn_faxingshi:
-			ResetButtonBg();
-			((Button) v).setTextColor(Constant.color_RoseRed);
-			adapter.clear();
-			usertype = "2";
-			new GetUserTask().execute();
+			changeUserType("2", v);
 			break;
 		case R.id.btn_geren:
-			ResetButtonBg();
-			((Button) v).setTextColor(Constant.color_RoseRed);
-			adapter.clear();
-			usertype = "1";
-			new GetUserTask().execute();
+
+			changeUserType("1", v);
 			break;
 		}
+	}
+
+	private void changeUserType(String ut, View v) {
+
+		List<View> blist = new ArrayList<View>();
+		blist.add(findViewById(R.id.btn_faxingshi));
+		blist.add(findViewById(R.id.btn_geren));
+		WidgetUtil.ResetAllButton(blist);
+		WidgetUtil.setChangeButton(v);
+		adapter.clear();
+		this.usertype = ut;
+		new GetUserTask().execute();
 	}
 
 	@Override

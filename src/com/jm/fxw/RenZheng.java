@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -44,19 +43,7 @@ public class RenZheng extends FinalActivity {
 		new getShaLongInfo().execute();
 	}
 
-	@Override
-	protected void onResume() {
-		
-		super.onResume();
-		MobileProbe.onResume(this, "店铺认证页面");
-	}
 
-	@Override
-	protected void onPause() {
-		
-		super.onPause();
-		MobileProbe.onPause(this, "店铺认证页面");
-	}
 
 	/*
 	 * 读取店铺信息

@@ -23,7 +23,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -75,7 +74,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		MobileProbe.onResume(this, "预约页面");
 		getUserInfo();
 
 	}
@@ -83,7 +81,6 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		MobileProbe.onPause(this, "预约页面");
 	}
 
 	private void getUserInfo() {

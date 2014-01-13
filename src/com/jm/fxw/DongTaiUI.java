@@ -1,24 +1,19 @@
 package com.jm.fxw;
 
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -55,17 +50,6 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		changeBtn("add_time", findViewById(R.id.btn_zuixin));
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-		MobileProbe.onResume(this, "动态列表页面");
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		MobileProbe.onPause(this, "动态列表页面");
-	}
 
 	private void getDataFromDataBase() {
 		List<DongTai> baseHairList = new ArrayList<DongTai>();

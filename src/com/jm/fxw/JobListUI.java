@@ -21,7 +21,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -123,14 +122,12 @@ public class JobListUI extends Activity implements OnClickListener,
 		((Button) findViewById(R.id.btn_city)).setText(SessionManager
 				.getInstance().getCity());
 		getJobs();
-		MobileProbe.onResume(this, "招聘列表页面");
 	}
 
 	@Override
 	protected void onPause() {
 		
 		super.onPause();
-		MobileProbe.onPause(this, "招聘列表页面");
 	}
 
 	private void init() {

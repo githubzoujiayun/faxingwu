@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -38,11 +37,6 @@ public class ZhuanRangInfoUI extends FinalActivity implements OnClickListener {
 		initView();
 	}
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		 MobileProbe.onPause(this, "转让详情");
-	}
 
 	private void initView() {
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -53,13 +47,6 @@ public class ZhuanRangInfoUI extends FinalActivity implements OnClickListener {
 
 	}
 
-	@Override
-	protected void onResume() {
-		
-		super.onResume();
-		 MobileProbe.onResume(this, "转让详情");
-
-	}
 
 	/*
 	 * 添 读取店铺信息

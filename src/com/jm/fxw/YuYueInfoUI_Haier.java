@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.tsz.afinal.FinalActivity;
-import net.tsz.afinal.FinalBitmap;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -14,13 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
-import com.jm.fxw.YuYueListUI_User.getTipsInfo;
-import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 import com.jm.util.TispToastFactory;
@@ -52,14 +47,12 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		MobileProbe.onResume(this, "发型师预约详情页面");
 		new getCurrentYuYueInfo().execute();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		MobileProbe.onPause(this, "发型师预约详情页面页面");
 	}
 
 	/*

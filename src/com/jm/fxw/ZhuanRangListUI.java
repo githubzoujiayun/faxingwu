@@ -21,7 +21,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -57,7 +56,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.shalongzhuanranglist);
 		init();
@@ -122,13 +121,6 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 		((Button) findViewById(R.id.btn_city)).setText(SessionManager
 				.getInstance().getCity());
 		getZhuanRang();
-		MobileProbe.onResume(this, "转让列表");
-	}
-
-	@Override
-	protected void onPause() {
-		super.onPause();
-		MobileProbe.onPause(this, "转让列表");
 	}
 
 	private void init() {
@@ -151,7 +143,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
-			
+
 			super.onPreExecute();
 			if (mlist == null || mlist.size() == 0) {
 				adapter.setProgress(true);
@@ -212,7 +204,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onClick(View v) {
-		
+
 		switch (v.getId()) {
 		case R.id.btn_leftTop:
 			// 打开分类
@@ -232,7 +224,7 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,
 			int visibleItemCount, int totalItemCount) {
-		
+
 		if (showlast) {
 			return;
 		}
@@ -252,7 +244,6 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 	@Override
 	public void onScrollStateChanged(AbsListView view, int scrollState) {
-		
 
 	}
 

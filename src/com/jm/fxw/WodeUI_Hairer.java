@@ -15,7 +15,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -36,12 +35,6 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 		initView();
 	}
 
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "发型师个人中心");
-	}
 
 	private void initView() {
 		setInco();
@@ -73,7 +66,6 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "发型师个人中心");
 		if (sm.getUserId() == null || sm.getUserId().equals("")) {
 			finish();
 		}

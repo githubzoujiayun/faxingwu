@@ -19,16 +19,15 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.ZhouBian;
 import com.jm.finals.Constant;
 import com.jm.session.SessionManager;
 import com.jm.sort.ZhouBianAdapter;
-import com.jm.util.WidgetUtil;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
+import com.jm.util.WidgetUtil;
 
 public class TongChengUI extends Activity implements OnClickListener,
 		OnScrollListener, OnItemClickListener {
@@ -50,19 +49,7 @@ public class TongChengUI extends Activity implements OnClickListener,
 		changeCondition("2", findViewById(R.id.btn_faxingshi));
 	}
 
-	@Override
-	protected void onResume() {
 
-		super.onResume();
-		MobileProbe.onResume(this, "附近的人");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "附近的人");
-	}
 
 	private void init() {
 

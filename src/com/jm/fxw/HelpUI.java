@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
-
 public class HelpUI extends Activity implements OnClickListener {
 
 	@Override
@@ -21,14 +19,12 @@ public class HelpUI extends Activity implements OnClickListener {
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "∞Ô÷˙“≥√Ê");
 	}
 
 	@Override
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "∞Ô÷˙“≥√Ê");
 	}
 
 	@Override

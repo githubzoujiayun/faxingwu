@@ -26,7 +26,6 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -112,7 +111,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 		super.onResume();
 		((EditText) findViewById(R.id.tv_city)).setText(SessionManager
 				.getInstance().getCity());
-		MobileProbe.onResume(this, "完善资料页面");
 	}
 
 	@Override
@@ -151,13 +149,6 @@ public class NewUserInfo extends Activity implements OnClickListener {
 
 		((ImageView) findViewById(R.id.iv_minfouserpic))
 				.setImageBitmap(mCurrentBitMap1);
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "完善资料页面");
 	}
 
 	/**

@@ -23,7 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.entity.Type;
 import com.jm.finals.Constant;
@@ -63,19 +62,6 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener,
 		setFirstType(1);
 	}
 
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "发型分类页面");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "发型分类页面");
-	}
 
 	private void setInco() {
 

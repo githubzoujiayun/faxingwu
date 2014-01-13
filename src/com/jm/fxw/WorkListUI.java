@@ -19,7 +19,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -73,20 +72,6 @@ public class WorkListUI extends Activity implements OnClickListener,
 		ListView.setOnScrollListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
-	}
-
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		MobileProbe.onResume(this, "作品列表页面");
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
-		MobileProbe.onPause(this, "作品列表页面");
 	}
 
 	/*

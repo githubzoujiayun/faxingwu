@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -51,7 +50,6 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 	protected void onPause() {
 
 		super.onPause();
-		MobileProbe.onPause(this, "查看他人详情页面");
 	}
 
 	private void initView() {
@@ -95,7 +93,6 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 	protected void onResume() {
 
 		super.onResume();
-		MobileProbe.onResume(this, "查看他们详情页面");
 
 		new getUserInfo().execute();
 	}
