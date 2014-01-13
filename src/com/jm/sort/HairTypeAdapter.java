@@ -54,23 +54,13 @@ public class HairTypeAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View view;
-		if (isProgress) {
-			view = inflater.inflate(R.layout.progress_footer, null);
+		Type type = mlist.get(position);
+		view = inflater.inflate(R.layout.hairtype_list, null);
 
-			return view;
-		} else {
-			Type type = mlist.get(position);
-			if (convertView != null && convertView instanceof HairItem) {
-				view = convertView;
-			} else {
-				view = inflater.inflate(R.layout.hairtype_list, null);
-			}
-			view.findViewById(R.id.img_hairtype).setBackgroundResource(
-					type.picResource);
-			((TextView) view.findViewById(R.id.tv_hairtype))
-					.setText(type.hairName);
+		view.findViewById(R.id.img_hairtype).setBackgroundResource(
+				type.picResource);
+		((TextView) view.findViewById(R.id.tv_hairtype)).setText(type.hairName);
 
-		}
 		return view;
 	}
 

@@ -25,7 +25,6 @@ public class HairAdapter extends BaseAdapter {
 	private ImageView hairPic;
 	private boolean isProgress = false;
 
-
 	public HairAdapter(Context context) {
 		inflater = LayoutInflater.from(context);
 		mlist = new ArrayList<Hair>();
