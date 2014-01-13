@@ -6,14 +6,12 @@ import java.util.Map;
 
 import net.tsz.afinal.FinalBitmap;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -50,7 +48,6 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 		sm = SessionManager.getInstance();
 		setContentView(R.layout.hairwilldoinfo);
 		initView();
-
 		new getHairInfoTask().execute();
 	}
 
@@ -76,6 +73,8 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.iv_photo).setOnClickListener(this);
 		findViewById(R.id.iv_hairinfo_headphoto).setOnClickListener(this);
+		findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
+		findViewById(R.id.btn_yuyue).setOnClickListener(this);
 		likeGallery = (HorizontalListView) findViewById(R.id.hairinfo_like);
 		likeGallery.setVisibility(View.GONE);
 		inthid = getIntent().getStringExtra("hid");
@@ -87,13 +86,10 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.btn_yuyue:
 			// 打开预约界面
-			if (((Button) v).getText().equals("预约TA")) {
-				map.put("tid", to_uid);
-				StartActivityContController.goPage(HairItemWillDoList.this,
-						YuYueUI.class, true, map);
-			} else {
-				goUserInfoPage();
-			}
+			map.put("tid", to_uid);
+			map.put("hid", inthid);
+			StartActivityContController.goPage(HairItemWillDoList.this,
+					YuYueUI.class, true, map);
 			break;
 		case R.id.btn_leftTop:
 			if (isPushIn) {
@@ -132,40 +128,6 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 				TispToastFactory.getToast(HairItemWillDoList.this, str).show();
 			}
 		});
-	}
-
-	/*
-	 * 用户增加积分评论
-	 */
-	class addPointTask extends AsyncTask<String, Integer, Response> {
-		private Map<String, Object> getListInqVal() {
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("uid", sm.getUserId());
-			map.put("score", "1");
-			map.put("status", "1");
-			return map;
-		}
-
-		@Override
-		protected void onPreExecute() {
-		}
-
-		@Override
-		protected Response doInBackground(String... params) {
-			Connection conn = ((ClientApp) getApplication()).getConnection();
-			return conn.executeAndParse(Constant.URN_ADDPOINT, getListInqVal());
-
-		}
-
-		protected void onPostExecute(Response result) {
-
-			LogUtil.i("addPointTask onPostExecute");
-		}
-	}
-
-	private void goLoginPage(Intent intent) {
-		intent.setClass(this, LoginUI.class);
-		startActivity(intent);
 	}
 
 	/*
@@ -283,14 +245,14 @@ public class HairItemWillDoList extends Activity implements OnClickListener {
 						adapter.setTypeList(mlist);
 						adapter.notifyDataSetChanged();
 						((TextView) findViewById(R.id.tv_commentsize))
-								.setText("周边共有" + mlist.size() + "个发型师会做此发型");
+								.setText("周边共有" + mlist.size() + "个发型师报价此发型");
 					} else {
 						((TextView) findViewById(R.id.tv_commentsize))
-								.setText("周边暂无发型师会做此发型");
+								.setText("周边暂无发型师报价此发型");
 					}
 				} else {
 					((TextView) findViewById(R.id.tv_commentsize))
-							.setText("周边暂无发型师会做此发型");
+							.setText("周边暂无发型师报价此发型");
 				}
 			}
 		}
