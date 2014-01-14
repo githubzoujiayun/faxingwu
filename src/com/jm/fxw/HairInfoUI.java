@@ -208,7 +208,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 					true, map);
 			break;
 		case R.id.btn_yuyue:
-			if (!((Button) v).getText().equals("我会做")) {
+			if (!((Button) v).getText().equals("报价")) {
 				map.put("tid", to_uid);
 				map.put("hid", alist.get(galleryindex).getId() + "");
 				StartActivityContController.goPage(HairInfoUI.this,
@@ -674,7 +674,7 @@ public class HairInfoUI extends Activity implements OnClickListener,
 			if (SessionManager.getInstance().getUsertype().equals("2")
 					&& usertype.equals("2")
 					&& jb.getString("isWillDo").equals("0")) {
-				((Button) findViewById(R.id.btn_yuyue)).setText("我会做");
+				((Button) findViewById(R.id.btn_yuyue)).setText("报价");
 				findViewById(R.id.btn_yuyue).setVisibility(View.VISIBLE);
 			} else if (SessionManager.getInstance().getUsertype().equals("1")
 					&& usertype.equals("2")) {

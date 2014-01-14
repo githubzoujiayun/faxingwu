@@ -60,6 +60,7 @@ public class Constant {
 
 	public final static String URN_QUESION_LIST = "http://wap.faxingw.cn/index.php?m=Problem&a=topicview";
 	public final static String URN_CHAT_LIST = "http://wap.faxingw.cn/index.php?m=Message&a=talk";
+	public final static String URN_CLEARPUSH = "http://wap.faxingw.cn/index.php?m=Message&a=delPush";
 	public final static String URN_CHAT_PUBLISH = "http://wap.faxingw.cn/index.php?m=Message&a=publish";
 	public final static String URN_CHAT_QUESTION = "http://wap.faxingw.cn/index.php?m=Problem&a=answeradd";
 

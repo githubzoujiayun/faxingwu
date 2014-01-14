@@ -99,7 +99,8 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 			finish();
 		}
 		ListView = (ListView) findViewById(R.id.my_listview);
-		adapter = new ChatAdapter(this);
+		adapter = new ChatAdapter(this, this.getWindowManager()
+				.getDefaultDisplay().getWidth());
 		ListView.setAdapter(adapter);
 		findViewById(R.id.btn_send).setOnClickListener(this);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -121,10 +122,36 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 	protected void onDestroy() {
 		super.onDestroy();
 		timer.cancel();
+		new ClearPushTask().execute();
 	}
 
 	private void getMsgList() {
 		new getMsgListTask().execute();
+	}
+
+	class ClearPushTask extends AsyncTask<String, Integer, Response> {
+
+		@Override
+		protected void onPreExecute() {
+		}
+
+		protected Map<String, Object> getMsgInqVal() {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("uid", sm.getUserId());
+			map.put("status", "5");
+			return map;
+		}
+
+		@Override
+		protected Response doInBackground(String... params) {
+			Connection conn = ((ClientApp) getApplication()).getConnection();
+			return conn.executeAndParse(Constant.URN_CLEARPUSH, getMsgInqVal());
+
+		}
+
+		protected void onPostExecute(Response result) {
+
+		}
 	}
 
 	/*

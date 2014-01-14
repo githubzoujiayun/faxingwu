@@ -71,6 +71,9 @@
     <meta-data
         android:name="BaiduMobAd_STAT_ID"
         android:value="eed47aff57" />
+    <meta-data
+        android:name="BaiduMobAd_CHANNEL"
+        android:value="官方" />
     <!-- abcd1234 -->
 
 

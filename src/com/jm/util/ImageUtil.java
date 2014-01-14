@@ -170,18 +170,15 @@ public class ImageUtil {
 		return bitmap;
 	}
 
-	public static void getFitBitMap(int WindowH, int WindowW, int bmw, int bmh,
+	public static void getFitBitMap(int ScreenWidth, int bmw, int bmh,
 			ImageView iv) {
-		LogUtil.e("屏幕WindowH" + WindowH);
-		LogUtil.e("屏幕WindowW" + WindowW);
-		LogUtil.e("原图bm.w" + bmw);
-		LogUtil.e("原图bm.h" + bmh);
-		if (bmw > WindowW / 2) {
+		LogUtil.e("ScreenWidth = " + ScreenWidth);
+		LogUtil.e("原图bm.w = " + bmw);
+		LogUtil.e("原图bm.h = " + bmh);
+		if (bmw > ScreenWidth / 2) {
 			LogUtil.e("原图需要缩放");
-
-			double be = (double) bmw / (double) (WindowW / 2);
-
-			LogUtil.e("be =" + be);
+			double be = (double) bmw / (double) (ScreenWidth / 2);
+			LogUtil.e("缩放值 =" + be);
 			LogUtil.e("新图" + bmw / be);
 			LogUtil.e("新图" + bmh / be);
 			int h = (int) (bmh / be);
@@ -191,6 +188,8 @@ public class ImageUtil {
 			para.height = h;
 			para.width = w;
 			iv.setLayoutParams(para);
+		} else {
+			LogUtil.e("原图不需要缩放");
 		}
 	}
 }

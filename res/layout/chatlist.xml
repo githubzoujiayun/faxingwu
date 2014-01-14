@@ -9,7 +9,7 @@
     android:orientation="vertical" >
 
     <RelativeLayout
-        android:id="@+id/LinearLayout1"
+        android:id="@+id/RelativeLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -113,11 +113,11 @@
 
         <TextView
             android:id="@+id/time"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/LinearLayout"
-            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
             android:text="2012-12-28 16:50:55"
             android:textColor="@color/black2"
             android:textSize="10dip" />

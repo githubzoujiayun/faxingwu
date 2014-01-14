@@ -16,6 +16,7 @@ import com.jm.fxw.HisInfoUI;
 import com.jm.fxw.R;
 import com.jm.session.SessionManager;
 import com.jm.util.ImageUtil;
+import com.jm.util.LogUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
 
@@ -32,6 +33,7 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 	private TextView text;
 	public QuestionChat u;
 
+	public int ScreenWidth;
 	private int h, w;
 
 	public ChatItem(Context context, AttributeSet attrs) {
@@ -39,8 +41,9 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 		this.context = context;
 	}
 
-	public void setChats(QuestionChat u) {
+	public void setChatsAndScreenWidth(QuestionChat u, int ScreenWidth) {
 		this.u = u;
+		this.ScreenWidth = ScreenWidth;
 	}
 
 	public void initView() {
@@ -122,9 +125,15 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 						public void onLoadingComplete(String imageUri,
 								android.view.View view,
 								android.graphics.Bitmap loadedImage) {
-							ImageUtil.getFitBitMap(
-									SessionManager.getInstance().windowH,
-									SessionManager.getInstance().windowW,
+							if (loadedImage.getWidth() == 0
+									|| loadedImage.getHeight() == 0) {
+
+								LogUtil.e("无法获取图片的高度和宽度");
+								ImageLoader.getInstance().displayImage(
+										imageUri, (ImageView) view);
+								return;
+							}
+							ImageUtil.getFitBitMap(ScreenWidth,
 									loadedImage.getWidth(),
 									loadedImage.getHeight(), chatpicture);
 							chatpicture.setImageBitmap(loadedImage);
@@ -152,4 +161,5 @@ public class ChatItem extends LinearLayout implements OnClickListener {
 		}
 
 	}
+
 }
