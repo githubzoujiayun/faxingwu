@@ -83,7 +83,7 @@ public class FaXingShi implements ListItem {
 		if (json.has("store_address")) {
 			this.store_address = json.getString("store_address");
 		}
-		if (json.has("works_list")) {
+		if (json.has("works_list") && !"".equals(json.getString("works_list"))) {
 			this.works_list = JSONUtil.getList(json, "works_list", new Hair());
 		}
 		if (json.has("status")) {

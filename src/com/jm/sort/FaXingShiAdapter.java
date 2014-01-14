@@ -111,6 +111,8 @@ public class FaXingShiAdapter extends BaseAdapter implements
 			likeadapter = new SmallImageAdapter(context);
 			FaXingShiItem view = (FaXingShiItem) inflater.inflate(
 					R.layout.faxingshiuser_list, null);
+			view.setFaXingShi(type);
+			view.initView();
 			ImageLoader.getInstance().displayImage(type.head_photo,
 					(ImageView) view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type.username);

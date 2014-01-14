@@ -245,6 +245,12 @@
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.jm.fxw.GongJuXiangUI"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
             android:name="com.jm.fxw.RatingListUI"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"

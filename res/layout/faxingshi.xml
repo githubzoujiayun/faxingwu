@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e6e6e6"
+    android:background="@color/bg"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -112,8 +112,8 @@
             android:id="@+id/lv_faxingshi_listview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:divider="@color/white"
-            android:dividerHeight="5px"
+            android:divider="@color/bg"
+            android:dividerHeight="10px"
             android:fadingEdge="none"
             android:footerDividersEnabled="false"
             android:numColumns="3" >

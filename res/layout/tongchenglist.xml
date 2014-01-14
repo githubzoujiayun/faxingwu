@@ -115,11 +115,10 @@
             android:id="@+id/my_zhoubianlistview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            
-            android:divider="@color/white"
-            android:dividerHeight="5px"
-            android:focusable="false"
+            android:divider="@color/bg"
+            android:dividerHeight="10px"
             android:fadingEdge="none"
+            android:focusable="false"
             android:footerDividersEnabled="false" >
         </ListView>
     </LinearLayout>

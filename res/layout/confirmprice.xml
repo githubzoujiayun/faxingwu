@@ -38,10 +38,9 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:background="@drawable/shape_white"
-                android:gravity="right"
+                android:gravity="center"
                 android:inputType="numberDecimal"
                 android:maxLength="3"
-                android:paddingLeft="5sp"
                 android:textColor="@color/black"
                 android:textSize="13dp" >
             </EditText>
@@ -76,10 +75,9 @@
                 android:layout_marginLeft="5sp"
                 android:layout_marginRight="5sp"
                 android:background="@drawable/shape_white"
-                android:gravity="right"
+                android:gravity="center"
                 android:inputType="number"
                 android:maxLength="4"
-                android:paddingLeft="5sp"
                 android:textColor="@color/black"
                 android:textSize="13dp" >
             </EditText>

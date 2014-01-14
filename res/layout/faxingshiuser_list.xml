@@ -26,8 +26,8 @@
             <ImageView
                 android:id="@+id/iv_renzheng"
                 android:layout_width="fill_parent"
-                android:layout_marginTop="2sp"
                 android:layout_height="fill_parent"
+                android:layout_marginTop="2sp"
                 android:background="@drawable/renzhengfaxingshi"
                 android:scaleType="fitXY" />
         </FrameLayout>
@@ -110,6 +110,22 @@
                 </TextView>
             </LinearLayout>
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_yuyuefaxingshi"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="3sp"
+            android:layout_marginTop="3sp"
+            android:background="@drawable/shape_red"
+            android:gravity="center"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
+            android:singleLine="true"
+            android:text="  预  约  "
+            android:textColor="@color/white"
+            android:textSize="14sp" >
+        </Button>
     </LinearLayout>
 
     <TextView
@@ -135,12 +151,12 @@
         <com.jm.view.HorizontalListView
             android:id="@+id/his_gallery"
             android:layout_width="0sp"
-            android:paddingLeft="2sp"
-            android:paddingRight="2sp"
             android:layout_height="fill_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:focusable="false"
+            android:paddingLeft="2sp"
+            android:paddingRight="2sp"
             android:spacing="1px"
             android:unselectedAlpha="1" />
     </LinearLayout>

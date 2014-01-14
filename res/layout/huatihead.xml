@@ -59,9 +59,9 @@
                     android:id="@+id/iv_photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="2sp"
+                    android:layout_gravity="center"
                     android:background="@color/bg"
+                    android:padding="1sp"
                     android:spacing="0sp" />
             </LinearLayout>
 
@@ -154,8 +154,8 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg"
         android:layout_marginTop="5sp"
+        android:background="@color/bg"
         android:orientation="vertical" >
 
         <TextView

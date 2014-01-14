@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -198,6 +199,10 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 			YuyueHair();
 		}
 
+		if (!SessionManager.getInstance().isUser()) {
+			Toast.makeText(this, "发型师不能预约", Toast.LENGTH_SHORT).show();
+			finish();
+		}
 		ChangeType("洗剪吹", 1, findViewById(R.id.lin_xi));
 		resetTimeButtonBg();
 

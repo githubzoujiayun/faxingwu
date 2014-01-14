@@ -51,10 +51,15 @@ public class StartActivityContController {
 
 	/**
 	 * 判断登录/跳转
-	 * @param c 当前activity
-	 * @param cls 需要跳转的activity
-	 * @param checklogin 是否需要验证登录
-	 * @param hm Map传值
+	 * 
+	 * @param c
+	 *            当前activity
+	 * @param cls
+	 *            需要跳转的activity
+	 * @param checklogin
+	 *            是否需要验证登录
+	 * @param hm
+	 *            Map传值
 	 */
 	public static void goPage(Context c, Class<?> cls, boolean checklogin,
 			Map<String, String> hm) {

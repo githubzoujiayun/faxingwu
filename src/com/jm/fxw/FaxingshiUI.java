@@ -35,7 +35,7 @@ import com.jm.util.TispToastFactory;
 import com.jm.util.WidgetUtil;
 
 public class FaxingshiUI extends FinalActivity implements OnClickListener,
-		OnScrollListener, OnItemClickListener {
+		OnScrollListener{
 	private ListView ListView;
 	private FaXingShiAdapter adapter;
 	private List<FaXingShi> mlist = new ArrayList<FaXingShi>();
@@ -114,7 +114,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 		ListView = (ListView) findViewById(R.id.lv_faxingshi_listview);
 		adapter = new FaXingShiAdapter(this);
 		ListView.setAdapter(adapter);
-		ListView.setOnItemClickListener(this);
 		ListView.setOnScrollListener(this);
 		changeCondition("xijianchui", findViewById(R.id.btn_xijianchui));
 		new GetHairListTask().execute();
@@ -217,21 +216,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 		adapter.notifyDataSetChanged();
 	}
 
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-			long arg3) {
-		if (adapter.getUserList() == null || position < 0
-				|| position >= adapter.getUserList().size()) {
-			LogUtil.e("position = " + position);
-			return;
-		}
-		FaXingShi user = adapter.getUserList().get(position);
-		Intent intent = new Intent(FaxingshiUI.this, HisInfoUI.class);
-		intent.putExtra("uid", user.uid);
-		intent.putExtra("type", "2");
-		startActivity(intent);
-
-	}
 
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,

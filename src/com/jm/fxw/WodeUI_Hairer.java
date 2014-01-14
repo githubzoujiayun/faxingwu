@@ -35,7 +35,6 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 		initView();
 	}
 
-
 	private void initView() {
 		setInco();
 		sm = SessionManager.getInstance();
@@ -153,7 +152,7 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 			StartActivityContController.goPage(this, TongChengUI.class, false);
 			break;
 		case R.id.lin_gongjuxiang:
-			StartActivityContController.goPage(this, 104);
+			StartActivityContController.goPage(this, GongJuXiangUI.class, true);
 			break;
 		case R.id.lin_woxingwoxiu:
 			StartActivityContController.goPage(this, DongTaiUI.class, false);
