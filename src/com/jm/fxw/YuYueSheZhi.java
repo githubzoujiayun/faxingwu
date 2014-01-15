@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -59,7 +60,18 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 	}
 
 	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "设置预约信息");
+		super.onResume();
+
+		new getTipsInfo().execute();
+		new getPriceInfo().execute();
+	}
+
+	@Override
 	protected void onPause() {
+
+		MobileProbe.onPause(this, "设置预约信息");
 		super.onPause();
 	}
 
@@ -86,13 +98,6 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp.setAdapter(adapter);
 		sp.setSelection(0);
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		new getTipsInfo().execute();
-		new getPriceInfo().execute();
 	}
 
 	private void save() {

@@ -35,12 +35,13 @@
             android:id="@+id/btn_city"
             android:layout_width="wrap_content"
             android:layout_height="30sp"
-            android:paddingLeft="5sp"
-            android:paddingRight="5sp"
             android:layout_marginRight="5sp"
             android:background="@drawable/btn_long_selector"
+            android:paddingLeft="5sp"
+            android:paddingRight="5sp"
             android:textColor="#ffffff"
             android:textSize="14sp" />
+
         <Button
             android:id="@+id/btn_rightTop"
             android:layout_width="58sp"
@@ -86,11 +87,11 @@
             android:id="@+id/my_newslistview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            
-                android:divider="@color/white"
+            android:divider="@color/white"
             android:dividerHeight="2px"
             android:fadingEdge="none"
-            android:footerDividersEnabled="false" >
+            android:footerDividersEnabled="false"
+            android:scrollbars="none" >
         </ListView>
     </LinearLayout>
 

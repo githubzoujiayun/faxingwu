@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -44,6 +45,19 @@ public class RenZheng extends FinalActivity {
 	}
 
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "修改店铺信息");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "修改店铺信息");
+		super.onPause();
+	}
 
 	/*
 	 * 读取店铺信息

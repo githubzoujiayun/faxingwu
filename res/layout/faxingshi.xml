@@ -116,7 +116,8 @@
             android:dividerHeight="10px"
             android:fadingEdge="none"
             android:footerDividersEnabled="false"
-            android:numColumns="3" >
+            android:numColumns="3"
+            android:scrollbars="none" >
         </ListView>
     </LinearLayout>
 

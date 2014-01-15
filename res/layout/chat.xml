@@ -49,6 +49,7 @@
         android:dividerHeight="0dp"
         android:fadingEdge="none"
         android:footerDividersEnabled="true"
+        android:scrollbars="none"
         android:stackFromBottom="true"
         android:transcriptMode="alwaysScroll" />
 

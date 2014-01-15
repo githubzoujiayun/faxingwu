@@ -87,7 +87,7 @@
             android:id="@+id/my_newslistview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-           
+           android:scrollbars="none"
                 android:divider="@color/white"
             android:dividerHeight="2px"
             android:fadingEdge="none"

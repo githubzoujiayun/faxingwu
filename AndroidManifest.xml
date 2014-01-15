@@ -1,558 +1,236 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.jm.fxw"
-    android:versionCode="7"
-    android:versionName="2.7" >
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="8" android:versionName="3.0" package="com.jm.fxw">
 
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:resizeable="true"
-        android:smallScreens="true" />
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true"/>
 
-    <uses-sdk android:minSdkVersion="4" />
+    <uses-sdk android:minSdkVersion="4"/>
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    <uses-permission android:name="android.permission.INTERNET">
     </uses-permission>
-    <uses-permission android:name="android.permission.RECORD_AUDIO" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.INTERNET" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
-    </uses-permission>
-    <!-- SDK离线地图和cache功能需要读写外部存储器 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO">
     </uses-permission>
     <!-- 使用定位功能所需权限,demo已集成百度定位SDK,不使用定位功能可去掉以下6项 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    <uses-permission android:name="android.permission.READ_PHONE_STATE">
     </uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
     </uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS">
     </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.READ_LOGS" >
+    <uses-permission android:name="android.permission.READ_LOGS">
     </uses-permission>
 
-    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE">
     </permission>
 
-    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" >
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" >
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_GPS"/>
+
+    <!-- 必须申明的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE">
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS">
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <!-- 您从百度网站获取的APP KEY -->
-    <meta-data
-        android:name="BaiduMobAd_STAT_ID"
-        android:value="eed47aff57" />
-    <meta-data
-        android:name="BaiduMobAd_CHANNEL"
-        android:value="官方" />
+    <meta-data android:name="BaiduMobAd_STAT_ID" android:value="eed47aff57"/>
+    <meta-data android:name="BaiduMobAd_CHANNEL" android:value="官方"/>
     <!-- abcd1234 -->
 
 
     <!-- 是否开启错误日志统计，默认为false -->
-    <meta-data
-        android:name="BaiduMobAd_EXCEPTION_LOG"
-        android:value="true" />
+    <meta-data android:name="BaiduMobAd_EXCEPTION_LOG" android:value="true"/>
     <!-- 日志发送策略，可选值：APP_START、ONCE_A_DAY、SET_TIME_INTERVAL，默认为APP_START -->
-    <meta-data
-        android:name="BaiduMobAd_SEND_STRATEGY"
-        android:value="APP_START" />
+    <meta-data android:name="BaiduMobAd_SEND_STRATEGY" android:value="APP_START"/>
     <!-- 日志发送策略 为SET_TIME_INTERVAL时，需设定时间间隔(取消下行注释)。取值为1-24的整数，默认为1 -->
     <!-- <meta-data android:name="BaiduMobAd_TIME_INTERVAL" android:value="2" /> -->
     <!-- 日志仅在wifi网络下发送，默认为false -->
-    <meta-data
-        android:name="BaiduMobAd_ONLY_WIFI"
-        android:value="false" />
+    <meta-data android:name="BaiduMobAd_ONLY_WIFI" android:value="false"/>
     <!-- 是否获取基站位置信息 ,默认为true -->
-    <meta-data
-        android:name="BaiduMobAd_CELL_LOCATION"
-        android:value="true" />
+    <meta-data android:name="BaiduMobAd_CELL_LOCATION" android:value="true"/>
     <!-- 是否获取GPS位置信息，默认为true -->
-    <meta-data
-        android:name="BaiduMobAd_GPS_LOCATION"
-        android:value="true" />
+    <meta-data android:name="BaiduMobAd_GPS_LOCATION" android:value="true"/>
     <!-- 是否获取WIFI位置信息，默认为true -->
-    <meta-data
-        android:name="BaiduMobAd_WIFI_LOCATION"
-        android:value="true" />
+    <meta-data android:name="BaiduMobAd_WIFI_LOCATION" android:value="true"/>
 
-    <application
-        android:name="ClientApp"
-        android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="a6598232f716cd881981fcd548ce061b" />
+    <application android:allowBackup="true" android:icon="@drawable/logo" android:label="@string/app_name" android:name="ClientApp" android:theme="@style/AppTheme">
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="a6598232f716cd881981fcd548ce061b"/>
 
-        <activity
-            android:name="com.jm.fxw.MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        <activity android:label="@string/app_name" android:name="com.jm.fxw.MainActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true" >
+        <activity android:launchMode="singleTask" android:name="com.tencent.tauth.AuthActivity" android:noHistory="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
 
-                <data android:scheme="tencent100478968" />
+                <data android:scheme="tencent100478968"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.jm.fxw.HairInfoUI"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.HairItemInfoUI"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.HairItemWillDoList"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.LoginUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.WodeUI_User"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.YuYueUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PriceListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.HelpUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.OpinionUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ZhaoPinInfoUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ZhuanRangInfoUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.HuaTiInfoUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.citylist.CityList"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.YuYueSheZhi"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.WodeUI_Hairer"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.DianPuInfoUI"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.YuYueListUI_User"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.YuYueListUI_Haier"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.GongJuXiangUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.RatingListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.MsgUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.QuestionListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.AnswerListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.HisInfoUI"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicPortfolio"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicPortfolioOfHair"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicNewsList"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicJobUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicZhuanRangUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicQuestionUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.LikeListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.WorkListUI"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.WorkDoListUI"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ImageInfo"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.CommentUI"
-            android:label="@string/fenlei"
-            android:screenOrientation="portrait"
-            android:theme="@style/Translucent_NoTitle" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.GuangChangUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.TipsSettingUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.YuYueCheck"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.UserListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.DongTaiUI"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.TongChengUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ZhaofaxingUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.FaxingshiUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.RatingUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Dialog" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.MapActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.SettingUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.RenZheng"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ChangeInfo"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ZhaoFaXingListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.QuestionUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.JobListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ZhuanRangListUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.JiShuHuaTiUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicNsewsList"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.NewUserInfo"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.QingBaoUI_User"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.QingBaoUI_Haier"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.QingBaoInfo"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.CollectListUI"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ChatUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.ChatQuestionUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.PublicJiShuHuaTi"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.GalleryUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.YuYueInfoUI_Haier"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-        </activity>
-        <activity
-            android:name="com.jm.fxw.YuYueInfoUI_User"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.HairInfoUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.HairItemInfoUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.HairItemWillDoList" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.LoginUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.WodeUI_User" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.YuYueUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PriceListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.HelpUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.OpinionUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ZhaoPinInfoUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ZhuanRangInfoUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.HuaTiInfoUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.citylist.CityList" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.YuYueSheZhi" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.WodeUI_Hairer" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.DianPuInfoUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.YuYueListUI_User" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.YuYueListUI_Haier" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.GongJuXiangUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.RatingListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.MsgUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.QuestionListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.AnswerListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.HisInfoUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicPortfolio" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicPortfolioOfHair" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicNewsList" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicJobUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicZhuanRangUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicQuestionUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.LikeListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.WorkListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.WorkDoListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ImageInfo" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:label="@string/fenlei" android:name="com.jm.fxw.CommentUI" android:screenOrientation="portrait" android:theme="@style/Translucent_NoTitle">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.GuangChangUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.TipsSettingUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.YuYueCheck" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.UserListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:name="com.jm.fxw.DongTaiUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.TongChengUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ZhaofaxingUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.FaxingshiUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.RatingUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Dialog">
+        </activity>
+        <activity android:configChanges="orientation|keyboardHidden" android:name="com.jm.fxw.MapActivity" android:screenOrientation="portrait">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.SettingUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.RenZheng" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ChangeInfo" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ZhaoFaXingListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.QuestionUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.JobListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ZhuanRangListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.JiShuHuaTiUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicNsewsList" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.NewUserInfo" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.QingBaoUI_User" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.QingBaoUI_Haier" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.QingBaoInfo" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTop" android:name="com.jm.fxw.CollectListUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ChatUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.ChatQuestionUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.PublicJiShuHuaTi" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar" android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.GalleryUI" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.YuYueInfoUI_Haier" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:launchMode="singleTask" android:name="com.jm.fxw.YuYueInfoUI_User" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
 
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" >
+        <service android:enabled="true" android:name="com.baidu.location.f" android:process=":remote">
         </service>
-        <service android:name="com.jm.service.PushService" />
+        <service android:name="com.jm.service.PushService"/>
 
-        <meta-data
-            android:name="CNZZ_APP_KEY"
-            android:value="cnzz.a_pmpyc9i74iwdu8jvmy4yioz3" />
-        <meta-data
-            android:name="CNZZ_CHANNEL_ID"
-            android:value="华为" />
+        <meta-data android:name="CNZZ_APP_KEY" android:value="cnzz.a_pmpyc9i74iwdu8jvmy4yioz3"/>
+        <meta-data android:name="CNZZ_CHANNEL_ID" android:value="华为"/>
     </application>
 
 </manifest>

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -58,16 +59,18 @@ public class GuangChangUI extends FinalActivity implements OnClickListener {
 	}
 
 	@Override
-	protected void onPause() {
+	protected void onResume() {
+		MobileProbe.onResume(this, "问题中心");
+		super.onResume();
 
-		super.onPause();
+		init();
 	}
 
 	@Override
-	protected void onResume() {
+	protected void onPause() {
 
-		super.onResume();
-		init();
+		MobileProbe.onPause(this, "问题中心");
+		super.onPause();
 	}
 
 	private void setInco() {

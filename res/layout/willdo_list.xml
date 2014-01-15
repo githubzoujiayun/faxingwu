@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="33sp"
             android:layout_marginRight="5sp"
-            android:background="@drawable/shape_guanzhured"
+            android:background="@drawable/shape_red"
             android:paddingLeft="3sp"
             android:paddingRight="3sp"
             android:scaleType="fitXY"

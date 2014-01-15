@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -33,6 +34,23 @@ public class WodeUI_User extends Activity implements OnClickListener {
 		initView();
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "普通用户个人中心");
+		super.onResume();
+		if (sm.getUserId() == null || sm.getUserId().equals("")) {
+			finish();
+		}
+		getUserInfo();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "普通用户个人中心");
+		super.onPause();
+	}
 	private void initView() {
 		setInco();
 		sm = SessionManager.getInstance();
@@ -57,15 +75,6 @@ public class WodeUI_User extends Activity implements OnClickListener {
 	}
 
 
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		if (sm.getUserId() == null || sm.getUserId().equals("")) {
-			finish();
-		}
-		getUserInfo();
-	}
 
 	private void setInco() {
 		findViewById(R.id.iv_wode).setBackgroundResource(R.drawable.wode1);

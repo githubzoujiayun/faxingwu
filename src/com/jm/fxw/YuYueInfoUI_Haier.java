@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
@@ -46,12 +47,16 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 
 	@Override
 	protected void onResume() {
+		MobileProbe.onResume(this, "发型师查看预约详情");
 		super.onResume();
 		new getCurrentYuYueInfo().execute();
+
 	}
 
 	@Override
 	protected void onPause() {
+
+		MobileProbe.onPause(this, "发型师查看预约详情");
 		super.onPause();
 	}
 
@@ -154,6 +159,21 @@ public class YuYueInfoUI_Haier extends FinalActivity implements OnClickListener 
 
 				((TextView) findViewById(R.id.tv_price)).setText("价格:"
 						+ reserve.getPrice());
+
+				findViewById(R.id.lin_yuyueusername)
+						.setVisibility(View.VISIBLE);
+
+				findViewById(R.id.lin_yuyueuserphone).setVisibility(
+						View.VISIBLE);
+
+				findViewById(R.id.lin_dname).setVisibility(View.GONE);
+				findViewById(R.id.lin_dphone).setVisibility(View.GONE);
+				findViewById(R.id.lin_daddress).setVisibility(View.GONE);
+				((TextView) findViewById(R.id.tv_yuyueusername))
+						.setText(reserve.getMy_name());
+				((TextView) findViewById(R.id.tv_yuyueuserphone))
+						.setText(reserve.getMy_tel());
+
 				setBtnByStaues(reserve.getStatus());
 				findViewById(R.id.lin_basic_info).setVisibility(View.VISIBLE);
 			}

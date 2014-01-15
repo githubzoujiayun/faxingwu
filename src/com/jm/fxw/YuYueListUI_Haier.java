@@ -15,17 +15,19 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
+import com.jm.fxw.YuYueInfoUI_User.getCurrentYuYueInfo;
 import com.jm.session.SessionManager;
 import com.jm.sort.ReserveAdapter;
 import com.jm.util.LogUtil;
 import com.jm.util.TispToastFactory;
 
-public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
-		OnItemClickListener {
+public class YuYueListUI_Haier extends FinalActivity implements
+		OnClickListener, OnItemClickListener {
 	private List<Reserve> mlist = new ArrayList<Reserve>();
 	private ReserveAdapter adapter;
 	private ListView ListView;
@@ -45,7 +47,17 @@ public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
 	}
 
 	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发型师查看预约列表");
+		super.onResume();
+		new getCurrentYuYueListInfo().execute();
+
+	}
+
+	@Override
 	protected void onPause() {
+
+		MobileProbe.onPause(this, "发型师查看预约列表");
 		super.onPause();
 	}
 
@@ -53,12 +65,6 @@ public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
 		sm = SessionManager.getInstance();
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		new getCurrentYuYueListInfo().execute();
 	}
 
 	/*
@@ -96,8 +102,8 @@ public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
 					TispToastFactory.getToast(YuYueListUI_Haier.this, "暂无预约信息");
 				}
 			} else {
-				TispToastFactory.getToast(YuYueListUI_Haier.this, result.getMsg())
-						.show();
+				TispToastFactory.getToast(YuYueListUI_Haier.this,
+						result.getMsg()).show();
 			}
 		}
 	}
@@ -120,7 +126,8 @@ public class YuYueListUI_Haier extends FinalActivity implements OnClickListener,
 			return;
 		}
 		Reserve reserve = adapter.getReserveList().get(position);
-		Intent intent = new Intent(YuYueListUI_Haier.this, YuYueInfoUI_Haier.class);
+		Intent intent = new Intent(YuYueListUI_Haier.this,
+				YuYueInfoUI_Haier.class);
 		intent.putExtra("rid", reserve.getId());
 		startActivity(intent);
 	}

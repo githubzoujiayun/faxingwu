@@ -31,6 +31,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -83,7 +84,19 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发型师上传发型");
+		super.onResume();
 
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "发型师上传发型");
+		super.onPause();
+	}
 
 	private void showPicture(Uri uri) {
 		if (uri == null) {

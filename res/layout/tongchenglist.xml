@@ -119,7 +119,8 @@
             android:dividerHeight="10px"
             android:fadingEdge="none"
             android:focusable="false"
-            android:footerDividersEnabled="false" >
+            android:footerDividersEnabled="false"
+            android:scrollbars="none" >
         </ListView>
     </LinearLayout>
 

@@ -47,10 +47,10 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        
-                android:divider="@color/white"
-        android:dividerHeight="2px"
+        android:divider="@color/bg"
+        android:dividerHeight="3px"
         android:fadingEdge="none"
-        android:footerDividersEnabled="false" />
+        android:footerDividersEnabled="false"
+        android:scrollbars="none" />
 
 </LinearLayout>

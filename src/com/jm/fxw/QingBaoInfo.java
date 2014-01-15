@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.NewsList;
@@ -50,6 +51,19 @@ public class QingBaoInfo extends FinalActivity implements OnClickListener {
 		new getNewListInfo().execute();
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "情报详情");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "情报详情");
+		super.onPause();
+	}
 	class getNewListInfo extends AsyncTask<String, Integer, Response> {
 
 		@Override

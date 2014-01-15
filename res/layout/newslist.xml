@@ -47,7 +47,8 @@
         android:layout_weight="1"
         android:dividerHeight="0px"
         android:fadingEdge="none"
-        android:footerDividersEnabled="false" >
+        android:footerDividersEnabled="false"
+        android:scrollbars="none" >
     </ListView>
 
 </LinearLayout>

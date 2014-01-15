@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -50,7 +51,7 @@ public class PublicNewsList extends FinalActivity implements OnClickListener {
 	// /////////////////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.publicnewslist);
 		sm = SessionManager.getInstance();
@@ -67,6 +68,20 @@ public class PublicNewsList extends FinalActivity implements OnClickListener {
 			finish();
 		}
 
+	}
+
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发布情报");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "发布情报");
+		super.onPause();
 	}
 
 	private void showPicture(Uri uri) {

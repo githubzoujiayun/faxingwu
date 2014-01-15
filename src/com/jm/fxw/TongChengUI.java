@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.ZhouBian;
@@ -49,7 +50,19 @@ public class TongChengUI extends Activity implements OnClickListener,
 		changeCondition("2", findViewById(R.id.btn_faxingshi));
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "附近的人");
+		super.onResume();
 
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "附近的人");
+		super.onPause();
+	}
 
 	private void init() {
 

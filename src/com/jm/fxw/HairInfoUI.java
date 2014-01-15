@@ -42,6 +42,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -135,13 +136,16 @@ public class HairInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
+		MobileProbe.onResume(this, "发型图册");
 		super.onResume();
+
 	}
 
 	@Override
 	protected void onPause() {
-		super.onPause();
 
+		MobileProbe.onPause(this, "发型图册");
+		super.onPause();
 	}
 
 	@Override

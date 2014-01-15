@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Question;
@@ -49,7 +50,19 @@ public class QuestionListUI extends FinalActivity implements OnClickListener,
 		initView();
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "提问列表");
+		super.onResume();
 
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "提问列表");
+		super.onPause();
+	}
 
 	private void initView() {
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);

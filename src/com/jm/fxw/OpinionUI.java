@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -29,9 +30,22 @@ public class OpinionUI extends Activity implements OnClickListener {
 
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "反馈建议");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "反馈建议");
+		super.onPause();
+	}
 
 	/*
-	 * 用户发布评论
+	 * 用户建议
 	 */
 	class PublicOpinionTask extends AsyncTask<String, Integer, Response> {
 		private Map<String, Object> getListInqVal() {

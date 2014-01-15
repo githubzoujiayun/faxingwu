@@ -3,9 +3,12 @@ package com.jm.fxw;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.data.DatabaseHelper;
+import com.jm.session.SessionManager;
 import com.jm.util.StartActivityContController;
 
 public class GongJuXiangUI extends OrmLiteBaseActivity<DatabaseHelper>
@@ -22,6 +25,20 @@ public class GongJuXiangUI extends OrmLiteBaseActivity<DatabaseHelper>
 		findViewById(R.id.lin_zhuanrang).setOnClickListener(this);
 		findViewById(R.id.lin_jishuahuati).setOnClickListener(this);
 
+	}
+
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发型师工具箱");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "发型师工具箱");
+		super.onPause();
 	}
 
 	@Override

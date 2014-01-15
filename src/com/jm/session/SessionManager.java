@@ -98,8 +98,6 @@ public class SessionManager {
 
 	private String cacheDir = "";
 
-	public int windowH;
-	public int windowW;
 
 	private SessionManager() {
 		super();

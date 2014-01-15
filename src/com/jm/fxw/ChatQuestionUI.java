@@ -31,6 +31,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.iflytek.speech.RecognizerResult;
 import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
@@ -40,6 +41,7 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.QuestionChat;
 import com.jm.finals.Constant;
+import com.jm.fxw.ChatUI.getMsgListTask;
 import com.jm.session.SessionManager;
 import com.jm.sort.ChatAdapter;
 import com.jm.util.CameraAndGallery;
@@ -70,6 +72,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 	// 识别Dialog
 	private RecognizerDialog iatDialog;
 
+	private boolean isLoad = false;
 	// 初始化参数
 	private String mInitParams;
 	private boolean isPushIn;
@@ -119,6 +122,19 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 	}
 
 	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "问题聊天");
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "问题聊天");
+		super.onPause();
+	}
+
+	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		timer.cancel();
@@ -126,7 +142,10 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 	}
 
 	private void getMsgList() {
-		new getMsgListTask().execute();
+		if (!isLoad) {
+			new getMsgListTask().execute();
+		}
+
 	}
 
 	class ClearPushTask extends AsyncTask<String, Integer, Response> {
@@ -162,6 +181,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
+			isLoad = true;
 		}
 
 		protected Map<String, Object> getMsgInqVal() {
@@ -183,6 +203,7 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 		}
 
 		protected void onPostExecute(Response result) {
+			isLoad = false;
 			if (result == null) {
 				LogUtil.e("can not get msg List");
 				return;

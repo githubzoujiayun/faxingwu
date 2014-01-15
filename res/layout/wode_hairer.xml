@@ -18,7 +18,7 @@
             android:text="设置"
             android:textColor="#ffffff"
             android:textSize="14sp"
-            android:visibility="gone" />
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/tv_mainhead"

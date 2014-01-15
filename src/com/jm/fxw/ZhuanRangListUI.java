@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -82,6 +83,22 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "转让列表");
+		super.onResume();
+		((Button) findViewById(R.id.btn_city)).setText(SessionManager
+				.getInstance().getCity());
+		getZhuanRang();
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "转让列表");
+		super.onPause();
+	}
+
 	private void getZhuanRang() {
 		page = 1;
 		pageCount = 0;
@@ -113,14 +130,6 @@ public class ZhuanRangListUI extends Activity implements OnClickListener,
 
 		public void onNothingSelected(AdapterView<?> arg0) {
 		}
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-		((Button) findViewById(R.id.btn_city)).setText(SessionManager
-				.getInstance().getCity());
-		getZhuanRang();
 	}
 
 	private void init() {

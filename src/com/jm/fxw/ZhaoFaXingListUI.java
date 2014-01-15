@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -67,7 +68,18 @@ public class ZhaoFaXingListUI extends OrmLiteBaseActivity<DatabaseHelper>
 
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发型列表");
+		super.onResume();
+	}
 
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "发型列表");
+		super.onPause();
+	}
 	private void getDataFromDataBase() {
 
 		List<Hair> baseHairList = new ArrayList<Hair>();

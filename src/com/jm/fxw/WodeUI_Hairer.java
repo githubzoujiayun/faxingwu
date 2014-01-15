@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -33,6 +34,24 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.wode_hairer);
 		initView();
+	}
+
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发型师个人中心");
+		super.onResume();
+		if (sm.getUserId() == null || sm.getUserId().equals("")) {
+			finish();
+		}
+		getUserInfo();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "发型师个人中心");
+		super.onPause();
 	}
 
 	private void initView() {
@@ -59,16 +78,6 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 
 		findViewById(R.id.lin_gongjuxiang).setOnClickListener(this);
 		findViewById(R.id.lin_faxingbaojia).setOnClickListener(this);
-	}
-
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		if (sm.getUserId() == null || sm.getUserId().equals("")) {
-			finish();
-		}
-		getUserInfo();
 	}
 
 	private void setInco() {
@@ -119,7 +128,8 @@ public class WodeUI_Hairer extends Activity implements OnClickListener {
 							.getString("attention_num"));
 					((TextView) findViewById(R.id.tv_collect_num)).setText(jb
 							.getString("collect_num"));
-
+					((TextView) findViewById(R.id.tv_pingjia)).setText(jb
+							.getString("assess_num"));
 					((TextView) findViewById(R.id.tv_score)).setText("城市:"
 							+ jb.getString("city"));
 

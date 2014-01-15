@@ -18,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.News;
@@ -49,15 +50,18 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 		new GetTongchengListTask().execute();
 	}
 
+
 	@Override
 	protected void onResume() {
-
+		MobileProbe.onResume(this, "技术话题列表");
 		super.onResume();
+
 	}
 
 	@Override
 	protected void onPause() {
 
+		MobileProbe.onPause(this, "技术话题列表");
 		super.onPause();
 	}
 

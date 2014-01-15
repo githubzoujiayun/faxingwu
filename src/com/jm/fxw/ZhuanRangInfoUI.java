@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -46,7 +47,18 @@ public class ZhuanRangInfoUI extends FinalActivity implements OnClickListener {
 		new getShaLongInfo().execute();
 
 	}
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "转让");
+		super.onResume();
+	}
 
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "转让");
+		super.onPause();
+	}
 
 	/*
 	 * 添 读取店铺信息

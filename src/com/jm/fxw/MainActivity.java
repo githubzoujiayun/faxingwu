@@ -19,6 +19,8 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.baidu.mobstat.StatService;
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -44,9 +46,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		sm = SessionManager.getInstance();
-		sm.windowW = getWindowManager().getDefaultDisplay().getWidth();
-		sm.windowH = getWindowManager().getDefaultDisplay().getHeight();
 		setContentView(R.layout.activity_main);
+
 		ClientApp app = (ClientApp) this.getApplication();
 		app.setRootpath(Environment.getExternalStorageDirectory().getPath()
 				+ File.separator + "fxw" + File.separator);
@@ -94,18 +95,6 @@ public class MainActivity extends Activity {
 			}
 		});
 
-	}
-
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-	}
-
-	@Override
-	protected void onPause() {
-
-		super.onPause();
 	}
 
 	public class MyLocationListener implements BDLocationListener {

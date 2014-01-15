@@ -19,6 +19,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -51,7 +52,19 @@ public class WorkListUI extends Activity implements OnClickListener,
 		init();
 		new GetHairListTask().execute();
 	}
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "作品列表");
+		super.onResume();
 
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "作品列表");
+		super.onPause();
+	}
 	private void init() {
 		Intent i = getIntent();
 		uid = i.getStringExtra("uid");

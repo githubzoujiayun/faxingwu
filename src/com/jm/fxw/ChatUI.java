@@ -31,6 +31,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.iflytek.speech.RecognizerResult;
 import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
@@ -69,6 +70,7 @@ public class ChatUI extends Activity implements OnClickListener,
 	// 识别Dialog
 	private RecognizerDialog iatDialog;
 
+	private boolean isLoad = false;
 	// 初始化参数
 	private String mInitParams;
 	private boolean isPushIn;
@@ -111,12 +113,14 @@ public class ChatUI extends Activity implements OnClickListener,
 	@Override
 	protected void onResume() {
 
+		MobileProbe.onResume(this, "私信聊天");
 		super.onResume();
 		PushService.isPush = false;
 	}
 
 	@Override
 	protected void onPause() {
+		MobileProbe.onPause(this, "私信聊天");
 		super.onPause();
 		PushService.isPush = true;
 
@@ -131,7 +135,9 @@ public class ChatUI extends Activity implements OnClickListener,
 	}
 
 	private void getMsgList() {
-		new getMsgListTask().execute();
+		if (!isLoad) {
+			new getMsgListTask().execute();
+		}
 
 	}
 
@@ -167,6 +173,7 @@ public class ChatUI extends Activity implements OnClickListener,
 
 		@Override
 		protected void onPreExecute() {
+			isLoad = true;
 		}
 
 		protected Map<String, Object> getMsgInqVal() {
@@ -189,6 +196,7 @@ public class ChatUI extends Activity implements OnClickListener,
 		}
 
 		protected void onPostExecute(Response result) {
+			isLoad = false;
 			if (result == null) {
 				LogUtil.e("can not get msg List");
 				return;

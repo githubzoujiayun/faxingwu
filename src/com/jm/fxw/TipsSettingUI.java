@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ToggleButton;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -33,6 +34,19 @@ public class TipsSettingUI extends FinalActivity implements OnClickListener {
 		new getTipsSettingInfo().execute();
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "设置推送");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "设置推送");
+		super.onPause();
+	}
 
 	/*
 	 * 读取个人推送信息

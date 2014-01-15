@@ -18,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -54,6 +55,19 @@ public class CollectListUI extends Activity implements OnClickListener,
 		new GetHairListTask().execute();
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "收藏列表");
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "收藏列表");
+		super.onPause();
+	}
+
 	private void init() {
 		ListView = (GridView) findViewById(R.id.my_hairgridview);
 		adapter = new HairAdapter(this);
@@ -78,7 +92,6 @@ public class CollectListUI extends Activity implements OnClickListener,
 		}
 
 	}
-
 
 	/*
 	 * 读取发型列表

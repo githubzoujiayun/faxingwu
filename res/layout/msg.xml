@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@color/bg"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -44,10 +45,8 @@
         android:layout_width="fill_parent"
         android:layout_height="0sp"
         android:layout_weight="1"
-        android:background="@color/bg"
-        
-                android:divider="@color/white"
-        android:dividerHeight="2px"
+        android:divider="@color/bg"
+        android:dividerHeight="3px"
         android:fadingEdge="none"
         android:footerDividersEnabled="false" />
 

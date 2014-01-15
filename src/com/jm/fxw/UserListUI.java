@@ -16,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.User;
@@ -46,6 +47,20 @@ public class UserListUI extends Activity implements OnClickListener,
 		init();
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "关注/粉丝列表");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "关注/粉丝列表");
+		super.onPause();
+	}
+
 	private void init() {
 
 		findViewById(R.id.btn_faxingshi).setOnClickListener(this);
@@ -57,16 +72,14 @@ public class UserListUI extends Activity implements OnClickListener,
 		if ("watchlist".equals(type)) {
 			((TextView) findViewById(R.id.tv_mainhead)).setText("关注列表");
 		} else {
-
 			((TextView) findViewById(R.id.tv_mainhead)).setText("粉丝列表");
 		}
-
 		usertype = "2";
 		ListView = (ListView) findViewById(R.id.my_userlistview);
 		adapter = new UserAdapter(this);
 		ListView.setAdapter(adapter);
 		ListView.setOnItemClickListener(this);
-		changeUserType("1", findViewById(R.id.btn_faxingshi));
+		changeUserType("2", findViewById(R.id.btn_faxingshi));
 
 	}
 

@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -51,7 +52,7 @@ public class PublicJiShuHuaTi extends FinalActivity implements OnClickListener {
 	// /////////////////////////////////////////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.publicjishuhuati);
 		sm = SessionManager.getInstance();
@@ -60,6 +61,19 @@ public class PublicJiShuHuaTi extends FinalActivity implements OnClickListener {
 
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发布技术话题");
+		super.onResume();
+
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "发布技术话题");
+		super.onPause();
+	}
 
 	private void showPicture(Uri uri) {
 		if (uri == null) {
@@ -91,6 +105,7 @@ public class PublicJiShuHuaTi extends FinalActivity implements OnClickListener {
 		LayoutParams lp = new LinearLayout.LayoutParams(Cell_Width, Cell_Width);
 		((ImageView) findViewById(R.id.iv_hairpic1)).setLayoutParams(lp);
 	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {

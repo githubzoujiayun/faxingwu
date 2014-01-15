@@ -22,10 +22,12 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
+import com.jm.fxw.YuYueListUI_Haier.getCurrentYuYueListInfo;
 import com.jm.session.SessionManager;
 import com.jm.sort.ReserveAdapter;
 import com.jm.util.LogUtil;
@@ -80,13 +82,17 @@ public class YuYueListUI_User extends FinalActivity implements OnClickListener,
 	}
 
 	@Override
-	protected void onPause() {
-		super.onPause();
+	protected void onResume() {
+		MobileProbe.onResume(this, "普通用户查看预约列表");
+		super.onResume();
+
 	}
 
 	@Override
-	protected void onResume() {
-		super.onResume();
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "普通用户查看预约列表");
+		super.onPause();
 	}
 
 	/*

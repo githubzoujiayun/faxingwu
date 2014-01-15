@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -78,6 +79,21 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		init();
 	}
 
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "设置页面");
+		super.onResume();
+
+		getUserSettingInfo();
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "设置页面");
+		super.onPause();
+	}
+
 	private void init() {
 		mWeibo = Weibo
 				.getInstance(Constant.CONSUMER_KEY, Constant.REDIRECT_URL);
@@ -116,13 +132,6 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 			e.printStackTrace();
 		}
 		return packInfo.versionName;
-	}
-
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		getUserSettingInfo();
 	}
 
 	private void getUserSettingInfo() {

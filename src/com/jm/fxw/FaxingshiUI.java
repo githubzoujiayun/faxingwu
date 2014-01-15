@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -35,7 +36,7 @@ import com.jm.util.TispToastFactory;
 import com.jm.util.WidgetUtil;
 
 public class FaxingshiUI extends FinalActivity implements OnClickListener,
-		OnScrollListener{
+		OnScrollListener {
 	private ListView ListView;
 	private FaXingShiAdapter adapter;
 	private List<FaXingShi> mlist = new ArrayList<FaXingShi>();
@@ -63,7 +64,7 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+		MobileProbe.onResume(this, "发型师列表");
 		super.onResume();
 
 		((Button) findViewById(R.id.btn_location)).setText(SessionManager
@@ -72,7 +73,8 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
+
+		MobileProbe.onPause(this, "发型师列表");
 		super.onPause();
 	}
 
@@ -215,7 +217,6 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 		adapter.priceType = pricetype;
 		adapter.notifyDataSetChanged();
 	}
-
 
 	@Override
 	public void onScroll(AbsListView view, int firstVisibleItem,

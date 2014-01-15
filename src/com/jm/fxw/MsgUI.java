@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Msg;
@@ -33,23 +34,24 @@ public class MsgUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.msg);
 		sm = SessionManager.getInstance();
 
 		initView();
 	}
-
 	@Override
 	protected void onResume() {
-		
+		MobileProbe.onResume(this, "私信列表");
 		super.onResume();
+
 	}
 
 	@Override
 	protected void onPause() {
-		
+
+		MobileProbe.onPause(this, "私信列表");
 		super.onPause();
 	}
 

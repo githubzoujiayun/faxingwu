@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.connection.Connection;
 import com.jm.entity.Type;
 import com.jm.finals.Constant;
@@ -69,6 +70,19 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener,
 		((TextView) findViewById(R.id.tv_zhaofaxing)).setTextColor(Color
 				.parseColor("#f01c61"));
 
+	}
+
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "发型分类");
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "发型分类");
+		super.onPause();
 	}
 
 	private void setFirstType(int FirstTypeIndex) {

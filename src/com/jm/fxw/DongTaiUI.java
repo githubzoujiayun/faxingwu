@@ -14,6 +14,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.GridView;
 
+import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -49,7 +50,18 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 		getDataFromDataBase();
 		changeBtn("add_time", findViewById(R.id.btn_zuixin));
 	}
+	@Override
+	protected void onResume() {
+		MobileProbe.onResume(this, "我型我秀");
+		super.onResume();
+	}
 
+	@Override
+	protected void onPause() {
+
+		MobileProbe.onPause(this, "我型我秀");
+		super.onPause();
+	}
 
 	private void getDataFromDataBase() {
 		List<DongTai> baseHairList = new ArrayList<DongTai>();
