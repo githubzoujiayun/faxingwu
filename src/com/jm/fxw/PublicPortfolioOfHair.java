@@ -31,7 +31,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -86,7 +86,7 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "发型师上传发型");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -94,7 +94,7 @@ public class PublicPortfolioOfHair extends FinalActivity implements
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "发型师上传发型");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

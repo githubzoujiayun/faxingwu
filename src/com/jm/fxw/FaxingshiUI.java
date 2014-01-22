@@ -15,14 +15,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -64,7 +62,7 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "发型师列表");
+		StatService.onResume(this);
 		super.onResume();
 
 		((Button) findViewById(R.id.btn_location)).setText(SessionManager
@@ -73,8 +71,7 @@ public class FaxingshiUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onPause() {
-
-		MobileProbe.onPause(this, "发型师列表");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

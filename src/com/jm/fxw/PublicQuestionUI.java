@@ -23,7 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -59,10 +59,9 @@ public class PublicQuestionUI extends FinalActivity implements OnClickListener {
 
 	}
 
-
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "发布问题");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -70,9 +69,10 @@ public class PublicQuestionUI extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "发布问题");
+		StatService.onPause(this);
 		super.onPause();
 	}
+
 	private void showPicture(Uri uri) {
 		if (uri == null) {
 			LogUtil.e("When showPicture Uri = null");

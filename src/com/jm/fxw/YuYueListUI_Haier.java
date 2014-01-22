@@ -15,12 +15,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
-import com.jm.fxw.YuYueInfoUI_User.getCurrentYuYueInfo;
 import com.jm.session.SessionManager;
 import com.jm.sort.ReserveAdapter;
 import com.jm.util.LogUtil;
@@ -48,7 +47,7 @@ public class YuYueListUI_Haier extends FinalActivity implements
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "发型师查看预约列表");
+		StatService.onResume(this);
 		super.onResume();
 		new getCurrentYuYueListInfo().execute();
 
@@ -57,7 +56,7 @@ public class YuYueListUI_Haier extends FinalActivity implements
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "发型师查看预约列表");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

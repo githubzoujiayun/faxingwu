@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -60,7 +60,7 @@ public class GuangChangUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "问题中心");
+		StatService.onResume(this);
 		super.onResume();
 
 		init();
@@ -69,7 +69,7 @@ public class GuangChangUI extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "问题中心");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

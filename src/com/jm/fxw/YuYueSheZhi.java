@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -61,7 +61,7 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "设置预约信息");
+		StatService.onResume(this);
 		super.onResume();
 
 		new getTipsInfo().execute();
@@ -71,7 +71,7 @@ public class YuYueSheZhi extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "设置预约信息");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

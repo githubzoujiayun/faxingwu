@@ -24,7 +24,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -81,7 +81,7 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "设置页面");
+		StatService.onResume(this);
 		super.onResume();
 
 		getUserSettingInfo();
@@ -90,7 +90,7 @@ public class SettingUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "设置页面");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

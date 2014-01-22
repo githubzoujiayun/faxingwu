@@ -20,7 +20,6 @@ import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mobstat.StatService;
-import com.cnzz.mobile.android.sdk.MobileProbe;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -45,17 +44,16 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		StatService.setDebugOn(true);
 		sm = SessionManager.getInstance();
 		setContentView(R.layout.activity_main);
-
 		ClientApp app = (ClientApp) this.getApplication();
 		app.setRootpath(Environment.getExternalStorageDirectory().getPath()
 				+ File.separator + "fxw" + File.separator);
 		imageView = (ImageView) findViewById(R.id.start_logo);
 		AlphaAnimation animation = new AlphaAnimation(1, 1);
 		imageView.startAnimation(animation);
-
-		animation.setDuration(50);
+		animation.setDuration(1500);
 		animation.setAnimationListener(new AnimationListener() {
 
 			@Override

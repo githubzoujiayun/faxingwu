@@ -16,7 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.User;
@@ -49,7 +49,7 @@ public class UserListUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "关注/粉丝列表");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -57,7 +57,7 @@ public class UserListUI extends Activity implements OnClickListener,
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "关注/粉丝列表");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

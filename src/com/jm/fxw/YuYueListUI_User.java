@@ -22,12 +22,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
-import com.jm.fxw.YuYueListUI_Haier.getCurrentYuYueListInfo;
 import com.jm.session.SessionManager;
 import com.jm.sort.ReserveAdapter;
 import com.jm.util.LogUtil;
@@ -83,7 +82,7 @@ public class YuYueListUI_User extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "普通用户查看预约列表");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -91,7 +90,7 @@ public class YuYueListUI_User extends FinalActivity implements OnClickListener,
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "普通用户查看预约列表");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

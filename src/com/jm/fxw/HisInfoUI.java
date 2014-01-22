@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Hair;
@@ -49,7 +49,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "查看他人信息");
+		StatService.onResume(this);
 		super.onResume();
 		new getUserInfo().execute();
 
@@ -58,7 +58,7 @@ public class HisInfoUI extends FinalActivity implements OnItemClickListener,
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "查看他人信息");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

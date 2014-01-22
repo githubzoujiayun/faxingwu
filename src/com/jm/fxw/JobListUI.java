@@ -21,7 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -119,7 +119,7 @@ public class JobListUI extends Activity implements OnClickListener,
 	@Override
 	protected void onResume() {
 
-		MobileProbe.onResume(this, "招聘列表");
+		StatService.onResume(this);
 		super.onResume();
 		((Button) findViewById(R.id.btn_city)).setText(SessionManager
 				.getInstance().getCity());
@@ -129,7 +129,7 @@ public class JobListUI extends Activity implements OnClickListener,
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "招聘列表");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

@@ -1,6 +1,6 @@
 package com.jm.fxw;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class HelpUI extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "°ïÖú");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -27,7 +27,7 @@ public class HelpUI extends Activity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "°ïÖú");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

@@ -20,12 +20,11 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Reserve;
 import com.jm.finals.Constant;
-import com.jm.fxw.YuYueInfoUI_Haier.getCurrentYuYueInfo;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
@@ -63,7 +62,7 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "普通用户查看预约详情");
+		StatService.onResume(this);
 		super.onResume();
 		new getCurrentYuYueInfo().execute();
 
@@ -72,7 +71,7 @@ public class YuYueInfoUI_User extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "普通用户查看预约详情");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

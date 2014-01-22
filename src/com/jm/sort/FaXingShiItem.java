@@ -35,20 +35,21 @@ public class FaXingShiItem extends LinearLayout implements OnClickListener {
 		if (!SessionManager.getInstance().isUser()) {
 			findViewById(R.id.btn_yuyuefaxingshi).setVisibility(View.GONE);
 		}
-
+		findViewById(R.id.iv_pic).setOnClickListener(this);
 	}
 
 	@Override
 	public void onClick(View v) {
 		Intent intent;
 		switch (v.getId()) {
-		case R.id.lin_all:
+		case R.id.iv_pic:
 			intent = new Intent(context, HisInfoUI.class);
 			intent.putExtra("uid", faxingshit.uid);
 			intent.putExtra("type", "2");
 			context.startActivity(intent);
 			break;
 		case R.id.btn_yuyuefaxingshi:
+		case R.id.lin_all:
 			intent = new Intent(context, YuYueUI.class);
 			intent.putExtra("tid", faxingshit.uid);
 			context.startActivity(intent);

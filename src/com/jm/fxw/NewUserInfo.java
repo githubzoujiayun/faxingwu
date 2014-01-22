@@ -26,7 +26,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.citylist.CityList;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -108,7 +108,7 @@ public class NewUserInfo extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "新用户完善资料");
+		StatService.onResume(this);
 		super.onResume();
 		((EditText) findViewById(R.id.tv_city)).setText(SessionManager
 				.getInstance().getCity());
@@ -118,7 +118,7 @@ public class NewUserInfo extends Activity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "新用户完善资料");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

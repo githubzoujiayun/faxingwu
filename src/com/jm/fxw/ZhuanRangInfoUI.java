@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -32,12 +32,11 @@ public class ZhuanRangInfoUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zhuanranginfo);
 		initView();
 	}
-
 
 	private void initView() {
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
@@ -47,16 +46,17 @@ public class ZhuanRangInfoUI extends FinalActivity implements OnClickListener {
 		new getShaLongInfo().execute();
 
 	}
+
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "×ªÈÃ");
+		StatService.onResume(this);
 		super.onResume();
 	}
 
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "×ªÈÃ");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

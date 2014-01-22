@@ -20,7 +20,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -70,7 +70,7 @@ public class LoginUI extends Activity implements OnClickListener {
 	@Override
 	protected void onResume() {
 
-		MobileProbe.onResume(this, "µÇÂ¼");
+		StatService.onResume(this);
 		super.onResume();
 		if (sm.isLogin()) {
 			finish();
@@ -86,7 +86,7 @@ public class LoginUI extends Activity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "µÇÂ¼");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

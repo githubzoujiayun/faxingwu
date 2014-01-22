@@ -1,17 +1,9 @@
 package com.jm.fxw;
 
-import java.io.File;
-import java.io.FileReader;
-
 import net.tsz.afinal.FinalActivity;
 import net.tsz.afinal.annotation.view.ViewInject;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -23,14 +15,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
-import com.jm.connection.Connection;
+import com.baidu.mobstat.StatService;
 import com.jm.entity.Type;
 import com.jm.finals.Constant;
-import com.jm.session.SessionManager;
 import com.jm.sort.HairTypeAdapter;
 import com.jm.util.HairTypeUtil;
-import com.jm.util.LogUtil;
 import com.jm.util.StartActivityContController;
 
 public class ZhaofaxingUI extends FinalActivity implements OnClickListener,
@@ -74,14 +63,14 @@ public class ZhaofaxingUI extends FinalActivity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "发型分类");
+		StatService.onResume(this);
 		super.onResume();
 	}
 
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "发型分类");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

@@ -18,7 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.News;
@@ -50,10 +50,9 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 		new GetTongchengListTask().execute();
 	}
 
-
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "技术话题列表");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -61,7 +60,7 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "技术话题列表");
+		StatService.onPause(this);
 		super.onPause();
 	}
 
@@ -78,7 +77,8 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 		ListView.setOnScrollListener(this);
 
 		ResetButtonBg();
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_RoseRed);
+		((Button) findViewById(R.id.btn_faxingshi))
+				.setTextColor(Constant.color_RoseRed);
 		findViewById(R.id.btn_leftTop).setOnClickListener(this);
 		findViewById(R.id.btn_rightTop).setOnClickListener(this);
 
@@ -86,10 +86,12 @@ public class JiShuHuaTiUI extends Activity implements OnClickListener,
 
 	private void ResetButtonBg() {
 
-		((Button) findViewById(R.id.btn_faxingshi)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_faxingshi))
+				.setTextColor(Constant.color_Black);
 		((Button) findViewById(R.id.btn_geren))
 				.setTextColor(Constant.color_Black);
-		((Button) findViewById(R.id.btn_dianpu)).setTextColor(Constant.color_Black);
+		((Button) findViewById(R.id.btn_dianpu))
+				.setTextColor(Constant.color_Black);
 	}
 
 	/*

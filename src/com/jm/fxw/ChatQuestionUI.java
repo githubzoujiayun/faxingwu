@@ -31,7 +31,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.iflytek.speech.RecognizerResult;
 import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
@@ -41,7 +41,6 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.QuestionChat;
 import com.jm.finals.Constant;
-import com.jm.fxw.ChatUI.getMsgListTask;
 import com.jm.session.SessionManager;
 import com.jm.sort.ChatAdapter;
 import com.jm.util.CameraAndGallery;
@@ -123,14 +122,14 @@ public class ChatQuestionUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "问题聊天");
+		StatService.onResume(this);
 		super.onResume();
 	}
 
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "问题聊天");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

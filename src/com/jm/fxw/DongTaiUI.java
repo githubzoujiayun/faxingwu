@@ -14,7 +14,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.GridView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
@@ -52,14 +52,14 @@ public class DongTaiUI extends OrmLiteBaseActivity<DatabaseHelper> implements
 	}
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "我型我秀");
+		StatService.onResume(this);
 		super.onResume();
 	}
 
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "我型我秀");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

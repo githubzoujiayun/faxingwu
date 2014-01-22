@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -32,7 +32,7 @@ public class OpinionUI extends Activity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "反馈建议");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -40,7 +40,7 @@ public class OpinionUI extends Activity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "反馈建议");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

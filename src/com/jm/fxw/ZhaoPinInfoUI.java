@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -49,14 +49,14 @@ public class ZhaoPinInfoUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "ÕÐÆ¸ÏêÇé");
+		StatService.onResume(this);
 		super.onResume();
 	}
 
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "ÕÐÆ¸ÏêÇé");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

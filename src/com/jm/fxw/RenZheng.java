@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
@@ -33,21 +33,20 @@ public class RenZheng extends FinalActivity {
 	Button btn_renzheng;
 	private SessionManager sm;
 
-//	private double lng = 0, lat = 0;
+	// private double lng = 0, lat = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.renzheng);
 		sm = SessionManager.getInstance();
 		new getShaLongInfo().execute();
 	}
 
-
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "修改店铺信息");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -55,7 +54,7 @@ public class RenZheng extends FinalActivity {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "修改店铺信息");
+		StatService.onPause(this);
 		super.onPause();
 	}
 
@@ -96,8 +95,8 @@ public class RenZheng extends FinalActivity {
 							.getString("telephone"));
 					((EditText) findViewById(R.id.tv_daddress)).setText(jb
 							.getString("store_address"));
-//					lng = jb.getDouble("lng");
-//					lat = jb.getDouble("lat");
+					// lng = jb.getDouble("lng");
+					// lat = jb.getDouble("lat");
 				} catch (JSONException e) {
 
 				}
@@ -125,8 +124,8 @@ public class RenZheng extends FinalActivity {
 					.getText().toString().trim());
 			map.put("telephone", ((EditText) findViewById(R.id.tv_dphone))
 					.getText().toString().trim());
-//			map.put("lng", lng);
-//			map.put("lat", lat);
+			// map.put("lng", lng);
+			// map.put("lat", lat);
 			return map;
 		}
 
@@ -157,11 +156,11 @@ public class RenZheng extends FinalActivity {
 
 	public void Click(View v) {
 		switch (v.getId()) {
-//		case R.id.btn_getLocation:
-//
-//			Intent i = new Intent(RenZheng.this, MapActivity.class);
-//			startActivityForResult(i, 101);
-//			break;
+		// case R.id.btn_getLocation:
+		//
+		// Intent i = new Intent(RenZheng.this, MapActivity.class);
+		// startActivityForResult(i, 101);
+		// break;
 		case R.id.btn_leftTop:
 			finish();
 			break;
@@ -192,10 +191,10 @@ public class RenZheng extends FinalActivity {
 			TispToastFactory.getToast(RenZheng.this, "请输入店铺详细地址").show();
 			return false;
 		}
-//		if (lng == 0 || lat == 0) {
-//			TispToastFactory.getToast(RenZheng.this, "请标记店铺具体位置").show();
-//			return false;
-//		}
+		// if (lng == 0 || lat == 0) {
+		// TispToastFactory.getToast(RenZheng.this, "请标记店铺具体位置").show();
+		// return false;
+		// }
 		return true;
 	}
 }

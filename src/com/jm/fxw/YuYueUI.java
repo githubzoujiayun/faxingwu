@@ -24,12 +24,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.finals.Constant;
-import com.jm.fxw.YuYueSheZhi.getPriceInfo;
-import com.jm.fxw.YuYueSheZhi.getTipsInfo;
 import com.jm.session.SessionManager;
 import com.jm.util.LogUtil;
 import com.jm.util.PriceUtil;
@@ -77,7 +75,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "预约发型师界面");
+		StatService.onResume(this);
 		super.onResume();
 
 		getUserInfo();
@@ -86,7 +84,7 @@ public class YuYueUI extends FinalActivity implements OnClickListener {
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "预约发型师界面");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

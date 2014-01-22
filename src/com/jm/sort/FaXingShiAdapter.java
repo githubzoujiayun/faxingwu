@@ -117,7 +117,7 @@ public class FaXingShiAdapter extends BaseAdapter implements
 					(ImageView) view.findViewById(R.id.iv_pic));
 			((TextView) view.findViewById(R.id.tv_1_1)).setText(type.username);
 
-			((TextView) view.findViewById(R.id.tv_3_2)).setText(type.distance);
+			((TextView) view.findViewById(R.id.tv_4_2)).setText(type.distance);
 
 			if ("xijianchui".equals(this.priceType)) {
 				((TextView) view.findViewById(R.id.tv_1_2))
@@ -140,13 +140,9 @@ public class FaXingShiAdapter extends BaseAdapter implements
 					+ type.assess_num + ")");
 			((TextView) view.findViewById(R.id.tv_3_1))
 					.setText(type.store_name);
-			if (!type.store_address.equals("")) {
-				((TextView) view.findViewById(R.id.tv_4_1))
-						.setText(type.store_address);
-			} else {
-				((TextView) view.findViewById(R.id.tv_4_1))
-						.setVisibility(View.GONE);
-			}
+			((TextView) view.findViewById(R.id.tv_4_1))
+					.setText(type.store_address);
+
 			view.findViewById(R.id.lin_gallery).setVisibility(View.VISIBLE);
 
 			likeGallery = (HorizontalListView) view
@@ -177,7 +173,7 @@ public class FaXingShiAdapter extends BaseAdapter implements
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("uid", ((SmallImageItem)view).WhosHair);
+		map.put("uid", ((SmallImageItem) view).WhosHair);
 		StartActivityContController.goPage(context, WorkListUI.class, false,
 				map);
 	}

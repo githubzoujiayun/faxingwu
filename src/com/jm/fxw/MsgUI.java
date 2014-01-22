@@ -15,7 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Msg;
@@ -41,9 +41,10 @@ public class MsgUI extends FinalActivity implements OnClickListener,
 
 		initView();
 	}
+
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "私信列表");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -51,7 +52,7 @@ public class MsgUI extends FinalActivity implements OnClickListener,
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "私信列表");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

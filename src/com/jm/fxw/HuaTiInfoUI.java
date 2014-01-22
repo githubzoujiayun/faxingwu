@@ -24,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.iflytek.speech.RecognizerResult;
 import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
@@ -34,7 +34,6 @@ import com.jm.connection.Connection;
 import com.jm.connection.Response;
 import com.jm.entity.Comment;
 import com.jm.finals.Constant;
-import com.jm.fxw.HisInfoUI.getUserInfo;
 import com.jm.session.SessionManager;
 import com.jm.sort.CommentAdapter;
 import com.jm.util.LogUtil;
@@ -84,7 +83,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 
 	@Override
 	protected void onResume() {
-		MobileProbe.onResume(this, "话题详情");
+		StatService.onResume(this);
 		super.onResume();
 
 	}
@@ -92,7 +91,7 @@ public class HuaTiInfoUI extends Activity implements OnClickListener,
 	@Override
 	protected void onPause() {
 
-		MobileProbe.onPause(this, "话题详情");
+		StatService.onPause(this);
 		super.onPause();
 	}
 

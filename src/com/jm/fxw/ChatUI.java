@@ -31,7 +31,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.cnzz.mobile.android.sdk.MobileProbe;
+import com.baidu.mobstat.StatService;
 import com.iflytek.speech.RecognizerResult;
 import com.iflytek.speech.SpeechConfig.RATE;
 import com.iflytek.speech.SpeechError;
@@ -113,14 +113,14 @@ public class ChatUI extends Activity implements OnClickListener,
 	@Override
 	protected void onResume() {
 
-		MobileProbe.onResume(this, "私信聊天");
+		StatService.onResume(this);
 		super.onResume();
 		PushService.isPush = false;
 	}
 
 	@Override
 	protected void onPause() {
-		MobileProbe.onPause(this, "私信聊天");
+		StatService.onPause(this);
 		super.onPause();
 		PushService.isPush = true;
 
