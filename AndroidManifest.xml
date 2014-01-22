@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jm.fxw"
-    android:versionCode="8"
-    android:versionName="3.0" >
+    android:versionCode="9"
+    android:versionName="3.1" >
 
     <supports-screens
         android:anyDensity="true"
@@ -510,7 +510,7 @@
             android:value="cnzz.a_pmpyc9i74iwdu8jvmy4yioz3" />
         <meta-data
             android:name="CNZZ_CHANNEL_ID"
-            android:value="360手机助手" />
+            android:value="华为" />
         <!-- 您从百度网站获取的APP KEY -->
         <meta-data
             android:name="BaiduMobAd_STAT_ID"
